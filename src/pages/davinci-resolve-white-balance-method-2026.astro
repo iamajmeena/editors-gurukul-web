@@ -25,7 +25,7 @@ export const category = "davinci-resolve";
     <p>Most colour grading courses (mine included, a few years ago) teach white balance through the Parade and RGB Waveform — reading red, green, and blue channel levels and matching them by eye. It works, but it assumes you already know what "matched" looks like on a graph. A beginner staring at three overlapping colour traces has no idea which way to move the wheel.</p>
     <p>The Vectorscope solves this instantly. It's a circular plot — if your white balance is accurate, your entire trace sits centred. The moment there's a colour cast, the trace visibly leans toward whichever hue is contaminating the image: red, magenta, yellow, green. You don't need to interpret levels — you just look at which direction the trace is pointing, and push the Offset wheel the opposite way.</p>
 
-    <img class="article-img" src="/assets/davinci-resolve-wb-scopes-off-annotated.jpg" alt="DaVinci Resolve scopes panel annotated — Red channel near clip in the Parade, Blue crushed low, and the Vectorscope trace pulled toward Red/Yellow marking the off-white-balance direction" loading="lazy">
+    <img class="article-img" src="/assets/davinci-resolve-wb-scopes-off-annotated.webp" alt="DaVinci Resolve scopes panel annotated — Red channel near clip in the Parade, Blue crushed low, and the Vectorscope trace pulled toward Red/Yellow marking the off-white-balance direction" loading="lazy">
     <p class="img-caption">A genuinely bad white balance case, no correction applied yet — only Input/Output colour space set. Red is clipping in the Parade, Blue is crushed near the shadows, and the Vectorscope trace (bottom-left) is dragged toward red/yellow instead of sitting centred. That's your diagnosis in one glance.</p>
 
     <h2>Step 1: Isolate the Problem — Colour Space Only, Nothing Else</h2>
@@ -57,7 +57,7 @@ export const category = "davinci-resolve";
     <h2>Real Example: No White Reference in the Frame — Use the Skin Tone Indicator</h2>
     <p>Most shots won't hand you a convenient white or grey object. For a second clip — this one shot on a Sony FX3, no white object anywhere in frame — the reference point shifts to skin tone instead.</p>
 
-    <img class="article-img" src="/assets/davinci-resolve-wb-colorpage-1-annotated.jpg" alt="DaVinci Resolve Color page annotated showing the tracked circular Power Window isolating skin, the Qualifier + Window node highlighted in the node graph, and the tracked keyframe row" loading="lazy">
+    <img class="article-img" src="/assets/davinci-resolve-wb-colorpage-1-annotated.webp" alt="DaVinci Resolve Color page annotated showing the tracked circular Power Window isolating skin, the Qualifier + Window node highlighted in the node graph, and the tracked keyframe row" loading="lazy">
     <p class="img-caption">Isolating a clean patch of skin with a qualifier + tracked Power Window — deliberately a small sample away from the busy yellow background so the qualifier doesn't pick up spill. Node 12 (highlighted) holds the qualifier + window, tracked frame-by-frame in the Keyframes panel.</p>
 
     <p>In the Vectorscope options, enable <strong>Show Skin Tone Indicator</strong> — this draws a reference line across the Vectorscope representing the expected hue range for natural skin tone. Then:</p>
@@ -68,7 +68,7 @@ export const category = "davinci-resolve";
         <li>Watch where that sampled skin tone falls relative to the Skin Tone Indicator line on the Vectorscope, and nudge Offset until it sits on the line.</li>
     </ol>
 
-    <img class="article-img" src="/assets/davinci-resolve-wb-colorpage-2-annotated.jpg" alt="DaVinci Resolve Color page with Vectorscope panel annotated, marking the sampled skin tone still reading warm and the direction to nudge Offset" loading="lazy">
+    <img class="article-img" src="/assets/davinci-resolve-wb-colorpage-2-annotated.webp" alt="DaVinci Resolve Color page with Vectorscope panel annotated, marking the sampled skin tone still reading warm and the direction to nudge Offset" loading="lazy">
     <p class="img-caption">Same tracked skin sample, scopes panel switched to Vectorscope — the sampled skin still reads warm at this point, telling us exactly which way to nudge Offset next.</p>
 
     <h2>Check the Shadows Again — Qualifying Skin Can Reintroduce a Cast</h2>
@@ -76,7 +76,7 @@ export const category = "davinci-resolve";
     <p>One reliable tell that you've nailed it: skin regains what I'd call "juice" — it stops looking flat and dull-white and starts looking naturally alive, with even tone across the face instead of patchy warm/cool zones.</p>
 
     <h2>Before and After</h2>
-    <img class="article-img" src="/assets/davinci-resolve-wb-split-before-after.jpg" alt="Split-screen before and after DaVinci Resolve white balance correction — left half shows the original warm yellow-orange cast, right half shows the corrected natural skin tone using the vectorscope and skin tone indicator method" loading="lazy">
+    <img class="article-img" src="/assets/davinci-resolve-wb-split-before-after.webp" alt="Split-screen before and after DaVinci Resolve white balance correction — left half shows the original warm yellow-orange cast, right half shows the corrected natural skin tone using the vectorscope and skin tone indicator method" loading="lazy">
     <p class="img-caption">Left half: uncorrected, warm cast pulling the whole frame yellow-orange. Right half: corrected using the Vectorscope + Skin Tone Indicator workflow above — same shot, same light, natural skin tone restored.</p>
 
     <h2>Quick Recap</h2>

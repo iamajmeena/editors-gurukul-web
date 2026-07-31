@@ -24,20 +24,19 @@ body {
   padding-bottom: 90px;
 }
 
-/* Header & Nav */
-.eg-site-nav { border-bottom: 1px solid var(--line); padding: 16px 24px; background: var(--bg-alt); position: sticky; top: 0; z-index: 1000; }
-.eg-nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; position: relative; flex-wrap: wrap; gap: 12px; }
-.eg-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.03em; color: var(--ink); text-decoration: none; }
-.eg-brand span { color: var(--orange); }
-.eg-nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-.eg-nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; font-weight: 600; }
-.eg-nav-links a:hover, .eg-nav-links a.active { color: var(--teal-deep); }
+/* Container & Main Layout */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
 
-/* Article Typography & Section Accents */
-article.wrap, .wrap { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+/* Hero & Header Sections */
+.hero-section, .hero, header {
+  margin-bottom: 32px;
+}
 
-.hero-section, .hero { padding: 48px 24px 32px; max-width: 1100px; margin: 0 auto; }
-.hero-pill, .hero .tag {
+.hero-pill, .hero .tag, .tag {
   display: inline-block;
   font-family: 'JetBrains Mono', monospace;
   background: var(--teal-soft);
@@ -51,25 +50,25 @@ article.wrap, .wrap { max-width: 840px; margin: 0 auto; padding: 0 24px; }
   letter-spacing: 0.05em;
 }
 
-.hero-title, .hero h1 {
+.hero-title, .hero h1, h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
-  font-size: 3.2rem;
+  font-size: 3rem;
   line-height: 1.1;
   color: var(--ink);
   margin: 0 0 16px;
   letter-spacing: 0.5px;
 }
 
-.hero-subtitle, .hero .dek {
-  font-size: 1.1rem;
+.hero-subtitle, .hero .dek, .meta-description {
+  font-size: 1.08rem;
   line-height: 1.7;
   color: var(--ink-soft);
-  max-width: 780px;
   margin: 0 0 24px;
 }
 
-article h2, h2.cat-heading {
+/* Headings with Orange Accent Bar on ALL Pages */
+h2, .cat-heading {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2.2rem;
   color: var(--ink);
@@ -79,12 +78,36 @@ article h2, h2.cat-heading {
   padding-left: 14px;
 }
 
-article p { font-size: 1.05rem; line-height: 1.75; color: var(--ink); margin-bottom: 24px; }
-article ul, article ol { margin-bottom: 24px; padding-left: 24px; }
-article li { font-size: 1.02rem; line-height: 1.7; color: var(--ink); margin-bottom: 10px; }
+h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 28px 0 14px;
+}
 
-/* Callout Box */
-.callout {
+/* Universal Typography */
+p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+ul, ol {
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+li {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+/* Callout Box & Meta Notes */
+.callout, blockquote, .meta-description {
   background: var(--orange-soft);
   border-left: 4px solid var(--orange);
   padding: 20px 24px;
@@ -95,8 +118,53 @@ article li { font-size: 1.02rem; line-height: 1.7; color: var(--ink); margin-bot
   margin: 32px 0;
 }
 
-/* Glassmorphism & Cards */
-.eg-glass-card, .asset-card, .cat-card, .cam-card {
+/* Image Placeholders */
+.image-placeholder {
+  background: var(--teal-soft);
+  border: 1px dashed var(--teal-deep);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  color: var(--teal-deep);
+  margin: 32px 0;
+}
+
+/* Universal Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  background: var(--bg-alt);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--line);
+}
+
+th, td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  background: var(--bg);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+td {
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+/* Universal Cards & Grid System */
+.eg-glass-card, .asset-card, .cat-card, .cam-card, .res-card, .item {
   background: var(--bg-alt) !important;
   border: 1px solid var(--line) !important;
   border-radius: 18px !important;
@@ -105,23 +173,10 @@ article li { font-size: 1.02rem; line-height: 1.7; color: var(--ink); margin-bot
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.eg-glass-card:hover, .asset-card:hover, .cat-card:hover {
+.eg-glass-card:hover, .asset-card:hover, .cat-card:hover, .item:hover {
   transform: translateY(-4px) !important;
   box-shadow: 0 12px 32px -8px rgba(15, 139, 141, 0.16) !important;
   border-color: var(--teal-deep) !important;
-}
-
-.asset-card__badge {
-  font-family: 'JetBrains Mono', monospace;
-  background: var(--teal-soft);
-  color: var(--teal-deep);
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  display: inline-block;
-  margin-bottom: 12px;
-  text-transform: uppercase;
 }
 
 /* Search Bar & Filters */
@@ -167,8 +222,8 @@ article li { font-size: 1.02rem; line-height: 1.7; color: var(--ink); margin-bot
 }
 
 /* Author Box (E-E-A-T) */
-.eg-author-box {
-  max-width: 840px;
+.eg-author-box, .author-info {
+  max-width: 900px;
   margin: 48px auto 0;
   display: flex;
   gap: 20px;
@@ -179,13 +234,6 @@ article li { font-size: 1.02rem; line-height: 1.7; color: var(--ink); margin-bot
   padding: 24px;
   box-shadow: var(--card-shadow);
 }
-.eg-author-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-.eg-author-name { font-weight: 700; font-size: 1.1rem; color: var(--ink); }
-.eg-author-title { font-size: 0.88rem; color: var(--teal-deep); font-weight: 600; margin: 4px 0 8px; }
-.eg-author-desc { font-size: 0.95rem; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.6; }
-.eg-author-links { display: flex; gap: 16px; }
-.eg-author-links a { font-size: 0.9rem; font-weight: 700; color: var(--teal-deep); text-decoration: none; }
-.eg-author-links a:hover { text-decoration: underline; }
 
 /* Floating Hindi Button */
 .eg-lang-toggle {
@@ -213,8 +261,4 @@ article li { font-size: 1.02rem; line-height: 1.7; color: var(--ink); margin-bot
   transform: translateY(-2px);
   background: var(--teal);
 }
-
-/* Hardware Reviews & Cards */
-.spec-chip { background: var(--bg); border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
-.buy-btn { text-align: center; padding: 12px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
 

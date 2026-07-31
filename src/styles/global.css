@@ -165,12 +165,12 @@ td {
 
 /* Universal Cards & Grid System */
 .eg-glass-card, .asset-card, .cat-card, .cam-card, .res-card, .item {
-  background: var(--bg-alt) !important;
-  border: 1px solid var(--line) !important;
-  border-radius: 18px !important;
-  padding: 24px !important;
-  box-shadow: var(--card-shadow) !important;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .eg-glass-card:hover, .asset-card:hover, .cat-card:hover, .item:hover {

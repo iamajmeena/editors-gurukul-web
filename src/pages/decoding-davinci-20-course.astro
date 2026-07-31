@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
+
+export const title = "Decoding DaVinci Resolve 2.0 Course | Ajay K. Meena";
+export const category = "course";
+---
+<Layout title="Decoding DaVinci Resolve 2.0 Course | Video Editing & Color Grading" description="Master DaVinci Resolve 20+ with Ajay K. Meena. Complete hands-on course covering editing, node-based color grading, audio post in Fairlight, and AI-powered tools.">
+
+  <section class="max-w-[900px] mx-auto my-8 p-8 bg-white border border-[#e7e4dc] rounded-2xl shadow-sm text-center">
+    <span class="inline-block px-4 py-1.5 bg-[#fdece0] text-[#e0692a] font-bold text-xs rounded-full uppercase tracking-wider mb-4">FLAGSHIP COURSE</span>
+    <h1 class="text-4xl font-extrabold mb-4 text-[#15181c]">Decoding DaVinci Resolve 2.0</h1>
+    <p class="text-xl font-semibold text-[#0a5f61] mb-6">The Ultimate Course for Video Editing, Color Grading &amp; AI-Powered Filmmaking</p>
+    <p class="text-[#4b5058] text-lg leading-relaxed mb-8 max-w-[750px] mx-auto">
+      Designed by DOP &amp; professional colorist Ajay K. Meena. Learn real production workflows, node management, CST color management, skin tone grading, and AI tools — built for creators who want to make cinematic videos.
+    </p>
+
+    <div class="flex justify-center gap-4 flex-wrap mb-10">
+      <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-[#e0692a] text-white font-extrabold text-lg rounded-full hover:bg-[#c85720] transition-transform hover:scale-105 no-underline shadow-md">
+        Enroll Now on Graphy Store ↗
+      </a>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-8">
+      <div class="p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-xl">
+        <div class="text-2xl mb-2">🎞️</div>
+        <h3 class="font-bold text-lg mb-2">Cut &amp; Edit Page</h3>
+        <p class="text-sm text-[#4b5058]">Fast timeline editing, ripple cuts, multi-cam editing, and smart render cache setups.</p>
+      </div>
+      <div class="p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-xl">
+        <div class="text-2xl mb-2">🎨</div>
+        <h3 class="font-bold text-lg mb-2">Pro Color Grading</h3>
+        <p class="text-sm text-[#4b5058]">Serial &amp; parallel nodes, CST color transforms, Log to Rec.709 conversion, and film look emulations.</p>
+      </div>
+      <div class="p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-xl">
+        <div class="text-2xl mb-2">🤖</div>
+        <h3 class="font-bold text-lg mb-2">AI-Powered Tools</h3>
+        <p class="text-sm text-[#4b5058]">IntelliTrack AI, Magic Mask, Smart Reframe, Voice Isolation, and Studio Neural Engine features.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Color Grading Preview -->
+  <section class="max-w-[900px] mx-auto my-8 p-8 bg-white border border-[#e7e4dc] rounded-2xl shadow-sm">
+    <h2 class="text-2xl font-bold mb-4 border-l-4 border-[#e0692a] pl-4">What You Will Learn To Achieve</h2>
+    <p class="text-[#4b5058] mb-6">Compare flat LOG footage against graded production shots created using the exact node tree taught in Decoding DaVinci Resolve 2.0:</p>
+    
+    <BeforeAfterSlider 
+        beforeImage="/assets/assets/davinci-resolve-wb-portrait-before.webp" 
+        afterImage="/assets/assets/davinci-resolve-wb-portrait-after.webp"
+        beforeLabel="Flat LOG"
+        afterLabel="Graded Result"
+    />
+  </section>
+
+  <!-- Enrollment Banner -->
+  <section class="max-w-[900px] mx-auto my-8 p-8 bg-gradient-to-r from-[#0a5f61] to-[#0f8b8d] text-white rounded-2xl text-center shadow-lg">
+    <h2 class="text-3xl font-extrabold mb-3 text-white">Ready to elevate your editing &amp; grading?</h2>
+    <p class="text-[#e4f5f4] text-lg mb-6">Get full lifetime access, project files, practice footage, and direct guidance on Graphy.</p>
+    <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" rel="noopener noreferrer" class="inline-block px-8 py-4 bg-white text-[#0a5f61] font-extrabold text-lg rounded-full hover:bg-[#e4f3f2] transition-transform hover:scale-105 no-underline shadow-md">
+      Get Instant Access Now ↗
+    </a>
+  </section>
+
+</Layout>

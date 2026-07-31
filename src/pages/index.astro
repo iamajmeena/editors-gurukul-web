@@ -1,17 +1,224 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
+<Layout title="Editors Gurukul | Digital Assets for Filmmakers" description="Editors Gurukul offers free filmmaking guides, LUT resources, camera cheat sheets, and premium courses for creators and editors.">
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-pill">📱 From Instagram Reel? Start with free filmmaking resources below.</div>
+        <h1 class="hero-title">Free Camera Guides, LUTs &amp; Filmmaking Resources</h1>
+        <p class="hero-subtitle">
+            I’m Ajay K. Meena — a cinematographer, colorist, and DOP helping filmmakers build better visual stories with practical tools and real-world workflow knowledge.
+        </p>
+        <div class="hero-actions">
+            <a href="#free-assets" class="hero-btn hero-btn-primary">Explore Free Resources</a>
+            <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" class="hero-btn hero-btn-secondary" rel="noopener noreferrer">Visit Courses &amp; Store ↗</a>
+        </div>
+        <div class="trust-strip">
+            <span class="trust-badge">✓ Practical filmmaking guides</span>
+            <span class="trust-badge">✓ Minimal, clean experience</span>
+            <span class="trust-badge">✓ Built for creators</span>
+        </div>
+    </section>
+
+    <!-- Search & Filter Bar Section -->
+    <section class="max-w-6xl mx-auto px-6 pt-4 pb-4">
+        <div class="eg-search-section eg-glass-card">
+            <div class="eg-search-input-wrapper">
+                <span class="eg-search-icon">🔍</span>
+                <input type="text" id="eg-search-input" class="eg-search-input" placeholder="Search guides, LUTs, camera settings, DaVinci tips..." aria-label="Search guides and resources">
+            </div>
+            <div class="eg-filter-pills" id="eg-filter-pills">
+                <button type="button" class="eg-filter-pill active" data-filter="all">All Resources</button>
+                <button type="button" class="eg-filter-pill" data-filter="davinci-resolve">DaVinci Resolve</button>
+                <button type="button" class="eg-filter-pill" data-filter="camera">Camera Guides</button>
+                <button type="button" class="eg-filter-pill" data-filter="luts">LUTs &amp; Packs</button>
+                <button type="button" class="eg-filter-pill" data-filter="editing-fundamentals">Editing Fundamentals</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid Section -->
+    <main class="max-w-6xl mx-auto px-6 pb-16" id="free-assets">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="asset-card eg-glass-card" data-category="luts">
+                <div>
+                    <span class="asset-card__badge">Free Download</span>
+                    <h3>Free Sony/Canon Log to Rec.709 LUT</h3>
+                    <p>Get a clean cinematic color transform for fast grading in DaVinci Resolve and Premiere Pro.</p>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                    <a class="download-link" style="flex:1;" href="/download-bridge.html?target=/free-resources.html">Free Download (PDF / ZIP)</a>
+                    <button type="button" class="eg-btn-preview" onclick="openEGQuickPreview({title:'Free Sony/Canon Log to Rec.709 LUT', badge:'Free Download', desc:'Get a clean cinematic color transform for fast grading in DaVinci Resolve and Premiere Pro.', url:'/download-bridge.html?target=/free-resources.html', tags:['Log to Rec.709', 'Sony & Canon', 'DaVinci / Premiere']})">👁 Quick Preview</button>
+                </div>
+            </div>
+
+            <div class="asset-card eg-glass-card" data-category="camera">
+                <div>
+                    <span class="asset-card__badge">Free PDF</span>
+                    <h3>Camera Settings PDF Guide</h3>
+                    <p>Quick reference for shutter, ISO, frame rates, and low-light settings for your camera.</p>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                    <a class="download-link" style="flex:1;" href="/download-bridge.html?target=/free-camera-guide.html">Free Download (PDF / ZIP)</a>
+                    <button type="button" class="eg-btn-preview" onclick="openEGQuickPreview({title:'Camera Settings PDF Guide', badge:'Free PDF', desc:'Quick reference for shutter, ISO, frame rates, and low-light settings for your camera.', url:'/download-bridge.html?target=/free-camera-guide.html', tags:['Shutter & ISO', 'Frame Rates', 'Low Light Setup']})">👁 Quick Preview</button>
+                </div>
+            </div>
+
+            <div class="asset-card eg-glass-card" data-category="luts">
+                <div>
+                    <span class="asset-card__badge">Free Pack</span>
+                    <h3>Teal &amp; Orange LUT Pack</h3>
+                    <p>Use this high-contrast grading pack to create cinematic looks without wasting editing time.</p>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                    <a href="/free-resources.html" style="flex:1;">Free Download (PDF / ZIP)</a>
+                    <button type="button" class="eg-btn-preview" onclick="openEGQuickPreview({title:'Teal & Orange LUT Pack', badge:'Free Pack', desc:'Use this high-contrast grading pack to create cinematic looks without wasting editing time.', url:'/free-resources.html', tags:['Cinematic Grade', 'Teal & Orange', 'High Contrast']})">👁 Quick Preview</button>
+                </div>
+            </div>
+
+            <div class="asset-card store-banner lg:col-span-3 eg-glass-card">
+                <h3>Looking for deeper filmmaking education?</h3>
+                <p>Explore my premium courses, workflow bundles, and cinematic resources on my Graphy store.</p>
+                <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" rel="noopener noreferrer">Visit My Graphy Store ↗</a>
+            </div>
+        </div>
+    </main>
+
+    <section class="max-w-6xl mx-auto px-6 pb-8">
+        <div class="asset-card eg-glass-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--teal-soft) 0%, var(--bg-alt) 100%);">
+            <span class="asset-card__badge">Featured Work</span>
+            <h3 style="margin-bottom:8px;">My best projects</h3>
+            <p style="margin-bottom:12px;">These are some of my strongest cinematic and editing projects, gathered in one playlist for easy viewing.</p>
+            <a href="https://www.youtube.com/playlist?list=PLED7bDIOW7ZnDXOoEiinpNija78mIcyTX" target="_blank" style="display:inline-block; width:auto;" rel="noopener noreferrer">Watch the playlist ↗</a>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-8">
+        <div class="asset-card eg-glass-card" style="border:1px solid var(--line);">
+            <h3 style="margin-bottom:12px;">Featured Guides</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="/download-bridge.html?target=/final-cut-pro-vs-premiere-pro-vs-davinci-resolve-2026.html" data-category="nle-comparison" style="display:block; padding:16px; border:1px solid #f3d3b8; border-radius:14px; text-decoration:none; color:var(--ink); background:var(--orange-soft);">
+                    <div style="font-size:0.78rem; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">2026 NLE Comparison</div>
+                    <div style="font-weight:700; margin-bottom:6px;">Final Cut Pro vs Premiere Pro vs DaVinci Resolve</div>
+                    <div style="font-size:0.92rem; color:var(--ink-soft);">Pricing, performance, toolsets, and a full comparison chart — plus a free PDF cheat sheet.</div>
+                </a>
+                <a href="/download-bridge.html?target=/1-best-camera-under-50000.html" data-category="camera" style="display:block; padding:16px; border:1px solid var(--line); border-radius:14px; text-decoration:none; color:var(--ink); background:var(--bg);">
+                    <div style="font-size:0.78rem; font-weight:700; color:var(--teal-deep); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Camera Guide</div>
+                    <div style="font-weight:700; margin-bottom:6px;">Best Camera Under ₹50,000</div>
+                    <div style="font-size:0.92rem; color:var(--ink-soft);">A practical buying guide for creators on a budget.</div>
+                </a>
+                <a href="/download-bridge.html?target=/davinci-resolve-shortcuts-cheatsheet-2026.html" data-category="davinci-resolve" style="display:block; padding:16px; border:1px solid var(--line); border-radius:14px; text-decoration:none; color:var(--ink); background:var(--bg);">
+                    <div style="font-size:0.78rem; font-weight:700; color:var(--teal-deep); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">DaVinci Resolve</div>
+                    <div style="font-weight:700; margin-bottom:6px;">Shortcuts Cheat Sheet</div>
+                    <div style="font-size:0.92rem; color:var(--ink-soft);">Useful shortcuts to speed up your editing workflow.</div>
+                </a>
+            </div>
+            <a href="/free-resources.html" style="display:inline-block; margin-top:14px; padding:10px 14px; border-radius:999px; background:var(--teal-deep); color:#fff; text-decoration:none; font-weight:700;">View All Free Resources</a>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-8">
+        <div class="asset-card" style="border:1px solid var(--line);">
+            <div class="eg-latest-block" data-category="davinci-resolve" data-count="4" data-title="Latest DaVinci Resolve Guides" data-view-all="/guides.html#davinci-resolve"></div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-8">
+        <div class="asset-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);">
+            <h3 style="margin-bottom:10px;">Cinematic Color Grading</h3>
+            <p style="margin-bottom:12px;">Explore a premium before-and-after color grading experience with a split-view concept built for cinematic storytelling and modern post-production.</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:center; margin-bottom:14px;">
+                <div style="border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--bg); min-height:220px; position:relative;">
+                    <div style="position:absolute; inset:0; background:linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%); clip-path:inset(0 50% 0 0);"></div>
+                    <div style="position:absolute; inset:0; background:linear-gradient(135deg, var(--orange) 0%, var(--orange-soft) 100%); clip-path:inset(0 0 0 50%);"></div>
+                    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:2px; height:100%; background:#fff; box-shadow:0 0 0 1px rgba(255,255,255,0.4);"></div>
+                </div>
+                <div style="padding:8px 4px;">
+                    <h4 style="margin:0 0 8px; font-size:1.05rem;">Before &amp; After</h4>
+                    <p style="margin:0 0 10px; color:var(--ink-soft); line-height:1.6;">A clean slider concept that highlights contrast, color balance, and cinematic mood transitions.</p>
+                    <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--teal-deep);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">Master Color Grading</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-16">
+        <div class="asset-card" style="border:1px solid var(--line);">
+            <h3 style="margin-bottom:8px;">About Ajay K. Meena</h3>
+            <p style="margin-bottom:12px;">I’m a Director of Photography, cinematographer, and colorist based in Jaipur, Rajasthan. My work focuses on cinematic storytelling, moody lighting, and practical filmmaking education for creators who want to improve their craft.</p>
+            <p style="margin-bottom:12px;">I created Editors Gurukul to share real camera settings, lighting ideas, and professional workflows in a simple, useful format.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px; align-items:center;">
+                <a href="https://youtube.com/@ajaykmeenaa" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--teal-deep);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">YouTube</a>
+                <a href="https://instagram.com/iamajmeena" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--orange);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:editorsgurukul@gmail.com" style="display:inline-block;padding:10px 14px;background:var(--teal-soft);color:var(--teal-deep);border-radius:999px;text-decoration:none;font-weight:700;">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-16">
+        <div class="asset-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal) 100%); color:#ffffff;">
+            <h3 style="margin-bottom:8px; color:#ffffff;">Work with Wedream Production</h3>
+            <p style="margin-bottom:12px; color:#e4f5f4;">We offer professional DOP, cinematography, and commercial shoot services for brands, campaigns, and premium storytelling projects.</p>
+            <a href="mailto:editorsgurukul@gmail.com" style="display:inline-block;padding:10px 14px;background:#ffffff;color:var(--teal-deep);border-radius:999px;text-decoration:none;font-weight:700;">Contact for Shoots</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    
+
+    <nav class="mobile-sticky-bar">
+        <a href="#free-assets">Free Assets</a>
+        <a href="/free-camera-guide.html">Camera Guides</a>
+        <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" class="store-pill" rel="noopener noreferrer">Store ↗</a>
+    </nav>
+
+
+
+<script is:inline is:inline>
+document.addEventListener('DOMContentLoaded', function() {
+  var searchInput = document.getElementById('eg-search-input');
+  var filterPills = document.querySelectorAll('.eg-filter-pill');
+  var assetCards = document.querySelectorAll('.asset-card, .eg-related-card');
+  var currentCategory = 'all';
+
+  function filterContent() {
+    var query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+    assetCards.forEach(function(card) {
+      if (card.classList.contains('store-banner')) return;
+
+      var text = card.textContent.toLowerCase();
+      var category = (card.getAttribute('data-category') || '').toLowerCase();
+      
+      var matchesQuery = !query || text.indexOf(query) !== -1;
+      var matchesCategory = currentCategory === 'all' || 
+        category === currentCategory ||
+        (currentCategory === 'luts' && (text.indexOf('lut') !== -1 || text.indexOf('pack') !== -1));
+
+      if (matchesQuery && matchesCategory) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', filterContent);
+  }
+
+  filterPills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      filterPills.forEach(function(p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      currentCategory = pill.getAttribute('data-filter');
+      filterContent();
+    });
+  });
+});
+</script>
+
+</Layout>

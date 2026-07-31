@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Camera Finder Tool — Which Camera Is Right For You? | Editors Gurukul" description="Answer 5 quick questions about your budget, use-case, and experience level and get a real camera recommendation — not a generic 'top 10' list.">
+
+
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">TOOL · CAMERA FINDER</span>
+    <h1>Which Camera Should You Actually Buy?</h1>
+    <p class="dek">Skip the 40-video comparison rabbit hole. Answer 5 quick questions about your budget, what you shoot, and where you're at — get one honest recommendation, not a generic top-10 list.</p>
+    <p style="font-size:13px;color:var(--ink-soft);margin-top:14px;">Some Amazon links below are affiliate links — buying through them earns a small commission at no extra cost to you.</p>
+  </div>
+</section>
+
+<div class="wrap quiz">
+  <form id="camera-quiz">
+    <div class="q-block">
+      <p class="q-title"><span class="q-num">1</span>What's your budget?</p>
+      <div class="opts" data-group="budget">
+        <div class="opt"><input type="radio" name="budget" id="b1" value="50k-1l" required><label for="b1">₹50,000 – ₹1,00,000</label></div>
+        <div class="opt"><input type="radio" name="budget" id="b2" value="1l-1.5l"><label for="b2">₹1,00,000 – ₹1,50,000</label></div>
+        <div class="opt"><input type="radio" name="budget" id="b3" value="1.5l-2l"><label for="b3">₹1,50,000 – ₹2,00,000</label></div>
+        <div class="opt"><input type="radio" name="budget" id="b4" value="2l-4l"><label for="b4">₹2,00,000 – ₹4,00,000</label></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <p class="q-title"><span class="q-num">2</span>What will you mostly shoot?</p>
+      <div class="opts" data-group="usecase">
+        <div class="opt"><input type="radio" name="usecase" id="u1" value="youtube" required><label for="u1">YouTube / talking-head videos</label></div>
+        <div class="opt"><input type="radio" name="usecase" id="u2" value="vlogging"><label for="u2">Vlogging / handheld run-and-gun</label></div>
+        <div class="opt"><input type="radio" name="usecase" id="u3" value="wedding"><label for="u3">Weddings / pre-weddings / cinematic films</label></div>
+        <div class="opt"><input type="radio" name="usecase" id="u4" value="photography"><label for="u4">Photography-first</label></div>
+        <div class="opt"><input type="radio" name="usecase" id="u5" value="hybrid"><label for="u5">Mix of photo + video</label></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <p class="q-title"><span class="q-num">3</span>How experienced are you?</p>
+      <div class="opts" data-group="experience">
+        <div class="opt"><input type="radio" name="experience" id="e1" value="beginner" required><label for="e1">Complete beginner</label></div>
+        <div class="opt"><input type="radio" name="experience" id="e2" value="intermediate"><label for="e2">Some experience</label></div>
+        <div class="opt"><input type="radio" name="experience" id="e3" value="professional"><label for="e3">Professional / client work</label></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <p class="q-title"><span class="q-num">4</span>What matters most to you?</p>
+      <div class="opts" data-group="priority">
+        <div class="opt"><input type="radio" name="priority" id="p1" value="portability" required><label for="p1">Small, light, easy to carry</label></div>
+        <div class="opt"><input type="radio" name="priority" id="p2" value="autofocus"><label for="p2">Reliable autofocus (shooting solo)</label></div>
+        <div class="opt"><input type="radio" name="priority" id="p3" value="cinematic-color"><label for="p3">Cinematic colour / dynamic range</label></div>
+        <div class="opt"><input type="radio" name="priority" id="p4" value="budget-value"><label for="p4">Best value for the money</label></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <p class="q-title"><span class="q-num">5</span>Lens preference?</p>
+      <div class="opts" data-group="lens">
+        <div class="opt"><input type="radio" name="lens" id="l1" value="fixed" required><label for="l1">Fixed lens is fine — I don't want to think about lenses</label></div>
+        <div class="opt"><input type="radio" name="lens" id="l2" value="interchangeable"><label for="l2">I want interchangeable lenses to grow into</label></div>
+      </div>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" class="submit-btn">Find My Camera →</button>
+      <p class="form-note">Takes 20 seconds. No email required.</p>
+    </div>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+
+
+
+
+<script is:inline is:inline>
+(function () {
+  var CAMERAS = [
+    { name: "Sony ZV-E10", price: 54990, priceLabel: "₹54,990", asin: "B09F9QMR1T", budget: "50k-1l",
+      useCase: ["youtube", "vlogging"], experience: ["beginner", "intermediate"], priority: ["autofocus", "portability"], lens: "interchangeable",
+      specs: ["26MP APS-C", "AI subject-tracking AF", "Built-in ND filter", "Oversampled 4K30"],
+      desc: "Built specifically for creators — reliable AI autofocus, a built-in ND filter so you're not fumbling with glass filters outdoors, and genuinely sharp 4K. This is the camera most YouTubers in this budget actually end up recommending to each other." },
+    { name: "Sony ZV-E10 II", price: 87990, priceLabel: "₹87,990 (body)", asin: "B0DDTXYQ6C", budget: "50k-1l",
+      useCase: ["youtube", "vlogging", "hybrid"], experience: ["intermediate"], priority: ["autofocus", "cinematic-color"], lens: "interchangeable",
+      specs: ["26MP APS-C", "759-pt AF", "4K60", "Cinematic Vlog Setting"],
+      desc: "The updated ZV-E10 — sharper autofocus, a baked-in Cinematic Vlog Setting for a more graded look straight out of camera, and 4K60. Worth the jump if your channel is growing and you want more headroom before the cinema-line price bracket." },
+    { name: "Canon EOS R50 V", price: 100534, priceLabel: "₹1,00,534 (body)", asin: "B0F2523BMZ", budget: "1l-1.5l",
+      useCase: ["youtube", "hybrid"], experience: ["intermediate"], priority: ["autofocus", "budget-value"], lens: "interchangeable",
+      specs: ["6K oversampled video", "Vertical recording", "RF-mount"],
+      desc: "6K oversampled video with vertical recording built in for Reels/Shorts — you're not cropping a horizontal frame after the fact. Room to grow into Canon's RF lens ecosystem as your channel scales." },
+    { name: "Fujifilm X-S20", price: 137500, priceLabel: "₹1,37,500 (w/ 15-45mm kit lens)", asin: "B0CBWX2L8G", budget: "1l-1.5l",
+      useCase: ["hybrid", "wedding", "photography"], experience: ["intermediate", "professional"], priority: ["cinematic-color", "portability"], lens: "interchangeable",
+      specs: ["26MP APS-C", "Film Simulations (Eterna)", "In-body stabilisation"],
+      desc: "Fuji's colour science is the whole pitch here — film simulations, especially Eterna, give a cinematic look straight out of camera with far less grading work. A colourist's favourite for a genuine reason." },
+    { name: "Sony FX30", price: 167990, priceLabel: "₹1,67,990", asin: "B0BWJX5ZL5", budget: "1.5l-2l",
+      useCase: ["wedding", "hybrid"], experience: ["professional"], priority: ["cinematic-color", "autofocus"], lens: "interchangeable",
+      specs: ["Super 35 sensor", "4K120", "Dual Base ISO", "Log/RAW workflow"],
+      desc: "A proper Cinema Line sensor in an APS-C body — real log/RAW grading workflow, 4K120 for slow-motion, and Dual Base ISO for genuinely usable low-light footage. Built for people who grade seriously, not casual shooters." },
+    { name: "Sony A7 IV", price: 186990, priceLabel: "₹1,86,990 (body)", asin: "B09SB6H876", budget: "1.5l-2l",
+      useCase: ["hybrid", "photography", "wedding"], experience: ["professional"], priority: ["cinematic-color", "autofocus"], lens: "interchangeable",
+      specs: ["33MP full-frame", "Real-time tracking AF", "4K60"],
+      desc: "A full-frame hybrid that shoots stills and video equally well — 33MP for photography clients, 4K60 for video work. The safe, do-everything upgrade once you've outgrown APS-C." },
+    { name: "Sony A7S III", price: 308990, priceLabel: "₹3,08,990", asin: "B0DGG7N4YK", budget: "2l-4l",
+      useCase: ["wedding", "hybrid"], experience: ["professional"], priority: ["cinematic-color", "autofocus"], lens: "interchangeable",
+      specs: ["12MP full-frame", "4K120", "10-bit 4:2:2", "ISO up to 409600"],
+      desc: "Sony's low-light specialist — a lower-resolution full-frame sensor built entirely around dynamic range and clean high-ISO footage. If you shoot receptions, night events, or anything dim, this camera earns its price back in usable footage alone." },
+    { name: "Sony FX3A", price: 367990, priceLabel: "₹3,67,990", asin: "B0FH9VCKPS", budget: "2l-4l",
+      useCase: ["wedding"], experience: ["professional"], priority: ["cinematic-color", "autofocus"], lens: "interchangeable",
+      specs: ["Full-frame Cinema Line sensor", "15+ stops dynamic range", "4K120", "S-Cinetone"],
+      desc: "A full-frame Cinema Line sensor with 15+ stops of dynamic range, built for production work where the client is paying for the best possible image. This is an investment for a working professional, not a starter camera." }
+  ];
+
+  function score(cam, answers) {
+    var s = 0;
+    if (cam.useCase.indexOf(answers.usecase) !== -1) s += 3;
+    if (cam.experience.indexOf(answers.experience) !== -1) s += 2;
+    if (cam.priority.indexOf(answers.priority) !== -1) s += 2;
+    if (cam.lens === answers.lens) s += 1;
+    return s;
+  }
+
+  function cardHtml(cam, isTop) {
+    var buyHref = "https://www.amazon.in/dp/" + cam.asin + "?tag=ajaykmeena-21";
+    return (
+      '<div class="cam-card' + (isTop ? " top" : "") + '">' +
+      '<div class="cam-head"><div class="cam-title">' + cam.name + '</div><div class="cam-price">' + cam.priceLabel + '</div></div>' +
+      '<div class="spec-strip">' + cam.specs.map(function (s) { return '<span class="spec-chip">' + s + '</span>'; }).join("") + '</div>' +
+      '<p class="cam-desc">' + cam.desc + '</p>' +
+      '<div class="buy-row"><a class="buy-btn" href="' + buyHref + '" target="_blank" rel="noopener noreferrer">Check on Amazon</a></div>' +
+      '</div>'
+    );
+  }
+
+  var form = document.getElementById("camera-quiz");
+  var resultEl = document.getElementById("result");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var fd = new FormData(form);
+    var answers = {
+      budget: fd.get("budget"),
+      usecase: fd.get("usecase"),
+      experience: fd.get("experience"),
+      priority: fd.get("priority"),
+      lens: fd.get("lens")
+    };
+
+    var inBudget = CAMERAS.filter(function (c) { return c.budget === answers.budget; });
+    if (!inBudget.length) inBudget = CAMERAS.slice();
+
+    var ranked = inBudget.slice().sort(function (a, b) { return score(b, answers) - score(a, answers); });
+    var top = ranked[0];
+    var runnerUp = ranked[1];
+
+    var html =
+      '<div class="result-tag">Your Match</div>' +
+      cardHtml(top, true) +
+      (runnerUp ? '<div class="result-tag" style="margin-top:24px;">Also Worth Considering</div>' + cardHtml(runnerUp, false) : "") +
+      '<p class="price-note">Prices are approximate and change often — always check the current price before buying. These recommendations are based on budget, use-case, experience, and priority, not sponsorship — this tool carries no paid placements.</p>' +
+      '<button type="button" class="retake-btn" id="retake">← Retake the quiz</button>';
+
+    resultEl.innerHTML = html;
+    resultEl.style.display = "block";
+    form.style.display = "none";
+    resultEl.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    document.getElementById("retake").addEventListener("click", function () {
+      resultEl.style.display = "none";
+      form.style.display = "block";
+      form.reset();
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+})();
+</script>
+
+</Layout>

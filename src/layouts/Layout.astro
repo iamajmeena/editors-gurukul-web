@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const { title, description } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title || "Editors Gurukul"}</title>
+    <meta name="description" content={description || "Editors Gurukul offers free filmmaking guides, LUT resources, camera cheat sheets, and premium courses."}>
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#faf9f6] text-[#15181c] font-['Sora',sans-serif]">
+    <Header />
+    <main class="min-h-screen">
+        <slot />
+    </main>
+    <Footer />
+</body>
+</html>

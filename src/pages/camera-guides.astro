@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Camera Guides | Editors Gurukul" description="Practical camera education for beginners and creators — codec, log, HDR, budget camera picks, and hands-on technique guides, all in one place.">
+
+
+  <div class="container">
+    <div class="card">
+      <h1>Camera Guides</h1>
+      <p>Practical camera education for beginners and creators who want better visuals without overcomplicating the process.</p>
+      <div class="grid" id="eg-camera-grid"><p style="grid-column:1/-1;color:var(--ink-soft);">Loading guides…</p></div>
+      <p style="margin-top:20px;"><a href="/my-gear.html">See My Gear →</a> · <a href="/free-resources.html">All Free Resources →</a> · <a href="/guides.html">All Guides →</a></p>
+    </div>
+  </div>
+  
+
+
+<script is:inline is:inline>
+  (function () {
+    function render() {
+      var grid = document.getElementById("eg-camera-grid");
+      var pages = (window.EG_PAGES || []).filter(function (p) {
+        return p.category === "camera" || p.category === "editing-fundamentals";
+      });
+      if (!pages.length) {
+        grid.innerHTML = '<p style="grid-column:1/-1;color:var(--ink-soft);">No guides yet — check back soon.</p>';
+        return;
+      }
+      grid.innerHTML = pages
+        .map(function (p) {
+          var target = p.path.replace(/^\//, "").length && !p.path.endsWith(".html") ? p.path + ".html" : p.path;
+          return (
+            '<div class="item">' +
+            "<h3>" + p.title + "</h3>" +
+            "<p>" + (p.desc || "") + "</p>" +
+            '<a class="btn" href="/download-bridge.html?target=' + target + '">Open Guide</a>' +
+            "</div>"
+          );
+        })
+        .join("");
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", render);
+    } else {
+      render();
+    }
+  })();
+</script>
+
+</Layout>

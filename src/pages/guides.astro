@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="All Guides | Editors Gurukul" description="Every free filmmaking, camera, editing and DaVinci Resolve guide on Editors Gurukul, organized by topic in one place.">
+
+
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">EVERY GUIDE, ONE PLACE</span>
+    <h1>All Guides</h1>
+    <p class="dek">Every free camera, editing, and DaVinci Resolve guide on Editors Gurukul — grouped by topic so you can find what you actually need.</p>
+  </div>
+</section>
+
+<div class="wrap guides-index" id="eg-guides-index">
+  <p class="empty-note">Loading guides…</p>
+</div>
+
+
+
+
+<script is:inline is:inline>
+  (function () {
+    function render() {
+      var container = document.getElementById("eg-guides-index");
+      var pages = window.EG_PAGES || [];
+      var order = window.EG_CATEGORY_ORDER || [];
+      var labels = window.EG_CATEGORY_LABELS || {};
+      var html = "";
+      order.forEach(function (cat) {
+        var items = pages.filter(function (p) { return p.category === cat; });
+        if (!items.length) return;
+        html +=
+          '<section class="cat-section" id="' + cat + '">' +
+          "<h2>" + (labels[cat] || cat) + "</h2>" +
+          '<div class="cat-grid">' +
+          items
+            .map(function (p) {
+              return (
+                '<a class="cat-card" href="' + p.path + '">' +
+                '<div class="cc-title">' + p.title + "</div>" +
+                '<div class="cc-desc">' + (p.desc || "") + "</div>" +
+                "</a>"
+              );
+            })
+            .join("") +
+          "</div></section>";
+      });
+      container.innerHTML = html || '<p class="empty-note">No guides yet — check back soon.</p>';
+
+      if (window.location.hash) {
+        setTimeout(function () {
+          var target = document.querySelector(window.location.hash);
+          if (target) target.scrollIntoView({ block: "start" });
+        }, 50);
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", render);
+    } else {
+      render();
+    }
+  })();
+</script>
+
+</Layout>

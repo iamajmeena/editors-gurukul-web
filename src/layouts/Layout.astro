@@ -6,6 +6,7 @@ const { title, description } = Astro.props;
 
 const pageTitle = title || "Editors Gurukul | Free Filmmaking Guides, LUTs & Gear";
 const pageDesc = description || "Editors Gurukul offers free filmmaking guides, LUT resources, camera cheat sheets, and premium courses for creators and editors.";
+const canonicalURL = new URL(Astro.url.pathname, "https://editorsgurukul.com").toString();
 
 const schemaData = JSON.stringify({
   "@context": "https://schema.org",
@@ -33,7 +34,7 @@ const schemaData = JSON.stringify({
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc}>
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://editorsgurukul.com/">
+    <link rel="canonical" href={canonicalURL}>
     <link rel="sitemap" href="/sitemap.xml" />
     <link rel="icon" href="/assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +45,7 @@ const schemaData = JSON.stringify({
     <meta property="og:title" content={pageTitle}>
     <meta property="og:description" content={pageDesc}>
     <meta property="og:image" content="https://editorsgurukul.com/assets/og-default.jpg">
-    <meta property="og:url" content="https://editorsgurukul.com/">
+    <meta property="og:url" content={canonicalURL}>
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Schema.org JSON-LD Structured Data for Google SEO & AdSense -->

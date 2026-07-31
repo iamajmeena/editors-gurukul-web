@@ -46,10 +46,10 @@
       '<label for="eg-nav-toggle" class="eg-nav-toggle-label" aria-label="Menu"><span></span><span></span><span></span></label>' +
       '<nav class="eg-nav-links">' +
       '<a href="/">Home</a>' +
-      '<a href="/free-resources.html">Free Resources</a>' +
-      '<a href="/camera-guides.html">Camera Guides</a>' +
-      '<a href="/my-gear.html">My Gear</a>' +
-      '<a href="/guides.html">All Guides</a>' +
+      '<a href="/free-resources">Free Resources</a>' +
+      '<a href="/camera-guides">Camera Guides</a>' +
+      '<a href="/my-gear">My Gear</a>' +
+      '<a href="/guides">All Guides</a>' +
       "</nav>" +
       "</div>" +
       "</header>";
@@ -102,7 +102,7 @@
         '<div class="eg-author-links">' +
         '<a href="https://www.youtube.com/@ajaykmeenaa" target="_blank" rel="noopener noreferrer">YouTube</a>' +
         '<a href="https://instagram.com/iamajmeena" target="_blank" rel="noopener noreferrer">Instagram</a>' +
-        '<a href="/about-contact.html">About</a>' +
+        '<a href="/about-contact">About</a>' +
         "</div></div></section>";
     }
     el.outerHTML =
@@ -111,9 +111,9 @@
       '<footer class="eg-site-footer">' +
       '<a href="/" class="eg-footer-home">← Back to Home</a><br>' +
       '<p style="margin:0 0 8px;">' +
-      '<a href="/privacy-policy.html">Privacy</a> · ' +
-      '<a href="/terms.html">Terms</a> · ' +
-      '<a href="/about-contact.html">Contact</a></p>' +
+      '<a href="/privacy-policy">Privacy</a> · ' +
+      '<a href="/terms">Terms</a> · ' +
+      '<a href="/about-contact">Contact</a></p>' +
       "<p>© 2026 Editors Gurukul · Ajay K Meena · " +
       '<a href="https://ajaykmeena.com" target="_blank">ajaykmeena.com</a></p>' +
       "</footer>";
@@ -175,13 +175,18 @@
   }
 
   function buildLangToggle() {
-    var btn = document.createElement("button");
-    btn.id = "eg-lang-toggle-btn";
-    btn.className = "eg-lang-toggle notranslate";
-    btn.type = "button";
-    btn.textContent = "हिंदी में पढ़ें";
+    // A page (e.g. the Astro Layout) may already render this button
+    // statically — reuse it instead of creating a duplicate.
+    var btn = document.getElementById("eg-lang-toggle-btn");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.id = "eg-lang-toggle-btn";
+      btn.className = "eg-lang-toggle notranslate";
+      btn.type = "button";
+      btn.textContent = "हिंदी में पढ़ें";
+      document.body.appendChild(btn);
+    }
     btn.addEventListener("click", toggleHindi);
-    document.body.appendChild(btn);
 
     var cur = getCookie("googtrans");
     if (cur && cur.indexOf("/hi") !== -1) {
@@ -216,7 +221,7 @@
       var cat = block.getAttribute("data-category");
       var count = parseInt(block.getAttribute("data-count"), 10) || 4;
       var title = block.getAttribute("data-title") || (CATEGORY_LABELS[cat] || cat) + " Guides";
-      var viewAllHref = block.getAttribute("data-view-all") || "/guides.html#" + cat;
+      var viewAllHref = block.getAttribute("data-view-all") || "/guides#" + cat;
       var pool = PAGES.filter(function (p) { return p.category === cat; });
       var latest = pool.slice(-count).reverse();
       if (!latest.length) {
@@ -250,7 +255,7 @@
           "@type": "Person",
           "@id": "https://editorsgurukul.com/#person",
           "name": "Ajay K Meena",
-          "url": "https://editorsgurukul.com/about-contact.html",
+          "url": "https://editorsgurukul.com/about-contact",
           "sameAs": [
             "https://www.youtube.com/@ajaykmeenaa",
             "https://instagram.com/iamajmeena",

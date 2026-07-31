@@ -6,12 +6,12 @@
 */
 window.EG_PAGES = [
   { path: "/", title: "Home", category: "hub" },
-  { path: "/free-resources.html", title: "Free Resources", category: "hub", desc: "Browse the full set of free filmmaking guides and downloads." },
-  { path: "/guides.html", title: "All Guides", category: "hub", desc: "Every guide on the site, grouped by topic." },
-  { path: "/camera-guides.html", title: "All Camera Guides", category: "hub", desc: "Practical camera education for beginners and creators." },
-  { path: "/my-gear.html", title: "My Gear", category: "hub", desc: "The cameras, lenses and lighting kit recommended here." },
-  { path: "/free-camera-guide.html", title: "Free Camera Settings Guide", category: "camera", desc: "Practical settings for cinematic shots, low light, and better exposure." },
-  { path: "/camera-finder.html", title: "Camera Finder Tool", category: "camera", desc: "Answer 5 quick questions about your budget and use-case and get a real camera recommendation." },
+  { path: "/free-resources", title: "Free Resources", category: "hub", desc: "Browse the full set of free filmmaking guides and downloads." },
+  { path: "/guides", title: "All Guides", category: "hub", desc: "Every guide on the site, grouped by topic." },
+  { path: "/camera-guides", title: "All Camera Guides", category: "hub", desc: "Practical camera education for beginners and creators." },
+  { path: "/my-gear", title: "My Gear", category: "hub", desc: "The cameras, lenses and lighting kit recommended here." },
+  { path: "/free-camera-guide", title: "Free Camera Settings Guide", category: "camera", desc: "Practical settings for cinematic shots, low light, and better exposure." },
+  { path: "/camera-finder", title: "Camera Finder Tool", category: "camera", desc: "Answer 5 quick questions about your budget and use-case and get a real camera recommendation." },
 
   { path: "/1-best-camera-under-50000", title: "Best Camera Under ₹50,000", category: "camera", desc: "A practical buying guide for creators on a budget." },
   { path: "/5-master-your-camera", title: "Master Your Camera", category: "camera", desc: "Practical exposure, framing and technique fundamentals." },
@@ -36,7 +36,7 @@ window.EG_PAGES = [
   { path: "/should-you-become-a-video-editor-2026", title: "Should You Become a Video Editor?", category: "career", desc: "Which software to learn, where to learn from, getting clients, and an honest gut-check." },
   { path: "/best-rgb-stick-light-2026", title: "Best RGB Stick Light 2026", category: "camera", desc: "Digitek budget vs mid vs Godox LC500R, real tested comparison, plus more options for every budget." },
 
-  { path: "/about-contact.html", title: "About / Contact", category: "utility" },
-  { path: "/privacy-policy.html", title: "Privacy Policy", category: "utility" },
-  { path: "/terms.html", title: "Terms", category: "utility" },
+  { path: "/about-contact", title: "About / Contact", category: "utility" },
+  { path: "/privacy-policy", title: "Privacy Policy", category: "utility" },
+  { path: "/terms", title: "Terms", category: "utility" },
 ];

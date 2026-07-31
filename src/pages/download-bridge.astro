@@ -1,37 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-export const title = "Preparing Your Download | Editors Gurukul";
+export const title = "Redirecting... | Editors Gurukul";
 export const category = "free-resources";
 ---
-<Layout title="Preparing Your Download | Editors Gurukul" description="">
+<Layout title="Redirecting... | Editors Gurukul" description="">
 
-  <div class="card">
-    <a href="/" class="brand notranslate">EDITORS GURUKUL</a>
-    <h1>Your download link is getting ready...</h1>
-    <p>Please wait a few seconds while we finish preparing the final link for you.</p>
-    <div class="timer" id="timer">10</div>
-    <button id="continueBtn" disabled>Preparing...</button>
+  <div class="card max-w-[600px] mx-auto my-12 p-8 text-center bg-white border border-[#e7e4dc] rounded-2xl shadow-sm">
+    <h1 class="text-2xl font-bold mb-4">Redirecting to your resource...</h1>
+    <p class="text-[#4b5058] mb-6">If you are not redirected automatically within a second, click the button below.</p>
+    <a id="continueBtn" class="inline-block px-6 py-3 bg-[#0a5f61] text-white font-bold rounded-full text-decoration-none" href="#">Click to Continue →</a>
   </div>
-  <script is:inline is:inline>
+  <script is:inline>
     const params = new URLSearchParams(window.location.search);
-    const target = params.get('target') || '/';
-    const timerEl = document.getElementById('timer');
+    const target = params.get('target') || '/free-resources';
     const btn = document.getElementById('continueBtn');
-    let seconds = 10;
-    const interval = setInterval(() => {
-      seconds -= 1;
-      timerEl.textContent = seconds;
-      if (seconds <= 0) {
-        clearInterval(interval);
-        btn.disabled = false;
-        btn.textContent = 'Click to Continue';
-      }
-    }, 1000);
-    btn.addEventListener('click', () => {
-      if (btn.disabled) return;
-      window.location.href = target;
-    });
+    if (btn) btn.href = target;
+    // Instant redirect without any 10-second timer delay
+    window.location.href = target;
   </script>
 
 </Layout>

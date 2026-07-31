@@ -22,5 +22,13 @@ const { title, description } = Astro.props;
         <slot />
     </main>
     <Footer />
+
+    <!-- Floating Hindi Toggle -->
+    <button id="eg-lang-toggle-btn" class="eg-lang-toggle notranslate" type="button" onclick="window.egToggleHindi ? window.egToggleHindi() : null">
+        हिंदी में पढ़ें
+    </button>
+
+    <script is:inline src="/assets/site-manifest.js"></script>
+    <script is:inline src="/assets/site-chrome.js"></script>
 </body>
 </html>

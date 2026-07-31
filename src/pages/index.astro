@@ -1,12 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
+
 const allPages = Object.values(import.meta.glob('./*.astro', { eager: true }));
 
 // Filter out utility pages and index
 const guides = allPages.filter(page => {
   const path = page.file.split('/').pop() || '';
-  const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro'];
+  const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'download-bridge.astro'];
   return !excludeList.includes(path);
 });
 ---
@@ -14,13 +15,14 @@ const guides = allPages.filter(page => {
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <h1 class="hero-title">Free Camera Guides, LUTs &amp; Filmmaking Resources</h1>
+        <div class="hero-pill">📱 From Instagram Reel? Start with free filmmaking resources below.</div>
+        <h1 class="hero-title">FREE CAMERA GUIDES, LUTS &amp; FILMMAKING RESOURCES</h1>
         <p class="hero-subtitle">
             I’m Ajay K. Meena — a cinematographer, colorist, and DOP helping filmmakers build better visual stories with practical tools and real-world workflow knowledge.
         </p>
         <div class="hero-actions">
-            <a href="#free-assets" class="hero-btn hero-btn-primary">Explore All Guides</a>
-            <a href="https://www.ajaykmeena.com/courses" target="_blank" class="hero-btn hero-btn-secondary" rel="noopener noreferrer">Visit Courses &amp; Store ↗</a>
+            <a href="#free-assets" class="hero-btn hero-btn-primary">Explore Free Resources</a>
+            <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" class="hero-btn hero-btn-secondary" rel="noopener noreferrer">Visit Courses &amp; Store ↗</a>
         </div>
         <div class="trust-strip">
             <span class="trust-badge">✓ Practical filmmaking guides</span>
@@ -34,33 +36,78 @@ const guides = allPages.filter(page => {
         <div class="eg-search-section eg-glass-card">
             <div class="eg-search-input-wrapper">
                 <span class="eg-search-icon">🔍</span>
-                <input type="text" id="eg-search-input" class="eg-search-input" placeholder="Search any guide, camera settings, DaVinci tips..." aria-label="Search all guides and resources">
+                <input type="text" id="eg-search-input" class="eg-search-input" placeholder="Search guides, LUTs, camera settings, DaVinci tips..." aria-label="Search guides and resources">
             </div>
             <div class="eg-filter-pills" id="eg-filter-pills">
                 <button type="button" class="eg-filter-pill active" data-filter="all">All Resources</button>
                 <button type="button" class="eg-filter-pill" data-filter="davinci-resolve">DaVinci Resolve</button>
-                <button type="button" class="eg-filter-pill" data-filter="camera">Camera & Gear</button>
-                <button type="button" class="eg-filter-pill" data-filter="free-resources">Free Downloads</button>
+                <button type="button" class="eg-filter-pill" data-filter="camera">Camera Guides</button>
+                <button type="button" class="eg-filter-pill" data-filter="luts">LUTs &amp; Packs</button>
                 <button type="button" class="eg-filter-pill" data-filter="editing-fundamentals">Editing Fundamentals</button>
             </div>
         </div>
     </section>
 
-    <!-- Dynamic Product Grid Section -->
+    <!-- Product Grid Section -->
     <main class="max-w-6xl mx-auto px-6 pb-16" id="free-assets">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
+            <!-- Top Featured Free Download Cards from Screenshot -->
+            <div class="asset-card eg-glass-card" data-category="luts">
+                <div>
+                    <span class="asset-card__badge">Free Download</span>
+                    <h3>Free Sony/Canon Log to Rec.709 LUT</h3>
+                    <p>Get a clean cinematic color transform for fast grading in DaVinci Resolve and Premiere Pro.</p>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                    <a class="download-link" style="flex:1;" href="/free-resources">Free Download (PDF / ZIP)</a>
+                    <button type="button" class="eg-btn-preview" onclick="openEGQuickPreview({title:'Free Sony/Canon Log to Rec.709 LUT', badge:'Free Download', desc:'Get a clean cinematic color transform for fast grading in DaVinci Resolve and Premiere Pro.', url:'/free-resources', tags:['Log to Rec.709', 'Sony & Canon', 'DaVinci / Premiere']})">👁 Quick Preview</button>
+                </div>
+            </div>
+
+            <div class="asset-card eg-glass-card" data-category="camera">
+                <div>
+                    <span class="asset-card__badge">Free PDF</span>
+                    <h3>Camera Settings PDF Guide</h3>
+                    <p>Quick reference for shutter, ISO, frame rates, and low-light settings for your camera.</p>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                    <a class="download-link" style="flex:1;" href="/free-camera-guide">Free Download (PDF / ZIP)</a>
+                    <button type="button" class="eg-btn-preview" onclick="openEGQuickPreview({title:'Camera Settings PDF Guide', badge:'Free PDF', desc:'Quick reference for shutter, ISO, frame rates, and low-light settings for your camera.', url:'/free-camera-guide', tags:['Shutter & ISO', 'Frame Rates', 'Low Light Setup']})">👁 Quick Preview</button>
+                </div>
+            </div>
+
+            <div class="asset-card eg-glass-card" data-category="luts">
+                <div>
+                    <span class="asset-card__badge">Free Pack</span>
+                    <h3>Teal &amp; Orange LUT Pack</h3>
+                    <p>Use this high-contrast grading pack to create cinematic looks without wasting editing time.</p>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                    <a class="download-link" style="flex:1;" href="/free-resources">Free Download (PDF / ZIP)</a>
+                    <button type="button" class="eg-btn-preview" onclick="openEGQuickPreview({title:'Teal & Orange LUT Pack', badge:'Free Pack', desc:'Use this high-contrast grading pack to create cinematic looks without wasting editing time.', url:'/free-resources', tags:['Cinematic Grade', 'Teal & Orange', 'High Contrast']})">👁 Quick Preview</button>
+                </div>
+            </div>
+
+            <!-- Graphy Store Banner from Screenshot -->
+            <div class="asset-card store-banner lg:col-span-3 eg-glass-card">
+                <h3>Looking for deeper filmmaking education?</h3>
+                <p>Explore my premium courses, workflow bundles, and cinematic resources on my Graphy store.</p>
+                <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" rel="noopener noreferrer">Visit My Graphy Store ↗</a>
+            </div>
+
+            <!-- Additional Guides Grid -->
             {guides.map((guide) => {
                 const slug = guide.file.split('/').pop().replace('.astro', '');
                 const title = guide.title || slug.replace(/-/g, ' ').toUpperCase();
                 const category = guide.category || 'editing-fundamentals';
                 
-                // Determine badge
                 let badge = 'Guide';
                 if (category === 'free-resources') badge = 'Free Download';
                 if (category === 'davinci-resolve') badge = 'DaVinci Tutorial';
                 if (category === 'camera') badge = 'Camera Setup';
-                
+                if (category === 'gear') badge = 'Gear Guide';
+
                 return (
                     <div class="asset-card eg-glass-card" data-category={category}>
                         <div>
@@ -70,38 +117,16 @@ const guides = allPages.filter(page => {
                         </div>
                         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
                             <a class="download-link" style="flex:1;" href={`/${slug}`}>Read Guide</a>
-                            <button type="button" class="eg-btn-preview" onclick={`openEGQuickPreview({title:'${title.replace(/'/g, "\\'")}', badge:'${badge}', desc:'Read this detailed guide to learn more.', url:'/${slug}', tags:['${category}']})`}>👁 Preview</button>
+                            <button type="button" class="eg-btn-preview" onclick={`openEGQuickPreview({title:'${title.replace(/'/g, "\\'")}', badge:'${badge}', desc:'Read this detailed guide to learn more.', url:'/${slug}', tags:['${category}']})`}>👁 Quick Preview</button>
                         </div>
                     </div>
                 );
             })}
 
-            <div class="asset-card store-banner lg:col-span-3 eg-glass-card">
-                <h3>Looking for deeper filmmaking education?</h3>
-                <p>Explore my premium courses, workflow bundles, and cinematic resources on my Graphy store.</p>
-                <a href="https://www.ajaykmeena.com" target="_blank" rel="noopener noreferrer">Visit My Store ↗</a>
-            </div>
         </div>
     </main>
 
-    <section class="max-w-6xl mx-auto px-6 pb-16">
-        <div class="asset-card eg-glass-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);">
-            <h3 style="margin-bottom:10px;">Cinematic Color Grading Mastery</h3>
-            <p style="margin-bottom:24px; color:var(--ink-soft);">Experience the difference. Drag the slider to see how a professional color grade transforms standard flat footage into a cinematic masterpiece.</p>
-            
-            <BeforeAfterSlider 
-                beforeImage="/assets/assets/davinci-resolve-wb-portrait-before.webp" 
-                afterImage="/assets/assets/davinci-resolve-wb-portrait-after.webp"
-                beforeLabel="Flat LOG"
-                afterLabel="Graded"
-            />
-            
-            <div style="margin-top:24px; text-align:center;">
-                <a href="https://www.ajaykmeena.com/courses" target="_blank" style="display:inline-block;padding:12px 24px;background:var(--teal-deep);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">Learn Pro Color Grading ↗</a>
-            </div>
-        </div>
-    </section>
-
+    <!-- Featured Work Section -->
     <section class="max-w-6xl mx-auto px-6 pb-8">
         <div class="asset-card eg-glass-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--teal-soft) 0%, var(--bg-alt) 100%);">
             <span class="asset-card__badge">Featured Work</span>
@@ -111,6 +136,26 @@ const guides = allPages.filter(page => {
         </div>
     </section>
 
+    <!-- Cinematic Color Grading Section with Slider -->
+    <section class="max-w-6xl mx-auto px-6 pb-8">
+        <div class="asset-card eg-glass-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);">
+            <h3 style="margin-bottom:10px;">Cinematic Color Grading</h3>
+            <p style="margin-bottom:16px; color:var(--ink-soft);">Explore a premium before-and-after color grading experience with a split-view concept built for cinematic storytelling and modern post-production.</p>
+            
+            <BeforeAfterSlider 
+                beforeImage="/assets/assets/davinci-resolve-wb-portrait-before.webp" 
+                afterImage="/assets/assets/davinci-resolve-wb-portrait-after.webp"
+                beforeLabel="Flat LOG"
+                afterLabel="Graded"
+            />
+            
+            <div style="margin-top:20px;">
+                <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" style="display:inline-block;padding:10px 18px;background:var(--teal-deep);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">Master Color Grading ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Ajay K. Meena Section -->
     <section class="max-w-6xl mx-auto px-6 pb-16">
         <div class="asset-card" style="border:1px solid var(--line);">
             <h3 style="margin-bottom:8px;">About Ajay K. Meena</h3>
@@ -124,9 +169,20 @@ const guides = allPages.filter(page => {
         </div>
     </section>
 
+    <!-- Work with Wedream Production Section -->
+    <section class="max-w-6xl mx-auto px-6 pb-16">
+        <div class="asset-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal) 100%); color:#ffffff;">
+            <h3 style="margin-bottom:8px; color:#ffffff;">Work with Wedream Production</h3>
+            <p style="margin-bottom:12px; color:#e4f5f4;">We offer professional DOP, cinematography, and commercial shoot services for brands, campaigns, and premium storytelling projects.</p>
+            <a href="mailto:editorsgurukul@gmail.com" style="display:inline-block;padding:10px 18px;background:#ffffff;color:var(--teal-deep);border-radius:999px;text-decoration:none;font-weight:700;">Contact for Shoots</a>
+        </div>
+    </section>
+
+    <!-- Mobile Sticky Navigation Bar -->
     <nav class="mobile-sticky-bar">
-        <a href="#free-assets">All Guides</a>
-        <a href="https://www.ajaykmeena.com" target="_blank" class="store-pill" rel="noopener noreferrer">Store ↗</a>
+        <a href="#free-assets">Free Assets</a>
+        <a href="/camera-guides">Camera Guides</a>
+        <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" class="store-pill" rel="noopener noreferrer">Store ↗</a>
     </nav>
 
 <script is:inline>
@@ -148,12 +204,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
       var matchesQuery = !query || text.indexOf(query) !== -1;
       
-      // Update logic to map visual pills to data-category exactly
       var matchesCategory = false;
       if (currentCategory === 'all') {
           matchesCategory = true;
       } else if (currentCategory === 'camera') {
           matchesCategory = (category === 'camera' || category === 'gear');
+      } else if (currentCategory === 'luts') {
+          matchesCategory = (category === 'luts' || text.indexOf('lut') !== -1 || text.indexOf('pack') !== -1);
       } else {
           matchesCategory = (category === currentCategory);
       }

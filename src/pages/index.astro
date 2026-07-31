@@ -7,7 +7,7 @@ const allPages = Object.values(import.meta.glob('./*.astro', { eager: true }));
 // Filter out utility pages and index
 const guides = allPages.filter(page => {
   const path = page.file.split('/').pop() || '';
-  const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'download-bridge.astro', 'guides.astro'];
+  const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'download-bridge.astro', 'guides.astro', 'decoding-davinci-20-course.astro'];
   return !excludeList.includes(path);
 });
 
@@ -37,7 +37,7 @@ const guideDescriptions: Record<string, string> = {
   'final-cut-pro-vs-premiere-pro-vs-davinci-resolve-2026': 'Pricing, performance, toolsets, and full NLE comparison chart across all three video editors.'
 };
 ---
-<Layout title="Editors Gurukul | Digital Assets for Filmmakers" description="Editors Gurukul offers free filmmaking guides, LUT resources, camera cheat sheets, and premium courses for creators and editors.">
+<Layout title="Editors Gurukul | Free Filmmaking Guides, LUTs & Courses" description="Editors Gurukul offers free filmmaking guides, LUT resources, camera cheat sheets, and premium courses for creators and editors.">
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -53,6 +53,54 @@ const guideDescriptions: Record<string, string> = {
             <span class="trust-badge">✓ Practical filmmaking guides</span>
             <span class="trust-badge">✓ Minimal, clean experience</span>
             <span class="trust-badge">✓ Built for creators</span>
+        </div>
+    </section>
+
+    <!-- Flagship Course Showcase Banner (Top of Homepage) -->
+    <section class="max-w-6xl mx-auto px-6 mb-12">
+        <div class="relative overflow-hidden p-8 sm:p-10 rounded-3xl border border-[#e4f3f2] shadow-2xl transition-all duration-300 hover:shadow-[0_20px_50px_rgba(10,95,97,0.3)] hover:border-[#0a5f61]" style="background: linear-gradient(135deg, #0a5f61 0%, #0f8b8d 60%, #15181c 100%);">
+            
+            <!-- Glowing Ambient Accent -->
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-[#e0692a] opacity-20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="flex-1 text-left">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white font-mono text-xs font-bold uppercase tracking-wider mb-4 border border-white/20">
+                        <span class="w-2 h-2 rounded-full bg-[#e0692a] animate-pulse"></span>
+                        FLAGSHIP COURSE BY AJAY K. MEENA
+                    </span>
+                    
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight border-none p-0 m-0">
+                        Decoding DaVinci Resolve 2.0
+                    </h2>
+                    
+                    <p class="text-lg sm:text-xl font-semibold text-[#e4f5f4] mb-3 leading-relaxed">
+                        If you want to master professional color grading, video editing, and build a high-income creative career...
+                    </p>
+                    
+                    <p class="text-sm sm:text-base text-white/80 mb-6 leading-relaxed">
+                        Learn real production node trees, CST color management, skin tone grading, Fairlight audio post, and AI tools directly from a working DOP.
+                    </p>
+
+                    <!-- Value Chips -->
+                    <div class="flex flex-wrap gap-2 mb-2 text-xs sm:text-sm font-semibold text-white/90">
+                        <span class="px-3 py-1 bg-white/10 rounded-lg border border-white/15">✓ Node-Based Grading</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-lg border border-white/15">✓ Log to Rec.709 Transforms</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-lg border border-white/15">✓ AI Neural Engine Tools</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-lg border border-white/15">✓ Real Project Files</span>
+                    </div>
+                </div>
+
+                <!-- CTA Actions -->
+                <div class="flex flex-col sm:flex-row lg:flex-col gap-4 w-full lg:w-auto shrink-0">
+                    <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base sm:text-lg rounded-full text-center hover:bg-[#c85720] transition-all transform hover:-translate-y-1 shadow-lg hover:shadow-orange-500/40 no-underline">
+                        Enroll in Decoding DaVinci 2.0 🎓
+                    </a>
+                    <a href="/decoding-davinci-20-course" class="px-8 py-3.5 bg-white/10 text-white font-bold text-sm sm:text-base rounded-full text-center hover:bg-white/20 transition-all border border-white/20 no-underline">
+                        Explore Course Curriculum →
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 

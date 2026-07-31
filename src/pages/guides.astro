@@ -4,16 +4,16 @@ import Layout from '../layouts/Layout.astro';
 const allPages = Object.values(import.meta.glob('./*.astro', { eager: true })) as any[];
 
 const categoryLabels: Record<string, string> = {
-  "davinci-resolve": "DaVinci Resolve",
-  "camera": "Camera & Gear",
-  "editing-fundamentals": "Editing Fundamentals",
-  "nle-comparison": "NLE Comparison",
-  "career": "Career & Industry"
+  "davinci-resolve": "🎬 DaVinci Resolve Guides",
+  "camera": "📷 Camera & Gear Guides",
+  "editing-fundamentals": "✂️ Editing Fundamentals",
+  "nle-comparison": "📊 NLE Comparisons",
+  "gear": "⚡ Hardware & Gear Reviews"
 };
 
-const categoryOrder = ["davinci-resolve", "camera", "editing-fundamentals", "nle-comparison", "career"];
+const categoryOrder = ["davinci-resolve", "camera", "gear", "editing-fundamentals", "nle-comparison"];
 
-const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'free-resources.astro', 'my-gear.astro', 'camera-guides.astro'];
+const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'free-resources.astro', 'my-gear.astro', 'camera-guides.astro', 'download-bridge.astro'];
 
 const guides = allPages.filter(page => {
   const filename = page.file.split('/').pop() || '';
@@ -21,37 +21,44 @@ const guides = allPages.filter(page => {
 }).map(page => {
   const filename = page.file.split('/').pop() || '';
   const path = '/' + filename.replace('.astro', '');
+  
+  let category = page.category || 'editing-fundamentals';
+  if (filename.includes('davinci')) category = 'davinci-resolve';
+  if (filename.includes('camera') || filename.includes('log') || filename.includes('codec') || filename.includes('hdr')) category = 'camera';
+  if (filename.includes('tripod') || filename.includes('mic') || filename.includes('light') || filename.includes('gimbal') || filename.includes('monitor') || filename.includes('gear')) category = 'gear';
+
   return {
     path,
     title: page.title || filename.replace(/-/g, ' ').replace('.astro', ''),
-    category: page.category || 'camera',
-    desc: page.description || ''
+    category,
+    desc: page.description || 'Learn practical tips and master your filmmaking workflow.'
   };
 });
 ---
 
 <Layout title="All Guides | Editors Gurukul" description="Every free filmmaking, camera, editing and DaVinci Resolve guide on Editors Gurukul, organized by topic in one place.">
 
-<section class="hero text-center">
+<section class="hero text-center max-w-[900px] mx-auto my-8">
   <div class="wrap">
     <span class="tag">EVERY GUIDE, ONE PLACE</span>
-    <h1>All Guides</h1>
-    <p class="dek">Every free camera, editing, and DaVinci Resolve guide on Editors Gurukul — grouped by topic so you can find what you actually need.</p>
+    <h1 class="text-4xl font-bold mb-3">All Guides Index</h1>
+    <p class="dek text-[#4b5058] text-lg">Every camera, editing, and DaVinci Resolve guide on Editors Gurukul — grouped by topic so you can find what you actually need.</p>
   </div>
 </section>
 
-<div class="wrap guides-index space-y-12">
+<div class="max-w-[1100px] mx-auto px-6 pb-16 space-y-12">
   {categoryOrder.map(cat => {
     const catGuides = guides.filter(g => g.category === cat);
     if (catGuides.length === 0) return null;
     return (
       <section class="cat-section" id={cat}>
-        <h2>{categoryLabels[cat] || cat}</h2>
-        <div class="cat-grid">
+        <h2 class="text-2xl font-bold mb-6 text-[#15181c] border-l-4 border-[#e0692a] pl-4">{categoryLabels[cat] || cat}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {catGuides.map(g => (
-            <a class="cat-card" href={g.path}>
-              <div class="cc-title">{g.title}</div>
-              {g.desc && <div class="cc-desc">{g.desc}</div>}
+            <a class="eg-glass-card p-6 bg-white border border-[#e7e4dc] rounded-2xl shadow-sm hover:border-[#0a5f61] hover:-translate-y-1 transition-all duration-200 no-underline block" href={g.path}>
+              <div class="text-[1.1rem] font-bold text-[#15181c] mb-2">{g.title}</div>
+              {g.desc && <div class="text-sm text-[#4b5058] line-clamp-2 mb-4">{g.desc}</div>}
+              <span class="inline-block px-4 py-2 bg-[#0a5f61] text-white text-xs font-bold rounded-full">Read Guide →</span>
             </a>
           ))}
         </div>

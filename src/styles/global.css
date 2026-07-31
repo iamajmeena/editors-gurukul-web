@@ -160,14 +160,32 @@ tbody tr:hover {
   background: #f4fbfb;
 }
 
-/* Universal Cards & Grid System */
+/* Universal Cards & Grid System Alignment Rules */
+.grid, .cat-grid {
+  display: grid !important;
+  align-items: stretch !important;
+}
+
 .eg-glass-card, .asset-card, .cat-card, .cam-card, .res-card, .item {
   background: var(--bg-alt);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 24px;
   box-shadow: var(--card-shadow);
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.eg-glass-card > div:last-child, 
+.asset-card > div:last-child, 
+.cat-card > div:last-child, 
+.item > div:last-child {
+  margin-top: auto !important;
+  padding-top: 14px !important;
 }
 
 .eg-glass-card:hover, .asset-card:hover, .cat-card:hover, .item:hover {
@@ -284,6 +302,7 @@ tbody tr:hover {
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
+  height: 100% !important;
   box-shadow: var(--card-shadow) !important;
 }
 
@@ -296,7 +315,7 @@ tbody tr:hover {
   font-weight: 700 !important;
   text-decoration: none !important;
   text-align: center !important;
-  margin-top: 12px !important;
+  margin-top: auto !important;
   transition: background 0.2s, transform 0.2s !important;
 }
 

@@ -91,7 +91,7 @@
         "</div></section>";
     }
     var authorHtml = "";
-    if (self && self.category !== "hub" && self.category !== "utility") {
+    if (self && self.category !== "hub" && self.category !== "utility" && !document.querySelector(".eg-author-box")) {
       authorHtml =
         '<section class="eg-author-box">' +
         '<img class="eg-author-avatar" src="/assets/ajay-k-meena-headshot-v2.jpg" alt="Ajay K Meena" loading="lazy" onerror="this.style.display=\'none\'">' +

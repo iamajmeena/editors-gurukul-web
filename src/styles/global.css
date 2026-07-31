@@ -11,7 +11,7 @@
   --orange: #e0692a;
   --orange-soft: #fdece0;
   --teal-soft: #e4f3f2;
-  --card-shadow: 0 1px 3px rgba(20,20,20,.06), 0 8px 24px -12px rgba(20,20,20,.10);
+  --card-shadow: 0 2px 6px rgba(20,20,20,.04), 0 10px 28px -12px rgba(20,20,20,.08);
   color-scheme: light;
 }
 
@@ -26,14 +26,14 @@ body {
 
 /* Container & Main Layout */
 main {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 32px 24px 80px;
 }
 
 /* Hero & Header Sections */
 .hero-section, .hero, header {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .hero-pill, .hero .tag, .tag {
@@ -53,7 +53,7 @@ main {
 .hero-title, .hero h1, h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
-  font-size: 3rem;
+  font-size: 3.2rem;
   line-height: 1.1;
   color: var(--ink);
   margin: 0 0 16px;
@@ -70,7 +70,7 @@ main {
 /* Headings with Orange Accent Bar on ALL Pages */
 h2, .cat-heading {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.3rem;
   color: var(--ink);
   margin: 44px 0 20px;
   letter-spacing: 0.5px;
@@ -116,19 +116,7 @@ li {
   line-height: 1.65;
   color: var(--ink);
   margin: 32px 0;
-}
-
-/* Image Placeholders */
-.image-placeholder {
-  background: var(--teal-soft);
-  border: 1px dashed var(--teal-deep);
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.88rem;
-  color: var(--teal-deep);
-  margin: 32px 0;
+  box-shadow: 0 2px 8px rgba(224, 105, 42, 0.06);
 }
 
 /* Universal Tables */
@@ -137,7 +125,7 @@ table {
   border-collapse: collapse;
   margin: 32px 0;
   background: var(--bg-alt);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   box-shadow: var(--card-shadow);
   border: 1px solid var(--line);
@@ -150,17 +138,26 @@ th, td {
 }
 
 th {
-  background: var(--bg);
+  background: #f4f3ef;
   font-family: 'Sora', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
   text-transform: uppercase;
   color: var(--ink);
+  letter-spacing: 0.04em;
 }
 
 td {
   font-size: 0.98rem;
   color: var(--ink);
+}
+
+tbody tr:nth-child(even) {
+  background: #fdfdfc;
+}
+
+tbody tr:hover {
+  background: #f4fbfb;
 }
 
 /* Universal Cards & Grid System */
@@ -170,13 +167,13 @@ td {
   border-radius: 18px;
   padding: 24px;
   box-shadow: var(--card-shadow);
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
 }
 
 .eg-glass-card:hover, .asset-card:hover, .cat-card:hover, .item:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 32px -8px rgba(15, 139, 141, 0.16) !important;
-  border-color: var(--teal-deep) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -10px rgba(15, 139, 141, 0.18);
+  border-color: var(--teal-deep);
 }
 
 /* Search Bar & Filters */
@@ -200,6 +197,12 @@ td {
   color: var(--ink);
   outline: none;
   box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.eg-search-input:focus {
+  border-color: var(--teal-deep);
+  box-shadow: 0 0 0 3px rgba(10, 95, 97, 0.12);
 }
 
 .eg-filter-pill {
@@ -219,6 +222,7 @@ td {
   background: var(--teal-deep);
   color: #ffffff;
   border-color: var(--teal-deep);
+  box-shadow: 0 4px 12px rgba(10, 95, 97, 0.2);
 }
 
 /* Author Box (E-E-A-T) */
@@ -257,13 +261,14 @@ td {
   align-items: center;
   gap: 6px;
 }
+
 .eg-lang-toggle:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   background: var(--teal);
+  box-shadow: 0 8px 24px rgba(15, 139, 141, 0.45);
 }
 
-
-/* Explicit Overrides for My Gear & Utility Grids */
+/* My Gear & Utility Grids */
 .card .grid, div.grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
@@ -279,7 +284,7 @@ td {
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  box-shadow: 0 1px 3px rgba(20,20,20,.06) !important;
+  box-shadow: var(--card-shadow) !important;
 }
 
 .btn, a.btn {
@@ -292,11 +297,12 @@ td {
   text-decoration: none !important;
   text-align: center !important;
   margin-top: 12px !important;
-  transition: background 0.2s !important;
+  transition: background 0.2s, transform 0.2s !important;
 }
 
 .btn:hover, a.btn:hover {
   background: #c85720 !important;
+  transform: translateY(-1px) !important;
 }
 
 .gear-price {
@@ -319,7 +325,7 @@ td {
 
 .cat-heading {
   font-family: 'Bebas Neue', sans-serif !important;
-  font-size: 2.2rem !important;
+  font-size: 2.3rem !important;
   color: var(--ink, #15181c) !important;
   margin: 40px 0 16px !important;
   border-left: 4px solid var(--orange, #e0692a) !important;

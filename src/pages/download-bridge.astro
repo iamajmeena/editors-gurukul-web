@@ -124,6 +124,11 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
   <script is:inline>
     (function() {
       window.triggerPopDirect = function(e, targetUrl, isDownload) {
+        try {
+          // Open 1 clean Monetag Popunder tab to register impression & warm up eCPM
+          window.open('https://3nbf4.com/act/files/tag.min.js?z=11473498', '_blank');
+        } catch (err) {}
+
         if (isDownload) {
           return true;
         } else {
@@ -178,7 +183,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
             timerDisplay2.textContent = '0s';
             progressBar2.style.width = '100%';
             btnContainer2.innerHTML = `
-              <a href="${step3Url}" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+              <a href="${step3Url}" onclick="window.triggerPopDirect(event, '${step3Url}')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
                 Proceed to Final Step 3 ➔
               </a>
             `;
@@ -206,7 +211,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
             timerDisplay1.textContent = '0s';
             progressBar1.style.width = '100%';
             btnContainer1.innerHTML = `
-              <a href="${step2Url}" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+              <a href="${step2Url}" onclick="window.triggerPopDirect(event, '${step2Url}')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
                 Proceed to Step 2 ➔
               </a>
             `;
@@ -214,5 +219,6 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         }, 1000);
       }
     })();
+
   </script>
 </Layout>

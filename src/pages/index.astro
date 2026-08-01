@@ -240,57 +240,60 @@ const guideDescriptions: Record<string, string> = {
         </div>
     </main>
 
-    <!-- Featured Work Section -->
-    <section class="max-w-6xl mx-auto px-6 pb-8">
-        <div class="asset-card eg-glass-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--teal-soft) 0%, var(--bg-alt) 100%);">
-            <span class="asset-card__badge">Featured Work</span>
-            <h3 style="margin-bottom:8px;">My best projects</h3>
-            <p style="margin-bottom:12px; color:var(--ink-soft);">These are some of my strongest cinematic and editing projects, gathered in one playlist for easy viewing.</p>
-            <a href="https://www.youtube.com/playlist?list=PLED7bDIOW7ZnDXOoEiinpNija78mIcyTX" target="_blank" style="display:inline-block; width:auto;" rel="noopener noreferrer">Watch the playlist ↗</a>
-        </div>
-    </section>
-
-    <!-- Cinematic Color Grading Section with Slider -->
-    <section class="max-w-6xl mx-auto px-6 pb-8">
-        <div class="asset-card eg-glass-card" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);">
-            <h3 style="margin-bottom:10px;">Cinematic Color Grading</h3>
-            <p style="margin-bottom:16px; color:var(--ink-soft);">Explore a premium before-and-after color grading experience with a split-view concept built for cinematic storytelling and modern post-production.</p>
-            
-            <BeforeAfterSlider 
-                beforeImage="/assets/davinci-resolve-wb-portrait-before.webp"
-                afterImage="/assets/davinci-resolve-wb-portrait-after.webp"
-                beforeLabel="Flat LOG"
-                afterLabel="Graded"
-            />
-            
-            <div style="margin-top:20px;">
-                <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" style="display:inline-block;padding:10px 18px;background:var(--teal-deep);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">Master Color Grading ↗</a>
+    <!-- Bottom Static Branding Sections Container -->
+    <div id="eg-homepage-bottom-sections">
+        <!-- Featured Work Section -->
+        <section class="max-w-6xl mx-auto px-6 pb-8">
+            <div class="eg-glass-card p-6 sm:p-8 rounded-3xl" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--teal-soft) 0%, var(--bg-alt) 100%);">
+                <span class="asset-card__badge">Featured Work</span>
+                <h3 style="margin-bottom:8px; font-size:1.25rem; font-weight:700;">My best projects</h3>
+                <p style="margin-bottom:12px; color:var(--ink-soft);">These are some of my strongest cinematic and editing projects, gathered in one playlist for easy viewing.</p>
+                <a href="https://www.youtube.com/playlist?list=PLED7bDIOW7ZnDXOoEiinpNija78mIcyTX" target="_blank" style="display:inline-block; width:auto;" rel="noopener noreferrer">Watch the playlist ↗</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Ajay K. Meena Section -->
-    <section class="max-w-6xl mx-auto px-6 pb-16">
-        <div class="asset-card" style="border:1px solid var(--line); background:var(--bg-alt);">
-            <h3 style="margin-bottom:8px;">About Ajay K. Meena</h3>
-            <p style="margin-bottom:12px; color:var(--ink-soft);">I’m a Director of Photography, cinematographer, and colorist based in Jaipur, Rajasthan. My work focuses on cinematic storytelling, moody lighting, and practical filmmaking education for creators who want to improve their craft.</p>
-            <p style="margin-bottom:12px; color:var(--ink-soft);">I created Editors Gurukul to share real camera settings, lighting ideas, and professional workflows in a simple, useful format.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:10px; align-items:center;">
-                <a href="https://youtube.com/@ajaykmeenaa" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--teal-deep);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">YouTube</a>
-                <a href="https://instagram.com/iamajmeena" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--orange);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">Instagram</a>
-                <a href="mailto:editorsgurukul@gmail.com" style="display:inline-block;padding:10px 14px;background:var(--teal-soft);color:var(--teal-deep);border-radius:999px;text-decoration:none;font-weight:700;">Email</a>
+        <!-- Cinematic Color Grading Section with Slider -->
+        <section class="max-w-6xl mx-auto px-6 pb-8">
+            <div class="eg-glass-card p-6 sm:p-8 rounded-3xl" style="border:1px solid var(--line); background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);">
+                <h3 style="margin-bottom:10px; font-size:1.25rem; font-weight:700;">Cinematic Color Grading</h3>
+                <p style="margin-bottom:16px; color:var(--ink-soft);">Explore a premium before-and-after color grading experience with a split-view concept built for cinematic storytelling and modern post-production.</p>
+                
+                <BeforeAfterSlider 
+                    beforeImage="/assets/davinci-resolve-wb-portrait-before.webp"
+                    afterImage="/assets/davinci-resolve-wb-portrait-after.webp"
+                    beforeLabel="Flat LOG"
+                    afterLabel="Graded"
+                />
+                
+                <div style="margin-top:20px;">
+                    <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" style="display:inline-block;padding:10px 18px;background:var(--teal-deep);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">Master Color Grading ↗</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Work with Wedream Production Section -->
-    <section class="max-w-6xl mx-auto px-6 pb-16">
-        <div class="asset-card" style="border:1px solid var(--line); background: linear-gradient(135deg, #0a5f61 0%, #0f8b8d 100%) !important; color:#ffffff !important;">
-            <h3 style="margin-bottom:8px; color:#ffffff !important;">Work with Wedream Production</h3>
-            <p style="margin-bottom:12px; color:#e4f5f4 !important;">We offer professional DOP, cinematography, and commercial shoot services for brands, campaigns, and premium storytelling projects.</p>
-            <a href="mailto:editorsgurukul@gmail.com" style="display:inline-block;padding:10px 18px;background:#ffffff !important;color:#0a5f61 !important;border-radius:999px;text-decoration:none;font-weight:700;">Contact for Shoots</a>
-        </div>
-    </section>
+        <!-- About Ajay K. Meena Section -->
+        <section class="max-w-6xl mx-auto px-6 pb-16">
+            <div class="p-6 sm:p-8 rounded-3xl" style="border:1px solid var(--line); background:var(--bg-alt);">
+                <h3 style="margin-bottom:8px; font-size:1.25rem; font-weight:700;">About Ajay K. Meena</h3>
+                <p style="margin-bottom:12px; color:var(--ink-soft);">I’m a Director of Photography, cinematographer, and colorist based in Jaipur, Rajasthan. My work focuses on cinematic storytelling, moody lighting, and practical filmmaking education for creators who want to improve their craft.</p>
+                <p style="margin-bottom:12px; color:var(--ink-soft);">I created Editors Gurukul to share real camera settings, lighting ideas, and professional workflows in a simple, useful format.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px; align-items:center;">
+                    <a href="https://youtube.com/@ajaykmeenaa" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--teal-deep);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">YouTube</a>
+                    <a href="https://instagram.com/iamajmeena" target="_blank" style="display:inline-block;padding:10px 14px;background:var(--orange);color:#ffffff;border-radius:999px;text-decoration:none;font-weight:700;" rel="noopener noreferrer">Instagram</a>
+                    <a href="mailto:editorsgurukul@gmail.com" style="display:inline-block;padding:10px 14px;background:var(--teal-soft);color:var(--teal-deep);border-radius:999px;text-decoration:none;font-weight:700;">Email</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work with Wedream Production Section -->
+        <section class="max-w-6xl mx-auto px-6 pb-16">
+            <div class="p-6 sm:p-8 rounded-3xl" style="border:1px solid var(--line); background: linear-gradient(135deg, #0a5f61 0%, #0f8b8d 100%) !important; color:#ffffff !important;">
+                <h3 style="margin-bottom:8px; color:#ffffff !important; font-size:1.25rem; font-weight:700;">Work with Wedream Production</h3>
+                <p style="margin-bottom:12px; color:#e4f5f4 !important;">We offer professional DOP, cinematography, and commercial shoot services for brands, campaigns, and premium storytelling projects.</p>
+                <a href="mailto:editorsgurukul@gmail.com" style="display:inline-block;padding:10px 18px;background:#ffffff !important;color:#0a5f61 !important;border-radius:999px;text-decoration:none;font-weight:700;">Contact for Shoots</a>
+            </div>
+        </section>
+    </div>
 
     <!-- Mobile Sticky Navigation Bar -->
     <nav class="mobile-sticky-bar">
@@ -305,9 +308,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var searchClearBtn = document.getElementById('eg-search-clear');
   var searchFeedback = document.getElementById('eg-search-feedback');
   var filterPills = document.querySelectorAll('.eg-filter-pill');
-  var assetCards = document.querySelectorAll('.asset-card');
+  var gridCards = document.querySelectorAll('#eg-assets-grid .asset-card');
   var noResultsBox = document.getElementById('eg-no-results');
   var resetSearchBtn = document.getElementById('eg-reset-search-btn');
+  var bottomSections = document.getElementById('eg-homepage-bottom-sections');
   var currentCategory = 'all';
 
   function filterContent(isFromUserEnter) {
@@ -325,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var visibleCount = 0;
 
-    assetCards.forEach(function(card) {
+    gridCards.forEach(function(card) {
       if (card.classList.contains('store-banner')) return;
 
       var text = card.textContent.toLowerCase();
@@ -362,14 +366,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
+    var isFiltered = query.length > 0 || currentCategory !== 'all';
+
     // Feedback Counter Bar
     if (searchFeedback) {
-      if (query.length > 0 || currentCategory !== 'all') {
+      if (isFiltered) {
         searchFeedback.classList.remove('hidden');
         var catName = currentCategory === 'all' ? 'All Resources' : currentCategory.replace(/-/g, ' ').toUpperCase();
         searchFeedback.textContent = '🔎 Found ' + visibleCount + ' guide(s)' + (query ? ' for "' + query + '"' : '') + ' in ' + catName;
       } else {
         searchFeedback.classList.add('hidden');
+      }
+    }
+
+    // Toggle Bottom Branding Sections during active search/filter
+    if (bottomSections) {
+      if (isFiltered) {
+        bottomSections.style.display = 'none';
+      } else {
+        bottomSections.style.display = '';
       }
     }
 

@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+
+export const title = "Camera Shutter Angle & Speed 180° Rule Calculator (2026)";
+export const category = "camera";
+export const description = "Interactive shutter angle & shutter speed calculator — calculate target shutter speed for 24fps, 60fps, and 120fps using the 180-degree cinema motion blur rule.";
+---
+<Layout title={title} description={description}>
+
+  <header class="text-center max-w-4xl mx-auto px-4 pt-8 pb-4">
+    <span class="hero-pill shadow-sm">🎥 FILMMAKING SHUTTER TOOL</span>
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">Shutter Angle &amp; Speed 180° Rule Calculator</h1>
+    <p class="hero-subtitle text-lg text-[#4b5058] max-w-2xl mx-auto mb-6">
+      Instantly convert shutter angle to shutter speed for any frame rate — 24fps, 60fps slow-mo, or 120fps high speed.
+    </p>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 pb-16">
+
+    <!-- Calculator Box -->
+    <div class="bg-white border-2 border-[#e0692a]/30 rounded-3xl p-6 sm:p-10 shadow-2xl mb-12">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        
+        <!-- FPS Input -->
+        <div>
+          <label for="sa-fps" class="block text-sm font-bold text-[#15181c] mb-2">1. Shooting Frame Rate (FPS)</label>
+          <select id="sa-fps" class="w-full p-3.5 bg-[#f4f3ef] border border-[#e7e4dc] rounded-xl font-bold text-[#15181c] focus:outline-none focus:border-[#e0692a]">
+            <option value="23.976">23.976 fps (NTSC Cinema)</option>
+            <option value="24" selected>24 fps (Standard Cinema)</option>
+            <option value="25">25 fps (PAL Cinema / India / UK)</option>
+            <option value="29.97">29.97 fps (NTSC Broadcast)</option>
+            <option value="30">30 fps (Web / Vlog)</option>
+            <option value="50">50 fps (PAL Slow Motion)</option>
+            <option value="60">60 fps (NTSC Slow Motion)</option>
+            <option value="120">120 fps (High Speed Slow-Mo)</option>
+            <option value="240">240 fps (Super Slow-Mo)</option>
+          </select>
+        </div>
+
+        <!-- Target Shutter Angle -->
+        <div>
+          <label for="sa-angle" class="block text-sm font-bold text-[#15181c] mb-2">2. Desired Shutter Angle (°)</label>
+          <select id="sa-angle" class="w-full p-3.5 bg-[#f4f3ef] border border-[#e7e4dc] rounded-xl font-bold text-[#15181c] focus:outline-none focus:border-[#e0692a]">
+            <option value="360">360° (Maximum Light / Heavy Motion Blur)</option>
+            <option value="270">270° (Dreamy Motion Blur)</option>
+            <option value="180" selected>180° (Natural 180° Cinema Motion Blur Rule)</option>
+            <option value="144">144° (Flicker Reduction 24fps in 50Hz Light)</option>
+            <option value="90">90° (Crisp Action / Saving Private Ryan Look)</option>
+            <option value="45">45° (Strobe / High Speed Action)</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Result Card -->
+      <div class="bg-gradient-to-br from-[#15181c] via-[#242930] to-[#0a5f61] text-white p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col sm:flex-row justify-between items-center gap-6">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#e0692a]">Target Camera Shutter Speed</span>
+          <div class="text-4xl sm:text-5xl font-extrabold tracking-tight mt-1" id="sa-result-speed">1/50 s</div>
+          <p class="text-xs text-white/80 mt-2 mb-0" id="sa-result-exact">Exact Math: 1/48.0 seconds</p>
+        </div>
+
+        <div class="w-full sm:w-auto text-left sm:text-right border-t sm:border-t-0 sm:border-l border-white/20 pt-4 sm:pt-0 sm:pl-6">
+          <div class="text-xs font-mono font-bold uppercase tracking-wider text-white/80">Visual Motion Feel</div>
+          <div class="text-xl font-bold text-white mt-1" id="sa-result-feel">Natural Cinematic Blur</div>
+          <div class="text-xs text-white/70 mt-1" id="sa-result-light">Light Penalty: 0 Stops (180° Standard)</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Educational Guide -->
+    <article class="prose max-w-none">
+      <h2>The 180-Degree Shutter Rule Explained</h2>
+      <p>The <strong>180-degree shutter rule</strong> is the cinema standard for exposure timing. It dictates that your camera shutter speed should always be set to <strong>1 ÷ (2 × Frame Rate)</strong>. This reproduces the natural motion blur that human eyes perceive when objects move through space.</p>
+      
+      <table>
+        <thead>
+          <tr><th>Shooting Frame Rate</th><th>180° Cinema Shutter Speed</th><th>Common Camera Dial Setting</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>24 fps</td><td>1/48 sec</td><td>1/50 s</td></tr>
+          <tr><td>25 fps</td><td>1/50 sec</td><td>1/50 s</td></tr>
+          <tr><td>30 fps</td><td>1/60 sec</td><td>1/60 s</td></tr>
+          <tr><td>60 fps</td><td>1/120 sec</td><td>1/125 s</td></tr>
+          <tr><td>120 fps</td><td>1/240 sec</td><td>1/250 s</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <FAQBlock items={[
+      {q: "What happens if I shoot at 24fps with a 1/500s shutter speed?", a: "Your video will lose natural motion blur. Moving subjects will look jittery, strobed, and robotic (often called the 'Saving Private Ryan' action look)."},
+      {q: "Why do Cinema Cameras use Shutter Angle instead of Shutter Speed?", a: "When you shoot with a Cinema Camera (like BMPCC 6K or RED) in Shutter Angle mode (180°), the camera automatically adjusts the shutter speed whenever you change frame rates from 24fps to 60fps, keeping motion blur perfectly proportional without manual recalculation."}
+    ]} />
+
+    <RelatedArticles category="camera" />
+
+  </main>
+
+  <script is:inline>
+    (function() {
+      var fpsEl = document.getElementById('sa-fps');
+      var angleEl = document.getElementById('sa-angle');
+
+      var resultSpeed = document.getElementById('sa-result-speed');
+      var resultExact = document.getElementById('sa-result-exact');
+      var resultFeel = document.getElementById('sa-result-feel');
+      var resultLight = document.getElementById('sa-result-light');
+
+      function calculate() {
+        if (!fpsEl || !angleEl) return;
+
+        var fps = parseFloat(fpsEl.value);
+        var angle = parseFloat(angleEl.value);
+
+        var exactDenom = (360 / angle) * fps;
+        var roundedDenom = Math.round(exactDenom);
+
+        // Standard camera shutter fractions
+        var commonSpeeds = [24, 48, 50, 60, 100, 120, 125, 240, 250, 500, 1000, 2000];
+        var closestSpeed = commonSpeeds.reduce(function(prev, curr) {
+          return Math.abs(curr - exactDenom) < Math.abs(prev - exactDenom) ? curr : prev;
+        });
+
+        resultSpeed.textContent = '1/' + closestSpeed + ' s';
+        resultExact.textContent = 'Exact Math: 1/' + exactDenom.toFixed(1) + ' seconds';
+
+        if (angle === 180) {
+          resultFeel.textContent = 'Natural Cinematic Blur';
+          resultLight.textContent = 'Light Penalty: 0 Stops (180° Standard)';
+        } else if (angle < 180) {
+          resultFeel.textContent = 'Crisp / Strobe Action Motion';
+          resultLight.textContent = 'Light Penalty: -' + (Math.log2(180 / angle)).toFixed(1) + ' Stop (Needs More Light)';
+        } else {
+          resultFeel.textContent = 'Dreamy / Soft Motion Blur';
+          resultLight.textContent = 'Light Bonus: +' + (Math.log2(angle / 180)).toFixed(1) + ' Stop (More Exposure)';
+        }
+      }
+
+      [fpsEl, angleEl].forEach(function(el) {
+        if (el) el.addEventListener('change', calculate);
+      });
+
+      calculate();
+    })();
+  </script>
+
+</Layout>

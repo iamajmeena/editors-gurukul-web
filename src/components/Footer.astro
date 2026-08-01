@@ -2,12 +2,72 @@
 import AuthorBox from './AuthorBox.astro';
 ---
 <AuthorBox />
-<div id="eg-footer"></div>
-<footer class="max-w-[900px] mx-auto mt-6 border-t border-[#e7e4dc] py-8 text-center text-[#4b5058] text-sm">
-    <p class="mb-2">
-        <a href="/privacy-policy" class="hover:text-[#0a5f61]">Privacy</a> · 
-        <a href="/terms" class="hover:text-[#0a5f61]">Terms</a> · 
-        <a href="/about-contact" class="hover:text-[#0a5f61]">Contact</a>
-    </p>
-    <p>© 2026 Editors Gurukul · Ajay K Meena · <a href="https://ajaykmeena.com" target="_blank" class="hover:text-[#0a5f61]">ajaykmeena.com</a></p>
+
+<footer class="bg-white border-t border-[#e7e4dc] mt-16 pt-12 pb-8 px-6 text-[#4b5058]">
+  <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 text-sm">
+    
+    <!-- Col 1: Brand & Creator Bio -->
+    <div>
+      <a href="/" class="font-['Bebas_Neue'] text-2xl tracking-wide text-[#15181c] no-underline block mb-3">EDITORS<span class="text-[#e0692a]">GURUKUL</span></a>
+      <p class="text-xs text-[#4b5058] leading-relaxed mb-4">
+        Free practical filmmaking guides, DaVinci Resolve color grading masterclasses, camera specs, and interactive tools by DOP &amp; Colorist <strong>Ajay K Meena</strong>.
+      </p>
+      <div class="flex gap-3 text-xs font-bold">
+        <a href="https://youtube.com/@ajaykmeenaa" target="_blank" rel="noopener" class="px-3 py-1.5 bg-[#f4f3ef] text-[#15181c] rounded-lg border border-[#e7e4dc] hover:border-[#0a5f61] no-underline">▶ YouTube</a>
+        <a href="https://instagram.com/iamajmeena" target="_blank" rel="noopener" class="px-3 py-1.5 bg-[#f4f3ef] text-[#15181c] rounded-lg border border-[#e7e4dc] hover:border-[#e0692a] no-underline">📸 Instagram</a>
+      </div>
+    </div>
+
+    <!-- Col 2: DaVinci & Tools -->
+    <div>
+      <h4 class="font-bold text-[#15181c] text-sm mb-3 uppercase tracking-wider">🎨 DaVinci &amp; Tools</h4>
+      <ul class="space-y-2 text-xs font-medium">
+        <li><a href="/davinci-resolve-bitrate-calculator" class="hover:text-[#0a5f61]">🧮 Bitrate &amp; File Size Calculator</a></li>
+        <li><a href="/shutter-angle-calculator" class="hover:text-[#0a5f61]">⏱️ Shutter Angle 180° Calculator</a></li>
+        <li><a href="/davinci-resolve-color-management-cst-vs-aces" class="hover:text-[#0a5f61]">🎨 CST Node Trees &amp; ACES Guide</a></li>
+        <li><a href="/davinci-resolve-skin-tone-grading-vectorscope-guide" class="hover:text-[#0a5f61]">👤 Skin Tone Vectorscope Guide</a></li>
+        <li><a href="/davinci-resolve-fairlight-audio-post-lufs-standards" class="hover:text-[#0a5f61]">🎙️ Fairlight LUFS Audio Mastering</a></li>
+        <li><a href="/davinci-resolve-low-end-pc-2026" class="hover:text-[#0a5f61]">💻 Low-End PC Optimization</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3: Camera & Gear -->
+    <div>
+      <h4 class="font-bold text-[#15181c] text-sm mb-3 uppercase tracking-wider">📷 Camera &amp; Gear</h4>
+      <ul class="space-y-2 text-xs font-medium">
+        <li><a href="/camera-finder" class="hover:text-[#0a5f61]">🎯 Interactive Camera Finder Quiz</a></li>
+        <li><a href="/1-best-camera-under-50000" class="hover:text-[#0a5f61]">📷 Best Camera Under ₹50,000</a></li>
+        <li><a href="/3-what-is-log" class="hover:text-[#0a5f61]">📈 S-Log3, C-Log &amp; V-Log Guide</a></li>
+        <li><a href="/2-what-is-codec" class="hover:text-[#0a5f61]">🎞️ H.264 vs H.265 vs ProRes</a></li>
+        <li><a href="/iso-native-iso-dual-native-iso-explained" class="hover:text-[#0a5f61]">⚡ Dual Native ISO Secrets</a></li>
+        <li><a href="/my-gear" class="hover:text-[#0a5f61]">⚡ Ajay's Personal Gear List</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 4: Free LUT Lead Magnet -->
+    <div>
+      <h4 class="font-bold text-[#15181c] text-sm mb-3 uppercase tracking-wider">🎁 Free LUT Pack</h4>
+      <div class="bg-[#f4f3ef] border border-[#e7e4dc] p-4 rounded-2xl">
+        <p class="text-xs text-[#4b5058] mb-3 leading-relaxed">
+          Download Ajay's free Rec.709 conversion LUTs &amp; PDF cheat sheets for DaVinci Resolve.
+        </p>
+        <a href="/free-resources" class="block w-full py-2.5 bg-[#0a5f61] text-white font-bold text-xs text-center rounded-xl hover:bg-[#074749] no-underline shadow-sm">
+          Download Free Resources ↗
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="max-w-[1100px] mx-auto border-t border-[#e7e4dc] pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-3">
+    <div>
+      © 2026 Editors Gurukul · Created by DOP &amp; Colorist <a href="https://ajaykmeena.com" target="_blank" class="text-[#0a5f61] font-semibold hover:underline">Ajay K Meena</a>
+    </div>
+    <div class="flex gap-4">
+      <a href="/privacy-policy" class="hover:text-[#0a5f61]">Privacy Policy</a>
+      <a href="/terms" class="hover:text-[#0a5f61]">Terms of Service</a>
+      <a href="/about-contact" class="hover:text-[#0a5f61]">About &amp; Contact</a>
+    </div>
+  </div>
 </footer>
+

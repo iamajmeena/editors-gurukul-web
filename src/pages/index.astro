@@ -302,13 +302,28 @@ const guideDescriptions: Record<string, string> = {
         <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" class="store-pill" rel="noopener noreferrer">Store ↗</a>
     </nav>
 
+<style is:inline>
+  #eg-assets-grid .asset-card.eg-hide-card,
+  .eg-hide-card {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    pointer-events: none !important;
+  }
+</style>
+
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {
   var searchInput = document.getElementById('eg-search-input');
   var searchClearBtn = document.getElementById('eg-search-clear');
   var searchFeedback = document.getElementById('eg-search-feedback');
   var filterPills = document.querySelectorAll('.eg-filter-pill');
-  var gridCards = document.querySelectorAll('#eg-assets-grid .asset-card');
   var noResultsBox = document.getElementById('eg-no-results');
   var resetSearchBtn = document.getElementById('eg-reset-search-btn');
   var bottomSections = document.getElementById('eg-homepage-bottom-sections');
@@ -328,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var visibleCount = 0;
+    var gridCards = document.querySelectorAll('#eg-assets-grid .asset-card');
 
     gridCards.forEach(function(card) {
       if (card.classList.contains('store-banner')) return;
@@ -359,12 +375,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       if (matchesQuery && matchesCategory) {
+        card.classList.remove('eg-hide-card');
         card.classList.remove('hidden');
-        card.style.setProperty('display', 'flex', 'important');
+        card.style.cssText = 'display: flex !important;';
         visibleCount++;
       } else {
+        card.classList.add('eg-hide-card');
         card.classList.add('hidden');
-        card.style.setProperty('display', 'none', 'important');
+        card.style.cssText = 'display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: none !important;';
       }
     });
 

@@ -123,13 +123,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
 
   <script is:inline>
     (function() {
-      // Secret Hack #1: Dual-Pop Direct Link for High CTR Income ($15 - $30 CPM)
       window.triggerPopDirect = function(e, targetUrl, isDownload) {
-        try {
-          // Open Monetag SmartLink / Direct Ad in new tab
-          window.open('https://3nbf4.com/act/files/tag.min.js?z=11473498', '_blank');
-        } catch (err) {}
-
         if (isDownload) {
           return true;
         } else {
@@ -146,7 +140,6 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       const step2Box = document.getElementById('step-2-container');
       const step3Box = document.getElementById('step-3-container');
 
-      // Update final PDF download link based on app type
       const finalPdfBtn = document.getElementById('final-pdf-btn');
       if (finalPdfBtn) {
         if (appType === 'music') {
@@ -168,8 +161,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         step2Box.classList.remove('hidden');
         step3Box.classList.add('hidden');
 
-        // Step 2 Timer Logic
-        let seconds = 10;
+        let seconds = 3;
         const timerDisplay2 = document.getElementById('timer-display-2');
         const progressBar2 = document.getElementById('progress-bar-2');
         const btnContainer2 = document.getElementById('btn-container-2');
@@ -178,27 +170,26 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
           seconds--;
           if (seconds > 0) {
             timerDisplay2.textContent = seconds + 's';
-            const percent = ((10 - seconds) / 10) * 100;
+            const percent = ((3 - seconds) / 3) * 100;
             progressBar2.style.width = percent + '%';
-            btnContainer2.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Please Wait (${seconds}s)...</button>`;
+            btnContainer2.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Link (${seconds}s)...</button>`;
           } else {
             clearInterval(interval2);
             timerDisplay2.textContent = '0s';
             progressBar2.style.width = '100%';
             btnContainer2.innerHTML = `
-              <a href="${step3Url}" onclick="window.triggerPopDirect(event, '${step3Url}')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
-                Proceed to Step 3 ➔
+              <a href="${step3Url}" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+                Proceed to Final Step 3 ➔
               </a>
             `;
           }
         }, 1000);
       } else {
-        // Step 1 Timer Logic
         step1Box.classList.remove('hidden');
         step2Box.classList.add('hidden');
         step3Box.classList.add('hidden');
 
-        let seconds = 10;
+        let seconds = 3;
         const timerDisplay1 = document.getElementById('timer-display-1');
         const progressBar1 = document.getElementById('progress-bar-1');
         const btnContainer1 = document.getElementById('btn-container-1');
@@ -207,15 +198,15 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
           seconds--;
           if (seconds > 0) {
             timerDisplay1.textContent = seconds + 's';
-            const percent = ((10 - seconds) / 10) * 100;
+            const percent = ((3 - seconds) / 3) * 100;
             progressBar1.style.width = percent + '%';
-            btnContainer1.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Please Wait (${seconds}s)...</button>`;
+            btnContainer1.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Link (${seconds}s)...</button>`;
           } else {
             clearInterval(interval1);
             timerDisplay1.textContent = '0s';
             progressBar1.style.width = '100%';
             btnContainer1.innerHTML = `
-              <a href="${step2Url}" onclick="window.triggerPopDirect(event, '${step2Url}')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+              <a href="${step2Url}" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
                 Proceed to Step 2 ➔
               </a>
             `;

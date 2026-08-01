@@ -111,8 +111,8 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         </p>
       </div>
 
-      <div class="mt-6">
-        <a href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download onclick="window.triggerPopDirect ? window.triggerPopDirect(event, '/assets/best-free-movie-apps-for-iphone-2026.pdf', true) : null" class="inline-flex items-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce">
+      <div class="mt-6" id="final-download-btn-container">
+        <a id="final-pdf-btn" href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href, true) : null" class="inline-flex items-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
           📥 Download Free PDF Guide Now
         </a>
@@ -131,7 +131,6 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         } catch (err) {}
 
         if (isDownload) {
-          // Allow normal download link behavior after opening ad
           return true;
         } else {
           e.preventDefault();
@@ -141,10 +140,24 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
 
       const urlParams = new URLSearchParams(window.location.search);
       const step = urlParams.get('step');
+      const appType = urlParams.get('app') || 'movie';
 
       const step1Box = document.getElementById('step-1-container');
       const step2Box = document.getElementById('step-2-container');
       const step3Box = document.getElementById('step-3-container');
+
+      // Update final PDF download link based on app type
+      const finalPdfBtn = document.getElementById('final-pdf-btn');
+      if (finalPdfBtn) {
+        if (appType === 'music') {
+          finalPdfBtn.href = '/assets/best-free-music-apps-for-iphone-2026.pdf';
+        } else {
+          finalPdfBtn.href = '/assets/best-free-movie-apps-for-iphone-2026.pdf';
+        }
+      }
+
+      const step2Url = '/download-bridge?app=' + appType + '&step=2';
+      const step3Url = '/download-bridge?app=' + appType + '&step=3';
 
       if (step === '3') {
         step1Box.classList.add('hidden');
@@ -173,7 +186,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
             timerDisplay2.textContent = '0s';
             progressBar2.style.width = '100%';
             btnContainer2.innerHTML = `
-              <a href="/download-bridge?step=3" onclick="window.triggerPopDirect(event, '/download-bridge?step=3')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+              <a href="${step3Url}" onclick="window.triggerPopDirect(event, '${step3Url}')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
                 Proceed to Step 3 ➔
               </a>
             `;
@@ -202,7 +215,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
             timerDisplay1.textContent = '0s';
             progressBar1.style.width = '100%';
             btnContainer1.innerHTML = `
-              <a href="/download-bridge?step=2" onclick="window.triggerPopDirect(event, '/download-bridge?step=2')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+              <a href="${step2Url}" onclick="window.triggerPopDirect(event, '${step2Url}')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
                 Proceed to Step 2 ➔
               </a>
             `;

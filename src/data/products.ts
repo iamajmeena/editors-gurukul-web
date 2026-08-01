@@ -52,7 +52,6 @@ export const PRODUCTS: DigitalProduct[] = [
     ],
     razorpayLink: "https://rzp.io/rzp/lBNeGuno"
   },
-
   {
     id: "2tb-editing-pack",
     slug: "2tb-video-editing-pack",
@@ -82,7 +81,7 @@ export const PRODUCTS: DigitalProduct[] = [
       "Commercial Royalty-Free License Certificate",
       "Lifetime Access Guarantee"
     ],
-    razorpayLink: "https://rzp.io/l/2tb-video-editing-pack"
+    razorpayLink: "https://rzp.io/rzp/BLCoFqe"
   },
   {
     id: "all-editing-software",
@@ -113,7 +112,7 @@ export const PRODUCTS: DigitalProduct[] = [
       "Plugin Bundle Collection & Activation Scripts",
       "Lifetime Drive Access & Free Future Updates"
     ],
-    razorpayLink: "https://rzp.io/l/all-video-editing-software"
+    razorpayLink: "https://rzp.io/rzp/U2NZbEVJ"
   },
   {
     id: "toko-elements-pack",
@@ -144,7 +143,7 @@ export const PRODUCTS: DigitalProduct[] = [
       "Tutorial Video on Customizing Colors & Fonts",
       "Commercial License"
     ],
-    razorpayLink: "https://rzp.io/l/toko-elements-pack"
+    razorpayLink: "https://rzp.io/rzp/MhcNXN2"
   },
   {
     id: "capcut-pro-pc",
@@ -175,7 +174,7 @@ export const PRODUCTS: DigitalProduct[] = [
       "Text-to-Speech & Auto Caption Setup Guide",
       "Bonus 50+ Trending Shorts Transition Presets"
     ],
-    razorpayLink: "https://rzp.io/l/capcut-pro-pc"
+    razorpayLink: "https://rzp.io/rzp/5MqGFbSt"
   },
   {
     id: "capcut-pro-mac",
@@ -206,7 +205,7 @@ export const PRODUCTS: DigitalProduct[] = [
       "Apple Silicon Performance Optimization Guide",
       "Bonus 50+ Trending Shorts Transition Presets"
     ],
-    razorpayLink: "https://rzp.io/l/capcut-pro-mac"
+    razorpayLink: "https://rzp.io/rzp/ARslco46"
   },
   {
     id: "movie-app-iphone",

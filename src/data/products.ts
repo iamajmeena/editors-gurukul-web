@@ -35,9 +35,7 @@ export const PRODUCTS: DigitalProduct[] = [
     rating: "5.0 ★★★★★",
     isFree: false,
     images: [
-      "/assets/500_lut_pack_cover.jpg",
-      "/assets/davinci_resolve_21_cover.jpg",
-      "/assets/2tb_video_editing_pack_cover.jpg"
+      "/assets/500_lut_pack_cover.jpg"
     ],
     shortDesc: "500+ Premium .CUBE LUTs for Sony S-Log3, Canon C-Log, Fuji & Rec.709 One-Click Conversion.",
     fullDesc: "Transform flat raw log footage into rich cinematic Hollywood colors in 1 click! Includes 500+ premium .CUBE color grading LUTs specially tuned for Sony S-Log3, Canon C-Log, Panasonic V-Log, Fujifilm F-Log, and iPhone ProRes Log.",
@@ -68,9 +66,7 @@ export const PRODUCTS: DigitalProduct[] = [
     rating: "4.9 ★★★★★",
     isFree: false,
     images: [
-      "/assets/2tb_video_editing_pack_cover.jpg",
-      "/assets/500_lut_pack_cover.jpg",
-      "/assets/capcut_pro_pc_mac_cover.jpg"
+      "/assets/2tb_video_editing_pack_cover.jpg"
     ],
     shortDesc: "2,000+ GB High-Speed Google Drive Access — 10,000+ SFX, 4K Light Leaks, Film Grain & VFX Assets.",
     fullDesc: "Never search for editing assets again! Get 2,000 GB of high-speed Google Drive download access packed with 10,000+ cinematic sound effects (SFX), 4K light leaks, film grain overlays, seamless motion transitions, and 3D VFX assets.",
@@ -101,11 +97,8 @@ export const PRODUCTS: DigitalProduct[] = [
     rating: "5.0 ★★★★★",
     isFree: false,
     images: [
-      "/assets/all_editing_software_bundle_cover.jpg",
-      "/assets/davinci_resolve_21_cover.jpg",
-      "/assets/capcut_pro_pc_mac_cover.jpg"
+      "/assets/all_editing_software_bundle_cover.jpg"
     ],
-
     shortDesc: "Complete Video Editing Suite — DaVinci Resolve Studio, Premiere Pro, After Effects, CapCut Pro & Plugins.",
     fullDesc: "The ultimate video editor toolkit! Get full access to all industry-standard video editing software including DaVinci Resolve Studio, Adobe Premiere Pro, After Effects, CapCut Pro Desktop, and top plugins (Sapphire, Continuum, Neat Video).",
     features: [
@@ -135,9 +128,7 @@ export const PRODUCTS: DigitalProduct[] = [
     rating: "4.8 ★★★★★",
     isFree: false,
     images: [
-      "/assets/500_lut_pack_cover.jpg",
-      "/assets/2tb_video_editing_pack_cover.jpg",
-      "/assets/davinci_resolve_21_cover.jpg"
+      "/assets/500_lut_pack_cover.jpg"
     ],
     shortDesc: "2,250+ Motion Graphics Elements — Lower Thirds, Titles, Callouts & Transitions for DaVinci & Premiere.",
     fullDesc: "Upgrade your edit quality with 2,250+ drag-and-drop motion graphic elements. Includes lower thirds, social media callouts, animated titles, typography presets, and 60fps vector transitions for DaVinci Resolve and Premiere Pro.",
@@ -155,44 +146,73 @@ export const PRODUCTS: DigitalProduct[] = [
     razorpayLink: "https://rzp.io/l/toko-elements-pack"
   },
   {
-    id: "capcut-pc-mac",
-    slug: "capcut-pro-pc-mac",
-    title: "CapCut Pro For PC & Mac",
-    category: "Desktop Software",
+    id: "capcut-pro-pc",
+    slug: "capcut-pro-pc",
+    title: "CapCut Pro For Windows PC",
+    category: "Windows Desktop Software",
     badge: "🔥 TOP SELLER",
     price: "₹39",
     numericPrice: 39,
     originalPrice: "₹1,999",
     discount: "98% OFF",
-    buyers: "1,724+ Creators",
+    buyers: "1,140+ PC Creators",
     rating: "4.9 ★★★★★",
     isFree: false,
     images: [
-      "/assets/capcut_pro_pc_mac_cover.jpg",
-      "/assets/2tb_video_editing_pack_cover.jpg",
-      "/assets/davinci_resolve_21_cover.jpg"
+      "/assets/capcut_pro_pc_cover.jpg"
     ],
-    shortDesc: "Full CapCut Pro Desktop for Windows PC & Mac — Auto Captions, AI Text-to-Speech & Pro Transitions.",
-    fullDesc: "Get complete access to CapCut Pro Desktop for Windows PC and Apple Mac. Edit viral Instagram Reels and Shorts at 4K 60fps with Pro Auto Captions, AI background removal, trending transitions, and zero watermark export.",
+    shortDesc: "Full CapCut Pro Desktop for Windows 10/11 PC — Auto Captions, AI Text-to-Speech & Pro Transitions.",
+    fullDesc: "Get complete access to CapCut Pro Desktop for Windows PC (Windows 10 & 11). Edit viral Instagram Reels and YouTube Shorts at 4K 60fps with Pro Auto Captions, AI background removal, trending transitions, and zero watermark export.",
     features: [
-      "Full CapCut Pro Desktop Setup for Windows PC & Mac",
+      "Full CapCut Pro Desktop Setup for Windows 10 & 11 PC",
       "Auto Captions Generator with Trending Caption Styles",
       "AI Background Remover & Auto Cutout Engine",
       "No Watermark 4K 60fps Export Guarantee"
     ],
     includedItems: [
-      "CapCut Pro Installer for Windows & macOS",
+      "CapCut Pro Installer for Windows PC",
       "Text-to-Speech & Auto Caption Setup Guide",
       "Bonus 50+ Trending Shorts Transition Presets"
     ],
-    razorpayLink: "https://rzp.io/l/capcut-pro-pc-mac"
+    razorpayLink: "https://rzp.io/l/capcut-pro-pc"
+  },
+  {
+    id: "capcut-pro-mac",
+    slug: "capcut-pro-mac",
+    title: "CapCut Pro For Apple Mac & MacBook",
+    category: "macOS Software",
+    badge: "🚀 MACBOOK EDITION",
+    price: "₹39",
+    numericPrice: 39,
+    originalPrice: "₹1,999",
+    discount: "98% OFF",
+    buyers: "584+ Mac Creators",
+    rating: "5.0 ★★★★★",
+    isFree: false,
+    images: [
+      "/assets/capcut_pro_mac_cover.jpg"
+    ],
+    shortDesc: "Full CapCut Pro Desktop for Apple Silicon M1/M2/M3 & Intel Macs — Metal GPU Accelerated.",
+    fullDesc: "Full CapCut Pro Desktop optimized for Apple MacBooks and Macs (Apple Silicon M1, M2, M3 & Intel). Experience lightning-fast Metal GPU rendering, 4K 60fps export, auto captions, and pro effects.",
+    features: [
+      "Full CapCut Pro Desktop Setup for Apple macOS",
+      "Optimized for M1, M2, M3 Apple Silicon & Intel Macs",
+      "Auto Captions & AI Text-to-Speech",
+      "Zero Watermark 4K 60fps Export Guarantee"
+    ],
+    includedItems: [
+      "CapCut Pro macOS Installer Package",
+      "Apple Silicon Performance Optimization Guide",
+      "Bonus 50+ Trending Shorts Transition Presets"
+    ],
+    razorpayLink: "https://rzp.io/l/capcut-pro-mac"
   },
   {
     id: "movie-app-iphone",
     slug: "movie-app-iphone",
     title: "iPhone Free Movie & Music App PDF Bundle",
     category: "iOS Guide PDF",
-    badge: "📲 POPULAR",
+    badge: "📱 POPULAR",
     price: "₹29",
     numericPrice: 29,
     originalPrice: "₹499",
@@ -201,9 +221,7 @@ export const PRODUCTS: DigitalProduct[] = [
     rating: "4.9 ★★★★★",
     isFree: false,
     images: [
-      "/assets/capcut_pro_pc_mac_cover.jpg",
-      "/assets/500_lut_pack_cover.jpg",
-      "/assets/davinci_resolve_21_cover.jpg"
+      "/assets/movie_app_iphone_cover.jpg"
     ],
     shortDesc: "Direct App Store Links & Setup Guide PDF for 100% Legal Free Movie & Music Streaming Apps on iOS.",
     fullDesc: "Complete verified guide PDF for streaming HD movies, web series, and music on iPhone with 100% legal App Store apps. Includes step-by-step setup, AirPlay casting tips, and direct download links.",
@@ -234,9 +252,7 @@ export const PRODUCTS: DigitalProduct[] = [
     rating: "5.0 ★★★★★",
     isFree: true,
     images: [
-      "/assets/davinci_resolve_21_cover.jpg",
-      "/assets/500_lut_pack_cover.jpg",
-      "/assets/2tb_video_editing_pack_cover.jpg"
+      "/assets/davinci_resolve_21_cover.jpg"
     ],
     shortDesc: "Full DaVinci Resolve 21 Studio installation setup guide with AI Magic Mask, Relight & Fairlight Voice Isolation.",
     fullDesc: "DaVinci Resolve 21 Studio is the world's leading Hollywood color grading and video editing software. This complete package includes full installation setup files, license activation guide, and Neural Engine AI tools (Magic Mask, Relight, Depth Map, and Voice Isolation).",

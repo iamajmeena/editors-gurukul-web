@@ -24,7 +24,7 @@ export const description = "Download full CapCut Pro Desktop for Windows PC & Ap
       <div>
         <div class="relative overflow-hidden aspect-video bg-[#15181c] rounded-3xl shadow-2xl border-2 border-[#e7e4dc]">
           <img id="main-product-img" src={product.images[0]} alt={product.title} class="w-full h-full object-cover transition-all duration-300" />
-          <span class="absolute top-4 left-4 px-3.5 py-1.5 bg-[#e0692a] text-white text-xs font-extrabold uppercase tracking-wider rounded-full shadow-lg">
+          <span class="absolute top-3 right-3 px-3.5 py-1.5 bg-[#e0692a] text-white text-xs font-extrabold uppercase tracking-wider rounded-full shadow-lg z-10">
             {product.badge}
           </span>
         </div>
@@ -54,12 +54,8 @@ export const description = "Download full CapCut Pro Desktop for Windows PC & Ap
           <span class="text-emerald-600 font-bold">{product.buyers} Verified</span>
         </div>
 
-        <p class="text-sm text-[#4b5058] leading-relaxed mb-6">
-          {product.fullDesc}
-        </p>
-
         <!-- Pricing Card -->
-        <div class="p-4 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl mb-6 flex items-center justify-between">
+        <div class="p-4 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl mb-4 flex items-center justify-between">
           <div>
             <div class="text-3xl font-extrabold text-[#15181c]">{product.price}</div>
             <span class="text-xs text-gray-400 line-through">Regular: {product.originalPrice}</span>
@@ -74,12 +70,18 @@ export const description = "Download full CapCut Pro Desktop for Windows PC & Ap
           href={product.razorpayLink} 
           target="_blank" 
           rel="noopener"
-          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-3"
+          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-4"
         >
           🚀 Buy Now for {product.price} &amp; Instant Download →
         </a>
+
+        <p class="text-sm text-[#4b5058] leading-relaxed mb-4">
+          {product.fullDesc}
+        </p>
+
         <p class="text-xs text-center text-gray-400 m-0">✓ 100% Instant On-Screen Download + WhatsApp Backup</p>
       </div>
+
 
     </div>
 

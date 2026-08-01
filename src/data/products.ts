@@ -19,106 +19,8 @@ export interface DigitalProduct {
   razorpayLink: string;
 }
 
+// Sorted High to Low (Most Expensive First, Free/Cheap Last)
 export const PRODUCTS: DigitalProduct[] = [
-  {
-    id: "davinci-resolve-21-studio",
-    slug: "davinci-resolve-21-studio",
-    title: "DaVinci Resolve 21 Studio",
-    category: "Software & Guide",
-    badge: "🎁 FREE DOWNLOAD",
-    price: "FREE",
-    numericPrice: 0,
-    originalPrice: "₹24,999",
-    discount: "100% FREE",
-    buyers: "710+ Downloads",
-    rating: "5.0 ★★★★★",
-    isFree: true,
-    images: [
-      "/assets/davinci_resolve_21_cover.jpg",
-      "/assets/500_lut_pack_cover.jpg",
-      "/assets/2tb_video_editing_pack_cover.jpg"
-    ],
-    shortDesc: "Full DaVinci Resolve 21 Studio installation setup guide with AI Magic Mask, Relight & Fairlight Voice Isolation.",
-    fullDesc: "DaVinci Resolve 21 Studio is the world's leading Hollywood color grading and video editing software. This complete package includes full installation setup files, license activation guide, and Neural Engine AI tools (Magic Mask, Relight, Depth Map, and Voice Isolation).",
-    features: [
-      "Full DaVinci Resolve 21 Studio Setup & Activation Guide",
-      "Neural Engine AI Tools (Magic Mask, Relight, Depth Map)",
-      "Fairlight Studio Voice Isolation & Audio Leveller",
-      "100% Free Lifetime Download & Drive Access"
-    ],
-    includedItems: [
-      "DaVinci Resolve 21 Studio Setup Files (Windows & Mac)",
-      "Step-by-step Installation & License Guide Video",
-      "Bonus 10-Page Color Grading Node Tree PDF Cheat Sheet"
-    ],
-    razorpayLink: "/free-resources"
-  },
-  {
-    id: "capcut-pc-mac",
-    slug: "capcut-pro-pc-mac",
-    title: "CapCut Pro For PC & Mac",
-    category: "Desktop Software",
-    badge: "🔥 TOP SELLER",
-    price: "₹39",
-    numericPrice: 39,
-    originalPrice: "₹1,999",
-    discount: "98% OFF",
-    buyers: "1,724+ Creators",
-    rating: "4.9 ★★★★★",
-    isFree: false,
-    images: [
-      "/assets/capcut_pro_pc_mac_cover.jpg",
-      "/assets/2tb_video_editing_pack_cover.jpg",
-      "/assets/davinci_resolve_21_cover.jpg"
-    ],
-    shortDesc: "Full CapCut Pro Desktop for Windows PC & Mac — Auto Captions, AI Text-to-Speech & Pro Transitions.",
-    fullDesc: "Get complete access to CapCut Pro Desktop for Windows PC and Apple Mac. Edit viral Instagram Reels and Shorts at 4K 60fps with Pro Auto Captions, AI background removal, trending transitions, and zero watermark export.",
-    features: [
-      "Full CapCut Pro Desktop Setup for Windows PC & Mac",
-      "Auto Captions Generator with Trending Caption Styles",
-      "AI Background Remover & Auto Cutout Engine",
-      "No Watermark 4K 60fps Export Guarantee"
-    ],
-    includedItems: [
-      "CapCut Pro Installer for Windows & macOS",
-      "Text-to-Speech & Auto Caption Setup Guide",
-      "Bonus 50+ Trending Shorts Transition Presets"
-    ],
-    razorpayLink: "https://rzp.io/l/capcut-pro-pc-mac"
-  },
-  {
-    id: "all-editing-software",
-    slug: "all-editing-software",
-    title: "All Video Editing Software Collection",
-    category: "Ultimate Suite",
-    badge: "👑 BEST VALUE",
-    price: "₹99",
-    numericPrice: 99,
-    originalPrice: "₹9,999",
-    discount: "99% OFF",
-    buyers: "786+ Editors",
-    rating: "5.0 ★★★★★",
-    isFree: false,
-    images: [
-      "/assets/davinci_resolve_21_cover.jpg",
-      "/assets/capcut_pro_pc_mac_cover.jpg",
-      "/assets/2tb_video_editing_pack_cover.jpg"
-    ],
-    shortDesc: "Complete Video Editing Suite — DaVinci Resolve Studio, Premiere Pro, After Effects, CapCut Pro & Plugins.",
-    fullDesc: "The ultimate video editor toolkit! Get full access to all industry-standard video editing software including DaVinci Resolve Studio, Adobe Premiere Pro, After Effects, CapCut Pro Desktop, and top plugins (Sapphire, Continuum, Neat Video).",
-    features: [
-      "Complete Suite: DaVinci Resolve Studio, Premiere Pro & After Effects",
-      "Full Plugins: Sapphire, Continuum, Universe & Neat Noise Reduction",
-      "Step-by-step Video Installation & License Activation Tutorials",
-      "High-Speed Google Drive Direct Download Links"
-    ],
-    includedItems: [
-      "Full Windows & Mac Installer Setup Packages",
-      "Plugin Bundle Collection & Activation Scripts",
-      "Lifetime Drive Access & Free Future Updates"
-    ],
-    razorpayLink: "https://rzp.io/l/all-video-editing-software"
-  },
   {
     id: "500-lut-pack",
     slug: "500-lut-pack",
@@ -186,6 +88,39 @@ export const PRODUCTS: DigitalProduct[] = [
     razorpayLink: "https://rzp.io/l/2tb-video-editing-pack"
   },
   {
+    id: "all-editing-software",
+    slug: "all-editing-software",
+    title: "All Video Editing Software Collection",
+    category: "Ultimate Suite",
+    badge: "👑 BEST VALUE",
+    price: "₹99",
+    numericPrice: 99,
+    originalPrice: "₹9,999",
+    discount: "99% OFF",
+    buyers: "786+ Editors",
+    rating: "5.0 ★★★★★",
+    isFree: false,
+    images: [
+      "/assets/davinci_resolve_21_cover.jpg",
+      "/assets/capcut_pro_pc_mac_cover.jpg",
+      "/assets/2tb_video_editing_pack_cover.jpg"
+    ],
+    shortDesc: "Complete Video Editing Suite — DaVinci Resolve Studio, Premiere Pro, After Effects, CapCut Pro & Plugins.",
+    fullDesc: "The ultimate video editor toolkit! Get full access to all industry-standard video editing software including DaVinci Resolve Studio, Adobe Premiere Pro, After Effects, CapCut Pro Desktop, and top plugins (Sapphire, Continuum, Neat Video).",
+    features: [
+      "Complete Suite: DaVinci Resolve Studio, Premiere Pro & After Effects",
+      "Full Plugins: Sapphire, Continuum, Universe & Neat Noise Reduction",
+      "Step-by-step Video Installation & License Activation Tutorials",
+      "High-Speed Google Drive Direct Download Links"
+    ],
+    includedItems: [
+      "Full Windows & Mac Installer Setup Packages",
+      "Plugin Bundle Collection & Activation Scripts",
+      "Lifetime Drive Access & Free Future Updates"
+    ],
+    razorpayLink: "https://rzp.io/l/all-video-editing-software"
+  },
+  {
     id: "toko-elements-pack",
     slug: "toko-elements-pack",
     title: "Toko Elements Motion Graphics Pack",
@@ -219,6 +154,39 @@ export const PRODUCTS: DigitalProduct[] = [
     razorpayLink: "https://rzp.io/l/toko-elements-pack"
   },
   {
+    id: "capcut-pc-mac",
+    slug: "capcut-pro-pc-mac",
+    title: "CapCut Pro For PC & Mac",
+    category: "Desktop Software",
+    badge: "🔥 TOP SELLER",
+    price: "₹39",
+    numericPrice: 39,
+    originalPrice: "₹1,999",
+    discount: "98% OFF",
+    buyers: "1,724+ Creators",
+    rating: "4.9 ★★★★★",
+    isFree: false,
+    images: [
+      "/assets/capcut_pro_pc_mac_cover.jpg",
+      "/assets/2tb_video_editing_pack_cover.jpg",
+      "/assets/davinci_resolve_21_cover.jpg"
+    ],
+    shortDesc: "Full CapCut Pro Desktop for Windows PC & Mac — Auto Captions, AI Text-to-Speech & Pro Transitions.",
+    fullDesc: "Get complete access to CapCut Pro Desktop for Windows PC and Apple Mac. Edit viral Instagram Reels and Shorts at 4K 60fps with Pro Auto Captions, AI background removal, trending transitions, and zero watermark export.",
+    features: [
+      "Full CapCut Pro Desktop Setup for Windows PC & Mac",
+      "Auto Captions Generator with Trending Caption Styles",
+      "AI Background Remover & Auto Cutout Engine",
+      "No Watermark 4K 60fps Export Guarantee"
+    ],
+    includedItems: [
+      "CapCut Pro Installer for Windows & macOS",
+      "Text-to-Speech & Auto Caption Setup Guide",
+      "Bonus 50+ Trending Shorts Transition Presets"
+    ],
+    razorpayLink: "https://rzp.io/l/capcut-pro-pc-mac"
+  },
+  {
     id: "movie-app-iphone",
     slug: "movie-app-iphone",
     title: "iPhone Free Movie & Music App PDF Bundle",
@@ -250,5 +218,38 @@ export const PRODUCTS: DigitalProduct[] = [
       "Setup Video Instructions"
     ],
     razorpayLink: "https://rzp.io/l/movie-app-iphone"
+  },
+  {
+    id: "davinci-resolve-21-studio",
+    slug: "davinci-resolve-21-studio",
+    title: "DaVinci Resolve 21 Studio",
+    category: "Software & Guide",
+    badge: "🎁 FREE DOWNLOAD",
+    price: "FREE",
+    numericPrice: 0,
+    originalPrice: "₹24,999",
+    discount: "100% FREE",
+    buyers: "710+ Downloads",
+    rating: "5.0 ★★★★★",
+    isFree: true,
+    images: [
+      "/assets/davinci_resolve_21_cover.jpg",
+      "/assets/500_lut_pack_cover.jpg",
+      "/assets/2tb_video_editing_pack_cover.jpg"
+    ],
+    shortDesc: "Full DaVinci Resolve 21 Studio installation setup guide with AI Magic Mask, Relight & Fairlight Voice Isolation.",
+    fullDesc: "DaVinci Resolve 21 Studio is the world's leading Hollywood color grading and video editing software. This complete package includes full installation setup files, license activation guide, and Neural Engine AI tools (Magic Mask, Relight, Depth Map, and Voice Isolation).",
+    features: [
+      "Full DaVinci Resolve 21 Studio Setup & Activation Guide",
+      "Neural Engine AI Tools (Magic Mask, Relight, Depth Map)",
+      "Fairlight Studio Voice Isolation & Audio Leveller",
+      "100% Free Lifetime Download & Drive Access"
+    ],
+    includedItems: [
+      "DaVinci Resolve 21 Studio Setup Files (Windows & Mac)",
+      "Step-by-step Installation & License Guide Video",
+      "Bonus 10-Page Color Grading Node Tree PDF Cheat Sheet"
+    ],
+    razorpayLink: "/free-resources"
   }
 ];

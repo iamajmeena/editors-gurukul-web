@@ -1,0 +1,21 @@
+---
+// Shared grid renderer for pillar/category hub pages.
+// Usage: <PillarGrid items={[{path, title, desc}]} />
+interface Item {
+  path: string;
+  title: string;
+  desc: string;
+}
+const { items = [] } = Astro.props as { items: Item[] };
+---
+<div class="grid" id="eg-pillar-grid">
+  {items.map((g) => (
+    <div class="item">
+      <div>
+        <h3>{g.title}</h3>
+        <p>{g.desc}</p>
+      </div>
+      <a class="btn" href={g.path}>Open Guide</a>
+    </div>
+  ))}
+</div>

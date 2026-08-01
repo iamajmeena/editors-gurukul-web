@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PillarGrid from '../components/PillarGrid.astro';
+import { getPagesByCategory } from '../lib/pages';
+
+export const title = "Storytelling & Craft Guides";
+export const category = "storytelling";
+export const pillarHub = true;
+export const description = "Visual storytelling, composition, pacing, and narrative craft guides for filmmakers and editors who want to go beyond gear and master the story itself.";
+
+const allPages = Object.values(import.meta.glob('./*.astro', { eager: true })) as any[];
+const storytellingGuides = getPagesByCategory(allPages, 'storytelling');
+---
+
+<Layout title="Storytelling & Craft Guides | Editors Gurukul" description={description}>
+
+  <div class="container">
+    <div class="card">
+      <h1>Storytelling &amp; Craft Guides</h1>
+      <p>What makes a shot, a cut, or a scene actually work emotionally — composition, pacing, visual language, and narrative structure, explained in plain terms.</p>
+      <PillarGrid items={storytellingGuides} />
+      <p style="margin-top:20px;"><a href="/camera-guides">Camera Guides →</a> · <a href="/guides#davinci-resolve">DaVinci Resolve Guides →</a> · <a href="/guides">All Guides →</a></p>
+    </div>
+  </div>
+
+</Layout>

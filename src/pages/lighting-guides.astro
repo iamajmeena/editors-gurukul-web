@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PillarGrid from '../components/PillarGrid.astro';
+import { getPagesByCategory } from '../lib/pages';
+
+export const title = "Lighting Guides";
+export const category = "lighting";
+export const pillarHub = true;
+export const description = "Practical lighting education for filmmakers — three-point lighting, color temperature, budget lighting kits, CRI, and motivated lighting setups explained with real on-set examples.";
+
+const allPages = Object.values(import.meta.glob('./*.astro', { eager: true })) as any[];
+const lightingGuides = getPagesByCategory(allPages, 'lighting');
+---
+
+<Layout title="Lighting Guides | Editors Gurukul" description={description}>
+
+  <div class="container">
+    <div class="card">
+      <h1>Lighting Guides</h1>
+      <p>Practical lighting knowledge for filmmakers and creators — from three-point lighting fundamentals to budget gear picks and pro on-set techniques, based on real shoots.</p>
+      <PillarGrid items={lightingGuides} />
+      <p style="margin-top:20px;"><a href="/camera-guides">Camera Guides →</a> · <a href="/lens-guides">Lens Guides →</a> · <a href="/guides">All Guides →</a></p>
+    </div>
+  </div>
+
+</Layout>

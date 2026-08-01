@@ -1,0 +1,47 @@
+---
+// Usage: <RelatedArticles links={[{href: "/slug", title: "Post Title"}, ...]} />
+interface LinkItem {
+  href: string;
+  title: string;
+}
+const { links = [], heading = "Related Articles" } = Astro.props as { links: LinkItem[]; heading?: string };
+---
+{links.length > 0 && (
+  <section class="related-articles-block">
+    <h2>{heading}</h2>
+    <div class="related-articles-grid">
+      {links.map((l) => (
+        <a href={l.href} class="related-article-card">{l.title} →</a>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+.related-articles-block {
+  margin: 48px 0;
+}
+.related-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.related-article-card {
+  display: block;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--teal-deep);
+  text-decoration: none;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.related-article-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--teal-deep);
+  box-shadow: 0 12px 28px -10px rgba(15, 139, 141, 0.22);
+}
+</style>

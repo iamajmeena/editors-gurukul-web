@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
+
+export const title = "Best Camera Settings for DaVinci Resolve Color Grading — Shoot Flat/LOG Right";
+export const category = "camera";
+export const description = "Best camera settings for DaVinci Resolve color grading — Log/flat profile, white balance, ISO aur exposure settings jo grading ke liye maximum flexibility dete hain.";
+---
+<Layout title={title} description={description}>
+
+<header>
+  <h1>Best Camera Settings for DaVinci Resolve Color Grading — Shoot Flat/LOG the Right Way</h1>
+  <p class="hero-subtitle">Agar aap DaVinci Resolve mein serious grading karna chahte ho, camera pe sirf Log profile switch on karna kaafi nahi hai — exposure, white balance, aur codec settings bhi sahi honi chahiye taaki footage grading ko "survive" kare bina banding ya crushed detail ke.</p>
+</header>
+
+<article class="wrap">
+
+  <div class="callout"><b>Quick take:</b> Log/flat profile + manual white balance + native ISO ke close + highest bitrate/bit-depth codec available — yeh combination DaVinci Resolve mein maximum grading flexibility deta hai.</div>
+
+  <h2>Step 1: Log Ya Flat Picture Profile Select Karo</h2>
+  <p>Sabse pehla aur sabse important step hai apna picture profile Log ya flat pe set karna (S-Log, V-Log, F-Log, Cinelike D, ya jo bhi aapki camera offer karti hai) instead of standard/vivid. Agar aap exactly samajhna chahte ho <a href="/3-what-is-log">Log profile kya hota hai aur yeh normal footage se kaise different hai</a>, hamara dedicated guide detail mein explain karta hai.</p>
+  <p>Log profile ka core idea hai: camera jo bhi dynamic range capture kar sakta hai, usse ek flat, low-contrast image mein "squeeze" kar dena, taaki koi bhi highlight ya shadow detail clip na ho. Yeh image dull dikhta hai monitor pe — yeh normal hai, grading mein hi yeh "unlock" hoga.</p>
+
+  <h2>Step 2: White Balance Manually Set Karo</h2>
+  <p>Auto white balance shot-to-shot drift kar sakta hai, jo grading consistency ko todta hai — especially agar aap multiple clips ko same look mein match karna chahte ho. Manual Kelvin value set karo scene ke actual lighting temperature ke hisaab se.</p>
+  <p>Hamara dedicated guide <a href="/davinci-resolve-white-balance-method-2026">DaVinci Resolve mein white balance ko correctly lock karne ka method</a> cover karta hai — agar aap Log footage shoot kar rahe ho, yeh step follow karna almost mandatory hai consistent skin tones ke liye.</p>
+
+  <h2>Step 3: ISO Ko Native/Base Value Ke Close Rakho</h2>
+  <p>Har camera ka ek native ISO hota hai jahan sensor cleanest image deta hai. Log profile mein yeh native ISO aksar standard profile se higher hota hai (jaise ISO 800 ki jagah standard mode ke ISO 100 ke muqable). Apni camera ki documentation check karo aur us native value ke around expose karne ki koshish karo — <a href="/iso-native-iso-dual-native-iso-explained">ISO aur native ISO ka detailed explanation yahaan hai</a>.</p>
+
+  <h2>Step 4: Highest Available Bit-Depth Aur Bitrate Codec Use Karo</h2>
+  <table>
+    <thead>
+      <tr><th>Codec Setting</th><th>Grading Impact</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>8-bit 4:2:0</td><td>Limited grading room, banding risk in heavy grades</td></tr>
+      <tr><td class="win">10-bit 4:2:2</td><td class="win">✅ Significantly more color data, smoother gradients</td></tr>
+      <tr><td>All-Intra vs Long-GOP</td><td>All-Intra preserves more detail per-frame, larger files</td></tr>
+    </tbody>
+  </table>
+  <p>Agar aapki camera 10-bit recording support karti hai (internal ya via external recorder), use karo. 8-bit 4:2:0 heavy secondary grading mein banding aur color-shift jaldi dikhata hai, especially skies aur skin tones mein.</p>
+
+  <h2>Step 5: Expose Correctly — "Expose to the Right" Log Ke Liye</h2>
+  <p>Log footage ko thoda overexpose karke shoot karna (jise "expose to the right" kehte hain) generally behtar result deta hai kyunki zyaadatar sensors highlights se zyada shadow detail recover kar sakte hain grading mein. Camera ka waveform monitor ya histogram use karke confirm karo ki aap clip nahi kar rahe highlights.</p>
+
+  <h2>Step 6: Consistent Settings Across Multi-Camera Shoots</h2>
+  <p>Agar multiple cameras (even different brands) same project mein use ho rahe hain, sabka picture profile, frame rate, aur white balance approach consistent rakho — taaki DaVinci Resolve mein grading ke waqt scene-matching ka kaam kam ho.</p>
+
+  <h2>Common Mistakes Jo Grading Ko Mushkil Banate Hain</h2>
+  <ul>
+    <li>Auto white balance use karna Log footage ke saath</li>
+    <li>Bahut underexpose karna "safe" samajh kar — yeh noise badhata hai shadows mein</li>
+    <li>8-bit codec pe heavy color grade attempt karna</li>
+    <li>Different picture profiles mix karna same project ke andar bina reason ke</li>
+  </ul>
+
+  <div class="callout"><b>Pro tip:</b> Ek quick test shoot karo apni camera ke Log profile mein, phir usse DaVinci Resolve mein import karke basic node-based grade try karo. Yeh workflow samajhne ka sabse fast tarika hai ki aapki specific camera kitna grading room deti hai.</div>
+
+  <FAQBlock items={[
+    {q: "Kya Log profile har camera mein available hota hai?", a: "Nahi, entry-level bodies mein aksar missing hota hai (jaise Canon EOS R100). Mid-range aur upar ki bodies mein zyaadatar available hota hai."},
+    {q: "Flat aur Log mein kya farak hai?", a: "Technically Log ek specific mathematical curve follow karta hai, jabki 'flat' profiles (jaise Cinelike D) approximately similar effect dete hain bina true Log math ke. Dono grading-friendly hain, Log thoda zyada flexible."},
+    {q: "Kya 8-bit footage grade nahi ho sakti?", a: "Ho sakti hai, lekin heavy grading mein banding/color-shift ka risk zyada hota hai compared to 10-bit."},
+    {q: "White balance kitna important hai Log footage ke liye?", a: "Bahut important — Log footage flat hone ki wajah se white balance errors zyada obvious ho jaate hain grading ke baad, isliye consistent manual white balance best practice hai."}
+  ]} />
+
+  <RelatedArticles links={[
+    {href: "/camera-menu-settings-cinematic-footage", title: "Camera Menu Settings for Cinematic Footage"},
+    {href: "/dynamic-range-color-grading-explained", title: "What Is Dynamic Range and Why It Matters"},
+    {href: "/iso-native-iso-dual-native-iso-explained", title: "Understanding ISO, Native ISO, and Dual Native ISO"},
+    {href: "/internal-recording-vs-external-recorder-ninja-v", title: "Internal Recording vs External Recorder — Do You Need One"},
+    {href: "/best-budget-cinema-camera-beginners-2026", title: "Best Budget Cinema Camera for Beginners"}
+  ]} />
+
+  <CourseCTA text="Sahi footage shoot karna seekh liya? Ab poora node-based grading workflow DaVinci Resolve mein seekho." />
+
+</article>
+
+</Layout>

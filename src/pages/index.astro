@@ -7,7 +7,7 @@ const allPages = Object.values(import.meta.glob('./*.astro', { eager: true }));
 // Filter out utility pages and index
 const guides = allPages.filter(page => {
   const path = page.file.split('/').pop() || '';
-  const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'download-bridge.astro', 'guides.astro', 'decoding-davinci-20-course.astro'];
+  const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'download-bridge.astro', 'guides.astro', 'decoding-davinci-20-course.astro', 'camera-guides.astro', 'lens-guides.astro', 'lighting-guides.astro', 'filmmaking-guides.astro', 'storytelling-guides.astro', 'career-guides.astro'];
   return !excludeList.includes(path);
 });
 
@@ -34,7 +34,8 @@ const guideDescriptions: Record<string, string> = {
   'best-studio-cob-light-under-12000-2026': 'Digitek DCL-250WBC vs Godox SL60IID COB studio lights breakdown.',
   'best-gimbal-for-filmmaking-2026': 'DJI RS 3 Mini vs Zhiyun Weebill S 3-axis camera gimbals test.',
   'best-field-monitor-under-15000-2026': 'Feelworld F6 Plus vs Portkeys PT5 vs Desview R6 2800 Nits monitor review.',
-  'final-cut-pro-vs-premiere-pro-vs-davinci-resolve-2026': 'Pricing, performance, toolsets, and full NLE comparison chart across all three video editors.'
+  'final-cut-pro-vs-premiere-pro-vs-davinci-resolve-2026': 'Pricing, performance, toolsets, and full NLE comparison chart across all three video editors.',
+  'best-free-movie-apps-for-iphone-2026': 'Top 7 safe and 100% legal free movie streaming apps for iPhone and iPad in 2026.'
 };
 ---
 <Layout title="Editors Gurukul | Free Filmmaking Guides, LUTs & Courses" description="Editors Gurukul offers free filmmaking guides, LUT resources, camera cheat sheets, and premium courses for creators and editors.">
@@ -115,6 +116,11 @@ const guideDescriptions: Record<string, string> = {
                 <button type="button" class="eg-filter-pill active" data-filter="all">All Resources</button>
                 <button type="button" class="eg-filter-pill" data-filter="davinci-resolve">DaVinci Resolve</button>
                 <button type="button" class="eg-filter-pill" data-filter="camera">Camera Guides</button>
+                <button type="button" class="eg-filter-pill" data-filter="lens">Lens Guides</button>
+                <button type="button" class="eg-filter-pill" data-filter="lighting">Lighting Guides</button>
+                <button type="button" class="eg-filter-pill" data-filter="filmmaking">Filmmaking &amp; Gear</button>
+                <button type="button" class="eg-filter-pill" data-filter="storytelling">Storytelling</button>
+                <button type="button" class="eg-filter-pill" data-filter="career">Career &amp; Business</button>
                 <button type="button" class="eg-filter-pill" data-filter="luts">LUTs &amp; Packs</button>
                 <button type="button" class="eg-filter-pill" data-filter="editing-fundamentals">Editing Fundamentals</button>
             </div>
@@ -174,15 +180,22 @@ const guideDescriptions: Record<string, string> = {
                 pageTitle = pageTitle.replace(/2026/g, '').trim();
                 
                 let category = guide.category || 'editing-fundamentals';
-                if (slug.includes('davinci')) category = 'davinci-resolve';
-                if (slug.includes('camera') || slug.includes('log') || slug.includes('codec') || slug.includes('hdr')) category = 'camera';
-                if (slug.includes('tripod') || slug.includes('mic') || slug.includes('light') || slug.includes('gimbal') || slug.includes('monitor') || slug.includes('gear')) category = 'gear';
+                if (!guide.category) {
+                    if (slug.includes('davinci')) category = 'davinci-resolve';
+                    if (slug.includes('camera') || slug.includes('log') || slug.includes('codec') || slug.includes('hdr')) category = 'camera';
+                    if (slug.includes('tripod') || slug.includes('mic') || slug.includes('light') || slug.includes('gimbal') || slug.includes('monitor') || slug.includes('gear')) category = 'gear';
+                }
 
                 let badge = 'Guide';
                 if (category === 'free-resources') badge = 'Free Download';
                 if (category === 'davinci-resolve') badge = 'DaVinci Resolve';
                 if (category === 'camera') badge = 'Camera Setup';
                 if (category === 'gear') badge = 'Gear Guide';
+                if (category === 'lens') badge = 'Lens Guide';
+                if (category === 'lighting') badge = 'Lighting Guide';
+                if (category === 'filmmaking') badge = 'Filmmaking Guide';
+                if (category === 'storytelling') badge = 'Storytelling';
+                if (category === 'career') badge = 'Career & Business';
 
                 const desc = guideDescriptions[slug] || `Learn practical tips and master your workflow in ${pageTitle}.`;
 
@@ -290,6 +303,8 @@ document.addEventListener('DOMContentLoaded', function() {
           matchesCategory = (category === 'camera' || category === 'gear' || text.indexOf('camera') !== -1);
       } else if (currentCategory === 'luts') {
           matchesCategory = (category === 'luts' || text.indexOf('lut') !== -1 || text.indexOf('pack') !== -1);
+      } else if (currentCategory === 'lens' || currentCategory === 'lighting' || currentCategory === 'filmmaking' || currentCategory === 'storytelling' || currentCategory === 'career') {
+          matchesCategory = (category === currentCategory);
       } else {
           matchesCategory = (category === currentCategory);
       }

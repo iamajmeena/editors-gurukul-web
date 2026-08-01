@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
+
+export const title = "How to Backup and Organize Footage on Set (2026): A Data Management Workflow";
+export const category = "filmmaking";
+export const description = "A practical on-set data management workflow: the 3-2-1 backup rule for footage, folder-naming conventions by date/scene/camera, and checksum verification before you format any card.";
+---
+<Layout title={title} description={description}>
+
+  <header>
+    <h1>How to Backup and Organize Footage on Set: A Data Management Workflow That Actually Holds Up</h1>
+    <p class="hero-subtitle">Never format a card until your footage exists in three places — the card and two independent backup drives — verified by checksum, not just a progress bar that finished. That single rule is the difference between a normal shoot day and the day you lose a client's footage.</p>
+  </header>
+
+  <div class="callout">
+    <strong>Quick take:</strong> Treat data management as a department, not an afterthought. Copy footage to two separate drives before you touch a card. Verify the copy with a checksum, not a visual file-count match. Name folders by date, then camera, then scene/setup, so anyone on the project — including future-you at 2 a.m. during the edit — can find a clip without opening it first.
+  </div>
+
+  <h2>Why Data Management Matters More Than People Think</h2>
+  <p>Every working DOP or DIT has some version of the same story. A wedding shoot, a corporate gig, or a short film wraps clean, everyone's happy, and then three days later someone discovers that a drive with half the coverage won't mount. If that footage only existed in one place, it's gone — not "hard to recover," gone. No amount of talent in the edit bay fixes missing footage.</p>
+  <p>The frustrating part is that <strong>on-set data management</strong> isn't complicated. It's not a technical skill like matching color temperature or riding focus — it's a discipline problem. It takes fifteen extra minutes per card and a bit of patience before you're allowed to format anything. Most crews skip it because nothing bad has happened to them yet. The ones who do it properly usually started after something bad happened once. This guide is meant to save you that one bad experience.</p>
+
+  <h2>The 3-2-1 Backup Rule, Adapted for a Shoot Day</h2>
+  <p>The classic 3-2-1 backup rule from IT and photography circles says: keep three copies of your data, on two different types of media, with one copy off-site. On a film set, you adapt this into a rule that fits the reality of a working day — you don't have time for off-site replication mid-shoot, but you absolutely have time for redundancy before you wipe a card.</p>
+
+  <div class="callout">
+    <strong>The on-set version of 3-2-1:</strong> Footage must exist in at least three places — the original card, Backup Drive 1, and Backup Drive 2 — before that card is formatted or reused. Not "copying," not "copy in progress." Fully copied and verified.
+  </div>
+
+  <h3>Why Two Backup Drives, Not One</h3>
+  <p>A single backup drive gives you redundancy against card failure, but not against drive failure — and drives fail more often than people expect, especially portable SSDs that get thrown in a backpack, dropped on a tailgate, or run hot in direct sun on an outdoor shoot. Two independent drives, ideally from different purchase batches or even different brands, protects you against a single bad drive, a single corrupted enclosure, or a single dropped bag ruining your whole day's coverage.</p>
+  <p>The practical shape of this on a real shoot:</p>
+  <ul>
+    <li><strong>Card (original):</strong> stays untouched and unformatted until both backups are verified.</li>
+    <li><strong>Backup Drive 1:</strong> your primary working backup — this is what the editor or DIT pulls from during the project.</li>
+    <li><strong>Backup Drive 2:</strong> a true redundant copy that goes into a separate bag, a separate vehicle, or is left with a separate crew member. The goal is that no single incident — theft, spill, drop — can take out both backups at once.</li>
+  </ul>
+  <p>For anything higher-stakes — a wedding, a client commercial, a film with no reshoot possibility — a third backup uploaded to cloud storage or handed to the client same-day is worth the extra time. Treat the two-drive minimum as the floor, not the ceiling.</p>
+
+  <h2>The Golden Rule: Never Format a Card Early</h2>
+  <p>This is the rule that gets broken under pressure, usually because a card is running low mid-shoot and reformatting feels faster than swapping cards. Don't do it. A card should only be formatted once:</p>
+  <ol>
+    <li>Footage has been copied to Backup Drive 1.</li>
+    <li>Footage has been copied to Backup Drive 2, independently — not copied from Drive 1, but ideally sourced from the card again, or verified against the card directly.</li>
+    <li>Both copies have been checksum-verified (more on this below) so you know the files are bit-for-bit identical, not just present.</li>
+    <li>Someone other than the person who did the copy has spot-checked a handful of clips by actually opening them.</li>
+  </ol>
+  <p>If you're short on cards and under time pressure, the fix is to buy or rent more cards — not to skip verification. Card cost is trivial next to the cost of reshooting a scene, a location, or an event that cannot be repeated.</p>
+
+  <h2>Folder Naming and Organization Convention</h2>
+  <p>A consistent folder structure does two jobs: it prevents accidental overwrites when multiple cameras are recording simultaneously, and it makes footage searchable later without needing to scrub through clips. The convention that holds up best across shoot types is date, then camera, then scene or setup.</p>
+
+  <h3>Recommended Folder Structure</h3>
+  <pre><code>2026-08-01_ProjectName/
+├── CAM_A/
+│   ├── SC01_INT-OFFICE/
+│   ├── SC02_EXT-STREET/
+│   └── _CHECKSUMS/
+├── CAM_B/
+│   ├── SC01_INT-OFFICE/
+│   ├── SC02_EXT-STREET/
+│   └── _CHECKSUMS/
+├── SOUND/
+│   └── SC01_INT-OFFICE/
+└── _PROJECT_NOTES/
+    └── shoot_log.txt</code></pre>
+
+  <p>The logic behind each layer:</p>
+  <ul>
+    <li><strong>Date first (YYYY-MM-DD):</strong> sorts chronologically by default in every operating system and every NLE's media browser, without needing to rename anything later. This matters most on multi-day shoots where you need to find "what we shot on day 3" instantly.</li>
+    <li><strong>Camera second:</strong> critical the moment you're running two or more cameras. Mixing CAM_A and CAM_B footage into one folder is one of the fastest ways to lose track of which angle belongs to which take, especially when card numbering resets between cameras.</li>
+    <li><strong>Scene or setup third:</strong> groups footage the way an editor actually thinks about a project — by story beat or location, not by arbitrary card number. Use a short, consistent scene code (SC01, SC02) plus a location tag so the folder name alone tells you what's inside.</li>
+    <li><strong>A dedicated checksum folder:</strong> keeps verification logs separate from footage so they don't get accidentally deleted during an edit-bay cleanup pass.</li>
+  </ul>
+  <p>Avoid renaming the actual camera-generated clip filenames (like the native codec filenames straight off the card) unless your workflow specifically requires it — those names often carry metadata continuity that editing software and <a href="/camera-sensor-cleaning-maintenance-guide">camera maintenance logs</a> both rely on. Organize with folders, not by renaming individual clips, unless you're using purpose-built renaming software that preserves metadata links.</p>
+
+  <h3>A Simple Shoot Log Saves Hours in Post</h3>
+  <p>Keep a plain text or spreadsheet log alongside the footage: card number, camera, date/time copied, which drives it was backed up to, and who did the copy. This sounds excessive until you're three weeks into an edit and need to confirm whether Card 14 from Camera B ever actually got backed up, or whether it's still sitting in someone's camera bag.</p>
+
+  <h2>Checksum Verification: Don't Trust a Copy-Paste Progress Bar</h2>
+  <p>A file copy that "completes" without errors is not proof the data transferred correctly. Bit rot, a failing card reader, a flaky USB cable, or a drive with a bad sector can all produce a copy that looks complete in the file browser but is subtly corrupted — sometimes in ways that only show up later, as a glitch three seconds into a clip during the edit or grade.</p>
+  <p>A <strong>checksum</strong> (commonly MD5 or XXHash) is a short code generated from a file's actual data. If the source file and the copied file produce the same checksum, the copy is verified identical, byte for byte. If even one bit is different, the checksums won't match — and you'll know immediately, on set, while the card is still in your hand and reshooting is still possible.</p>
+
+  <div class="callout">
+    <strong>Pro tip:</strong> Dedicated offload tools built for this exact job — options used widely by DITs include Hedge, ShotPut Pro, and Silverstack — automatically generate and compare checksums during the copy itself, and produce a verification report per card. For lower-budget or solo setups, even a free checksum utility run manually after copying is far better than trusting the OS's default copy dialog.
+  </div>
+
+  <h3>When Checksum Verification Is Non-Negotiable</h3>
+  <ul>
+    <li><strong>Weddings and one-time events</strong> — there is no reshoot, ever, for any reason.</li>
+    <li><strong>Interviews with subjects who are hard to re-book</strong> — a CEO, a public figure, an out-of-town interviewee.</li>
+    <li><strong>Any shoot with a location fee or limited access</strong> — a permitted street shoot, a rented set, a one-day location window.</li>
+    <li><strong>Long-form documentary or archival footage</strong> — material that may sit unused for months or years before it's touched again, giving corruption plenty of time to go unnoticed.</li>
+  </ul>
+  <p>For lower-stakes internal tests, B-roll gathering, or footage you know you can reshoot cheaply, a straightforward verified copy without full checksum logging is a reasonable trade-off for speed. Match the rigor of your data workflow to how expensive it would be to lose that specific footage.</p>
+
+  <h2>A Realistic On-Set Data Workflow, Start to Finish</h2>
+  <table>
+    <thead><tr><th>Step</th><th>Action</th><th>Who's Responsible</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Card fills up or scene wraps — card pulled, logged in shoot log</td><td>Camera operator / AC</td></tr>
+      <tr><td>2</td><td>Copy to Backup Drive 1, into the correct date/camera/scene folder</td><td>DIT or designated data wrangler</td></tr>
+      <tr><td>3</td><td>Copy to Backup Drive 2, independently sourced from the card</td><td>DIT or data wrangler</td></tr>
+      <tr><td>4</td><td>Run checksum verification on both copies</td><td>DIT or data wrangler</td></tr>
+      <tr><td>5</td><td>Spot-check a sample of clips by opening them, not just file size comparison</td><td>Second person, not the one who copied</td></tr>
+      <tr><td>6</td><td>Mark card as safe to format in the shoot log</td><td>DIT or data wrangler</td></tr>
+      <tr><td>7</td><td>Format card in-camera (never on a computer) once confirmed</td><td>Camera operator</td></tr>
+    </tbody>
+  </table>
+
+  <p>On a solo shoot without a dedicated DIT, you are every role in that table. It still works — it just means building the fifteen-minute buffer into your own schedule between setups, rather than skipping it because "no one else is checking anyway."</p>
+
+  <h2>Common Mistakes That Lead to Lost Footage</h2>
+  <ul>
+    <li><strong>Formatting a card the moment a copy dialog closes,</strong> without verification and without a second backup existing yet.</li>
+    <li><strong>Copying Backup Drive 2 from Backup Drive 1</strong> instead of from the original card — this propagates any corruption from the first copy instead of catching it.</li>
+    <li><strong>Storing both backup drives in the same bag,</strong> defeating the entire purpose of redundancy the moment that bag is lost, stolen, or dropped.</li>
+    <li><strong>Skipping the shoot log</strong> and relying on memory for which cards are backed up, especially on multi-day or multi-camera shoots.</li>
+    <li><strong>Renaming clip files manually</strong> in a way that breaks the link between picture and matching audio or metadata.</li>
+  </ul>
+
+  <h2>Building This Into Your Workflow Long-Term</h2>
+  <p>Good data management stops feeling like overhead once it's a habit built into your <a href="/pre-production-checklist-solo-filmmakers">pre-production planning</a> rather than something improvised on the day. Budget the drives, the card reader, and the time for verification into every quote and every schedule, the same way you'd budget for a lens rental or a lighting kit. It's cheap insurance against the single worst outcome in this job — telling a client their footage doesn't exist.</p>
+
+  <FAQBlock items={[
+    {q: "What is the 3-2-1 backup rule for on-set footage?", a: "Keep footage in at least three places before formatting any card: the original card, Backup Drive 1, and Backup Drive 2, with the two backup drives stored and sourced independently so a single lost bag or failed drive can't wipe out both copies."},
+    {q: "Is it safe to format a card after just one backup copy?", a: "No. A single backup still leaves you exposed to that one drive failing, being lost, or being corrupted. Wait until footage exists on two independent backup drives, both verified, before formatting."},
+    {q: "What software should I use for checksum verification on set?", a: "Dedicated offload tools such as Hedge, ShotPut Pro, or Silverstack generate and compare checksums automatically during the copy and produce a verification report per card. For lighter setups, any standalone checksum utility run after copying is far better than trusting a default file copy."},
+    {q: "How should I name and organize footage folders during a shoot?", a: "Structure folders by date first, then camera, then scene or setup — for example 2026-08-01_ProjectName/CAM_A/SC01_INT-OFFICE. This sorts chronologically by default and keeps multi-camera footage from getting mixed together."},
+    {q: "Do I need two backup drives for every single shoot, even small ones?", a: "For anything with real stakes — weddings, one-time events, client work, hard-to-rebook interviews — yes, treat two drives as the minimum. For low-stakes tests or easily reshootable B-roll, a single verified backup is a reasonable trade-off for speed."}
+  ]} />
+
+  <RelatedArticles links={[
+    {href: "/client-wedding-shoot-day-workflow-gear-checklist", title: "Client & Wedding Shoot Day Workflow and Gear Checklist"},
+    {href: "/camera-sensor-cleaning-maintenance-guide", title: "Camera Sensor Cleaning and Maintenance Guide"},
+    {href: "/pre-production-checklist-solo-filmmakers", title: "Pre-Production Checklist for Solo Filmmakers"},
+    {href: "/building-first-camera-bag-run-and-gun-kit", title: "Building Your First Camera Bag: A Run-and-Gun Kit"}
+  ]} />
+
+  <CourseCTA text="Want a complete, professional post-production workflow — from verified footage ingest to color grading and delivery?" />
+
+</Layout>

@@ -1,0 +1,40 @@
+---
+// Usage: <FAQBlock items={[{q: "Question?", a: "Answer text"}, ...]} />
+interface FAQItem {
+  q: string;
+  a: string;
+}
+const { items = [] } = Astro.props as { items: FAQItem[] };
+
+const schemaData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map((item) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+});
+---
+{items.length > 0 && (
+  <section class="faq-block">
+    <h2>Quick FAQ</h2>
+    {items.map((item) => (
+      <div class="faq-item">
+        <p class="faq-q"><strong>Q: {item.q}</strong></p>
+        <p class="faq-a">{item.a}</p>
+      </div>
+    ))}
+    <script type="application/ld+json" set:html={schemaData} />
+  </section>
+)}
+
+<style>
+.faq-block { margin: 44px 0; }
+.faq-item { margin-bottom: 18px; }
+.faq-q { margin-bottom: 4px !important; }
+.faq-a { color: var(--ink-soft); margin-bottom: 0 !important; }
+</style>

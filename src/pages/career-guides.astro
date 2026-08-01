@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PillarGrid from '../components/PillarGrid.astro';
+import { getPagesByCategory } from '../lib/pages';
+
+export const title = "Career & Business Guides";
+export const category = "career";
+export const pillarHub = true;
+export const description = "Freelance rates, portfolio building, client acquisition, and personal branding guides for video editors, colorists, and DOPs building a career in India.";
+
+const allPages = Object.values(import.meta.glob('./*.astro', { eager: true })) as any[];
+const careerGuides = getPagesByCategory(allPages, 'career');
+---
+
+<Layout title="Career & Business Guides | Editors Gurukul" description={description}>
+
+  <div class="container">
+    <div class="card">
+      <h1>Career &amp; Business Guides</h1>
+      <p>Practical business advice for editors, colorists, and DOPs — pricing your work, building a portfolio that gets clients, and growing a personal brand.</p>
+      <PillarGrid items={careerGuides} />
+      <p style="margin-top:20px;"><a href="/guides">All Guides →</a> · <a href="/my-gear">My Gear →</a></p>
+    </div>
+  </div>
+
+</Layout>

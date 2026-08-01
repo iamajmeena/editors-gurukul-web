@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PillarGrid from '../components/PillarGrid.astro';
+import { getPagesByCategory } from '../lib/pages';
+
+export const title = "Filmmaking Process & Gear Guides";
+export const category = "filmmaking";
+export const pillarHub = true;
+export const description = "Production workflow and gear guides for solo and small-team filmmakers — gimbals, audio gear, shot lists, on-set data management, and run-and-gun kit building.";
+
+const allPages = Object.values(import.meta.glob('./*.astro', { eager: true })) as any[];
+const filmmakingGuides = getPagesByCategory(allPages, 'filmmaking');
+---
+
+<Layout title="Filmmaking Process & Gear Guides | Editors Gurukul" description={description}>
+
+  <div class="container">
+    <div class="card">
+      <h1>Filmmaking Process &amp; Gear Guides</h1>
+      <p>Production workflow, on-set gear, and practical process guides for solo filmmakers and small teams — from pre-production checklists to building your first run-and-gun kit.</p>
+      <PillarGrid items={filmmakingGuides} />
+      <p style="margin-top:20px;"><a href="/camera-guides">Camera Guides →</a> · <a href="/lighting-guides">Lighting Guides →</a> · <a href="/guides">All Guides →</a></p>
+    </div>
+  </div>
+
+</Layout>

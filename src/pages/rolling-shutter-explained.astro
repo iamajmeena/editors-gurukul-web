@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
+
+export const title = "Rolling Shutter Explained — Why Pans Look Wobbly (2026)";
+export const category = "camera";
+export const description = "Rolling shutter explained — kyun fast pans aur camera shake mein footage wobbly/jello-effect dikhta hai, technical breakdown aur ise avoid karne ke practical tips.";
+---
+<Layout title={title} description={description}>
+
+<header>
+  <h1>Rolling Shutter Explained — Why Fast Pans Look Wobbly</h1>
+  <p class="hero-subtitle">Rolling shutter tab hota hai jab camera sensor ek frame ka data top-se-bottom scan karke read karta hai, ek saath poora frame capture nahi karta — isliye fast movement ya vibration mein straight lines skewed/wobbly dikhti hain (jise "jello effect" bhi kehte hain).</p>
+</header>
+
+<article class="wrap">
+
+  <div class="callout"><b>Quick take:</b> Rolling shutter ek sensor readout limitation hai, camera "defect" nahi. Zyada visible hota hai fast pans, propeller/drone shots, aur handheld vibration mein. Global shutter cameras is problem se completely immune hote hain.</div>
+
+  <h2>Rolling Shutter Kya Hota Hai</h2>
+  <p>Zyaadatar CMOS sensors (jo aajkal har digital camera mein hote hain) frame ko ek saath capture nahi karte. Iske bajaye, sensor har frame ko <b>line-by-line, top se bottom</b> scan karke read karta hai — jaise ek scanner paper ko scan karta hai. Yeh process itna fast hota hai ki normal shooting mein hume pata bhi nahi chalta, lekin jab subject ya camera fast move karta hai, is scanning delay ka effect visible ho jaata hai.</p>
+
+  <h2>Visual Explanation</h2>
+  <svg viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:24px auto;">
+    <text x="20" y="24" font-size="14" fill="#333" font-weight="bold">Global Shutter (Ideal)</text>
+    <rect x="20" y="35" width="200" height="100" fill="none" stroke="#0f8b8d" stroke-width="2"/>
+    <line x1="60" y1="35" x2="60" y2="135" stroke="#0f8b8d" stroke-width="3"/>
+    <line x1="140" y1="35" x2="140" y2="135" stroke="#0f8b8d" stroke-width="3"/>
+    <text x="30" y="155" font-size="11" fill="#555">Straight lines stay straight</text>
+
+    <text x="270" y="24" font-size="14" fill="#333" font-weight="bold">Rolling Shutter (Fast Pan)</text>
+    <rect x="270" y="35" width="200" height="100" fill="none" stroke="#e0692a" stroke-width="2"/>
+    <line x1="310" y1="35" x2="330" y2="135" stroke="#e0692a" stroke-width="3"/>
+    <line x1="390" y1="35" x2="410" y2="135" stroke="#e0692a" stroke-width="3"/>
+    <text x="280" y="155" font-size="11" fill="#555">Straight lines appear slanted</text>
+
+    <text x="20" y="200" font-size="12" fill="#555">Sensor top row scans first, bottom row scans last —</text>
+    <text x="20" y="218" font-size="12" fill="#555">by the time it reaches the bottom, the subject has moved.</text>
+  </svg>
+
+  <h2>Rolling Shutter Kab Sabse Zyada Dikhta Hai</h2>
+  <ul>
+    <li><b>Fast whip pans</b> — vertical lines (walls, poles, door frames) skew ho jaati hain</li>
+    <li><b>Drone/gimbal footage</b> — propeller blades curved ya bent dikhti hain</li>
+    <li><b>Handheld vibration</b> — car mounts, running shots mein "jello" wobble</li>
+    <li><b>Camera shake without stabilisation</b> — quick jerky movements mein</li>
+    <li><b>Flash photography mixed with video</b> — banding artifacts (alag phenomenon but related sensor readout speed se)</li>
+  </ul>
+
+  <h2>Rolling Shutter Speed Kaise Vary Karta Hai</h2>
+  <p>Har camera ka sensor readout speed different hota hai. Stacked/BSI CMOS sensors (jaise Sony a1, a9 series) bahut fast readout karte hain — rolling shutter almost negligible hota hai. Purane ya budget sensors mein readout slower hota hai, isliye rolling shutter zyada obvious dikhta hai.</p>
+  <table>
+    <thead>
+      <tr><th>Sensor Readout Speed</th><th>Rolling Shutter Severity</th><th>Typical Camera Type</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Very Fast (Stacked CMOS)</td><td class="win">✅ Minimal, almost unnoticeable</td><td>Flagship mirrorless (a1, a9 series)</td></tr>
+      <tr><td>Moderate</td><td>Visible in fast pans</td><td>Mid-range mirrorless (a6700, R6 II)</td></tr>
+      <tr><td>Slow</td><td>Noticeable jello effect</td><td>Entry-level/budget mirrorless, older DSLRs</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Rolling Shutter Ko Kaise Avoid/Minimize Karein</h2>
+  <h3>1. Fast Pans Avoid Karo</h3>
+  <p>Sabse simple fix — pan speed slow rakho. Agar dramatic fast pan chahiye editorial reason se, us shot ko chhota rakho ya alternate angle se cover karo.</p>
+  <h3>2. Stabilisation Use Karo</h3>
+  <p>Gimbal ya tripod se smooth, controlled movement rolling shutter ko drastically kam kar deta hai kyunki sudden jerks eliminate ho jaate hain.</p>
+  <h3>3. Shutter Speed Aur Frame Rate Check Karo</h3>
+  <p>Kuch cameras mein slightly higher frame rate readout ko fractionally fast kar deta hai. Yeh universal fix nahi hai, but worth checking camera-specific behavior.</p>
+  <h3>4. Post-Production Correction</h3>
+  <p>DaVinci Resolve jaise editing software mein rolling shutter correction tools available hain jo skew ko partially correct kar sakte hain — lekin yeh hamesha perfect nahi hota, especially severe cases mein.</p>
+  <div class="callout"><b>Pro tip:</b> Agar aap consistently drone/action content banate ho jahan fast movement common hai, ek stacked-sensor camera mein invest karna long-term mein zyada practical hai post-production fixes pe depend karne se.</div>
+
+  <h2>Rolling Shutter vs Global Shutter</h2>
+  <p>Global shutter sensors poore frame ko ek hi instant mein capture karte hain — rolling shutter ki tarah line-by-line scan nahi karte. Isse rolling shutter artifacts completely eliminate ho jaate hain. Yeh tech historically bahut expensive thi aur high-end cinema cameras tak limited thi. <a href="/global-shutter-cameras-explained-2026">Global shutter cameras ke baare mein detail mein yahaan padhein</a> — including kya yeh upgrade aapke liye worth hai.</p>
+
+  <FAQBlock items={[
+    {q: "Rolling shutter camera ki kharabi hai kya?", a: "Nahi, yeh CMOS sensor ki normal readout technique hai, defect nahi. Har CMOS-based camera mein kuch degree ka rolling shutter hota hai."},
+    {q: "Kya sabhi cameras mein rolling shutter hota hai?", a: "Zyaadatar haan, kyunki CMOS sensors line-by-line scan karte hain. Sirf global shutter sensors is issue se immune hote hain, aur woh rare/expensive hain."},
+    {q: "Rolling shutter ko editing mein fix kiya ja sakta hai kya?", a: "Partially haan — DaVinci Resolve mein rolling shutter correction tools hain, lekin severe skew ko fully fix karna mushkil hota hai bina quality/crop trade-off ke."},
+    {q: "Kya higher frame rate rolling shutter ko kam karta hai?", a: "Kuch had tak, camera-specific hota hai. Yeh guarantee nahi hai — stabilisation aur sensor readout speed zyada bade factors hain."}
+  ]} />
+
+  <RelatedArticles links={[
+    {href: "/global-shutter-cameras-explained-2026", title: "Global Shutter Cameras Explained — Is the Upgrade Worth It"},
+    {href: "/sensor-size-full-frame-vs-aps-c-vs-m43", title: "Full-Frame vs APS-C vs Micro Four Thirds Explained"},
+    {href: "/dslr-vs-mirrorless-vs-cinema-camera-2026", title: "DSLR vs Mirrorless vs Cinema Camera — Which to Buy"},
+    {href: "/camera-menu-settings-cinematic-footage", title: "Camera Menu Settings for Cinematic Footage"},
+    {href: "/iso-native-iso-dual-native-iso-explained", title: "Understanding ISO, Native ISO, and Dual Native ISO"}
+  ]} />
+
+  <CourseCTA text="Rolling shutter artifacts ho ya na ho, footage ko polish karna DaVinci Resolve mein seekho." />
+
+</article>
+
+</Layout>

@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
+
+export const title = "Understanding ISO, Native ISO, and Dual Native ISO (2026)";
+export const category = "camera";
+export const description = "ISO, native ISO aur dual native ISO ka matlab kya hai — noise, low-light performance aur camera choice ke liye yeh concepts kyun important hain, complete explanation.";
+---
+<Layout title={title} description={description}>
+
+<header>
+  <h1>Understanding ISO, Native ISO, and Dual Native ISO</h1>
+  <p class="hero-subtitle">ISO camera ke sensor ki light sensitivity ko control karta hai. "Native ISO" woh sweet-spot value hai jahan sensor sabse clean image deta hai bina artificial boost ke, aur "Dual Native ISO" wo advanced tech hai jisme sensor ke do alag-alag clean/optimal points hote hain — low aur high light dono ke liye.</p>
+</header>
+
+<article class="wrap">
+
+  <div class="callout"><b>Quick take:</b> ISO badhane se image bright nahi hoti "free mein" — yeh electronically amplify karta hai jo noise bhi laata hai saath. Native ISO woh point hai jahan sensor cleanest hota hai. Dual Native ISO wale sensors low-light mein bhi clean image de sakte hain bina extra noise ke, kyunki unke paas ek doosra "clean" high-ISO point hota hai.</div>
+
+  <h2>ISO Kya Hai — Basics</h2>
+  <p>ISO teen exposure controls mein se ek hai (dusre do: aperture aur shutter speed). Yeh sensor ke signal ko electronically amplify karta hai jab light kam ho. Lekin yeh ek trade-off ke saath aata hai — jitna zyada aap amplify karte ho, utna zyada noise (grain/speckling) bhi introduce hota hai image mein.</p>
+  <p>Isiliye ISO ko "free brightness boost" samajhna galat hai — yeh dark scene ko bright toh kar deta hai, lekin quality cost pe.</p>
+
+  <h2>Native ISO Kya Hota Hai</h2>
+  <p>Har sensor ka ek "native" ya "base" ISO hota hai — woh specific value jahan sensor bina kisi additional amplification ke apni sabse clean, sabse zyada dynamic range wali image capture karta hai. Zyaadatar cameras mein yeh ISO 100 ya ISO 200 hota hai (log profiles mein aksar higher, jaise 400 ya 800, kyunki flat curve zyada base sensitivity maangta hai).</p>
+  <p>Native ISO se upar ya neeche jaate hi, camera ya toh electronically amplify karta hai (upar) ya signal ko artificially reduce karta hai (neeche) — dono cases mein image quality thodi compromise hoti hai compared to native point.</p>
+
+  <h2>Dual Native ISO Kya Hai</h2>
+  <p>Kuch advanced sensors (jaise Blackmagic Pocket Cinema Cameras, Panasonic S5 series, aur kuch cinema cameras) mein ek unique design hota hai jisme <b>do alag "native" clean points</b> hote hain — ek low-light ke liye (jaise ISO 800), ek bright light ke liye (jaise ISO 100). Sensor circuitry is tarah design ki jaati hai ki dono points pe minimal noise ho, jabki beech ke ISO values mein interpolation hoti hai.</p>
+  <div class="callout"><b>Practical benefit:</b> Agar aap ek dim-lit interview shoot kar rahe ho, dual native ISO wala sensor apne high native point (jaise ISO 3200 ya 5000) pe switch karke bhi clean, low-noise footage de sakta hai — jabki single native ISO sensor usi brightness pe zyada noise dikhayega kyunki woh apne native point se bahut door amplify ho raha hoga.</div>
+
+  <h2>Visual Comparison</h2>
+  <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:24px auto;">
+    <text x="20" y="20" font-size="13" fill="#333" font-weight="bold">Single Native ISO Sensor</text>
+    <line x1="20" y1="60" x2="480" y2="60" stroke="#ccc"/>
+    <circle cx="80" cy="60" r="6" fill="#0f8b8d"/>
+    <text x="55" y="80" font-size="10" fill="#555">Native (ISO 100)</text>
+    <text x="380" y="80" font-size="10" fill="#e0692a">Noise increases →</text>
+
+    <text x="20" y="120" font-size="13" fill="#333" font-weight="bold">Dual Native ISO Sensor</text>
+    <line x1="20" y1="160" x2="480" y2="160" stroke="#ccc"/>
+    <circle cx="80" cy="160" r="6" fill="#0f8b8d"/>
+    <circle cx="320" cy="160" r="6" fill="#0f8b8d"/>
+    <text x="50" y="180" font-size="10" fill="#555">Native (ISO 100)</text>
+    <text x="280" y="180" font-size="10" fill="#555">2nd Native (ISO 3200)</text>
+  </svg>
+
+  <h2>ISO Aur Grading Ka Connection</h2>
+  <p>Native ISO pe shoot kiya gaya footage grading mein sabse zyada flexibility deta hai kyunki uska <a href="/dynamic-range-color-grading-explained">dynamic range full potential</a> pe hota hai. Jab aap native ISO se bahut door jaate ho (bahut high ya bahut low), dynamic range compress hoti hai, aur shadows push karne pe noise/banding jaldi expose ho jaata hai.</p>
+
+  <h2>Practical Tips ISO Ke Liye</h2>
+  <h3>1. Apne Camera Ka Native ISO Pata Karo</h3>
+  <p>Log profile mein shoot karte waqt manual ISO ka base value manufacturer ki documentation mein check karo — zyaadatar yeh camera ke standard base se different hota hai.</p>
+  <h3>2. Native ISO Ke Multiples Pe Shoot Karo</h3>
+  <p>Agar dual native ISO camera hai, uske dono native points (jaise 400 aur 3200) ke close values use karna cleanest result deta hai, beech ke arbitrary values avoid karo jab possible ho.</p>
+  <h3>3. Zyada ISO Se Darna Nahi Chahiye — Agar Woh Native Hai</h3>
+  <p>Dual native ISO sensor pe high native ISO use karna low native ISO jitna hi clean hoga — bas correctly expose karna zaroori hai.</p>
+
+  <FAQBlock items={[
+    {q: "Native ISO aur base ISO mein kya farak hai?", a: "Zyaadatar practical use mein yeh same cheez consider ki jaati hai — sensor ka cleanest, no-amplification-needed sensitivity point."},
+    {q: "Kya dual native ISO wali camera hamesha better hoti hai?", a: "Low-light flexibility ke liye haan, lekin overall image quality bhi sensor size aur processing pe depend karti hai, sirf dual native ISO pe nahi."},
+    {q: "Kya high ISO hamesha noisy image deta hai?", a: "Agar woh camera ka native/dual-native point nahi hai toh haan, noise badhta hai. Lekin agar woh ek native point hai, noise minimal reh sakta hai."},
+    {q: "ISO badhane se dynamic range pe kya asar padta hai?", a: "Generally native ISO se door jaane pe dynamic range thodi compress hoti hai — shadows aur highlights dono mein detail recovery kam ho jaati hai."}
+  ]} />
+
+  <RelatedArticles links={[
+    {href: "/dynamic-range-color-grading-explained", title: "What Is Dynamic Range and Why It Matters"},
+    {href: "/best-camera-low-light-filmmaking-2026", title: "Best Camera for Low-Light Filmmaking"},
+    {href: "/best-budget-cinema-camera-beginners-2026", title: "Best Budget Cinema Camera for Beginners"},
+    {href: "/camera-menu-settings-cinematic-footage", title: "Camera Menu Settings for Cinematic Footage"},
+    {href: "/best-camera-settings-davinci-resolve-grading", title: "Best Camera Settings for DaVinci Resolve Grading"}
+  ]} />
+
+  <CourseCTA text="ISO ka technical side clear ho gaya? Ab footage ko grade karke professional look dena seekho." />
+
+</article>
+
+</Layout>

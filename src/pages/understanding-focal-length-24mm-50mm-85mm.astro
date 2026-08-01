@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
+
+export const title = "Understanding Focal Length — 24mm vs 50mm vs 85mm Explained (2026)";
+export const category = "lens";
+export const description = "24mm vs 50mm vs 85mm explained for filmmakers — how each focal length changes intimacy, compression, and background separation in your story.";
+---
+<Layout title={title} description={description}>
+
+<header>
+  <h1>Understanding Focal Length — How 24mm, 50mm and 85mm Change Your Story</h1>
+  <p class="hero-subtitle">Focal length isn't just "how zoomed in" a shot is — it's a perspective decision that changes how connected or distant your viewer feels to the subject. <strong>24mm tells the story of a place, 50mm feels like the way your own eyes see, and 85mm isolates a subject to make a moment feel emotionally private.</strong></p>
+</header>
+
+<article class="wrap">
+
+  <div class="callout"><b>Quick take:</b> Wide lenses (24mm) sell environment and context — where the story is happening. Normal lenses (50mm) match natural human perspective and feel honest and unremarkable, which is exactly why they work so well for dialogue. Telephoto lenses (85mm and beyond) compress space and isolate a subject from a busy background, which reads as emotional focus. Same subject, same scene — three completely different feelings, purely from where you stand and what focal length you choose.</div>
+
+  <h2>Focal Length Is a Storytelling Decision, Not Just a Zoom Level</h2>
+  <p>Focal length, measured in millimetres, determines a lens's angle of view — how much of the scene fits inside the frame from a given distance. A small number like 24mm captures a wide angle of view; a large number like 85mm captures a narrow one. That much is basic optics, and most beginners stop there, treating focal length as nothing more than a way to fit more or less into the shot.</p>
+  <p>But the more useful way to think about focal length on a film set is as a perspective tool. It changes how compressed the background looks relative to your subject, how much separation you get between subject and background, and — because of how the human eye interprets that compression — how emotionally close or distant a shot <em>feels</em> to an audience, independent of what's actually happening in the scene. A director blocking a scene in 24mm is making a very different emotional statement than the same blocking shot in 85mm, even if the subject's position in frame is identical.</p>
+
+  <h2>Visual Comparison — Field of View Across Focal Lengths</h2>
+  <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Field of view comparison diagram for 24mm, 50mm and 85mm lenses">
+    <rect x="0" y="0" width="700" height="220" fill="none"></rect>
+    <g>
+      <polygon points="60,200 10,20 110,20" fill="#0f8b8d22" stroke="#0f8b8d" stroke-width="2"></polygon>
+      <text x="60" y="215" text-anchor="middle" font-size="13" fill="#0f8b8d" font-weight="700">24mm — Wide</text>
+    </g>
+    <g>
+      <polygon points="350,200 320,20 380,20" fill="#0f8b8d33" stroke="#0f8b8d" stroke-width="2"></polygon>
+      <text x="350" y="215" text-anchor="middle" font-size="13" fill="#0f8b8d" font-weight="700">50mm — Normal</text>
+    </g>
+    <g>
+      <polygon points="640,200 625,20 655,20" fill="#0f8b8d44" stroke="#0f8b8d" stroke-width="2"></polygon>
+      <text x="640" y="215" text-anchor="middle" font-size="13" fill="#0f8b8d" font-weight="700">85mm — Tele</text>
+    </g>
+  </svg>
+  <p style="text-align:center; font-size:0.9rem; color:var(--ink-soft);">The field of view narrows as focal length increases — same subject distance, dramatically different framing and background relationship.</p>
+
+  <h2>24mm — The Environmental Storyteller</h2>
+  <p>24mm is a wide-angle lens that pulls a large amount of environment into frame. It's the focal length you reach for when the story needs the audience to understand <strong>where</strong> something is happening — establishing shots, wide interiors, landscapes, or any moment where the subject needs to feel connected to, or small within, their surroundings.</p>
+  <p>Shot close to a face, 24mm produces obvious distortion — the nose stretches forward, ears recede, and features that should sit flat on a face start to bulge. That's why 24mm is a poor choice for tight portraits. It earns its keep when the subject occupies a modest part of the frame and the environment is doing real narrative work — a character dwarfed by a factory floor, a lone figure against a landscape, a room that needs to feel oppressive or expansive.</p>
+  <div class="callout"><b>Use case:</b> Establishing shots, wide interiors, landscapes, and any scene where the environment itself is part of the story.</div>
+
+  <h2>35mm — The Storytelling Middle Ground</h2>
+  <p>35mm sits between the environmental pull of 24mm and the neutrality of 50mm, and that's exactly its appeal. It's wide enough to keep a sense of place in frame — useful for walk-and-talk scenes, two-shots, and documentary coverage where you need context and a subject in the same shot — while showing noticeably less distortion than 24mm when a face does drift toward the edge of frame.</p>
+  <p>Many run-and-gun documentary shooters treat 35mm as a default focal length precisely because it's forgiving: close enough to intimate for a conversation, wide enough to catch a reaction from a second person stepping into frame without a lens change.</p>
+  <div class="callout"><b>Use case:</b> Walk-and-talk scenes, wide two-shots, documentary coverage, environmental portraits with a bit more context than 50mm allows.</div>
+
+  <h2>50mm — The Neutral, Honest Storyteller</h2>
+  <p>50mm earns the nickname "nifty fifty" because its angle of view is close to how the human eye perceives a scene — not exaggerated wide, not compressed tight. That neutrality is precisely why 50mm reads as honest on screen. There's no perspective distortion pulling attention to itself, so the audience's focus stays entirely on performance and content rather than on the lens.</p>
+  <p>For interviews, walk-and-talk coverage, and general B-roll, 50mm is the most reliably versatile focal length on set, because distortion is minimal and compression is moderate rather than extreme. That neutrality is exactly why our <a href="/best-beginner-lens-kit-cinematic-video">beginner lens kit guide</a> treats 50mm as the first prime lens worth owning.</p>
+  <div class="callout"><b>Use case:</b> Interviews, general B-roll, documentary-style coverage, and as an all-purpose everyday lens.</div>
+
+  <h2>85mm — The Emotional Isolator</h2>
+  <p>85mm is a short telephoto, and its defining trait is strong subject-background separation. Because of the way telephoto compression works, background elements appear larger and closer to the subject than they actually are, producing a "squeezed" look that flattens depth and pulls the eye straight to the subject's face. Combined with a wide aperture, that compression is also what produces the smooth, creamy <a href="/depth-of-field-explained-bokeh-guide">background blur</a> that reads as high-end and cinematic.</p>
+  <p>85mm is treated as an industry-standard portrait focal length because it renders facial features with almost no distortion — no exaggerated nose, no flattened ears, just an accurate, flattering representation of the face. That makes it the natural choice for emotional close-ups, tight interview reactions, and dramatic character moments where you want the audience locked onto a single face with the rest of the world falling away behind it. If you want to understand exactly why that happens optically, our <a href="/focal-length-perspective-facial-distortion-portraits">guide to focal length and facial distortion</a> breaks down the physics in more depth.</p>
+  <div class="callout"><b>Use case:</b> Emotional close-ups, portrait-style interviews, dramatic reaction shots, and isolating a subject from a busy or distracting background.</div>
+
+  <h2>135mm — The Extreme Compression Tool</h2>
+  <p>Push past 85mm into 135mm territory and the effects only intensify. Background compression becomes dramatic — distant elements appear to sit right behind the subject's shoulder — and background separation becomes almost total, since even a modest aperture will melt a background into an abstract wash of colour and light. Working distance also increases substantially: at 135mm you're often shooting from several metres away, which is either a major advantage (an unaware or camera-shy subject barely notices they're being filmed) or a real limitation (you need space behind the camera that a small interior location simply doesn't have).</p>
+  <p>135mm rarely appears as an everyday working lens on smaller productions, but it's a deliberate choice for extreme close-up emotional beats, long-lens documentary coverage where you can't get physically close to the subject, or any shot that wants to feel voyeuristic and distant despite showing a tight, intimate frame.</p>
+  <div class="callout"><b>Use case:</b> Extreme emotional close-ups, long-lens documentary work, distant candid coverage, and shots that need maximum background compression.</div>
+
+  <h2>Focal Length Quick-Reference Table</h2>
+  <table>
+    <thead>
+      <tr><th>Focal Length</th><th>Field of View</th><th>Distortion</th><th>Compression</th><th>Storytelling Feel</th><th>Best Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>24mm</b></td><td>Wide</td><td>High at close range</td><td>Minimal</td><td>Grand, environmental, distant</td><td>Establishing shots, landscapes, wide interiors</td></tr>
+      <tr><td><b>35mm</b></td><td>Moderately wide</td><td>Low to moderate</td><td>Low</td><td>Present, contextual, observational</td><td>Walk-and-talk, two-shots, documentary coverage</td></tr>
+      <tr><td><b>50mm</b></td><td>Normal</td><td>Very low</td><td>Natural</td><td>Honest, neutral, human</td><td>Interviews, general B-roll, all-purpose work</td></tr>
+      <tr><td><b>85mm</b></td><td>Narrow</td><td>Effectively none</td><td>Noticeable</td><td>Intimate, focused, emotional</td><td>Portraits, emotional close-ups, reaction shots</td></tr>
+      <tr><td><b>135mm</b></td><td>Very narrow</td><td>None</td><td>Extreme</td><td>Isolated, voyeuristic, dramatic</td><td>Extreme close-ups, long-lens documentary work</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Real Shooting Scenarios — How the Choice Actually Plays Out</h2>
+  <p>Theory only matters once it changes a decision on set. Here's how the same story beat plays differently depending on which focal length you reach for.</p>
+
+  <h3>Scenario: A character walks into an empty warehouse for the first time</h3>
+  <p>Shot at 24mm from a low angle, the warehouse dwarfs the character — the ceiling stretches away, the space feels vast and slightly threatening. Shot at 85mm on the same character's face as they look up, the warehouse disappears into soft compression behind them, and the story beat shifts entirely from "this place is enormous" to "look at this person's reaction." Neither is wrong — they're simply telling two different halves of the same scene.</p>
+
+  <h3>Scenario: Two people having a tense conversation across a table</h3>
+  <p>35mm or 50mm covering both people in a two-shot keeps the audience aware of the physical space between them — useful if the blocking, distance, or body language is part of the tension. Cutting to individual 85mm close-ups on each face as the conversation escalates removes that spatial awareness entirely and makes the scene feel like it's happening in emotional close-up, one face at a time, which is exactly why 85mm dominates dramatic dialogue coverage once a scene gets personal.</p>
+
+  <h3>Scenario: A wedding groom waiting at the altar</h3>
+  <p>A wide 24mm shot establishes the venue, the guests, and the scale of the moment. As soon as the bride is about to enter, cutting to an 85mm close-up on the groom's face isolates his reaction completely from the crowd and venue — the compression strips away every distraction so the only thing left in the frame is the emotion on his face. This exact 24mm-to-85mm shift is one of the most reliable emotional beats in wedding cinematography for a reason.</p>
+
+  <h2>Perspective vs Zoom — The Confusion Worth Clearing Up</h2>
+  <p>A common mistake is assuming that zooming in with an 85mm lens and simply walking closer to a subject with a 24mm lens will produce the same result once the face fills the same amount of frame. It won't. Perspective is governed entirely by camera-to-subject distance, not by focal length. Walk close with a 24mm lens until a face fills the frame, and the background will look distant and small. Stay far back with an 85mm lens until that same face fills the frame the same way, and the background will look large, close, and compressed. That difference — not the size of the subject in frame — is the real storytelling power of focal length, and it's why a "close the distance" instruction to camera operators can completely change a shot's meaning even when the framing on the subject stays identical.</p>
+  <p>This distinction also explains why prime lenses tend to force better blocking discipline than zooms — when you can't just twist a ring to reframe, you have to physically move, which means you're constantly making (even if unconsciously) a perspective decision rather than only a framing one. We go deeper into that trade-off in our <a href="/prime-vs-zoom-lenses-filmmaking">prime vs zoom lenses guide</a>.</p>
+
+  <h2>Choosing a Focal Length for the Feeling You Want, Not Just the Frame You Need</h2>
+  <p>The practical takeaway for anyone building a shot list: don't ask "what focal length gets this subject in frame." Ask "how close or distant do I want the audience to feel from this moment." Wide focal lengths keep the audience as an observer of a place. Normal focal lengths put the audience in a natural, conversational relationship with the subject. Long focal lengths pull the audience into an intimate, almost private closeness with a single face, at the cost of losing the surrounding world entirely. Once you start reading a scene that way, focal length stops being a technical spec and becomes one of the most direct emotional levers you have on set — right alongside <a href="/dynamic-range-color-grading-explained">how you handle dynamic range and color</a> in the grade afterward.</p>
+
+  <FAQBlock items={[
+    {q: "Which focal length is most versatile for beginners?", a: "50mm — it renders a natural, undistorted perspective and covers everything from interviews to general B-roll, which is why it's usually the first prime lens worth owning."},
+    {q: "Which focal length is best for portraits?", a: "85mm is the industry-standard portrait focal length because it produces almost no facial distortion, and its background compression creates flattering, cinematic separation between subject and background."},
+    {q: "Is it wrong to shoot a close-up face at 24mm?", a: "It's technically possible but generally avoided — at close range, 24mm introduces noticeable facial distortion, stretching the nose forward and pulling the ears back in an unflattering way."},
+    {q: "Is zooming in the same thing as changing focal length while keeping the same distance?", a: "No. Zooming without moving simply crops the frame at the same perspective. Shooting the same framing at a different focal length by changing your distance from the subject physically changes perspective and background compression — that's the real storytelling difference."},
+    {q: "What focal length should I use for run-and-gun documentary work?", a: "35mm is a common default — wide enough to hold context and a second subject in frame, but with noticeably less distortion than 24mm if a face drifts toward the edge of the shot."}
+  ]} />
+
+  <RelatedArticles links={[
+    {href: "/prime-vs-zoom-lenses-filmmaking", title: "Prime vs Zoom Lenses for Filmmaking"},
+    {href: "/best-beginner-lens-kit-cinematic-video", title: "Best Beginner Lens Kit for Cinematic Video"},
+    {href: "/focal-length-perspective-facial-distortion-portraits", title: "How Focal Length Affects Perspective and Facial Distortion"},
+    {href: "/depth-of-field-explained-bokeh-guide", title: "Depth of Field Explained — Creamy Bokeh Guide"}
+  ]} />
+
+  <CourseCTA text="Once your framing and focal length choices are locked in, learn how to carry that same intentionality into the grade with DaVinci Resolve." />
+
+</article>
+
+</Layout>

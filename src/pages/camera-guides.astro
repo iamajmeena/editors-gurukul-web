@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const allPages = Object.values(import.meta.glob('./*.astro', { eager: true })) as any[];
-const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'free-resources.astro', 'my-gear.astro', 'camera-guides.astro'];
+const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'free-resources.astro', 'my-gear.astro', 'camera-guides.astro', 'lens-guides.astro', 'lighting-guides.astro', 'filmmaking-guides.astro', 'storytelling-guides.astro', 'career-guides.astro', 'download-bridge.astro', 'decoding-davinci-20-course.astro'];
 
 const cameraGuides = allPages.filter(page => {
   const filename = page.file.split('/').pop() || '';

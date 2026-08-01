@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
+
+export const title = "Full-Frame vs APS-C vs Micro Four Thirds Sensor Size Explained (2026)";
+export const category = "camera";
+export const description = "Full-frame vs APS-C vs Micro Four Thirds sensor size explained — crop factor, depth of field aur low-light performance ka real impact filmmaking ke liye, complete breakdown.";
+---
+<Layout title={title} description={description}>
+
+<header>
+  <h1>Full-Frame vs APS-C vs Micro Four Thirds — Sensor Size Explained</h1>
+  <p class="hero-subtitle">Sensor size directly decide karta hai teen cheezein: field of view (crop factor), depth of field control, aur low-light performance. Full-frame sabse zyada light capture karta hai, APS-C balance deta hai, aur Micro Four Thirds (M43) sabse compact/affordable ecosystem deta hai.</p>
+</header>
+
+<article class="wrap">
+
+  <div class="callout"><b>Quick take:</b> Low-light aur cinematic shallow depth of field priority hai toh full-frame. Balanced budget aur reach chahiye (wildlife, telephoto) toh APS-C. Compact, affordable, lightweight setup chahiye toh Micro Four Thirds.</div>
+
+  <h2>Sensor Size Actually Kya Determine Karta Hai</h2>
+  <p>Sensor ek physical rectangle hai jisme light photons capture hote hain. Bada sensor ka matlab hai zyada surface area — jo do cheezein directly improve karta hai: <b>light-gathering capability</b> (behtar low-light, kam noise) aur <b>depth of field control</b> (same aperture pe bada sensor zyada background blur deta hai, kyunki physical focal length lamba hota hai equivalent field of view ke liye).</p>
+
+  <h2>Sensor Sizes Ka Visual Comparison</h2>
+  <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:24px auto;">
+    <rect x="40" y="40" width="420" height="280" fill="none" stroke="#ccc" stroke-dasharray="4"/>
+    <rect x="60" y="60" width="380" height="253" fill="rgba(224,105,42,0.15)" stroke="#e0692a" stroke-width="2"/>
+    <text x="70" y="80" font-size="14" fill="#333">Full-Frame (36x24mm)</text>
+    <rect x="110" y="110" width="253" height="169" fill="rgba(15,139,141,0.2)" stroke="#0f8b8d" stroke-width="2"/>
+    <text x="120" y="130" font-size="13" fill="#333">APS-C (23.6x15.7mm)</text>
+    <rect x="150" y="155" width="152" height="114" fill="rgba(80,80,180,0.2)" stroke="#5050b4" stroke-width="2"/>
+    <text x="158" y="175" font-size="12" fill="#333">M43 (17.3x13mm)</text>
+  </svg>
+
+  <h2>Crop Factor Explained</h2>
+  <p>Crop factor batata hai ek lens ka field of view full-frame equivalent mein kya banega:</p>
+  <table>
+    <thead>
+      <tr><th>Sensor Type</th><th>Approx. Size</th><th>Crop Factor</th><th>50mm Lens Equivalent</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Full-Frame</td><td>36 x 24mm</td><td>1.0x</td><td>50mm</td></tr>
+      <tr><td>APS-C (Sony/Fuji)</td><td>~23.6 x 15.7mm</td><td>1.5x</td><td>~75mm</td></tr>
+      <tr><td>APS-C (Canon)</td><td>~22.3 x 14.9mm</td><td>1.6x</td><td>~80mm</td></tr>
+      <tr><td>Micro Four Thirds</td><td>17.3 x 13mm</td><td>2.0x</td><td>100mm</td></tr>
+    </tbody>
+  </table>
+  <p>Matlab agar aap APS-C camera pe 24mm wide lens lagate ho, actual field of view ~36mm jaisa dikhega. Yeh important hai jab aap lens buy kar rahe ho — spec sheet ka focal length hamesha "effective" field of view se different hota hai crop sensor pe.</p>
+
+  <h2>Depth of Field Ka Impact</h2>
+  <p>Bada sensor same framing aur aperture pe zyada background blur (bokeh) deta hai, kyunki physical focal length lamba hota hai. Example: agar aap ek subject ko same framing mein full-frame pe 50mm f/2.8 se aur M43 pe 25mm f/2.8 se shoot karo (dono ka equivalent field of view same hai), full-frame wali image mein zyada background blur milega.</p>
+  <div class="callout"><b>Practical implication:</b> Agar aapka style bahut shallow, cinematic bokeh hai (jaise interviews, narrative close-ups), full-frame ya APS-C fast lenses ke saath better suited hai. Agar aap deep focus documentary-style shoot karte ho, M43 ka extra depth of field actually helpful hota hai.</div>
+
+  <h2>Low-Light Performance</h2>
+  <p>Bada sensor = bade individual pixels (generally) = better light-gathering per pixel = kam noise high ISO pe. Yeh ek generalization hai — sensor generation aur processing bhi bahut matter karti hai (naya M43 sensor purane full-frame sensor se better low-light de sakta hai) — lekin same generation ki technology compare karo toh full-frame > APS-C > M43 ka pattern consistently dikhta hai.</p>
+
+  <h2>Sensor Size Har Format Ke Trade-offs</h2>
+  <h3>Full-Frame</h3>
+  <ul>
+    <li>Best low-light, best dynamic range typically</li>
+    <li>Shallow depth of field easily achievable</li>
+    <li>Lenses aur bodies dono expensive</li>
+    <li>Heavier gear overall</li>
+  </ul>
+  <h3>APS-C</h3>
+  <ul>
+    <li>Balanced size, weight aur price</li>
+    <li>Telephoto reach ke liye crop factor helpful (wildlife, sports)</li>
+    <li>Widest lens ecosystem choice in India (Sony, Fuji, Canon)</li>
+  </ul>
+  <h3>Micro Four Thirds</h3>
+  <ul>
+    <li>Sabse compact, halka gear</li>
+    <li>Cheapest lenses, huge native ecosystem (Panasonic + Olympus/OM System)</li>
+    <li>Low-light thoda weak, deep depth of field by default</li>
+  </ul>
+
+  <h2>Sensor Size Grading Ko Kaise Affect Karta Hai</h2>
+  <p>Sensor size directly <a href="/dynamic-range-color-grading-explained">dynamic range ko affect karta hai</a>, jo grading flexibility decide karta hai. Bada sensor generally zyada stops of dynamic range capture karta hai — matlab highlights aur shadows dono mein zyada recoverable detail milta hai jab aap DaVinci Resolve mein grade karte ho.</p>
+
+  <FAQBlock items={[
+    {q: "Kya full-frame camera hamesha better hoti hai APS-C se?", a: "Nahi zaroori nahi — low-light aur depth of field mein full-frame aage hai, lekin APS-C zyada balanced, halka aur affordable hota hai reach ke liye (telephoto crop advantage)."},
+    {q: "Micro Four Thirds filmmaking ke liye kaafi hai kya?", a: "Haan, especially agar aap run-and-gun, travel ya documentary style content banate ho jahan compact gear aur deep focus helpful hote hain."},
+    {q: "Crop factor lens ke aperture ko bhi affect karta hai kya?", a: "Field of view aur depth of field ko affect karta hai equivalence ke roop mein, lekin actual aperture value (f-stop) same hi rehta hai exposure ke liye."},
+    {q: "Kya sensor size hi image quality decide karta hai?", a: "Nahi, sensor size ek bada factor hai lekin processing, lens quality aur codec/bitrate bhi utne hi important hain final image quality mein."}
+  ]} />
+
+  <RelatedArticles links={[
+    {href: "/dslr-vs-mirrorless-vs-cinema-camera-2026", title: "DSLR vs Mirrorless vs Cinema Camera — Which to Buy"},
+    {href: "/best-camera-low-light-filmmaking-2026", title: "Best Camera for Low-Light Filmmaking"},
+    {href: "/dynamic-range-color-grading-explained", title: "What Is Dynamic Range and Why It Matters"},
+    {href: "/best-mirrorless-camera-under-1-lakh-2026", title: "Best Mirrorless Camera Under ₹1,00,000 (2026)"},
+    {href: "/how-to-choose-first-camera-beginner-filmmaker", title: "How to Choose Your First Camera as a Beginner"}
+  ]} />
+
+  <CourseCTA text="Sensor kaisa bhi ho, footage se maximum dynamic range nikalna DaVinci Resolve mein seekho." />
+
+</article>
+
+</Layout>

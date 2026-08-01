@@ -8,12 +8,18 @@ const categoryLabels: Record<string, string> = {
   "camera": "📷 Camera & Gear Guides",
   "editing-fundamentals": "✂️ Editing Fundamentals",
   "nle-comparison": "📊 NLE Comparisons",
-  "gear": "⚡ Hardware & Gear Reviews"
+  "gear": "⚡ Hardware & Gear Reviews",
+  "lens": "🔎 Lens Guides",
+  "lighting": "💡 Lighting Guides",
+  "filmmaking": "🎥 Filmmaking Process & Gear",
+  "storytelling": "✍️ Storytelling & Craft",
+  "career": "💼 Career & Business",
+  "apps": "📱 Free Apps & Streaming Tools"
 };
 
-const categoryOrder = ["davinci-resolve", "camera", "gear", "editing-fundamentals", "nle-comparison"];
+const categoryOrder = ["davinci-resolve", "camera", "lens", "lighting", "apps", "filmmaking", "storytelling", "career", "gear", "editing-fundamentals", "nle-comparison"];
 
-const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'free-resources.astro', 'my-gear.astro', 'camera-guides.astro', 'download-bridge.astro'];
+const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'free-resources.astro', 'my-gear.astro', 'camera-guides.astro', 'lens-guides.astro', 'lighting-guides.astro', 'filmmaking-guides.astro', 'storytelling-guides.astro', 'career-guides.astro', 'download-bridge.astro', 'decoding-davinci-20-course.astro'];
 
 const guides = allPages.filter(page => {
   const filename = page.file.split('/').pop() || '';
@@ -21,11 +27,13 @@ const guides = allPages.filter(page => {
 }).map(page => {
   const filename = page.file.split('/').pop() || '';
   const path = '/' + filename.replace('.astro', '');
-  
+
   let category = page.category || 'editing-fundamentals';
   if (filename.includes('davinci')) category = 'davinci-resolve';
-  if (filename.includes('camera') || filename.includes('log') || filename.includes('codec') || filename.includes('hdr')) category = 'camera';
-  if (filename.includes('tripod') || filename.includes('mic') || filename.includes('light') || filename.includes('gimbal') || filename.includes('monitor') || filename.includes('gear')) category = 'gear';
+  if (!page.category) {
+    if (filename.includes('camera') || filename.includes('log') || filename.includes('codec') || filename.includes('hdr')) category = 'camera';
+    if (filename.includes('tripod') || filename.includes('mic') || filename.includes('light') || filename.includes('gimbal') || filename.includes('monitor') || filename.includes('gear')) category = 'gear';
+  }
 
   return {
     path,

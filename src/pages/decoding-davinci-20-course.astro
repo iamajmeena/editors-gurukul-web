@@ -2,65 +2,945 @@
 import Layout from '../layouts/Layout.astro';
 import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
 
-export const title = "Decoding DaVinci Resolve 2.0 Course | Ajay K. Meena";
+export const title = "Decoding DaVinci Resolve 20 Course | Ajay K. Meena";
 export const category = "course";
 ---
-<Layout title="Decoding DaVinci Resolve 2.0 Course | Video Editing & Color Grading" description="Master DaVinci Resolve 20+ with Ajay K. Meena. Complete hands-on course covering editing, node-based color grading, audio post in Fairlight, and AI-powered tools.">
+<Layout title="Decoding DaVinci Resolve 20 — The Ultimate Course | Ajay K. Meena" description="Master DaVinci Resolve 20 with Ajay K. Meena — 18 modules, 115+ lessons covering video editing, professional color grading, Fusion compositing, Fairlight audio mixing & AI-powered filmmaking.">
 
-  <section class="max-w-[900px] mx-auto my-8 p-8 bg-white border border-[#e7e4dc] rounded-2xl shadow-sm text-center">
-    <span class="inline-block px-4 py-1.5 bg-[#fdece0] text-[#e0692a] font-bold text-xs rounded-full uppercase tracking-wider mb-4">FLAGSHIP COURSE</span>
-    <h1 class="text-4xl font-extrabold mb-4 text-[#15181c]">Decoding DaVinci Resolve 2.0</h1>
-    <p class="text-xl font-semibold text-[#0a5f61] mb-6">The Ultimate Course for Video Editing, Color Grading &amp; AI-Powered Filmmaking</p>
-    <p class="text-[#4b5058] text-lg leading-relaxed mb-8 max-w-[750px] mx-auto">
-      Designed by DOP &amp; professional colorist Ajay K. Meena. Learn real production workflows, node management, CST color management, skin tone grading, and AI tools — built for creators who want to make cinematic videos.
-    </p>
+<style>
+  /* ── Hero ── */
+  .course-hero {
+    background: linear-gradient(135deg, #0a0f1e 0%, #0f2a2b 50%, #150f0a 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 80px 24px 64px;
+    text-align: center;
+  }
+  .course-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(230,105,42,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 30%, rgba(10,95,97,0.22) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    background: rgba(230,105,42,0.15);
+    border: 1px solid rgba(230,105,42,0.5);
+    color: #f4a76a;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+    margin: 0 auto 16px;
+    max-width: 860px;
+  }
+  .hero-title span { color: #e0692a; }
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #9ec8c9;
+    max-width: 680px;
+    margin: 0 auto 12px;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 32px auto 40px;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #c4c4c4;
+    font-size: 0.9rem;
+  }
+  .hero-meta-item .icon { font-size: 1.2rem; }
+  .hero-cta {
+    display: inline-block;
+    padding: 18px 48px;
+    background: linear-gradient(135deg, #e0692a, #c85720);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 0 32px rgba(230,105,42,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulseGlow 2.5s infinite;
+  }
+  .hero-cta:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 0 48px rgba(230,105,42,0.7);
+    color: #fff;
+    text-decoration: none;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 24px rgba(230,105,42,0.4); }
+    50%       { box-shadow: 0 0 48px rgba(230,105,42,0.75); }
+  }
 
-    <div class="flex justify-center gap-4 flex-wrap mb-10">
-      <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-[#e0692a] text-white font-extrabold text-lg rounded-full hover:bg-[#c85720] transition-transform hover:scale-105 no-underline shadow-md">
-        Enroll Now on Graphy Store ↗
-      </a>
+  /* ── Shared section wrapper ── */
+  .course-section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 56px 24px;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #e0692a;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 900;
+    color: #15181c;
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+  .section-desc {
+    color: #4b5058;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-bottom: 40px;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid #e7e4dc;
+    margin: 0;
+  }
+
+  /* ── Pages grid ── */
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .page-card {
+    background: #faf9f6;
+    border: 1px solid #e7e4dc;
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .page-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  }
+  .page-card .pc-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+  }
+  .page-card h3 { font-size: 1rem; font-weight: 800; color: #15181c; margin-bottom: 8px; }
+  .page-card p  { font-size: 0.88rem; color: #4b5058; line-height: 1.6; margin: 0; }
+  .page-card ul { list-style: none; padding: 0; margin: 0; }
+  .page-card ul li {
+    font-size: 0.82rem;
+    color: #4b5058;
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .page-card ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #e0692a;
+  }
+
+  /* ── Modules accordion ── */
+  .module-list { display: flex; flex-direction: column; gap: 12px; }
+  details.module-item {
+    background: #faf9f6;
+    border: 1px solid #e7e4dc;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  details.module-item[open] { border-color: #e0692a; }
+  details.module-item summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  details.module-item summary::-webkit-details-marker { display: none; }
+  .mod-num {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: #e0692a;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .mod-info { flex: 1; }
+  .mod-title { font-size: 0.98rem; font-weight: 700; color: #15181c; }
+  .mod-meta  { font-size: 0.78rem; color: #8a8a8a; margin-top: 2px; }
+  .mod-chevron {
+    font-size: 0.8rem;
+    color: #e0692a;
+    transition: transform 0.25s ease;
+  }
+  details.module-item[open] .mod-chevron { transform: rotate(90deg); }
+  .mod-lessons {
+    padding: 0 22px 18px 68px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .lesson-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.83rem;
+    color: #4b5058;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0ede7;
+  }
+  .lesson-item:last-child { border-bottom: none; }
+  .lesson-item .l-icon { font-size: 0.75rem; color: #e0692a; flex-shrink: 0; }
+
+  /* ── Skills pills ── */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .skill-pill {
+    padding: 8px 18px;
+    background: #faf9f6;
+    border: 1.5px solid #e7e4dc;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #15181c;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+  .skill-pill:hover {
+    background: #fff3ea;
+    border-color: #e0692a;
+    color: #e0692a;
+  }
+
+  /* ── Value Adds ── */
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .value-card {
+    background: #faf9f6;
+    border: 1px solid #e7e4dc;
+    border-radius: 16px;
+    padding: 28px 22px;
+    transition: transform 0.25s ease;
+  }
+  .value-card:hover { transform: translateY(-4px); }
+  .value-card .vc-icon { font-size: 1.6rem; margin-bottom: 12px; }
+  .value-card h3 { font-size: 1rem; font-weight: 800; color: #15181c; margin-bottom: 8px; }
+  .value-card p  { font-size: 0.86rem; color: #4b5058; line-height: 1.65; margin: 0; }
+
+  /* ── Mentor ── */
+  .mentor-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 640px) { .mentor-wrap { grid-template-columns: 1fr; } }
+  .mentor-img {
+    border-radius: 20px;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+  }
+  .mentor-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e0692a;
+    margin-bottom: 10px;
+  }
+  .mentor-name { font-size: 2rem; font-weight: 900; color: #15181c; margin-bottom: 4px; }
+  .mentor-role { font-size: 0.9rem; color: #8a8a8a; margin-bottom: 20px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .mentor-bio  { font-size: 0.95rem; color: #4b5058; line-height: 1.75; }
+  .mentor-stats {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .stat-item .stat-val { font-size: 1.6rem; font-weight: 900; color: #e0692a; }
+  .stat-item .stat-lbl { font-size: 0.78rem; color: #8a8a8a; font-weight: 600; }
+
+  /* ── CTA bottom ── */
+  .cta-bottom {
+    background: linear-gradient(135deg, #0a5f61, #0f8b8d);
+    border-radius: 24px;
+    padding: 64px 32px;
+    text-align: center;
+    margin: 0 24px 56px;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-bottom h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; color: #fff; margin-bottom: 12px; }
+  .cta-bottom p  { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 32px; }
+  .cta-bottom a {
+    display: inline-block;
+    padding: 18px 48px;
+    background: #fff;
+    color: #0a5f61;
+    font-weight: 800;
+    font-size: 1.05rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+  .cta-bottom a:hover { transform: scale(1.05); background: #e4f3f2; text-decoration: none; }
+</style>
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="course-hero">
+  <div class="hero-badge">⭐ Flagship Course — DaVinci Resolve 20</div>
+  <h1 class="hero-title">Decoding <span>DaVinci Resolve 20</span></h1>
+  <p class="hero-subtitle">The Ultimate Course for Video Editing, Color Grading &amp; AI-Powered Filmmaking</p>
+  <div class="hero-meta">
+    <span class="hero-meta-item"><span class="icon">📦</span> 18 Modules</span>
+    <span class="hero-meta-item"><span class="icon">🎬</span> 115+ Lessons</span>
+    <span class="hero-meta-item"><span class="icon">♾️</span> Lifetime Access</span>
+    <span class="hero-meta-item"><span class="icon">📜</span> Certificate of Completion</span>
+    <span class="hero-meta-item"><span class="icon">🇮🇳</span> Hindi + English</span>
+  </div>
+  <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8"
+     target="_blank" rel="noopener noreferrer"
+     class="hero-cta">Enroll Now on Graphy ↗</a>
+</section>
+
+<hr class="divider" />
+
+<!-- ════════════════════════════════════════════
+     ALL 6 PAGES COVERED
+════════════════════════════════════════════ -->
+<section class="course-section">
+  <p class="section-label">Complete Coverage</p>
+  <h2 class="section-title">Every Page of DaVinci Resolve — Covered</h2>
+  <p class="section-desc">From import to export — yeh course DaVinci Resolve ke sabhi 6 major pages ko depth mein cover karta hai. Ek bhi page chhoot nahi.</p>
+
+  <div class="pages-grid">
+    <!-- Media Page -->
+    <div class="page-card">
+      <div class="pc-icon" style="background:#e8f4f5;">🗂️</div>
+      <h3>Media Page</h3>
+      <p>Organized starting point for every project.</p>
+      <ul style="margin-top:10px;">
+        <li>Media import aur bins organize karna</li>
+        <li>Proxy workflow setup</li>
+        <li>Metadata tagging &amp; flagging</li>
+        <li>Smart bins &amp; power bins</li>
+      </ul>
     </div>
-
-    <!-- Features Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-8">
-      <div class="p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-xl">
-        <div class="text-2xl mb-2">🎞️</div>
-        <h3 class="font-bold text-lg mb-2">Cut &amp; Edit Page</h3>
-        <p class="text-sm text-[#4b5058]">Fast timeline editing, ripple cuts, multi-cam editing, and smart render cache setups.</p>
-      </div>
-      <div class="p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-xl">
-        <div class="text-2xl mb-2">🎨</div>
-        <h3 class="font-bold text-lg mb-2">Pro Color Grading</h3>
-        <p class="text-sm text-[#4b5058]">Serial &amp; parallel nodes, CST color transforms, Log to Rec.709 conversion, and film look emulations.</p>
-      </div>
-      <div class="p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-xl">
-        <div class="text-2xl mb-2">🤖</div>
-        <h3 class="font-bold text-lg mb-2">AI-Powered Tools</h3>
-        <p class="text-sm text-[#4b5058]">IntelliTrack AI, Magic Mask, Smart Reframe, Voice Isolation, and Studio Neural Engine features.</p>
-      </div>
+    <!-- Cut Page -->
+    <div class="page-card">
+      <div class="pc-icon" style="background:#fef3ea;">✂️</div>
+      <h3>Cut Page</h3>
+      <p>Lightning-fast cutting for rapid assembly edits.</p>
+      <ul style="margin-top:10px;">
+        <li>Source tape &amp; sync bin workflows</li>
+        <li>Razor &amp; dynamic trim tools</li>
+        <li>J-Cuts, L-Cuts &amp; split edits</li>
+        <li>Quick export &amp; review</li>
+      </ul>
     </div>
-  </section>
+    <!-- Edit Page -->
+    <div class="page-card">
+      <div class="pc-icon" style="background:#f0eef9;">🎞️</div>
+      <h3>Edit Page</h3>
+      <p>Full-featured NLE for advanced timeline editing.</p>
+      <ul style="margin-top:10px;">
+        <li>Multi-cam editing &amp; angle switching</li>
+        <li>Speed ramp &amp; Speed Warp AI</li>
+        <li>Titles, transitions &amp; open FX</li>
+        <li>Compound clips &amp; nesting</li>
+      </ul>
+    </div>
+    <!-- Fusion Page -->
+    <div class="page-card">
+      <div class="pc-icon" style="background:#eaf5ea;">🔮</div>
+      <h3>Fusion Page</h3>
+      <p>Node-based VFX &amp; motion graphics compositing.</p>
+      <ul style="margin-top:10px;">
+        <li>Delta Keyer / Green screen keying</li>
+        <li>Node tree workflow fundamentals</li>
+        <li>Text+ animations &amp; macros</li>
+        <li>Particle systems &amp; masks</li>
+      </ul>
+    </div>
+    <!-- Color Page -->
+    <div class="page-card">
+      <div class="pc-icon" style="background:#fff3ea;">🎨</div>
+      <h3>Color Page</h3>
+      <p>Industry-standard professional color grading tools.</p>
+      <ul style="margin-top:10px;">
+        <li>Color science foundation &amp; scopes</li>
+        <li>Serial, parallel &amp; layer nodes</li>
+        <li>Power windows &amp; tracking</li>
+        <li>Shot matching &amp; HDR grading</li>
+      </ul>
+    </div>
+    <!-- Fairlight Page -->
+    <div class="page-card">
+      <div class="pc-icon" style="background:#fce8f0;">🎚️</div>
+      <h3>Fairlight Page</h3>
+      <p>Professional audio post-production &amp; mixing.</p>
+      <ul style="margin-top:10px;">
+        <li>Audio editing &amp; clip gain</li>
+        <li>EQ, compression &amp; FX plugins</li>
+        <li>LUFS loudness standards</li>
+        <li>Dialogue cleanup &amp; ADR</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <!-- Interactive Color Grading Preview -->
-  <section class="max-w-[900px] mx-auto my-8 p-8 bg-white border border-[#e7e4dc] rounded-2xl shadow-sm">
-    <h2 class="text-2xl font-bold mb-4 border-l-4 border-[#e0692a] pl-4">What You Will Learn To Achieve</h2>
-    <p class="text-[#4b5058] mb-6">Compare flat LOG footage against graded production shots created using the exact node tree taught in Decoding DaVinci Resolve 2.0:</p>
-    
-    <BeforeAfterSlider 
-        beforeImage="/assets/assets/davinci-resolve-wb-portrait-before.webp" 
-        afterImage="/assets/assets/davinci-resolve-wb-portrait-after.webp"
-        beforeLabel="Flat LOG"
-        afterLabel="Graded Result"
+<hr class="divider" />
+
+<!-- ════════════════════════════════════════════
+     BEFORE / AFTER
+════════════════════════════════════════════ -->
+<section class="course-section" style="padding-top:40px; padding-bottom:40px;">
+  <p class="section-label">Real Results</p>
+  <h2 class="section-title">See the Transformation</h2>
+  <p class="section-desc">Yeh exact node tree aur grading techniques jo is course mein sikhate hain unka result:</p>
+  <BeforeAfterSlider
+    beforeImage="/assets/assets/davinci-resolve-wb-portrait-before.webp"
+    afterImage="/assets/assets/davinci-resolve-wb-portrait-after.webp"
+    beforeLabel="Flat LOG"
+    afterLabel="Graded Result"
+  />
+</section>
+
+<hr class="divider" />
+
+<!-- ════════════════════════════════════════════
+     FULL COURSE CURRICULUM — 18 MODULES
+════════════════════════════════════════════ -->
+<section class="course-section">
+  <p class="section-label">Full Curriculum</p>
+  <h2 class="section-title">18 Modules · 115+ Lessons</h2>
+  <p class="section-desc">Yeh course phased manner mein upload ho raha hai — kuch modules already live hain, baaki bhi jald aane wale hain. Enroll karo aur turant seekhna shuru karo.</p>
+
+  <div class="module-list">
+    <details class="module-item" open>
+      <summary>
+        <span class="mod-num">01</span>
+        <span class="mod-info">
+          <div class="mod-title">DaVinci Resolve 20 — Installation &amp; Interface Orientation</div>
+          <div class="mod-meta">6 Lessons · Foundation</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Free vs Studio — aapke liye kaunsa sahi hai?</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Installation &amp; GPU/VRAM requirements</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Project Manager — setup &amp; database samajhna</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Interface layout &amp; keyboard shortcut philosophy</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Preferences — timeline frame rate, color science, auto-save</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>System optimisation for smooth playback</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">02</span>
+        <span class="mod-info">
+          <div class="mod-title">Media Page — Mastering Import, Bins &amp; Proxy Workflows</div>
+          <div class="mod-meta">7 Lessons · Organisation</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Media storage locations &amp; linking missing clips</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Smart bins, power bins &amp; metadata tagging</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Proxy generation &amp; proxy workflow for slower machines</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Syncing audio &amp; video using waveform / timecode</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Transcoding vs optimised media</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Scene detect &amp; automatic clip splitting</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Flagging, starring &amp; rating clips efficiently</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">03</span>
+        <span class="mod-info">
+          <div class="mod-title">Cut Page Mastery — Fast Assembly Editing</div>
+          <div class="mod-meta">8 Lessons · Editing</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Source tape &amp; sync bin approach</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>In/Out points &amp; insert vs overwrite edits</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>J-Cuts &amp; L-Cuts — split audio-video edits</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Razor tool vs blade mode</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Dynamic trim (Trim Edit Mode)</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Quick export for client review</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Cut page vs Edit page — kab kya use karein</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Rough cut to polished cut workflow</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">04</span>
+        <span class="mod-info">
+          <div class="mod-title">Edit Page Mastery — Advanced Timeline Editing</div>
+          <div class="mod-meta">12 Lessons · Editing</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Timeline tracks, flags &amp; markers</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Slip, Slide, Roll &amp; Ripple trim tools</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Speed ramp — smooth slow motion techniques</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Speed Warp AI — frame interpolation magic</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Compound clips &amp; nesting for complex sequences</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Multicam editing &amp; angle switching</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Transitions — custom &amp; built-in</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Open FX plugin integration</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Titles &amp; generators — Text+ basics</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Edit Index &amp; timeline markers for collaboration</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Stacked timelines &amp; sub-timelines</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Smart Reframe AI for social media crops</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">05</span>
+        <span class="mod-info">
+          <div class="mod-title">Fusion Page — Node-Based Compositing &amp; VFX</div>
+          <div class="mod-meta">10 Lessons · VFX</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Fusion node tree — samajhna aur navigate karna</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Delta Keyer — green/blue screen keying</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Planar tracker &amp; 3D camera tracker</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Text+ motion graphics &amp; animations</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Masks — polygon, B-spline, paint</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Merge node &amp; blending modes</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Particle systems for cinematic effects</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Macros &amp; reusable Fusion templates</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Rotoscoping techniques</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Fusion vs After Effects — workflow comparison</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">06</span>
+        <span class="mod-info">
+          <div class="mod-title">Color Science Foundation — Scopes, Exposure &amp; White Balance</div>
+          <div class="mod-meta">9 Lessons · Color</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Waveform, parade &amp; vectorscope — reading scopes correctly</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Exposure correction using lift/gamma/gain</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>White balance — color wheels vs log wheels</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Color space concepts — Rec.709, Log, RAW</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>CST (Color Space Transform) node workflow</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>LUT application — creative vs technical LUTs</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>DaVinci Wide Gamut &amp; ACES color management</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Log footage grading — S-Log, Log-C, V-Log</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>RAW debayering &amp; camera metadata</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">07</span>
+        <span class="mod-info">
+          <div class="mod-title">Node Tree Workflow — Serial, Parallel &amp; Layer Nodes</div>
+          <div class="mod-meta">8 Lessons · Color</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Node types — corrector, parallel mixer, layer mixer</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Building a professional node tree from scratch</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Key output &amp; matte finesse</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Splitter / combiner — channel-level control</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Groups — Pre-clip, Post-clip &amp; Timeline groups</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Node labels, colors &amp; saving node graphs</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Stills &amp; grades — copying &amp; pasting grades</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Remote versions &amp; local versions</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">08</span>
+        <span class="mod-info">
+          <div class="mod-title">Power Windows &amp; Tracking — Selective Color Grading</div>
+          <div class="mod-meta">7 Lessons · Color</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Power windows — circle, polygon, gradient, curve</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Softness, feathering &amp; opacity of windows</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Point tracker vs planar tracker</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Magic Mask AI — person &amp; object isolation</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>IntelliTrack AI — automatic face/object tracking</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Skin tone isolation &amp; secondary skin correction</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Sky replacement &amp; environmental grading</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">09</span>
+        <span class="mod-info">
+          <div class="mod-title">Shot Matching &amp; Look Development</div>
+          <div class="mod-meta">6 Lessons · Color</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Shot matching — waveform-based approach</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Auto Color &amp; Color Match (AI-assisted)</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Creating a consistent look across a scene</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Building cinematic film looks from scratch</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Exporting &amp; packaging your custom LUTs</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Gallery stills &amp; PowerGrades for reuse</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">10</span>
+        <span class="mod-info">
+          <div class="mod-title">HDR Grading — Dolby Vision &amp; HDR10</div>
+          <div class="mod-meta">5 Lessons · Color · Advanced</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>HDR vs SDR — what's different in the workflow</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>HDR10 timeline setup &amp; mastering display settings</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Dolby Vision trim passes</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Tone mapping for SDR deliverables</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>HDR delivery specs — YouTube, Netflix, OTT</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">11</span>
+        <span class="mod-info">
+          <div class="mod-title">Fairlight Audio Mixing — Professional Sound Design</div>
+          <div class="mod-meta">8 Lessons · Audio</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Fairlight interface &amp; audio track types</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Clip gain vs automation lanes</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>EQ &amp; parametric filtering</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Dynamics — compressor, limiter, expander</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Voice Isolation AI — background noise removal</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>LUFS loudness standards — broadcast &amp; streaming specs</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Bus routing &amp; submix workflow</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>ADR recording &amp; dialogue replacement</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">12</span>
+        <span class="mod-info">
+          <div class="mod-title">AI-Powered Features in DaVinci Resolve 20</div>
+          <div class="mod-meta">7 Lessons · AI Tools</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Magic Mask AI — automatic subject isolation</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>IntelliTrack AI — smart object tracking</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Speed Warp AI — fluid slow motion</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Smart Reframe — automatic recomposing for reels</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Voice Isolation AI — crystal-clear dialogue</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Auto Color AI — one-click primary balance</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Resolve FX — AI noise reduction &amp; deringing</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">13</span>
+        <span class="mod-info">
+          <div class="mod-title">Multicam Editing &amp; Multi-Camera Workflows</div>
+          <div class="mod-meta">5 Lessons · Editing</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Creating a multicam clip from multiple sources</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Syncing cameras by audio waveform or timecode</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Multicam viewer &amp; live cutting</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Angle switching &amp; fine-tuning after cut</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Exporting multicam projects for collaboration</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">14</span>
+        <span class="mod-info">
+          <div class="mod-title">Delivery Page — Export for Every Platform</div>
+          <div class="mod-meta">7 Lessons · Output</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Render queue &amp; batch export</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>YouTube, Instagram, Reels — platform-specific presets</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>H.264, H.265 &amp; ProRes export settings</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>DCP &amp; broadcast delivery specs</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>EDL, XML &amp; AAF roundtrip with Premiere Pro</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Client delivery folder structure &amp; naming conventions</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Creating custom export presets for repeat clients</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">15</span>
+        <span class="mod-info">
+          <div class="mod-title">Real Project Workflow — Wedding / Event Film</div>
+          <div class="mod-meta">8 Lessons · Real-World</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Ingest &amp; organise footage from multiple cameras</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Assembly cut to final cut in real time</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Audio mixing with multiple lavs &amp; ambient mics</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Color grading a full wedding scene consistently</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Titles &amp; lower thirds using Fusion</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Client revision workflow &amp; marker comments</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Final delivery — multiple versions (4K, 1080p, Reels)</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Building a Done-For-You portfolio piece</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">16</span>
+        <span class="mod-info">
+          <div class="mod-title">Real Project Workflow — Cinematic Short Film / Ad Film</div>
+          <div class="mod-meta">8 Lessons · Real-World</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Log footage import &amp; CST setup for ad film</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Scene-by-scene grading consistency</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Advanced skin tone correction</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Green screen composite integration</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Sound design &amp; music sync in Fairlight</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Director's review workflow</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Colour managed export — broadcast &amp; streaming</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Case study: Ajay's own ad film workflow</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">17</span>
+        <span class="mod-info">
+          <div class="mod-title">Freelancing &amp; Earning with DaVinci Resolve</div>
+          <div class="mod-meta">6 Lessons · Business</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>Positioning yourself as a colorist or video editor</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Pricing your services — per hour vs per project</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Client onboarding &amp; scope management</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Finding clients — Instagram, YouTube, referrals</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Building a portfolio that converts</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>From ₹0 to first paying client in 30 days — roadmap</div>
+      </div>
+    </details>
+
+    <details class="module-item">
+      <summary>
+        <span class="mod-num">18</span>
+        <span class="mod-info">
+          <div class="mod-title">DaVinci Resolve 20 — New Features Deep Dive</div>
+          <div class="mod-meta">5 Lessons · Advanced</div>
+        </span>
+        <span class="mod-chevron">▶</span>
+      </summary>
+      <div class="mod-lessons">
+        <div class="lesson-item"><span class="l-icon">▶</span>What's new in Resolve 20 vs Resolve 18/19</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Enhanced AI tools — IntelliTrack 2.0</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Improved Cut page features</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>New Fusion node updates</div>
+        <div class="lesson-item"><span class="l-icon">▶</span>Resolve Speed Editor integration</div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ════════════════════════════════════════════
+     SKILLS YOU'LL MASTER
+════════════════════════════════════════════ -->
+<section class="course-section" style="padding-top: 48px; padding-bottom: 48px;">
+  <p class="section-label">Skills You'll Master</p>
+  <h2 class="section-title">What You'll Be Able to Do</h2>
+  <p class="section-desc" style="margin-bottom: 28px;">Course complete karne ke baad yeh sab skills aapke paas hongi:</p>
+  <div class="skills-grid">
+    <span class="skill-pill">✂️ Cut Page Mastery</span>
+    <span class="skill-pill">🎞️ Edit Page Mastery</span>
+    <span class="skill-pill">↩️ J-Cuts &amp; L-Cuts</span>
+    <span class="skill-pill">⚡ Speed Ramp &amp; Speed Warp AI</span>
+    <span class="skill-pill">🔮 Fusion Compositing</span>
+    <span class="skill-pill">🟩 Delta Keyer / Green Screen</span>
+    <span class="skill-pill">🎨 Color Science Foundation</span>
+    <span class="skill-pill">🌳 Node Tree Workflow</span>
+    <span class="skill-pill">🪟 Power Windows &amp; Tracking</span>
+    <span class="skill-pill">🔁 Shot Matching</span>
+    <span class="skill-pill">✨ HDR Grading</span>
+    <span class="skill-pill">🎚️ Fairlight Audio Mixing</span>
+    <span class="skill-pill">📢 LUFS Loudness Standards</span>
+    <span class="skill-pill">🎥 Multicam Editing</span>
+    <span class="skill-pill">📦 Client Delivery Workflow</span>
+    <span class="skill-pill">🤖 Magic Mask AI</span>
+    <span class="skill-pill">🔍 IntelliTrack AI</span>
+    <span class="skill-pill">💼 Freelancing as Colorist/Editor</span>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ════════════════════════════════════════════
+     VALUE ADDS
+════════════════════════════════════════════ -->
+<section class="course-section" style="padding-top: 48px; padding-bottom: 48px;">
+  <p class="section-label">What You Get</p>
+  <h2 class="section-title">Course Value-Adds</h2>
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="vc-icon">📦</div>
+      <h3>Rolling Module Uploads</h3>
+      <p>Kuch modules already live hain, baaki 18 modules &amp; 115+ lessons phased manner mein upload honge — aap turant seekhna shuru kar sakte hain.</p>
+    </div>
+    <div class="value-card">
+      <div class="vc-icon">♾️</div>
+      <h3>Lifetime Access + Updates</h3>
+      <p>Ek baar enroll karo, hamesha ke liye access — future updates aur naye modules bhi bina extra cost ke milte rahenge.</p>
+    </div>
+    <div class="value-card">
+      <div class="vc-icon">📜</div>
+      <h3>Certificate of Completion</h3>
+      <p>Course complete karne par official Certificate of Completion milta hai — apne portfolio aur resume mein add karo.</p>
+    </div>
+    <div class="value-card">
+      <div class="vc-icon">🎬</div>
+      <h3>Done-For-You Portfolio</h3>
+      <p>Real project files pe kaam karke ek ready-made portfolio banao — clients aur job applications ke liye turant use karne layak.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ════════════════════════════════════════════
+     MENTOR
+════════════════════════════════════════════ -->
+<section class="course-section" style="padding-top: 56px; padding-bottom: 56px;">
+  <p class="section-label" style="text-align:center;">⭐ Know Your Mentor ⭐</p>
+  <div class="mentor-wrap">
+    <img
+      src="/assets/ajay-k-meena-headshot-v2.jpg"
+      alt="Ajay K Meena — Director, Editor, Colorist"
+      class="mentor-img"
+      onerror="this.src='/assets/ajay-k-meena-headshot.webp'"
     />
-  </section>
+    <div>
+      <p class="mentor-tag">Director / Editor / Colorist</p>
+      <h2 class="mentor-name">Ajay K Meena</h2>
+      <p class="mentor-role">Editors Gurukul — Founder &amp; Lead Instructor</p>
+      <p class="mentor-bio">
+        Ajay K. Meena ek professional Director, Editor aur Colorist hain — jinke kaam mein ad films, wedding films, documentaries aur short films shamil hain. DaVinci Resolve unka primary tool hai aur woh isi ke saath sab kuch — editing se leke color grading tak — handle karte hain.<br><br>
+        Editors Gurukul ke through unhone hazaron creators ko guide kiya hai — beginners se leke working professionals tak. Unki teaching philosophy simple hai: <em>real projects pe kaam karo, real skills seekho.</em>
+      </p>
+      <div class="mentor-stats">
+        <div class="stat-item">
+          <div class="stat-val">10+</div>
+          <div class="stat-lbl">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">500+</div>
+          <div class="stat-lbl">Students Trained</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">18</div>
+          <div class="stat-lbl">Course Modules</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Enrollment Banner -->
-  <section class="max-w-[900px] mx-auto my-8 p-8 bg-gradient-to-r from-[#0a5f61] to-[#0f8b8d] text-white rounded-2xl text-center shadow-lg">
-    <h2 class="text-3xl font-extrabold mb-3 text-white">Ready to elevate your editing &amp; grading?</h2>
-    <p class="text-[#e4f5f4] text-lg mb-6">Get full lifetime access, project files, practice footage, and direct guidance on Graphy.</p>
-    <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" rel="noopener noreferrer" class="inline-block px-8 py-4 bg-white text-[#0a5f61] font-extrabold text-lg rounded-full hover:bg-[#e4f3f2] transition-transform hover:scale-105 no-underline shadow-md">
+<!-- ════════════════════════════════════════════
+     CTA BOTTOM
+════════════════════════════════════════════ -->
+<section style="padding: 0 0 56px;">
+  <div class="cta-bottom">
+    <h2>Ready to Master DaVinci Resolve 20?</h2>
+    <p>18 modules · 115+ lessons · Lifetime access · Certificate of Completion · Real project files. Enroll karo aaj hi aur apni editing &amp; grading journey shuru karo.</p>
+    <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8"
+       target="_blank" rel="noopener noreferrer">
       Get Instant Access Now ↗
     </a>
-  </section>
+  </div>
+</section>
 
 </Layout>

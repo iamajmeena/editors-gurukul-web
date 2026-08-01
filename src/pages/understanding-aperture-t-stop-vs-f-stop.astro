@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
+
+export const title = "Understanding Aperture — T-Stop vs F-Stop Explained (2026)";
+export const category = "lens";
+export const description = "T-stop vs F-stop explained clearly — why cine lenses are marked in T-stops for accurate exposure, and how aperture controls both exposure and depth of field.";
+---
+<Layout title={title} description={description}>
+
+<header>
+  <h1>Understanding Aperture — T-Stop vs F-Stop Explained</h1>
+  <p class="hero-subtitle">F-stop is a mathematical ratio — focal length divided by the diameter of the aperture opening — that ignores light lost inside the lens itself. <strong>T-stop measures the actual light reaching the sensor</strong> after accounting for that loss, which is exactly why professional cine lenses are marked in T-stops instead of F-stops.</p>
+</header>
+
+<article class="wrap">
+
+  <div class="callout"><b>Quick take:</b> Aperture controls two things at once — exposure (how much light hits the sensor) and depth of field (how much of the frame is in focus). F-stop is a theoretical, geometry-based number every photo lens uses. T-stop is a measured, real-world number that accounts for light lost inside the glass, which is why cine lenses use it — it keeps exposure consistent when you switch lenses mid-production.</div>
+
+  <h2>What Aperture Actually Controls</h2>
+  <p>Aperture is the adjustable opening inside a lens, formed by a set of overlapping blades called the iris. Open it wide and more light pours through to the sensor in the same shutter time. Close it down and less light gets through. That's the exposure side of the equation, and it's the one most beginners learn first.</p>
+  <p>But aperture has a second job that matters just as much for how your footage looks: it controls <strong>depth of field</strong> — how much of your frame sits in sharp focus versus how much falls into soft blur. A wide aperture (a small f-number like f/1.4) produces a thin slice of focus and a heavily blurred background. A narrow aperture (a large f-number like f/11) keeps a much deeper range of the scene sharp, front to back. Both effects — exposure and depth of field — happen from the exact same physical adjustment, which is why aperture is one of the three legs of the exposure triangle alongside shutter speed and ISO. If you want the full picture on how sensor sensitivity fits into that triangle, this breakdown of <a href="/iso-native-iso-dual-native-iso-explained">ISO and dual native ISO</a> is worth reading alongside this one.</p>
+  <p>For a deeper look at exactly how aperture shapes bokeh and separates your subject from the background, see this guide on <a href="/depth-of-field-explained-bokeh-guide">depth of field and bokeh</a>.</p>
+
+  <h2>F-Stop — A Number Built From Geometry, Not Light</h2>
+  <p>F-stop (often written as f-number, like f/2.8) comes from a simple formula: focal length divided by the physical diameter of the aperture opening. It's purely geometric. The formula has no idea how many glass elements sit inside the lens, how those elements are coated, or how much light gets absorbed, scattered, or reflected before it ever reaches the sensor.</p>
+  <p>That's a reasonable simplification for still photography, where a fraction of a stop of exposure error gets corrected in seconds by adjusting shutter speed, ISO, or a raw file's exposure slider in post. But it means F-stop is a promise about geometry, not a guarantee about actual light delivered. Every photo lens on the market — from a basic kit zoom to a flagship prime — is marked in F-stops, and for single-lens, single-camera shooting, that's completely fine.</p>
+
+  <h2>T-Stop — What the Lens Actually Transmits</h2>
+  <p>T-stop stands for "transmission stop." Instead of calculating a theoretical ratio, T-stop is measured on an optical bench with actual light and a sensor, checking how much of that light survives the trip through every glass element, coating, and internal surface inside the lens. The result is a number that reflects reality rather than geometry.</p>
+  <p>Here's the practical consequence: a lens with a physical aperture of f/2.0 might carry a true T-stop of T2.2 or even T2.4, because internal elements — especially in complex zoom designs with a dozen or more glass elements — absorb and scatter a small but measurable amount of light. A simpler prime lens with fewer elements will typically lose less light, so its F-stop and T-stop numbers sit closer together. A complex zoom with more elements, more coated surfaces, and more internal reflections will show a bigger gap between the two numbers.</p>
+  <p>This is also why two different lenses set to the identical F-stop — say, both at f/2.8 — can produce a visibly different exposure on the same sensor under the same light. The F-stop matched. The real transmitted light did not.</p>
+
+  <div class="callout"><b>Pro tip:</b> If you ever notice unexplained exposure shifts when swapping lenses mid-shoot despite matching F-stop and shutter speed, don't assume your camera meter is wrong — check the lens's actual transmission. This is a known, measurable phenomenon, not a myth.</div>
+
+  <h2>F-Stop vs T-Stop — Side-by-Side Comparison</h2>
+  <table>
+    <thead>
+      <tr><th>Factor</th><th>F-Stop</th><th>T-Stop</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>What it measures</b></td><td>A mathematical ratio: focal length ÷ aperture diameter</td><td>Actual measured light transmission reaching the sensor</td></tr>
+      <tr><td><b>How it's derived</b></td><td>Calculated from lens geometry alone</td><td>Measured on an optical bench with real light</td></tr>
+      <tr><td><b>Accounts for glass and coating loss</b></td><td>No</td><td>Yes</td></tr>
+      <tr><td><b>Affects depth of field</b></td><td>Yes — governed by the physical aperture opening</td><td>Yes — same physical opening, same depth-of-field effect</td></tr>
+      <tr><td><b>Typically found on</b></td><td>Nearly all photo and hybrid lenses</td><td>Cine lenses, cine-modded lenses, high-end cinema zooms</td></tr>
+      <tr><td><b>Consistency across a lens set</b></td><td>Can vary lens to lens even at the "same" F-stop</td><td>Guaranteed matched exposure across a properly calibrated set</td></tr>
+      <tr><td><b>Typical numeric relationship</b></td><td>Baseline number</td><td>Usually slightly higher than F-stop (less transmitted light than the geometry implies)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Why Cine Lenses Are Marked in T-Stops</h2>
+  <p>On a professional set, a cinematographer rarely shoots an entire project on one lens. A matched prime set might include a 25mm, 35mm, 50mm, and 85mm, and the camera department will cut between them within the same scene, sometimes within the same sequence of shots that need to intercut seamlessly. If each lens were marked only in F-stop, small transmission differences between focal lengths and internal designs would create visible exposure mismatches from one setup to the next — exactly the kind of inconsistency that shows up as a distracting flicker in brightness when two shots are cut together.</p>
+  <p>T-stop solves this by calibrating every lens in a matched set against actual measured light output rather than geometry. Set every lens in the kit to T2.8, and every one of them delivers the same real exposure to the sensor, regardless of how many elements sit inside each individual lens or how their coatings differ. That consistency is the entire reason cinema lens manufacturers invest in T-stop calibration during manufacturing and quality control — it is a promise of matched, predictable exposure, not just a technical curiosity. For a broader look at what separates this class of lens from ordinary photo glass, read <a href="/what-is-cine-lens-do-you-need-one">what a cine lens actually is and whether you need one</a>.</p>
+
+  <h2>Does This Distinction Matter for Your Work?</h2>
+  <p>For most independent filmmakers, YouTube creators, and solo shooters working with one camera and one or two photo lenses at a time, the F-stop versus T-stop gap is negligible in practice. You are not intercutting between four different lenses on a multi-camera commercial set where a fraction-of-a-stop mismatch would be visible on a calibrated broadcast monitor. Your camera's built-in meter, histogram, and waveform already reflect the real light actually hitting the sensor — regardless of which number happens to be printed on the lens barrel — so exposing by eye and by scope will always account for any transmission loss automatically.</p>
+  <p>Where the distinction starts to matter in real, practical terms:</p>
+  <ul>
+    <li>You're renting or building a matched cine lens set and need guaranteed consistent exposure across focal lengths.</li>
+    <li>You're shooting a multi-camera setup — interviews, live events, weddings with two shooters — and want both cameras to expose identically when switching lenses.</li>
+    <li>You're cine-modding stills lenses and want to understand why the declared T-stop marking on the housing may differ slightly from the lens's native F-stop.</li>
+    <li>You're grading footage shot across several different lenses and exposure looks inconsistent clip to clip despite matching camera settings.</li>
+  </ul>
+  <p>In the last case especially, don't trust the printed aperture number blindly when trying to match shots in the grade — always confirm against your waveform and vectorscope in DaVinci Resolve, since that reflects what the sensor actually captured, not what any lens barrel claims.</p>
+
+  <div class="callout"><b>Pro tip:</b> When buying a used cine or cine-modded lens, ask the seller whether the T-stop marking was independently verified or bench-calibrated by the manufacturer. Some budget cine-mod housings simply reprint the original F-stop scale as if it were a T-stop scale without actually measuring transmission — which defeats the entire purpose of using T-stops in the first place.</div>
+
+  <h2>Aperture's Other Job — Shaping Depth of Field</h2>
+  <p>Whichever number is printed on the barrel, the physical size of that aperture opening is also what determines how much of your scene stays in focus. A wide aperture — f/1.4 to f/2.8 — isolates your subject against a soft, blurred background, which is why it's the default choice for interviews, portraits, and any shot where you want the viewer's eye pulled straight to one subject. A narrow aperture — f/8 to f/16 — keeps far more of the frame sharp front to back, which matters for landscapes, wide establishing shots, or group scenes where everyone needs to stay in focus regardless of how far apart they stand from camera.</p>
+  <p>Because a wider aperture also narrows your margin for focus error, pulling focus accurately becomes more demanding the wider you open up — one more reason cinematographers lean on cine lenses with long, geared focus throws when shooting wide open on a moving subject.</p>
+
+  <h2>Quick Reference — Common Aperture Values</h2>
+  <table>
+    <thead>
+      <tr><th>Aperture</th><th>Light Let In</th><th>Depth of Field</th><th>Typical Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>f/1.4 – f/1.8</td><td>Very high</td><td>Very shallow</td><td>Low light, strong subject isolation, creamy bokeh portraits</td></tr>
+      <tr><td>f/2.8</td><td>High</td><td>Shallow</td><td>Interviews, general cinematic coverage</td></tr>
+      <tr><td>f/4 – f/5.6</td><td>Moderate</td><td>Moderate</td><td>Two-person dialogue scenes, moderate background context</td></tr>
+      <tr><td>f/8 – f/11</td><td>Low</td><td>Deep</td><td>Landscapes, group shots, scenes needing everything sharp</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Bottom Line</h2>
+  <p>F-stop and T-stop both describe the same physical aperture opening, but they answer two different questions. F-stop tells you the lens's geometry — a clean calculation with no regard for what happens to light once it enters the glass. T-stop tells you what the sensor actually receives, measured rather than calculated. For everyday shooting on photo lenses, work with F-stop and trust your camera's exposure tools to handle the rest. The moment you step into matched cine-lens territory — renting a prime set, building a cine-modded kit, or running a multi-camera shoot — T-stop becomes the number that actually determines whether your footage cuts together cleanly.</p>
+
+  <FAQBlock items={[
+    {q: "Is T-stop always a higher number than F-stop on the same lens?", a: "Almost always, yes. Since T-stop accounts for light lost inside the lens, it's typically slightly higher than the equivalent F-stop — meaning slightly less light actually reaches the sensor than the geometric F-stop number would suggest."},
+    {q: "Do I need to worry about T-stop if I only shoot with a regular photo lens?", a: "Not usually. T-stop matters most when matching exposure across multiple lenses, especially on a professional multi-lens or multi-camera set. For everyday single-lens shooting, F-stop and your camera's meter are all you need."},
+    {q: "Does a wider aperture always mean better image quality?", a: "No. A wider aperture lets in more light and creates shallower depth of field, but most lenses are actually softest wide open and get noticeably sharper stopped down by a stop or two."},
+    {q: "Why do cine lenses cost more than photo lenses with a similar aperture?", a: "Several reasons, but T-stop calibration is one of them — bench-testing and calibrating each unit for accurate T-stop markings adds manufacturing time and quality-control steps that most photo lens production skips entirely."},
+    {q: "Can I convert F-stop to T-stop myself?", a: "Not reliably without proper bench-testing equipment. Real T-stop values come from measuring actual transmitted light, not from a formula you can apply at home. Manufacturer-published T-stop specs are the only figures worth trusting."}
+  ]} />
+
+  <RelatedArticles links={[
+    {href: "/depth-of-field-explained-bokeh-guide", title: "Depth of Field Explained — Complete Bokeh Guide"},
+    {href: "/what-is-cine-lens-do-you-need-one", title: "What Is a Cine Lens and Do You Actually Need One"},
+    {href: "/lens-breathing-explained", title: "Lens Breathing Explained"},
+    {href: "/focal-length-perspective-facial-distortion-portraits", title: "Focal Length, Perspective, and Facial Distortion in Portraits"}
+  ]} />
+
+  <CourseCTA text="Once your exposure is dialed in on set, the next skill is grading it properly — learn the full color workflow in DaVinci Resolve." />
+
+</article>
+
+</Layout>

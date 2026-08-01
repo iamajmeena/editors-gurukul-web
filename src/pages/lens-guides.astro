@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PillarGrid from '../components/PillarGrid.astro';
+import { getPagesByCategory } from '../lib/pages';
+
+export const title = "Lens Guides";
+export const category = "lens";
+export const pillarHub = true;
+export const description = "Complete lens education for filmmakers — focal length, aperture, prime vs zoom, cine lenses, anamorphic, and budget lens kits, explained with real shooting examples.";
+
+const allPages = Object.values(import.meta.glob('./*.astro', { eager: true })) as any[];
+const lensGuides = getPagesByCategory(allPages, 'lens');
+---
+
+<Layout title="Lens Guides | Editors Gurukul" description={description}>
+
+  <div class="container">
+    <div class="card">
+      <h1>Lens Guides</h1>
+      <p>Everything about choosing and using lenses for cinematic video — focal length, aperture, prime vs zoom, cine lenses, and budget-friendly buying guides, all explained with real shooting examples from actual production work.</p>
+      <PillarGrid items={lensGuides} />
+      <p style="margin-top:20px;"><a href="/camera-guides">Camera Guides →</a> · <a href="/lighting-guides">Lighting Guides →</a> · <a href="/guides">All Guides →</a></p>
+    </div>
+  </div>
+
+</Layout>

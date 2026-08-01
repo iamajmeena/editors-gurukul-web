@@ -10,17 +10,17 @@ export const description = "Download full CapCut Pro Desktop for Windows 10/11 P
 ---
 <Layout title={title} description={description}>
 
-  <main class="max-w-[1200px] mx-auto px-6 py-10">
+  <main class="max-w-7xl mx-auto px-6 py-10">
 
     <!-- Breadcrumb -->
     <div class="text-xs font-bold text-[#4b5058] mb-6">
       <a href="/digital-store" class="hover:text-[#0a5f61]">🛒 Digital Store</a> &gt; <span class="text-[#15181c]">{product.title}</span>
     </div>
 
-    <!-- Top Section: Wide Hero Layout for PC / Laptop Screens -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+    <!-- Top Section: Widescreen Desktop / PC Layout (max-w-7xl) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-12">
       
-      <!-- Left Column: Wide Product Cover Artwork (lg:col-span-7 for PC) -->
+      <!-- Left Column: Product Cover Artwork (lg:col-span-7) -->
       <div class="lg:col-span-7">
         <div class="relative overflow-hidden aspect-video bg-[#15181c] rounded-3xl shadow-2xl border-2 border-[#e7e4dc]">
           <img id="main-product-img" src={product.images[0]} alt={product.title} class="w-full h-full object-cover transition-all duration-300" />
@@ -30,7 +30,7 @@ export const description = "Download full CapCut Pro Desktop for Windows 10/11 P
         </div>
       </div>
 
-      <!-- Right Column: Pricing & Hero Buy Action (lg:col-span-5 for PC) -->
+      <!-- Right Column: Pricing & Hero Buy Action (lg:col-span-5) -->
       <div class="lg:col-span-5 bg-white border-2 border-[#e7e4dc] p-8 rounded-3xl shadow-xl">
         <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#0a5f61]">{product.category}</span>
         <h1 class="text-3xl font-extrabold text-[#15181c] mt-1 mb-2 leading-tight">{product.title}</h1>
@@ -52,21 +52,23 @@ export const description = "Download full CapCut Pro Desktop for Windows 10/11 P
           </span>
         </div>
 
-        <!-- CTA Button 1: Hero Buy Now -->
+        <!-- CTA Button 1: Clean Buy Now -->
         <a 
           href={product.razorpayLink} 
           target="_blank" 
           rel="noopener"
-          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-4"
+          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-3"
         >
-          🚀 Buy Now for {product.price} &amp; Instant PC Download →
+          🚀 Buy Now ({product.price}) →
         </a>
 
-        <p class="text-sm text-[#4b5058] leading-relaxed mb-4">
-          {product.fullDesc}
+        <p class="text-xs text-center text-[#0a5f61] font-bold m-0 mb-4">
+          ⚡ 100% Instant 2-Way Delivery (Screen Download + WhatsApp Direct)
         </p>
 
-        <p class="text-xs text-center text-gray-400 m-0">✓ 100% Instant On-Screen Download + WhatsApp Backup</p>
+        <p class="text-sm text-[#4b5058] leading-relaxed mb-0">
+          {product.fullDesc}
+        </p>
       </div>
 
     </div>
@@ -96,29 +98,11 @@ export const description = "Download full CapCut Pro Desktop for Windows 10/11 P
         rel="noopener"
         class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-[#15181c] font-black text-base rounded-full hover:bg-yellow-300 transition-all shadow-lg no-underline"
       >
-        🛒 Get CapCut Pro PC Now ({product.price}) →
+        🛒 Buy Now ({product.price}) →
       </a>
     </div>
 
-    <!-- What's Inside Included Package -->
-    <section class="my-12 p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-sm">
-      <h2 class="text-2xl font-bold text-[#15181c] mb-6">What's Inside Your Download Folder</h2>
-      <ul class="space-y-3 text-sm text-[#4b5058]">
-        {product.includedItems.map(item => (
-          <li class="flex items-center gap-3 p-3 bg-[#f4f3ef] rounded-xl font-medium">
-            <span class="text-[#e0692a] font-bold">📦</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    <FAQBlock items={[
-      {q: "Payment ke baad link kitni der me milega?", a: "Payment hote hi 1 second me screen par download link reveal hoga, plus aapke WhatsApp par backup message aa jayega."},
-      {q: "Kya CapCut Pro Windows 10 aur 11 dono par chalega?", a: "Haan! Installer packages Windows 10 aur 11 64-bit PCs ke liye test kiye gaye hain."}
-    ]} />
-
-    <!-- Bottom Sticky CTA Bar (CTA Button 3) -->
+    <!-- Sticky Bottom CTA Bar (CTA Button 3) -->
     <div class="sticky bottom-4 z-40 my-8 p-4 bg-white/90 backdrop-blur-md border-2 border-[#0a5f61] rounded-2xl shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 max-w-[800px] mx-auto">
       <div>
         <div class="font-extrabold text-[#15181c] text-sm">{product.title}</div>

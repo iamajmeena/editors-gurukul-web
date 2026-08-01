@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const title = "Fairlight Audio Post-Production & LUFS Loudness Standards Guide (2026)";
+export const description = "Master Fairlight audio post: AI Voice Isolation, Dialogue Leveller, parametric EQ curves, bus compression, and target LUFS calibration for YouTube (-14 LUFS) and Reels (-16 LUFS).";
+export const category = "davinci-resolve";
+---
+
+<Layout title={title} description={description}>
+  <article class="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+    
+    <!-- Header -->
+    <header class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e4f3f2] text-[#0a5f61] font-mono text-xs font-bold uppercase tracking-wider mb-4">
+        <span>🎧 FAIRLIGHT AUDIO ENGINEERING</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-[#15181c] tracking-tight leading-tight mb-4">
+        Fairlight Audio Post-Production &amp; LUFS Loudness Standards Guide
+      </h1>
+      <p class="text-lg sm:text-xl text-[#4b5058] leading-relaxed max-w-3xl">
+        Bad audio ruins great cinematography faster than anything else. Here is how to master dialogue cleaning, AI Voice Isolation, EQ frequency carving, and exact LUFS target normalization in DaVinci Resolve's Fairlight page.
+      </p>
+      
+      <div class="flex flex-wrap items-center gap-4 mt-6 text-sm text-[#4b5058] border-t border-b border-[#e7e4dc] py-3">
+        <span>👤 <strong>By Ajay K. Meena</strong> (Cinematographer &amp; Audio Editor)</span>
+        <span>⏱️ <strong>8 min read</strong></span>
+        <span>📅 Updated 2026</span>
+      </div>
+    </header>
+
+    <!-- Key Takeaways Callout -->
+    <div class="callout bg-[#fdece0] border-l-4 border-[#e0692a] p-6 rounded-r-2xl mb-10">
+      <h3 class="text-lg font-bold text-[#15181c] mb-2 m-0 border-none p-0">🎯 Platform Loudness Standards Cheat Sheet</h3>
+      <ul class="list-disc pl-5 space-y-2 text-[#15181c] text-sm sm:text-base mb-0">
+        <li><strong>YouTube Target:</strong> <code>-14.0 LUFS Integrated</code> (True Peak max <code>-1.0 dBTP</code>). If your audio is louder than -14 LUFS, YouTube automatically lowers your video's volume!</li>
+        <li><strong>Instagram Reels &amp; TikTok Target:</strong> <code>-16.0 to -14.0 LUFS Integrated</code> (True Peak max <code>-1.0 dBTP</code>).</li>
+        <li><strong>TV Broadcast / OTT Target:</strong> <code>-24.0 LUFS Integrated</code> (&plusmn;1 LUFS EBU R128 / ATSC A/85 standard).</li>
+        <li><strong>AI Voice Isolation:</strong> Clean up room echo, air conditioner hum, and background traffic with one slider in Fairlight Inspector.</li>
+      </ul>
+    </div>
+
+    <!-- Article Content -->
+    <div class="prose prose-lg max-w-none text-[#15181c]">
+      
+      <h2>1. The 4-Step Fairlight Dialogue Signal Chain</h2>
+      <p>
+        To make spoken dialogue sound warm, rich, and crisp like a professional podcast or cinema film, process your dialogue track using this signal chain order:
+      </p>
+
+      <div class="bg-white border border-[#e7e4dc] p-6 rounded-2xl my-6 shadow-md">
+        <h3 class="text-xl font-bold text-[#0a5f61] mb-3">🎛️ Clean Dialogue Processing Chain</h3>
+        <ol class="list-decimal pl-5 space-y-3 text-sm sm:text-base text-[#4b5058]">
+          <li><strong>Step 1: AI Voice Isolation:</strong> Select your dialogue clip or track header on Fairlight Page. Enable <strong>Voice Isolation</strong> in Inspector. Set amount between <code>70%</code> and <code>90%</code>. *(Setting to 100% can introduce robotic phase artifacts).*</li>
+          <li><strong>Step 2: Dialogue Leveller:</strong> Enable <strong>Dialogue Leveller</strong>. This automatically balances quiet whispers and loud speaking without pumping background noise.</li>
+          <li><strong>Step 3: 6-Band Parametric EQ:</strong> Enable 6-band EQ on the track.
+            <ul class="list-disc pl-5 mt-1 text-xs sm:text-sm">
+              <li><strong>High-Pass Filter (HPF):</strong> Cut everything below <code>80Hz</code> (removes mic rumble, wind noise, and low AC thuds).</li>
+              <li><strong>Mud Cut:</strong> Dip <code>-2dB to -4dB</code> around <code>250Hz - 400Hz</code> to remove boxy room resonance.</li>
+              <li><strong>Presence Boost:</strong> Add a gentle <code>+1.5dB to +2.5dB</code> wide bell curve around <code>3.5kHz</code> for speech clarity.</li>
+              <li><strong>Air Boost:</strong> Add a high-shelf boost above <code>10kHz</code> for high-end sparkle.</li>
+            </ul>
+          </li>
+          <li><strong>Step 4: Dynamic Compressor:</strong> Enable Track Dynamics (Compressor). Set <strong>Threshold</strong> at <code>-18dB</code>, <strong>Ratio</strong> at <code>3:1</code>, <strong>Attack</strong> at <code>15ms</code>, and <strong>Release</strong> at <code>100ms</code>.</li>
+        </ol>
+      </div>
+
+      <!-- LUFS Target Table -->
+      <h2>2. Master Loudness LUFS Standard Table</h2>
+      <p>
+        LUFS (Loudness Units Full Scale) measures perceived loudness over time. Unlike peak meters (dBFS) which only measure instant spikes, LUFS matches how human ears perceive volume.
+      </p>
+
+      <div class="overflow-x-auto my-8">
+        <table class="w-full text-left border-collapse border border-[#e7e4dc] rounded-xl shadow-sm text-sm">
+          <thead>
+            <tr class="bg-[#f4f3ef] text-[#15181c] font-bold border-b border-[#e7e4dc]">
+              <th class="p-4">Destination Platform</th>
+              <th class="p-4">Integrated LUFS Target</th>
+              <th class="p-4">Max True Peak</th>
+              <th class="p-4">Normalization Behavior</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#e7e4dc]">
+            <tr class="hover:bg-[#f4fbfb]">
+              <td class="p-4 font-bold text-[#0a5f61]">YouTube</td>
+              <td class="p-4"><code>-14.0 LUFS</code></td>
+              <td class="p-4"><code>-1.0 dBTP</code></td>
+              <td class="p-4">Pulls down loud videos. Does NOT turn up quiet videos.</td>
+            </tr>
+            <tr class="hover:bg-[#f4fbfb]">
+              <td class="p-4 font-bold text-[#0a5f61]">Instagram Reels / TikTok</td>
+              <td class="p-4"><code>-16.0 to -14.0 LUFS</code></td>
+              <td class="p-4"><code>-1.0 dBTP</code></td>
+              <td class="p-4">Re-compresses audio if True Peak exceeds -1.0 dBTP.</td>
+            </tr>
+            <tr class="hover:bg-[#f4fbfb]">
+              <td class="p-4 font-bold text-[#0a5f61]">Spotify / Apple Music</td>
+              <td class="p-4"><code>-14.0 LUFS</code></td>
+              <td class="p-4"><code>-1.0 dBTP</code></td>
+              <td class="p-4">Applies ITU-R BS.1770-4 loudness normalization.</td>
+            </tr>
+            <tr class="hover:bg-[#f4fbfb]">
+              <td class="p-4 font-bold text-[#0a5f61]">Netflix / Amazon Prime</td>
+              <td class="p-4"><code>-27.0 to -24.0 LUFS</code></td>
+              <td class="p-4"><code>-2.0 dBTP</code></td>
+              <td class="p-4">Strict EBU R128 compliance mandatory for delivery.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- How to Analyze & Normalize -->
+      <h2>3. 1-Click Offline Loudness Normalization in Fairlight</h2>
+      <p>
+        You do not need to manually guess volume faders to hit exact LUFS targets! DaVinci Resolve has built-in 1-click loudness analysis:
+      </p>
+      <ol class="list-decimal pl-5 space-y-2 text-sm sm:text-base text-[#4b5058]">
+        <li>Select all audio clips on your timeline.</li>
+        <li>Right-click and select <strong>Analyze Audio Levels...</strong></li>
+        <li>Select <strong>BS.1770-4 (Target: -14.0 LUFS)</strong> and click <strong>Analyze</strong>.</li>
+        <li>DaVinci will calculate the exact integrated loudness. Right-click clips again &gt; select <strong>Normalize Audio Levels...</strong> &gt; set Target to <code>-14.0 LUFS</code>.</li>
+      </ol>
+
+      <!-- Pro Tips Callout -->
+      <div class="my-8 p-6 bg-[#e4f3f2] border-2 border-[#0a5f61] rounded-2xl shadow-md">
+        <h3 class="text-xl font-bold text-[#0a5f61] mb-2 m-0 border-none p-0">💡 Sidechain Ducking Background Music</h3>
+        <p class="text-sm sm:text-base text-[#15181c] mb-0">
+          To make background music automatically drop volume whenever someone speaks: Enable <strong>Send</strong> on your Dialogue track dynamics, and enable <strong>Sidechain Listen (Receive)</strong> on your Music track Compressor. Set Music Compressor ratio to <code>4:1</code> and gain reduction to <code>-6dB</code>. Now your background music ducking happens automatically in real-time!
+        </p>
+      </div>
+
+      <!-- FAQ Section -->
+      <section class="mt-12 border-t border-[#e7e4dc] pt-8">
+        <h2 class="text-2xl font-bold text-[#15181c] mb-6">Frequently Asked Questions</h2>
+        
+        <div class="space-y-6">
+          <div class="bg-white border border-[#e7e4dc] p-5 rounded-xl">
+            <h3 class="text-lg font-bold text-[#15181c] mb-2 mt-0">Q: What happens if my video is -10 LUFS on YouTube?</h3>
+            <p class="text-sm text-[#4b5058] mb-0">
+              If your video is exported at -10 LUFS (4dB louder than YouTube's -14 LUFS target), YouTube's server algorithm will automatically turn your video's master volume down by 4dB. Worse, your compressed audio will sound squashy compared to videos mixed properly at -14 LUFS!
+            </p>
+          </div>
+
+          <div class="bg-white border border-[#e7e4dc] p-5 rounded-xl">
+            <h3 class="text-lg font-bold text-[#15181c] mb-2 mt-0">Q: Why should True Peak be set to -1.0 dBTP instead of 0.0 dB?</h3>
+            <p class="text-sm text-[#4b5058] mb-0">
+              When video platforms re-encode your WAV audio into AAC or MP3 compressed streams, inter-sample peaks can clip and distort if your master hits 0.0 dB. Leaving 1.0 dB headroom (-1.0 dBTP) prevents inter-sample clipping on mobile speakers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Author Bio -->
+      <footer class="mt-12 pt-8 border-t border-[#e7e4dc]">
+        <div class="flex flex-col sm:flex-row items-center gap-6 bg-[#faf9f6] p-6 rounded-2xl border border-[#e7e4dc]">
+          <img src="/assets/ajay-k-meena-headshot-v2.jpg" alt="Ajay K Meena Audio Editor" class="w-20 h-20 rounded-full object-cover shadow-md border-2 border-[#e0692a]">
+          <div>
+            <h4 class="text-lg font-bold text-[#15181c] mb-1">Written by Ajay K. Meena</h4>
+            <p class="text-xs sm:text-sm text-[#4b5058] mb-2">Cinematographer, DOP, and Lead Instructor at Editors Gurukul. Specialized in Fairlight audio engineering, voice post-production, and commercial mastering.</p>
+            <a href="/decoding-davinci-20-course" class="text-xs font-bold text-[#e0692a] hover:underline">Explore Decoding DaVinci 2.0 Course ➔</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </article>
+
+  <!-- Schema.org JSON-LD Structured Data for Google SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": title,
+    "description": description,
+    "author": {
+      "@type": "Person",
+      "name": "Ajay K Meena",
+      "jobTitle": "Cinematographer & Colorist"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Editors Gurukul",
+      "url": "https://editorsgurukul.com"
+    },
+    "inLanguage": "en",
+    "datePublished": "2026-08-01"
+  })} />
+</Layout>

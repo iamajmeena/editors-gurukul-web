@@ -61,49 +61,9 @@ const schemaData = JSON.stringify({
       gtag('config', 'G-E9YPJM7G00');
     </script>
 
-    <!-- Smart Geo-IP Router: Monetag Ads & 3-Step Funnel ONLY for India, 100% Clean Site & Direct Download for International SEO -->
-    <script is:inline>
-      (function() {
-        // Fast Geo-IP check using cloudflare/ipapi
-        fetch('https://ipapi.co/json/')
-          .then(function(res) { return res.json(); })
-          .then(function(data) {
-            var isIndia = data && (data.country_code === 'IN' || data.country === 'IN');
-            if (isIndia) {
-              // Visitor from India -> Load Monetag Ad Tags
-              var s1 = document.createElement('script');
-              s1.src = 'https://3nbf4.com/act/files/tag.min.js?z=11473498';
-              s1.async = true;
-              s1.setAttribute('data-cfasync', 'false');
-              document.head.appendChild(s1);
-
-              var s2 = document.createElement('script');
-              s2.src = 'https://quge5.com/88/tag.min.js';
-              s2.async = true;
-              s2.setAttribute('data-zone', '265803');
-              s2.setAttribute('data-cfasync', 'false');
-              document.head.appendChild(s2);
-            } else {
-              // Visitor Outside India (USA, Singapore, EU, etc.) -> 0 Ads, Bypass 3-step download bridge for 100% clean experience
-              document.addEventListener('DOMContentLoaded', function() {
-                var pdfLinks = document.querySelectorAll('a[href*="download-bridge"]');
-                pdfLinks.forEach(function(link) {
-                  link.href = '/assets/best-free-movie-apps-for-iphone-2026.pdf';
-                  link.setAttribute('download', '');
-                });
-              });
-            }
-          })
-          .catch(function(err) {
-            // Fallback: Default to India flow if IP check fails
-            var s1 = document.createElement('script');
-            s1.src = 'https://3nbf4.com/act/files/tag.min.js?z=11473498';
-            s1.async = true;
-            s1.setAttribute('data-cfasync', 'false');
-            document.head.appendChild(s1);
-          });
-      })();
-    </script>
+    <!-- Monetag MultiTag Ad Tags (Zone 11473498 & Zone 265803) - 100% Unconditional Direct Loading -->
+    <script is:inline data-cfasync="false" src="https://3nbf4.com/act/files/tag.min.js?z=11473498" async></script>
+    <script is:inline src="https://quge5.com/88/tag.min.js" data-zone="265803" async data-cfasync="false"></script>
 </head>
 <body class="bg-[#faf9f6] text-[#15181c] font-['Sora',sans-serif]">
     <Header />

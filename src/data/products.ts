@@ -237,8 +237,9 @@ export const PRODUCTS: DigitalProduct[] = [
       "iPhone Free Music Apps PDF Guide",
       "Setup Video Instructions"
     ],
-    razorpayLink: "https://rzp.io/l/movie-app-iphone"
+    razorpayLink: "https://rzp.io/rzp/J7qakhn"
   },
+
   {
     id: "davinci-resolve-21-studio",
     slug: "davinci-resolve-21-studio",

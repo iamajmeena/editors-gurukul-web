@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+
+export const title = "Digital Products & Assets Store | Editors Gurukul";
+export const description = "Official digital products store by DOP & Colorist Ajay K Meena — 500+ Cinematic LUTs, DaVinci Resolve 21 Studio, CapCut Pro for PC/Mac, and 2TB Video Editing Assets.";
+
+const products = [
+  {
+    id: "davinci-21-studio",
+    title: "DaVinci Resolve 21 Studio (Full Version)",
+    category: "Software & Setup Guide",
+    badge: "🔥 TOP SELLER",
+    price: "₹3,499",
+    originalPrice: "₹24,999",
+    discount: "85% OFF",
+    buyers: "710+ Editors",
+    rating: "4.9 ★★★★★",
+    thumbnail: "/assets/davinci_resolve_21_cover.jpg",
+    features: [
+      "Full DaVinci Resolve 21 Studio Setup & Activation Guide",
+      "Includes Neural Engine AI (Magic Mask, Relight, Depth Map)",
+      "Fairlight Voice Isolation & Studio Sound Engine",
+      "Lifetime Updates & Instant Drive Link"
+    ],
+    razorpayLink: "https://rzp.io/l/davinci-resolve-21-studio"
+  },
+  {
+    id: "500-lut-pack",
+    title: "500+ Cinematic LUTs Mega Collection",
+    category: "Color Grading Presets",
+    badge: "⭐ MUST HAVE",
+    price: "₹499",
+    originalPrice: "₹2,999",
+    discount: "83% OFF",
+    buyers: "1,240+ Creators",
+    rating: "5.0 ★★★★★",
+    thumbnail: "/assets/500_lut_pack_cover.jpg",
+    features: [
+      "500+ Premium .CUBE Files for Sony S-Log3, Canon C-Log & Fuji",
+      "Rec.709 One-Click Conversion & Teal & Orange Looks",
+      "Compatible with DaVinci Resolve, Premiere Pro, FCPX, CapCut",
+      "Includes Video Installation Tutorial & Node Tree Guide"
+    ],
+    razorpayLink: "https://rzp.io/l/500-cinematic-lut-pack"
+  },
+  {
+    id: "2tb-editing-pack",
+    title: "2 TB Ultimate Video Editing Assets Pack",
+    category: "Assets & Sound Effects",
+    badge: "⚡ MEGA BUNDLE",
+    price: "₹1,499",
+    originalPrice: "₹9,999",
+    discount: "85% OFF",
+    buyers: "839+ Editors",
+    rating: "4.9 ★★★★★",
+    thumbnail: "/assets/2tb_video_editing_pack_cover.jpg",
+    features: [
+      "2,000+ GB High-Speed Google Drive Direct Download Links",
+      "10,000+ Sound Effects (SFX), Foleys & Cinematic Riser Whooshes",
+      "4K Light Leaks, Film Grain Overlay, Transitions & VFX Motion Assets",
+      "Royalty-Free Commercial License for YouTube & Client Work"
+    ],
+    razorpayLink: "https://rzp.io/l/2tb-video-editing-pack"
+  },
+  {
+    id: "capcut-pc-mac",
+    title: "CapCut Pro For PC & Mac (Full Access)",
+    category: "Editing Software",
+    badge: "🚀 VIRAL CREATOR TOOL",
+    price: "₹399",
+    originalPrice: "₹1,999",
+    discount: "80% OFF",
+    buyers: "1,724+ Creators",
+    rating: "4.9 ★★★★★",
+    thumbnail: "/assets/capcut_pro_pc_mac_cover.jpg",
+    features: [
+      "Full CapCut Pro Desktop for Windows PC & Apple Mac",
+      "Auto Captions, AI Text-to-Speech & Background Remover",
+      "Trending Shorts/Reels Transition Effects & Pro Filters",
+      "No Watermark 4K 60fps Export Guarantee"
+    ],
+    razorpayLink: "https://rzp.io/l/capcut-pro-pc-mac"
+  },
+  {
+    id: "toko-elements-pack",
+    title: "Toko Elements Motion Graphics Pack",
+    category: "DaVinci & Premiere Templates",
+    badge: "✨ MOTION ASSETS",
+    price: "₹599",
+    originalPrice: "₹3,499",
+    discount: "82% OFF",
+    buyers: "417+ Editors",
+    rating: "4.8 ★★★★★",
+    thumbnail: "/assets/500_lut_pack_cover.jpg",
+    features: [
+      "2,250+ Motion Graphics Elements (Lower Thirds, Titles, Callouts)",
+      "1-Click Drag & Drop Preset Integration",
+      "Smooth 60fps Vector Animations with Custom Color Controls",
+      "Compatible with DaVinci Resolve 18/19/21 & Premiere Pro"
+    ],
+    razorpayLink: "https://rzp.io/l/toko-elements-pack"
+  },
+  {
+    id: "all-editing-software",
+    title: "All Video Editing Software Master Suite",
+    category: "Ultimate Bundle",
+    badge: "👑 ALL-IN-ONE SUITE",
+    price: "₹1,999",
+    originalPrice: "₹14,999",
+    discount: "86% OFF",
+    buyers: "786+ Studios",
+    rating: "5.0 ★★★★★",
+    thumbnail: "/assets/davinci_resolve_21_cover.jpg",
+    features: [
+      "Complete Suite: DaVinci Resolve Studio, Premiere Pro, After Effects & CapCut Pro",
+      "Full Plugin Suite: Sapphire, Continuum, Universe & Neat Video Noise Reduction",
+      "Step-by-step Installation & License Activation Video Guides",
+      "Lifetime Cloud Drive Access & Updates"
+    ],
+    razorpayLink: "https://rzp.io/l/all-editing-software-suite"
+  }
+];
+
+const storeFaqs = [
+  {
+    q: "Payment ke baad mujhe download link kaise milega?",
+    a: "Razorpay payment success hone ke turant baad screen par 1-second me 'INSTANT DOWNLOAD LINK' reveal ho jayega. Saath hi aapke WhatsApp number aur Gmail ID par bhi backup link auto-send ho jayega."
+  },
+  {
+    q: "Kya ye LUTs aur Assets mere PC/Mac par chalenge?",
+    a: "Haan! Sabhi products 100% cross-platform hain — Windows PC, Apple M1/M2/M3 Mac, aur MacBooks par DaVinci Resolve, Premiere Pro, Final Cut Pro, aur CapCut me flawlessly kaam karte hain."
+  },
+  {
+    q: "Agar koi technical error aaya toh support kaise milega?",
+    a: "Aapko instant assistance ke liye Ajay K Meena ka direct WhatsApp VIP Support number aur email (`ajaykmeena.com@gmail.com`) milega."
+  }
+];
+---
+<Layout title={title} description={description}>
+
+  <!-- Hero Header -->
+  <header class="text-center max-w-4xl mx-auto px-4 pt-10 pb-6">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0a5f61]/10 text-[#0a5f61] font-mono text-xs font-bold rounded-full uppercase tracking-wider mb-4 border border-[#0a5f61]/20">
+      🛒 OFFICIAL CREATOR ASSETS STORE
+    </div>
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#15181c] mb-4">
+      Digital Products &amp; Filmmaking Assets
+    </h1>
+    <p class="text-lg text-[#4b5058] max-w-2xl mx-auto mb-6 leading-relaxed">
+      High-converting 3D LUTs, DaVinci Resolve Studio setups, CapCut Pro desktop bundles, and 2TB video editing assets crafted by DOP &amp; Colorist <strong>Ajay K Meena</strong>.
+    </p>
+
+    <!-- Trust Badges Bar -->
+    <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-bold text-[#15181c] bg-white p-4 rounded-2xl border border-[#e7e4dc] shadow-sm max-w-2xl mx-auto">
+      <span class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Instant On-Screen Download</span>
+      <span class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> 100% Safe Razorpay UPI Checkout</span>
+      <span class="flex items-center gap-1.5"><span class="text-emerald-600">✓</span> Lifetime Drive Access</span>
+    </div>
+  </header>
+
+  <!-- Product Grid Section -->
+  <main class="max-w-[1100px] mx-auto px-6 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-8">
+      {products.map(p => (
+        <div class="bg-white border-2 border-[#e7e4dc] hover:border-[#0a5f61] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group transform hover:-translate-y-1">
+          <div>
+            <!-- Thumbnail Image Container -->
+            <div class="relative overflow-hidden aspect-video bg-[#15181c]">
+              <img src={p.thumbnail} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <span class="absolute top-3 left-3 px-3 py-1 bg-[#e0692a] text-white text-[0.7rem] font-extrabold uppercase tracking-wider rounded-full shadow-md">
+                {p.badge}
+              </span>
+              <span class="absolute bottom-3 right-3 px-3 py-1 bg-black/80 backdrop-blur-md text-white text-xs font-bold rounded-lg border border-white/20">
+                {p.buyers}
+              </span>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6">
+              <span class="text-xs font-bold text-[#0a5f61] uppercase tracking-wider">{p.category}</span>
+              <h3 class="text-xl font-bold text-[#15181c] mt-1 mb-2 leading-snug group-hover:text-[#0a5f61] transition-colors">
+                {p.title}
+              </h3>
+              
+              <div class="flex items-center gap-2 text-xs font-semibold text-amber-500 mb-4">
+                <span>{p.rating}</span>
+                <span class="text-gray-300">•</span>
+                <span class="text-emerald-600 font-bold">100% Instant Delivery</span>
+              </div>
+
+              <!-- Key Features List -->
+              <ul class="space-y-2 mb-6 text-xs text-[#4b5058]">
+                {p.features.map(f => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#0a5f61] font-bold shrink-0">✓</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Price & Buy Action Footer -->
+          <div class="p-6 pt-0 border-t border-[#e7e4dc] bg-[#faf9f6]">
+            <div class="flex items-baseline justify-between mb-4 mt-4">
+              <div>
+                <span class="text-2xl font-extrabold text-[#15181c]">{p.price}</span>
+                <span class="text-xs text-gray-400 line-through ml-2">{p.originalPrice}</span>
+              </div>
+              <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-md">
+                {p.discount}
+              </span>
+            </div>
+
+            <!-- Razorpay Buy Button -->
+            <button 
+              type="button" 
+              data-product-id={p.id}
+              data-product-title={p.title}
+              data-product-price={p.price}
+              data-razorpay-url={p.razorpayLink}
+              class="eg-buy-now-btn w-full py-3.5 bg-[#0a5f61] text-white font-extrabold text-sm rounded-2xl hover:bg-[#074749] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>🛒 Buy Now &amp; Instant Download</span>
+            </button>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Universal Payment Modal Handler Script -->
+    <script is:inline>
+      (function() {
+        var buyBtns = document.querySelectorAll('.eg-buy-now-btn');
+        buyBtns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var url = btn.getAttribute('data-razorpay-url');
+            var title = btn.getAttribute('data-product-title');
+            var price = btn.getAttribute('data-product-price');
+
+            // Open Razorpay Link or Custom Razorpay Popup
+            if (url && url !== '#') {
+              window.open(url, '_blank');
+            } else {
+              alert('Payment link for ' + title + ' (' + price + ') will open here via Razorpay.');
+            }
+          });
+        });
+      })();
+    </script>
+
+    <!-- FAQ & Guaranteed Delivery Banner -->
+    <div class="mt-16 bg-gradient-to-r from-[#0a5f61] to-[#0f8b8d] text-white p-8 sm:p-10 rounded-3xl shadow-xl text-center">
+      <h2 class="text-2xl sm:text-3xl font-extrabold mb-3 text-white">100% Guaranteed Instant Content Delivery</h2>
+      <p class="text-white/90 text-sm sm:text-base max-w-2xl mx-auto mb-6">
+        No waiting for email magic links or platform login bugs. As soon as your Razorpay UPI / Card payment completes, your high-speed Google Drive download link opens right on your screen!
+      </p>
+      <div class="inline-flex items-center gap-3 px-6 py-3 bg-white text-[#15181c] font-black text-sm rounded-full shadow-lg">
+        🛡️ Protected by 24/7 VIP Customer Support
+      </div>
+    </div>
+
+    <FAQBlock items={storeFaqs} />
+
+  </main>
+
+</Layout>

@@ -10,41 +10,28 @@ export const description = "500+ Premium .CUBE LUTs for Sony S-Log3, Canon C-Log
 ---
 <Layout title={title} description={description}>
 
-  <main class="max-w-[1000px] mx-auto px-6 py-10">
+  <main class="max-w-[1200px] mx-auto px-6 py-10">
 
     <!-- Breadcrumb -->
     <div class="text-xs font-bold text-[#4b5058] mb-6">
       <a href="/digital-store" class="hover:text-[#0a5f61]">🛒 Digital Store</a> &gt; <span class="text-[#15181c]">{product.title}</span>
     </div>
 
-    <!-- Top Section: Multi-Image Carousel + Core Offer -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-12">
+    <!-- Top Section: Wide Hero Layout for PC / Laptop Screens -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
       
-      <!-- Interactive Multiple Image Carousel Slider -->
-      <div>
+      <!-- Left Column: Wide Product Cover Artwork (lg:col-span-7 for PC) -->
+      <div class="lg:col-span-7">
         <div class="relative overflow-hidden aspect-video bg-[#15181c] rounded-3xl shadow-2xl border-2 border-[#e7e4dc]">
           <img id="main-product-img" src={product.images[0]} alt={product.title} class="w-full h-full object-cover transition-all duration-300" />
-          <span class="absolute top-4 left-4 px-3.5 py-1.5 bg-[#e0692a] text-white text-xs font-extrabold uppercase tracking-wider rounded-full shadow-lg">
+          <span class="absolute top-3 right-3 px-3.5 py-1.5 bg-[#e0692a] text-white text-xs font-extrabold uppercase tracking-wider rounded-full shadow-lg z-10">
             {product.badge}
           </span>
         </div>
-
-        <!-- Thumbnail Navigation Dots / Image Selector -->
-        <div class="flex gap-3 mt-4 justify-center">
-          {product.images.map((img, index) => (
-            <button 
-              type="button" 
-              onclick={`document.getElementById('main-product-img').src='${img}'`}
-              class="w-16 h-12 rounded-xl overflow-hidden border-2 border-[#e7e4dc] hover:border-[#0a5f61] focus:border-[#0a5f61] cursor-pointer shadow-sm"
-            >
-              <img src={img} alt={`Preview ${index + 1}`} class="w-full h-full object-cover" />
-            </button>
-          ))}
-        </div>
       </div>
 
-      <!-- Right Column: Pricing & Hero Buy Action -->
-      <div class="bg-white border-2 border-[#e7e4dc] p-8 rounded-3xl shadow-xl">
+      <!-- Right Column: Pricing & Hero Buy Action (lg:col-span-5 for PC) -->
+      <div class="lg:col-span-5 bg-white border-2 border-[#e7e4dc] p-8 rounded-3xl shadow-xl">
         <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#0a5f61]">{product.category}</span>
         <h1 class="text-3xl font-extrabold text-[#15181c] mt-1 mb-2 leading-tight">{product.title}</h1>
         
@@ -54,12 +41,8 @@ export const description = "500+ Premium .CUBE LUTs for Sony S-Log3, Canon C-Log
           <span class="text-emerald-600 font-bold">{product.buyers} Verified</span>
         </div>
 
-        <p class="text-sm text-[#4b5058] leading-relaxed mb-6">
-          {product.fullDesc}
-        </p>
-
         <!-- Pricing Card -->
-        <div class="p-4 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl mb-6 flex items-center justify-between">
+        <div class="p-4 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl mb-4 flex items-center justify-between">
           <div>
             <div class="text-3xl font-extrabold text-[#15181c]">{product.price}</div>
             <span class="text-xs text-gray-400 line-through">Regular: {product.originalPrice}</span>
@@ -74,10 +57,15 @@ export const description = "500+ Premium .CUBE LUTs for Sony S-Log3, Canon C-Log
           href={product.razorpayLink} 
           target="_blank" 
           rel="noopener"
-          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-3"
+          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-4"
         >
           🎨 Buy Now for {product.price} &amp; Instant Download →
         </a>
+
+        <p class="text-sm text-[#4b5058] leading-relaxed mb-4">
+          {product.fullDesc}
+        </p>
+
         <p class="text-xs text-center text-gray-400 m-0">✓ 100% Instant On-Screen Download + WhatsApp Backup</p>
       </div>
 

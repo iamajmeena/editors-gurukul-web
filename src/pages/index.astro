@@ -359,10 +359,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       if (matchesQuery && matchesCategory) {
-        card.style.display = '';
+        card.classList.remove('hidden');
+        card.style.setProperty('display', 'flex', 'important');
         visibleCount++;
       } else {
-        card.style.display = 'none';
+        card.classList.add('hidden');
+        card.style.setProperty('display', 'none', 'important');
       }
     });
 

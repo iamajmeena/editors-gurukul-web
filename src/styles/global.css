@@ -172,12 +172,16 @@ tbody tr:hover {
   border-radius: 18px;
   padding: 24px;
   box-shadow: var(--card-shadow);
-  display: flex !important;
+  display: flex;
   flex-direction: column !important;
   justify-content: space-between !important;
   height: 100% !important;
   box-sizing: border-box !important;
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.asset-card.hidden, .eg-glass-card.hidden, [style*="display: none"] {
+  display: none !important;
 }
 
 .eg-glass-card > div:last-child, 

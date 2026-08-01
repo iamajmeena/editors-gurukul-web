@@ -120,12 +120,13 @@ export const PRODUCTS: DigitalProduct[] = [
     title: "Toko Elements Motion Graphics Pack",
     category: "Motion Templates",
     badge: "✨ MOTION GRAPHICS",
-    price: "₹49",
-    numericPrice: 49,
+    price: "₹99",
+    numericPrice: 99,
     originalPrice: "₹1,999",
-    discount: "97% OFF",
+    discount: "95% OFF",
     buyers: "417+ Editors",
     rating: "4.8 ★★★★★",
+
     isFree: false,
     images: [
       "/assets/500_lut_pack_cover.jpg"

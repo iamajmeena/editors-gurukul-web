@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import { PRODUCTS } from '../../data/products';
+
+const product = PRODUCTS.find(p => p.slug === 'toko-elements-pack')!;
+
+export const title = "Toko Elements Motion Graphics Pack — Editors Gurukul";
+export const description = "2,250+ Motion Graphics Elements — Lower Thirds, Titles, Callouts & Transitions for DaVinci & Premiere.";
+---
+<Layout title={title} description={description}>
+
+  <main class="max-w-[1000px] mx-auto px-6 py-10">
+
+    <!-- Breadcrumb -->
+    <div class="text-xs font-bold text-[#4b5058] mb-6">
+      <a href="/digital-store" class="hover:text-[#0a5f61]">🛒 Digital Store</a> &gt; <span class="text-[#15181c]">{product.title}</span>
+    </div>
+
+    <!-- Top Section: Multi-Image Carousel + Core Offer -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-12">
+      
+      <!-- Interactive Multiple Image Carousel Slider -->
+      <div>
+        <div class="relative overflow-hidden aspect-video bg-[#15181c] rounded-3xl shadow-2xl border-2 border-[#e7e4dc]">
+          <img id="main-product-img" src={product.images[0]} alt={product.title} class="w-full h-full object-cover transition-all duration-300" />
+          <span class="absolute top-4 left-4 px-3.5 py-1.5 bg-[#e0692a] text-white text-xs font-extrabold uppercase tracking-wider rounded-full shadow-lg">
+            {product.badge}
+          </span>
+        </div>
+
+        <!-- Thumbnail Navigation Dots / Image Selector -->
+        <div class="flex gap-3 mt-4 justify-center">
+          {product.images.map((img, index) => (
+            <button 
+              type="button" 
+              onclick={`document.getElementById('main-product-img').src='${img}'`}
+              class="w-16 h-12 rounded-xl overflow-hidden border-2 border-[#e7e4dc] hover:border-[#0a5f61] focus:border-[#0a5f61] cursor-pointer shadow-sm"
+            >
+              <img src={img} alt={`Preview ${index + 1}`} class="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Column: Pricing & Hero Buy Action -->
+      <div class="bg-white border-2 border-[#e7e4dc] p-8 rounded-3xl shadow-xl">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#0a5f61]">{product.category}</span>
+        <h1 class="text-3xl font-extrabold text-[#15181c] mt-1 mb-2 leading-tight">{product.title}</h1>
+        
+        <div class="flex items-center gap-3 text-xs font-bold text-amber-500 mb-4">
+          <span>{product.rating}</span>
+          <span class="text-gray-300">•</span>
+          <span class="text-emerald-600 font-bold">{product.buyers} Verified</span>
+        </div>
+
+        <p class="text-sm text-[#4b5058] leading-relaxed mb-6">
+          {product.fullDesc}
+        </p>
+
+        <!-- Pricing Card -->
+        <div class="p-4 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl mb-6 flex items-center justify-between">
+          <div>
+            <div class="text-3xl font-extrabold text-[#15181c]">{product.price}</div>
+            <span class="text-xs text-gray-400 line-through">Regular: {product.originalPrice}</span>
+          </div>
+          <span class="px-3 py-1.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-lg">
+            SAVE {product.discount}
+          </span>
+        </div>
+
+        <!-- CTA Button 1: Hero Buy Now -->
+        <a 
+          href={product.razorpayLink} 
+          target="_blank" 
+          rel="noopener"
+          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-3"
+        >
+          ✨ Buy Now for {product.price} &amp; Instant Download →
+        </a>
+        <p class="text-xs text-center text-gray-400 m-0">✓ 100% Instant On-Screen Download + WhatsApp Backup</p>
+      </div>
+
+    </div>
+
+    <!-- Sticky Bottom CTA Bar (CTA Button 3) -->
+    <div class="sticky bottom-4 z-40 my-8 p-4 bg-white/90 backdrop-blur-md border-2 border-[#0a5f61] rounded-2xl shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 max-w-[800px] mx-auto">
+      <div>
+        <div class="font-extrabold text-[#15181c] text-sm">{product.title}</div>
+        <div class="text-xs text-[#0a5f61] font-bold">Price: {product.price} <span class="line-through text-gray-400">{product.originalPrice}</span></div>
+      </div>
+      <a 
+        href={product.razorpayLink} 
+        target="_blank" 
+        rel="noopener"
+        class="w-full sm:w-auto px-6 py-3 bg-[#0a5f61] text-white font-extrabold text-xs sm:text-sm rounded-full hover:bg-[#074749] transition-all no-underline text-center"
+      >
+        Buy Now ({product.price}) ➔
+      </a>
+    </div>
+
+  </main>
+
+</Layout>

@@ -1,0 +1,118 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
+import { PRODUCTS } from '../../data/products';
+
+const product = PRODUCTS.find(p => p.slug === 'davinci-resolve-21-studio')!;
+
+export const title = "DaVinci Resolve 21 Studio (Free Download) — Editors Gurukul";
+export const description = "Download DaVinci Resolve 21 Studio full version setup guide with AI Magic Mask, Relight & Fairlight Voice Isolation.";
+---
+<Layout title={title} description={description}>
+
+  <main class="max-w-[1000px] mx-auto px-6 py-10">
+
+    <!-- Breadcrumb -->
+    <div class="text-xs font-bold text-[#4b5058] mb-6">
+      <a href="/digital-store" class="hover:text-[#0a5f61]">🛒 Digital Store</a> &gt; <span class="text-[#15181c]">{product.title}</span>
+    </div>
+
+    <!-- Top Section: Multi-Image Carousel + Core Offer -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-12">
+      
+      <!-- Interactive Multiple Image Carousel Slider -->
+      <div>
+        <div class="relative overflow-hidden aspect-video bg-[#15181c] rounded-3xl shadow-2xl border-2 border-[#e7e4dc]">
+          <img id="main-product-img" src={product.images[0]} alt={product.title} class="w-full h-full object-cover transition-all duration-300" />
+          <span class="absolute top-4 left-4 px-3.5 py-1.5 bg-[#e0692a] text-white text-xs font-extrabold uppercase tracking-wider rounded-full shadow-lg">
+            {product.badge}
+          </span>
+        </div>
+
+        <!-- Thumbnail Navigation Dots / Image Selector -->
+        <div class="flex gap-3 mt-4 justify-center">
+          {product.images.map((img, index) => (
+            <button 
+              type="button" 
+              onclick={`document.getElementById('main-product-img').src='${img}'`}
+              class="w-16 h-12 rounded-xl overflow-hidden border-2 border-[#e7e4dc] hover:border-[#0a5f61] focus:border-[#0a5f61] cursor-pointer shadow-sm"
+            >
+              <img src={img} alt={`Preview ${index + 1}`} class="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Column: Pricing & Hero Buy Action -->
+      <div class="bg-white border-2 border-[#e7e4dc] p-8 rounded-3xl shadow-xl">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#0a5f61]">{product.category}</span>
+        <h1 class="text-3xl font-extrabold text-[#15181c] mt-1 mb-2 leading-tight">{product.title}</h1>
+        
+        <div class="flex items-center gap-3 text-xs font-bold text-amber-500 mb-4">
+          <span>{product.rating}</span>
+          <span class="text-gray-300">•</span>
+          <span class="text-emerald-600 font-bold">{product.buyers} Verified</span>
+        </div>
+
+        <p class="text-sm text-[#4b5058] leading-relaxed mb-6">
+          {product.fullDesc}
+        </p>
+
+        <!-- Pricing Card -->
+        <div class="p-4 bg-[#e4f3f2] border border-[#0a5f61]/30 rounded-2xl mb-6 flex items-center justify-between">
+          <div>
+            <div class="text-3xl font-extrabold text-[#0a5f61]">100% FREE</div>
+            <span class="text-xs text-gray-500 line-through">Regular: {product.originalPrice}</span>
+          </div>
+          <span class="px-3 py-1.5 bg-[#0a5f61] text-white font-extrabold text-xs rounded-lg">
+            FREE DOWNLOAD
+          </span>
+        </div>
+
+        <!-- CTA Button 1: Hero Download -->
+        <a 
+          href={product.razorpayLink} 
+          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-3"
+        >
+          🎁 Download DaVinci 21 Studio Free →
+        </a>
+        <p class="text-xs text-center text-gray-400 m-0">✓ Instant Direct Download · No Credit Card Needed</p>
+      </div>
+
+    </div>
+
+    <!-- Middle Feature Breakdown Matrix -->
+    <section class="my-12 p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-sm">
+      <h2 class="text-2xl font-bold text-[#15181c] mb-6 border-l-4 border-[#0a5f61] pl-4">Key Features Included</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {product.features.map(f => (
+          <div class="p-4 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl flex items-start gap-3">
+            <span class="text-[#0a5f61] font-bold text-lg">✓</span>
+            <span class="text-sm font-semibold text-[#15181c]">{f}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Mid-Page CTA Banner (CTA Button 2) -->
+    <div class="my-12 p-8 bg-gradient-to-r from-[#0a5f61] to-[#0f8b8d] text-white rounded-3xl shadow-xl text-center">
+      <h3 class="text-2xl font-extrabold mb-2 text-white">Unlock Full Hollywood Color Grading Suite</h3>
+      <p class="text-white/90 text-sm max-w-lg mx-auto mb-6">
+        Get instant access to DaVinci Resolve 21 Studio setup files and Neural Engine AI tools.
+      </p>
+      <a 
+        href={product.razorpayLink} 
+        class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-[#15181c] font-black text-base rounded-full hover:bg-yellow-300 transition-all shadow-lg no-underline"
+      >
+        🎁 Download DaVinci 21 Free →
+      </a>
+    </div>
+
+    <FAQBlock items={[
+      {q: "Is DaVinci Resolve 21 Studio completely free here?", a: "Yes, you can access the full setup files, node tree cheatsheet, and tutorial guide 100% free."},
+      {q: "What hardware is required to run DaVinci Resolve 21 Studio?", a: "DaVinci Resolve 21 runs on Windows 10/11 (with dedicated GPU) and Apple Silicon Macs (M1/M2/M3)."}
+    ]} />
+
+  </main>
+
+</Layout>

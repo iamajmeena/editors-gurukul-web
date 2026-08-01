@@ -101,10 +101,11 @@ export const PRODUCTS: DigitalProduct[] = [
     rating: "5.0 ★★★★★",
     isFree: false,
     images: [
+      "/assets/all_editing_software_bundle_cover.jpg",
       "/assets/davinci_resolve_21_cover.jpg",
-      "/assets/capcut_pro_pc_mac_cover.jpg",
-      "/assets/2tb_video_editing_pack_cover.jpg"
+      "/assets/capcut_pro_pc_mac_cover.jpg"
     ],
+
     shortDesc: "Complete Video Editing Suite — DaVinci Resolve Studio, Premiere Pro, After Effects, CapCut Pro & Plugins.",
     fullDesc: "The ultimate video editor toolkit! Get full access to all industry-standard video editing software including DaVinci Resolve Studio, Adobe Premiere Pro, After Effects, CapCut Pro Desktop, and top plugins (Sapphire, Continuum, Neat Video).",
     features: [

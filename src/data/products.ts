@@ -50,8 +50,9 @@ export const PRODUCTS: DigitalProduct[] = [
       "Rec.709 Conversion Matrix Guide PDF",
       "DaVinci Resolve Node Tree PowerGrade Presets"
     ],
-    razorpayLink: "https://rzp.io/l/500-cinematic-lut-pack"
+    razorpayLink: "https://rzp.io/rzp/lBNeGuno"
   },
+
   {
     id: "2tb-editing-pack",
     slug: "2tb-video-editing-pack",

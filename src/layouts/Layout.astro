@@ -77,6 +77,70 @@ const schemaData = JSON.stringify({
         हिंदी में पढ़ें
     </button>
 
+    <!-- Anti-AdBlocker Detection Fullscreen Modal & Script -->
+    <div id="eg-adblock-modal" class="hidden fixed inset-0 z-[999999] bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+      <div class="bg-white border-2 border-[#e0692a] p-8 rounded-3xl max-w-md w-full text-center shadow-2xl animate-fade-in">
+        <div class="w-16 h-16 bg-[#fdece0] text-[#e0692a] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl font-extrabold">
+          🛡️
+        </div>
+        <h2 class="text-2xl font-extrabold text-[#15181c] mb-3">
+          AdBlocker Detected!
+        </h2>
+        <p class="text-sm text-[#4b5058] leading-relaxed mb-6">
+          Please <strong>disable your AdBlocker</strong> (or pause AdGuard, uBlock, Brave Shield) for <u>editorsgurukul.com</u> to access the Free iPhone Music Apps Guide and PDF Download.
+        </p>
+        <button onclick="window.location.reload()" class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-lg cursor-pointer">
+          ↻ I Have Disabled AdBlocker (Refresh)
+        </button>
+        <p class="text-xs text-[#9ca3af] mt-4 mb-0">
+          Thank you for supporting free content on Editors Gurukul!
+        </p>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function() {
+        // Create bait element to test AdBlocker
+        function checkAdBlock() {
+          var bait = document.createElement('div');
+          bait.className = 'adsbygoogle ad-zone ad-space page-ad sponsor-ad';
+          bait.style.cssText = 'position:absolute;left:-9999px;top:-9999px;height:10px;width:10px;';
+          document.body.appendChild(bait);
+
+          var isBlocked = false;
+          
+          // Test 1: Element height/visibility check
+          if (bait.offsetParent === null || bait.offsetHeight === 0 || bait.offsetLeft === 0) {
+            isBlocked = true;
+          }
+
+          // Test 2: Network fetch check to Monetag ad server
+          fetch('https://3nbf4.com/act/files/tag.min.js?z=11473498', { method: 'HEAD', mode: 'no-cors' })
+            .then(function() {
+              if (isBlocked) triggerAdBlockModal();
+            })
+            .catch(function() {
+              isBlocked = true;
+              triggerAdBlockModal();
+            });
+
+          document.body.removeChild(bait);
+        }
+
+        function triggerAdBlockModal() {
+          var modal = document.getElementById('eg-adblock-modal');
+          if (modal) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+          }
+        }
+
+        window.addEventListener('load', function() {
+          setTimeout(checkAdBlock, 800);
+        });
+      })();
+    </script>
+
     <script is:inline src="/assets/site-manifest.js"></script>
     <script is:inline src="/assets/site-chrome.js"></script>
 </body>

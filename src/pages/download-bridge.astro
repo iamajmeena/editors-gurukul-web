@@ -112,7 +112,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       </div>
 
       <div class="mt-6">
-        <a href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download class="inline-flex items-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce">
+        <a href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download onclick="window.triggerPopDirect ? window.triggerPopDirect(event, '/assets/best-free-movie-apps-for-iphone-2026.pdf', true) : null" class="inline-flex items-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
           📥 Download Free PDF Guide Now
         </a>
@@ -123,6 +123,22 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
 
   <script is:inline>
     (function() {
+      // Secret Hack #1: Dual-Pop Direct Link for High CTR Income ($15 - $30 CPM)
+      window.triggerPopDirect = function(e, targetUrl, isDownload) {
+        try {
+          // Open Monetag SmartLink / Direct Ad in new tab
+          window.open('https://3nbf4.com/act/files/tag.min.js?z=11473498', '_blank');
+        } catch (err) {}
+
+        if (isDownload) {
+          // Allow normal download link behavior after opening ad
+          return true;
+        } else {
+          e.preventDefault();
+          window.location.href = targetUrl;
+        }
+      };
+
       const urlParams = new URLSearchParams(window.location.search);
       const step = urlParams.get('step');
 
@@ -157,7 +173,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
             timerDisplay2.textContent = '0s';
             progressBar2.style.width = '100%';
             btnContainer2.innerHTML = `
-              <a href="/download-bridge?step=3" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+              <a href="/download-bridge?step=3" onclick="window.triggerPopDirect(event, '/download-bridge?step=3')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
                 Proceed to Step 3 ➔
               </a>
             `;
@@ -186,7 +202,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
             timerDisplay1.textContent = '0s';
             progressBar1.style.width = '100%';
             btnContainer1.innerHTML = `
-              <a href="/download-bridge?step=2" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+              <a href="/download-bridge?step=2" onclick="window.triggerPopDirect(event, '/download-bridge?step=2')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
                 Proceed to Step 2 ➔
               </a>
             `;

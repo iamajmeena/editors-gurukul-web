@@ -8,12 +8,18 @@ const pageTitle = title || "Editors Gurukul | Free Filmmaking Guides, LUTs & Gea
 const pageDesc = description || "Editors Gurukul offers free filmmaking guides, LUT resources, camera cheat sheets, and premium courses for creators and editors.";
 const canonicalURL = new URL(Astro.url.pathname, "https://editorsgurukul.com").toString();
 
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const schemaType = isHome ? "WebSite" : "TechArticle";
+
 const schemaData = JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Editors Gurukul",
-  "url": "https://editorsgurukul.com/",
+  "@type": schemaType,
+  "name": pageTitle,
+  "headline": pageTitle,
   "description": pageDesc,
+  "url": canonicalURL,
+  "mainEntityOfPage": canonicalURL,
+  "image": "https://editorsgurukul.com/assets/og-default.jpg",
   "author": {
     "@type": "Person",
     "name": "Ajay K Meena",
@@ -23,9 +29,19 @@ const schemaData = JSON.stringify({
       "https://instagram.com/iamajmeena",
       "https://ajaykmeena.com"
     ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Editors Gurukul",
+    "url": "https://editorsgurukul.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://editorsgurukul.com/assets/og-default.jpg"
+    }
   }
 });
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

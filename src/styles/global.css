@@ -415,3 +415,17 @@ iframe[src*="youtu.be"] {
   border-radius: 16px !important;
 }
 
+/* Keyboard Shortcut Badges */
+kbd {
+  font-family: 'JetBrains Mono', monospace !important;
+  background: var(--bg-alt, #f4f3ef) !important;
+  color: var(--ink, #15181c) !important;
+  border: 1px solid #d1d5db !important;
+  border-bottom: 2px solid #9ca3af !important;
+  border-radius: 6px !important;
+  padding: 2px 7px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  display: inline-block !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08) !important;
+}

@@ -1,8 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
 
 export const title = "How Much Should You Charge as a Video Editor in India (2026)";
 export const category = "editing-fundamentals";
+export const description = "Beginner se senior tak — India mein video editors kitna charge karte hain per video, per minute, retainer, aur monthly salary mein. Real numbers, koi sugarcoating nahi.";
 ---
 <Layout title="How Much Should You Charge as a Video Editor in India (2026)" description="Beginner se senior tak — India mein video editors kitna charge karte hain per video, per minute, retainer, aur monthly salary mein. Real numbers, koi sugarcoating nahi.">
 
@@ -197,6 +200,14 @@ export const category = "editing-fundamentals";
       <a href="https://youtube.com/@ajaykmeenaa" target="_blank" rel="noopener noreferrer">Subscribe @ajaykmeenaa</a>
     </div>
   </div>
+
+  <RelatedArticles links={[
+    {href: "/should-you-become-a-video-editor-2026", title: "Should You Become a Video Editor in 2026"},
+    {href: "/career-guides", title: "Career Guides for Filmmakers & Editors"},
+    {href: "/davinci-resolve-studio-vs-free", title: "DaVinci Resolve Studio vs Free"}
+  ]} />
+
+  <CourseCTA text="Want the color grading skill that lets you charge premium rates as an editor?" />
 
 </article>
 

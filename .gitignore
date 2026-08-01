@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# internal planning docs (not for public repo)
+CLAUDE_PROJECT_MASTER_PROMPT.md
+editorsgurukul-masterplan.md

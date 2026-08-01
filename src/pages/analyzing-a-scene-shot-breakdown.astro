@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQBlock from '../components/FAQBlock.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
+
+export const title = "Analyzing a Scene: A Shot-by-Shot Breakdown (2026)";
+export const category = "storytelling";
+export const description = "A practical method for breaking any scene down shot by shot — what job each shot is doing, why the cut happens where it does, and how to apply this analysis to your own footage.";
+---
+<Layout title={title} description={description}>
+
+  <article class="wrap">
+
+    <header>
+      <h1>Analyzing a Scene: A Shot-by-Shot Breakdown Method</h1>
+      <p class="hero-subtitle">Watching a great scene and feeling that it works is easy. Understanding exactly why it works — shot by shot, cut by cut — is the skill that actually transfers to your own footage. Here's a repeatable method for breaking any scene down to its working parts.</p>
+    </header>
+
+    <div class="callout"><b>Quick take:</b> A shot breakdown answers three questions for every single shot in a scene: what information does this shot deliver, why does it cut here and not two seconds earlier or later, and what would be lost if this shot were removed. Do that for every shot in a scene and you'll understand its construction better than most people who watch it ten times casually.</div>
+
+    <h2>Why Shot-by-Shot Analysis Matters</h2>
+    <p>Most filmmakers learn by imitation — you watch something that works and try to recreate the feeling. That works up to a point, but it plateaus fast if you never break down <em>why</em> it worked. Shot breakdown is the difference between "that scene felt tense" and "that scene felt tense because every shot got progressively tighter on the character's face while the cuts got shorter, and the wide shot didn't return until the tension resolved." The second version is something you can actually apply to your own project.</p>
+
+    <h2>The Four-Layer Breakdown Method</h2>
+    <p>Run through these four layers, in order, for a scene you want to study. Do this with the footage paused — this is analysis, not passive viewing.</p>
+
+    <h3>Layer 1: Shot Inventory</h3>
+    <p>List every shot in order. For each one, note the shot size (wide, medium, close-up, extreme close-up), the camera movement (static, pan, handheld, dolly), and roughly how long it holds. This is mechanical, but it's the foundation everything else builds on — you can't spot a pattern in the edit until you've written down what's actually there.</p>
+
+    <h3>Layer 2: Information Per Shot</h3>
+    <p>For each shot, write one sentence: what does this specific shot tell the audience that the previous shot didn't? If you can't answer that, the shot is either doing subtler emotional work (worth noting separately) or it's not earning its place in the edit. Strong scenes rarely repeat information across shots — each one moves the audience's understanding forward.</p>
+
+    <h3>Layer 3: Cut Motivation</h3>
+    <p>For every cut point, ask why the edit chose that exact frame to leave the shot. Common motivations: a character finishes an action, a look changes direction, a line of dialogue lands, or the shot has delivered its information and lingering longer would waste the beat. This is where <a href="/pacing-rhythm-editing-emotional-pace">pacing and rhythm</a> becomes visible — you'll start to see whether the scene is accelerating, holding steady, or deliberately slowing down, and exactly which shot lengths are creating that feeling.</p>
+
+    <h3>Layer 4: What Would Break If You Removed This Shot</h3>
+    <p>Go back through your inventory and, for each shot, imagine cutting it out entirely. Would the scene still make sense? Would it lose information, emotional weight, or rhythm? Shots that could be removed with no real loss are usually filler — noting which ones survive this test tells you what the scene's essential skeleton actually is, stripped of anything decorative.</p>
+
+    <h2>Applying the Method to Dialogue Scenes</h2>
+    <p>Dialogue scenes are the most common place editors default to flat coverage — wide, then cut back and forth on every line. Use the breakdown method to check: does the scene stay on a reaction shot a beat longer when something important lands? Does the camera move in as stakes rise? A well-cut dialogue scene is rarely just alternating over-the-shoulders — it's choosing, shot by shot, whose reaction matters most at that exact moment.</p>
+
+    <h2>Applying the Method to Action or Movement Scenes</h2>
+    <p>For action and movement, the same four layers apply, but Layer 3 (cut motivation) usually reveals a physical anchor — cuts happen on movement, impact, or direction change far more often than on stillness. If you break down an action sequence and most of the cuts land on static frames instead of motion, that's usually the reason it feels less kinetic than it should.</p>
+
+    <h2>Connecting Shot Breakdown to Your Own Story Choices</h2>
+    <p>Breakdown isn't just an academic exercise — it should directly inform decisions you make in your own edit. If you're working within a <a href="/three-act-structure-youtube-short-films">three-act structure</a>, breaking down how professional scenes handle the transition from build to turn to payoff, shot by shot, gives you a concrete reference instead of a vague feeling to imitate. Similarly, understanding whether a scene is being told through a character's decisions or through plot mechanics ties directly into <a href="/character-vs-plot-driven-storytelling">character-driven versus plot-driven storytelling</a> — that distinction usually shows up clearly once you've inventoried what each shot is actually revealing.</p>
+
+    <div class="callout"><b>Pro tip:</b> Do your first few breakdowns on scenes you already love, not random footage. You'll be more motivated to sit through the tedious inventory step, and you'll have an emotional benchmark ("I know this scene works") to compare your analysis against.</div>
+
+    <h2>A Simple Template to Use</h2>
+    <table>
+      <thead>
+        <tr><th>Shot #</th><th>Size / Movement</th><th>Duration</th><th>Information Delivered</th><th>Why Cut Here</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Wide, static</td><td>~3s</td><td>Establishes location and character position</td><td>Character starts moving — cut on the action</td></tr>
+        <tr><td>2</td><td>Medium, slow push-in</td><td>~2s</td><td>Character's intent becomes visible</td><td>Line of dialogue lands</td></tr>
+        <tr><td>3</td><td>Close-up, static</td><td>~4s</td><td>Emotional reaction to the line</td><td>Held past the line to let the reaction register, then cut on the next look-change</td></tr>
+      </tbody>
+    </table>
+    <p>Fill a version of this out for a full scene (even a 60-90 second one) and you'll have a reusable map of exactly how that scene is constructed — one you can consciously reference the next time you're editing something with a similar goal.</p>
+
+    <h2>Common Mistakes When Learning to Break Down Scenes</h2>
+    <ul>
+      <li><strong>Watching instead of pausing.</strong> Real breakdown requires stopping on individual frames and cut points — watching at normal speed only gives you the overall feeling, not the mechanics.</li>
+      <li><strong>Only analyzing shot size, not cut motivation.</strong> Knowing it's a close-up isn't useful on its own — knowing why the cut happened on that exact frame is what transfers to your own editing.</li>
+      <li><strong>Skipping the removal test.</strong> It's the single fastest way to find out which shots are structurally essential versus decorative, and most people skip it because it takes real effort to imagine the scene without a shot.</li>
+      <li><strong>Only studying scenes you like.</strong> Breaking down a scene that doesn't work is just as valuable — it usually reveals a missing layer (no escalation, no clear cut motivation, or redundant shots) that's easy to spot once you know what to look for.</li>
+    </ul>
+
+    <h2>Quick Recap</h2>
+    <table>
+      <thead><tr><th>Layer</th><th>Question It Answers</th></tr></thead>
+      <tbody>
+        <tr><td>1. Shot Inventory</td><td>What's actually in the scene, shot by shot</td></tr>
+        <tr><td>2. Information Per Shot</td><td>What does each shot uniquely deliver</td></tr>
+        <tr><td>3. Cut Motivation</td><td>Why does the cut happen exactly here</td></tr>
+        <tr><td>4. Removal Test</td><td>What's essential versus decorative</td></tr>
+      </tbody>
+    </table>
+
+    <FAQBlock items={[
+      {q: "What is a shot-by-shot breakdown?", a: "A method of analyzing a scene by listing every shot, noting what information it delivers, why the edit cuts where it does, and whether the shot is essential to the scene."},
+      {q: "How long should a shot breakdown take?", a: "For a short 60-90 second scene, expect 20-40 minutes if you're doing it properly with pauses and notes — it's a slow, deliberate exercise, not a casual rewatch."},
+      {q: "Should I only break down scenes I think work well?", a: "No. Breaking down a scene that doesn't work is just as instructive — it usually exposes a missing layer, like flat pacing or redundant shots, that's easier to spot once you know the method."},
+      {q: "How does shot breakdown relate to editing rhythm?", a: "Layer 3 of the breakdown (cut motivation) directly reveals the scene's pacing — you'll see whether shot lengths are accelerating, holding steady, or deliberately slowing for a beat."},
+      {q: "Can this method be used for my own rough cuts, not just reference footage?", a: "Yes — running your own rough cut through the removal test (layer 4) is one of the fastest ways to find shots that aren't earning their place before you lock the edit."}
+    ]} />
+
+    <RelatedArticles links={[
+      {href: "/pacing-rhythm-editing-emotional-pace", title: "Pacing and Rhythm in Editing for Emotional Pace"},
+      {href: "/three-act-structure-youtube-short-films", title: "Three-Act Structure for YouTube and Short Films"},
+      {href: "/character-vs-plot-driven-storytelling", title: "Character-Driven vs Plot-Driven Storytelling"},
+      {href: "/visual-storytelling-show-dont-tell", title: "Visual Storytelling: Show, Don't Tell"}
+    ]} />
+
+    <CourseCTA text="Want to apply this kind of shot-level analysis directly inside your own DaVinci Resolve edits?" />
+
+  </article>
+
+</Layout>

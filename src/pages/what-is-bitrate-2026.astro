@@ -1,8 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
 
 export const title = "What Is Bitrate? CBR vs VBR, Resolution vs Bitrate Explained (2026)";
 export const category = "camera";
+export const description = "Bitrate kya hota hai, CBR vs VBR mein farak, aur YouTube/Instagram ke official recommended bitrate table — sab kuch ek jagah, editor ki nazar se explain kiya gaya.";
 ---
 <Layout title="What Is Bitrate? CBR vs VBR, Resolution vs Bitrate Explained (2026)" description="Bitrate kya hota hai, CBR vs VBR mein farak, aur YouTube/Instagram ke official recommended bitrate table — sab kuch ek jagah, editor ki nazar se explain kiya gaya.">
 
@@ -190,6 +193,14 @@ export const category = "camera";
       <a href="https://youtube.com/@ajaykmeenaa" target="_blank" rel="noopener noreferrer">Subscribe @ajaykmeenaa</a>
     </div>
   </div>
+
+  <RelatedArticles links={[
+    {href: "/davinci-resolve-export-settings-youtube-instagram-reels-2026", title: "DaVinci Resolve Export Settings for YouTube & Reels"},
+    {href: "/davinci-resolve-fairlight-audio-post-lufs-standards", title: "Fairlight Audio Post & LUFS Standards"},
+    {href: "/frame-rates-explained-24fps-30fps-60fps-120fps", title: "Frame Rates Explained"}
+  ]} />
+
+  <CourseCTA text="Codec, bitrate, Log, HDR — master the full color science and delivery pipeline in Decoding DaVinci Resolve 2.0?" />
 
 </article>
 

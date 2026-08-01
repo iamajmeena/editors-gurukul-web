@@ -1,8 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import CourseCTA from '../components/CourseCTA.astro';
 
 export const title = "How to Export in DaVinci Resolve for YouTube, Instagram & Reels (2026)";
 export const category = "davinci-resolve";
+export const description = "DaVinci Resolve Delivery page ki exact settings — YouTube 4K, Instagram Reels aur TikTok ke liye. Gamma shift, washed-out colors, aur 50MB rule sab explain kiya gaya.";
 ---
 <Layout title="How to Export in DaVinci Resolve for YouTube, Instagram & Reels (2026)" description="DaVinci Resolve Delivery page ki exact settings — YouTube 4K, Instagram Reels aur TikTok ke liye. Gamma shift, washed-out colors, aur 50MB rule sab explain kiya gaya.">
 
@@ -214,6 +217,14 @@ export const category = "davinci-resolve";
       <a href="https://youtube.com/@ajaykmeenaa" target="_blank" rel="noopener noreferrer">Subscribe @ajaykmeenaa</a>
     </div>
   </div>
+
+  <RelatedArticles links={[
+    {href: "/what-is-bitrate-2026", title: "What Is Bitrate? CBR vs VBR Explained"},
+    {href: "/davinci-resolve-color-management-cst-vs-aces", title: "DaVinci Resolve Color Management: CST vs ACES"},
+    {href: "/davinci-resolve-fairlight-audio-post-lufs-standards", title: "Fairlight Audio Post & LUFS Standards"}
+  ]} />
+
+  <CourseCTA text="Want the full node-based color pipeline, from footage to correct Delivery page export, taught step by step?" />
 
 </article>
 

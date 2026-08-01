@@ -5,6 +5,11 @@ const k2 = "-rqTwEiVI9FlaiUsB";
 const getBrevoKey = () => k1 + k2;
 
 const PRODUCT_DELIVERY_MAP = {
+  "movie-app-iphone": {
+    title: "iPhone Free Movie & Shows Watch Guide (2026)",
+    downloadUrl: "https://editorsgurukul.com/downloads/iPhone_Free_Movie_Guide_2026.pdf",
+    badge: "📱 iPhone Free Movie App PDF Guide"
+  },
   "lBNeGuno": {
     title: "500+ Cinematic LUTs Mega Collection",
     downloadUrl: "https://editorsgurukul.com/payment-success?product=500-lut-pack",
@@ -55,7 +60,7 @@ export async function onRequestPost(context) {
     const linkId = paymentLinkEntity.id || '';
     const buyerEmail = paymentEntity.email || paymentLinkEntity.customer?.email || '';
     const buyerName = paymentEntity.notes?.name || paymentEntity.email?.split('@')[0] || 'Creator';
-    const amountPaid = paymentEntity.amount ? `₹${paymentEntity.amount / 100}` : '₹99';
+    const amountPaid = paymentEntity.amount ? `₹${paymentEntity.amount / 100}` : '₹29';
 
     if (!buyerEmail) {
       return new Response(JSON.stringify({ error: "No buyer email found" }), { status: 400 });
@@ -117,12 +122,12 @@ export async function onRequestPost(context) {
             <div class="container">
               <span class="badge">${matchedProduct.badge}</span>
               <h1>Thank You For Purchasing, ${buyerName}! 🎉</h1>
-              <p>Your payment of <strong>${amountPaid}</strong> via Razorpay was successful. Here is your instant high-speed access to your digital files.</p>
+              <p>Your payment of <strong>${amountPaid}</strong> via Razorpay was successful. Here is your instant PDF download access.</p>
               
               <div class="card">
                 <h3 style="margin-top:0; color:#15181c;">${matchedProduct.title}</h3>
-                <p style="font-size:12px; color:#666; margin-bottom:20px;">Direct Google Drive & PDF Download Access</p>
-                <a href="${matchedProduct.downloadUrl}" class="btn" target="_blank">📥 DOWNLOAD YOUR ASSETS NOW →</a>
+                <p style="font-size:12px; color:#666; margin-bottom:20px;">Direct High-Speed PDF Download Access</p>
+                <a href="${matchedProduct.downloadUrl}" class="btn" target="_blank">📥 DOWNLOAD YOUR PDF NOW →</a>
               </div>
 
               <p>Need help or have questions? Contact DOP & Colorist <strong>Ajay K Meena</strong> directly on WhatsApp VIP Support.</p>

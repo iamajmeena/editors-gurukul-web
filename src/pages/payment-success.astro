@@ -1,8 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-export const title = "Payment Successful — Instant Download | Editors Gurukul";
-export const description = "Thank you for your purchase! Here is your instant Google Drive download link.";
+export const title = "Payment Successful — Instant PDF Download | Editors Gurukul";
+export const description = "Thank you for your purchase! Here is your instant PDF download link.";
+
+const DOWNLOAD_MAP: Record<string, { title: string; fileUrl: string }> = {
+  'movie-app-iphone': {
+    title: 'iPhone Free Movie & Shows Watch Guide (2026)',
+    fileUrl: '/downloads/iPhone_Free_Movie_Guide_2026.pdf'
+  },
+  '500-lut-pack': {
+    title: '500+ Cinematic LUTs Mega Collection',
+    fileUrl: 'https://drive.google.com'
+  },
+  '2tb-video-editing-pack': {
+    title: '2 TB Ultimate Video Editing Assets Pack',
+    fileUrl: 'https://drive.google.com'
+  },
+  'all-editing-software': {
+    title: 'All Video Editing Software Collection',
+    fileUrl: 'https://drive.google.com'
+  },
+  'toko-elements-pack': {
+    title: 'Toko Elements Motion Graphics Pack',
+    fileUrl: 'https://drive.google.com'
+  },
+  'capcut-pro-pc': {
+    title: 'CapCut Pro For Windows PC',
+    fileUrl: 'https://drive.google.com'
+  },
+  'capcut-pro-mac': {
+    title: 'CapCut Pro For Apple Mac & MacBook',
+    fileUrl: 'https://drive.google.com'
+  }
+};
 ---
 <Layout title={title} description={description}>
 
@@ -27,20 +58,21 @@ export const description = "Thank you for your purchase! Here is your instant Go
     <!-- Download Card Box -->
     <div id="download-card" class="bg-white border-2 border-[#0a5f61] p-8 rounded-3xl shadow-2xl max-w-xl mx-auto mb-10">
       <h2 id="product-title" class="text-2xl font-bold text-[#15181c] mb-2">Digital Asset Package</h2>
-      <p class="text-xs font-mono text-[#0a5f61] font-bold mb-6" id="tx-id">Transaction ID: Confirmed</p>
+      <p class="text-xs font-mono text-[#0a5f61] font-bold mb-6" id="tx-id">Razorpay Tx: Confirmed</p>
 
-      <!-- Instant High-Speed Download Link -->
+      <!-- Instant Download Link -->
       <a 
         id="drive-download-btn"
-        href="https://drive.google.com" 
+        href="/downloads/iPhone_Free_Movie_Guide_2026.pdf" 
         target="_blank" 
+        download
         rel="noopener"
-        class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-lg rounded-2xl hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-3 no-underline transform active:scale-95 mb-4"
+        class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-lg rounded-2xl hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-3 no-underline transform active:scale-95 mb-4 cursor-pointer"
       >
-        <span>📥 INSTANT GOOGLE DRIVE DOWNLOAD</span>
+        <span>📥 INSTANT DOWNLOAD YOUR PDF / FILES</span>
       </a>
 
-      <p class="text-xs text-gray-500 m-0">✓ Direct High-Speed Download · No Password Required</p>
+      <p class="text-xs text-gray-500 m-0">✓ Direct 1-Second PDF Download · Auto-Backup Sent To Email</p>
     </div>
 
     <!-- WhatsApp VIP Support Box -->
@@ -67,10 +99,44 @@ export const description = "Thank you for your purchase! Here is your instant Go
       var tx = urlParams.get('tx');
       var product = urlParams.get('product');
 
+      var downloadMap = {
+        'movie-app-iphone': {
+          title: 'iPhone Free Movie & Shows Watch Guide (2026)',
+          fileUrl: '/downloads/iPhone_Free_Movie_Guide_2026.pdf'
+        },
+        '500-lut-pack': {
+          title: '500+ Cinematic LUTs Mega Collection',
+          fileUrl: 'https://drive.google.com'
+        },
+        '2tb-video-editing-pack': {
+          title: '2 TB Ultimate Video Editing Assets Pack',
+          fileUrl: 'https://drive.google.com'
+        },
+        'all-editing-software': {
+          title: 'All Video Editing Software Collection',
+          fileUrl: 'https://drive.google.com'
+        },
+        'toko-elements-pack': {
+          title: 'Toko Elements Motion Graphics Pack',
+          fileUrl: 'https://drive.google.com'
+        },
+        'capcut-pro-pc': {
+          title: 'CapCut Pro For Windows PC',
+          fileUrl: 'https://drive.google.com'
+        },
+        'capcut-pro-mac': {
+          title: 'CapCut Pro For Apple Mac & MacBook',
+          fileUrl: 'https://drive.google.com'
+        }
+      };
+
       if (tx) {
         document.getElementById('tx-id').innerText = 'Razorpay Tx ID: ' + tx;
       }
-      if (product) {
+      if (product && downloadMap[product]) {
+        document.getElementById('product-title').innerText = downloadMap[product].title;
+        document.getElementById('drive-download-btn').href = downloadMap[product].fileUrl;
+      } else if (product) {
         document.getElementById('product-title').innerText = product.replace(/-/g, ' ').toUpperCase();
       }
     })();

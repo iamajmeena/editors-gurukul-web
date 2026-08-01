@@ -187,42 +187,8 @@ const guideDescriptions: Record<string, string> = {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="eg-assets-grid">
             
-            <!-- Top Featured Free Download Cards -->
-            <div class="asset-card eg-glass-card" data-category="luts">
-                <div>
-                    <span class="asset-card__badge">Free Download</span>
-                    <h3>Free Sony/Canon Log to Rec.709 LUT</h3>
-                    <p style="color:var(--ink-soft); line-height:1.6; margin-bottom:16px;">Get a clean cinematic color transform for fast grading in DaVinci Resolve and Premiere Pro.</p>
-                </div>
-                <div style="margin-top:auto;">
-                    <a href="/free-resources" style="background:#0a5f61; color:#ffffff; padding:10px 20px; border-radius:999px; font-weight:700; text-decoration:none; font-size:0.9rem; display:inline-block;">Free Download (PDF / ZIP) →</a>
-                </div>
-            </div>
-
-            <div class="asset-card eg-glass-card" data-category="camera">
-                <div>
-                    <span class="asset-card__badge">Free PDF</span>
-                    <h3>Camera Settings PDF Guide</h3>
-                    <p style="color:var(--ink-soft); line-height:1.6; margin-bottom:16px;">Quick reference for shutter, ISO, frame rates, and low-light settings for your camera.</p>
-                </div>
-                <div style="margin-top:auto;">
-                    <a href="/free-camera-guide" style="background:#0a5f61; color:#ffffff; padding:10px 20px; border-radius:999px; font-weight:700; text-decoration:none; font-size:0.9rem; display:inline-block;">Free Download (PDF / ZIP) →</a>
-                </div>
-            </div>
-
-            <div class="asset-card eg-glass-card" data-category="luts">
-                <div>
-                    <span class="asset-card__badge">Free Pack</span>
-                    <h3>Teal &amp; Orange LUT Pack</h3>
-                    <p style="color:var(--ink-soft); line-height:1.6; margin-bottom:16px;">Use this high-contrast grading pack to create cinematic looks without wasting editing time.</p>
-                </div>
-                <div style="margin-top:auto;">
-                    <a href="/free-resources" style="background:#0a5f61; color:#ffffff; padding:10px 20px; border-radius:999px; font-weight:700; text-decoration:none; font-size:0.9rem; display:inline-block;">Free Download (PDF / ZIP) →</a>
-                </div>
-            </div>
-
             <!-- Graphy Store Banner -->
-            <div class="asset-card store-banner lg:col-span-3 eg-glass-card">
+            <div class="asset-card store-banner lg:col-span-3 eg-glass-card" data-category="featured">
                 <h3>Looking for deeper filmmaking education?</h3>
                 <p style="color:var(--ink-soft); line-height:1.6; margin-bottom:16px;">Explore my premium courses, workflow bundles, and cinematic resources on my Graphy store.</p>
                 <a href="https://www.ajaykmeena.com/courses/Decoding-DaVinci-Resolve-20--The-Ultimate-course-for-Video-Editing-Color-Grading--AI-Powered-Filmmaking-69b89bb32c97f8fb76db7ee8" target="_blank" rel="noopener noreferrer">Visit My Graphy Store ↗</a>
@@ -232,14 +198,14 @@ const guideDescriptions: Record<string, string> = {
             {guides.map((guide) => {
                 const slug = guide.file.split('/').pop().replace('.astro', '');
                 
-                let pageTitle = guide.title || slug.replace(/-/g, ' ');
-                pageTitle = pageTitle.replace(/2026/g, '').trim();
+                let rawTitle = slug.split('-').map(w => w.length <= 3 && !['new', 'log', 'hdr', 'cob', 'rgb', 'mic', 'pdf', '50mm', '24fps'].includes(w) ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                let pageTitle = guide.title || rawTitle.replace(/2026/g, '').replace(/Davinci/g, 'DaVinci').trim();
                 
                 let category = guide.category || 'editing-fundamentals';
                 if (!guide.category) {
                     if (slug.includes('davinci')) category = 'davinci-resolve';
-                    if (slug.includes('camera') || slug.includes('log') || slug.includes('codec') || slug.includes('hdr')) category = 'camera';
-                    if (slug.includes('tripod') || slug.includes('mic') || slug.includes('light') || slug.includes('gimbal') || slug.includes('monitor') || slug.includes('gear')) category = 'gear';
+                    if (slug.includes('camera') || slug.includes('log') || slug.includes('codec') || slug.includes('hdr') || slug.includes('iso') || slug.includes('sensor')) category = 'camera';
+                    if (slug.includes('tripod') || slug.includes('mic') || slug.includes('light') || slug.includes('gimbal') || slug.includes('monitor') || slug.includes('gear') || slug.includes('lens')) category = 'gear';
                     if (slug.includes('movie') || slug.includes('music') || slug.includes('app')) category = 'apps';
                 }
 
@@ -346,6 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function filterContent(isFromUserEnter) {
     var query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+    var keywords = query.length > 0 ? query.split(/\s+/).filter(Boolean) : [];
 
     // Toggle Clear Button
     if (searchClearBtn) {
@@ -364,7 +331,13 @@ document.addEventListener('DOMContentLoaded', function() {
       var text = card.textContent.toLowerCase();
       var category = (card.getAttribute('data-category') || '').toLowerCase();
       
-      var matchesQuery = !query || text.indexOf(query) !== -1;
+      // Multi-word smart matching logic
+      var matchesQuery = true;
+      if (keywords.length > 0) {
+        matchesQuery = keywords.every(function(kw) {
+          return text.indexOf(kw) !== -1 || category.indexOf(kw) !== -1;
+        });
+      }
       
       var matchesCategory = false;
       if (currentCategory === 'all') {
@@ -394,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (query.length > 0 || currentCategory !== 'all') {
         searchFeedback.classList.remove('hidden');
         var catName = currentCategory === 'all' ? 'All Resources' : currentCategory.replace(/-/g, ' ').toUpperCase();
-        searchFeedback.textContent = '🔎 Showing ' + visibleCount + ' guide(s)' + (query ? ' for "' + query + '"' : '') + ' in ' + catName;
+        searchFeedback.textContent = '🔎 Found ' + visibleCount + ' guide(s)' + (query ? ' for "' + query + '"' : '') + ' in ' + catName;
       } else {
         searchFeedback.classList.add('hidden');
       }

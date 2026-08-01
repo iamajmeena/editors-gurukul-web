@@ -255,10 +255,17 @@ const guideDescriptions: Record<string, string> = {
     </nav>
 
 <style is:inline>
-  @keyframes egPopIn {
+  @keyframes egApplePopIn {
     0% {
       opacity: 0;
-      transform: translateY(32px) scale(0.94);
+      transform: translateY(50px) scale(0.88);
+    }
+    65% {
+      opacity: 0.95;
+      transform: translateY(-6px) scale(1.025);
+    }
+    85% {
+      transform: translateY(2px) scale(0.995);
     }
     100% {
       opacity: 1;
@@ -267,7 +274,16 @@ const guideDescriptions: Record<string, string> = {
   }
 
   .asset-card.eg-pop-in {
-    animation: egPopIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    animation: egApplePopIn 0.48s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+    will-change: transform, opacity;
+  }
+
+  .eg-filter-pill {
+    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, color 0.2s, box-shadow 0.2s !important;
+  }
+
+  .eg-filter-pill:active {
+    transform: scale(0.92) !important;
   }
 
   #eg-assets-grid .asset-card.eg-hide-card,
@@ -356,14 +372,14 @@ document.addEventListener('DOMContentLoaded', function() {
         card.classList.remove('eg-hide-card');
         card.classList.remove('hidden');
         
-        // Trigger khat-khat-khat stagger animation
+        // Trigger Apple Reel-style spring pop animation
         card.classList.remove('eg-pop-in');
         card.style.cssText = 'display: flex !important; animation-delay: ' + animDelay + 'ms;';
         void card.offsetWidth; // Force reflow
         card.classList.add('eg-pop-in');
 
         visibleCount++;
-        animDelay += 35; // 35ms stagger step
+        animDelay += 28; // 28ms ultra-smooth spring micro-cascade
       } else {
         card.classList.remove('eg-pop-in');
         card.classList.add('eg-hide-card');

@@ -13,6 +13,7 @@ const guides = allPages.filter(page => {
 
 // Map custom descriptions for guides
 const guideDescriptions: Record<string, string> = {
+  // DaVinci Resolve Masterclasses
   'davinci-resolve-21-new-features-2026': 'Explore all new AI tools, color page updates, and Fairlight upgrades in DaVinci Resolve 21.',
   'davinci-resolve-fix-common-errors-2026': 'Step-by-step solutions for media offline, GPU memory full, audio sync lag, and render crashes.',
   'davinci-resolve-hidden-methods-2026': 'Pro colorist techniques for fast node management, secret power windows, and custom keyboard workflows.',
@@ -23,23 +24,111 @@ const guideDescriptions: Record<string, string> = {
   'davinci-resolve-system-requirements-2026': 'Recommended CPU, GPU VRAM, RAM, and SSD storage specs for smooth 4K editing in DaVinci Resolve.',
   'davinci-resolve-tips-2026': '10 fast editing and color grading hacks to double your timeline speed.',
   'davinci-resolve-white-balance-method-2026': 'Accurate 3-click white balance method using chromatic adaptation and tint correction nodes.',
+  'davinci-resolve-color-management-cst-vs-aces': 'Master Color Space Transforms (CST), ACEScct, and DaVinci YRGB Color Managed.',
+  'davinci-resolve-skin-tone-grading-vectorscope-guide': 'Dial in natural skin tones using Vectorscope skin line, HSL Qualifiers, and skin smoothing.',
+  'davinci-resolve-ai-tools-relight-depth-map-magic-mask': 'Master AI Relight 3D, Depth Map isolating backgrounds, and Magic Mask 2.0 subject tracking.',
+  'davinci-resolve-fairlight-audio-post-lufs-standards': 'Fairlight audio mastering: AI Voice Isolation, Dialogue Leveller, and target LUFS standards.',
+  'davinci-resolve-export-settings-youtube-instagram-reels-2026': 'Best render export settings for YouTube 4K 60fps and Instagram Reels 9:16 vertical video.',
+  'best-camera-settings-davinci-resolve-grading': 'Camera setup rules for Log footage, shutter angle, and native ISO before color grading.',
+
+  // Camera & Sensor Guides
   '1-best-camera-under-50000': 'Top budget camera recommendations for video creators under ₹50,000 in India.',
   '2-what-is-codec': 'Understanding H.264 vs H.265 vs ProRes vs All-Intra for smooth playback.',
   '3-what-is-log': 'Why shooting in S-Log3, C-Log, or V-Log gives maximum dynamic range and how to expose it.',
   '4-what-is-hdr': 'HDR10 vs HLG vs Dolby Vision filmmaking guide for colorists.',
   '5-master-your-camera': 'Master shutter angle, ISO native ISO dual gain, and aperture for cinematic depth of field.',
+  'best-budget-cinema-camera-beginners-2026': 'BMPCC 4K/6K vs Sony FX30 vs Canon C70 comparison for entry-level cinema buyers.',
+  'best-camera-bags-protection-gear-2026': 'Top water-resistant, shockproof camera backpacks and run-and-gun hard cases.',
+  'best-camera-for-youtube-vlogging-india-2026': 'Sony ZV-E10 vs Canon R50 vs Panasonic Lumix G100 for YouTube talking-head creators.',
+  'best-camera-low-light-filmmaking-2026': 'Sony A7S III vs FX3 vs Lumix S5 II dual native ISO low-light performance comparison.',
+  'best-camera-wedding-cinematography-1-5-lakh-2026': 'Top wedding camera setups under ₹1.5 Lakh with 10-bit 4:2:2 and Dual Card Slots.',
+  'best-mirrorless-camera-under-1-lakh-2026': 'Best hybrid mirrorless cameras under ₹1 Lakh for video & stills in India.',
+  'best-mirrorless-camera-under-2-lakh-2026': 'Professional 4K 60fps 10-bit mirrorless cameras under ₹2 Lakhs for commercial DOPs.',
+  'best-used-cameras-for-filmmaking-budget-2026': 'Smart budget buying guide for second-hand Sony A6400, GH5, and A7 II cameras.',
+  'camera-finder': 'Interactive quiz to find the perfect camera based on your budget, genre, and skill level.',
+  'camera-menu-settings-cinematic-footage': 'Essential menu settings checklist for Sony, Canon, Panasonic, and Fujifilm cameras.',
+  'camera-sensor-cleaning-maintenance-guide': 'Safe DIY wet-swab sensor cleaning guide to remove dust spots without damaging your sensor.',
+  'dslr-vs-mirrorless-vs-cinema-camera-2026': 'Key differences between DSLRs, mirrorless bodies, and dedicated cinema cameras.',
+  'how-to-choose-first-camera-beginner-filmmaker': 'A practical decision guide for beginner filmmakers buying their very first camera.',
+  'internal-recording-vs-external-recorder-ninja-v': 'When to record to internal SD cards vs Atomos Ninja V ProRes RAW external recorders.',
+  'iso-native-iso-dual-native-iso-explained': 'Dual Native ISO noise floor secrets for Sony S-Log3, Panasonic V-Log, and Cinema cameras.',
+  'rolling-shutter-explained': 'Why jello motion artifacts happen and how to minimize rolling shutter skew.',
+  'sensor-size-full-frame-vs-aps-c-vs-m43': 'Full-frame vs Super35/APS-C vs Micro 4/3 sensor math, crop factors, and low-light depth.',
+  'global-shutter-cameras-explained-2026': 'How global shutter sensors eliminate flash banding and motion distortion completely.',
+  'sony-vs-canon-vs-panasonic-vs-fujifilm-video-2026': 'Detailed color science, autofocus, and ecosystem comparison across the big 4 camera brands.',
+
+  // Lens & Optics Guides
+  'anamorphic-lenses-explained': 'Anamorphic squeeze ratios, oval bokeh, horizontal blue flares, and desqueeze workflow.',
+  'best-50mm-lens-nifty-fifty-comparison-2026': 'Battle of the 50mm primes — Sony f/1.8 vs Canon RF f/1.8 vs Sigma Art f/1.4 test.',
+  'best-beginner-lens-kit-cinematic-video': 'Essential 2-lens combo (35mm wide + 85mm portrait) for versatile cinematic shooting.',
+  'best-budget-cine-mod-lenses-under-20000-2026': 'De-clicked vintage Helios 44-2, Takumar, and Meike cine-modded prime lens guide.',
+  'best-lens-for-interviews-talking-head-videos-2026': 'Top focal lengths for flattering portrait compression without facial distortion.',
+  'building-lens-kit-on-budget-priority-order': 'Which lenses to buy first: Fast primes vs constant aperture zoom lenses.',
+  'depth-of-field-explained-bokeh-guide': 'Master aperture f-stops, focal length distance, and background separation physics.',
+  'focal-length-perspective-facial-distortion-portraits': 'How 24mm vs 50mm vs 85mm alters face shapes and portrait aesthetics.',
+  'lens-breathing-explained': 'What lens breathing is, why it ruins focus racks, and how to fix it in post.',
+  'lens-filters-explained-nd-polarizer-diffusion': 'VND filters, CPL polarizers, and Black Pro-Mist diffusion strength guide.',
+  'macro-lenses-product-detail-shots-beginner-guide': 'How to shoot crisp 1:1 macro product B-roll with 90mm/100mm dedicated macro lenses.',
+  'prime-vs-zoom-lenses-filmmaking': 'Sharpness, aperture speed, and weight trade-offs between prime lenses and zoom lenses.',
+  'understanding-aperture-t-stop-vs-f-stop': 'Why cinema lenses use T-stops instead of f-stops and how light transmission works.',
+  'understanding-focal-length-24mm-50mm-85mm': 'Comprehensive field-of-view guide for wide-angle, standard, and telephoto lenses.',
+  'vintage-manual-lenses-filmmaking': 'Unlocking unique character, swirly bokeh, and warm flares with vintage M42 manual lenses.',
+  'what-is-cine-lens-do-you-need-one': 'Gear-ring focus throws, aperture de-clicking, and optical parfocal design explained.',
+
+  // Lighting Guides
+  'best-lighting-kit-for-beginners-under-15000-2026': 'Budget 3-point studio lighting kit breakdown for YouTube and interview setups.',
+  'best-rgb-creative-lighting-music-video': 'Creative color contrast, RGB tube placement, and stylized atmosphere for music videos.',
   'best-rgb-stick-light-2026': 'Tested comparison of budget RGB stick lights — Digitek vs Godox LC500R.',
+  'best-studio-cob-light-under-12000-2026': 'Digitek DCL-250WBC vs Godox SL60IID COB studio lights breakdown.',
+  'best-wedding-cinematography-lighting-setup': 'On-location light stands, wireless battery COB lights, and reception lighting strategy.',
+  'best-youtube-lighting-setup-budget-pro': 'Key light, fill light, backlight, and practical background lighting guide for creators.',
+  'cob-vs-led-panel-vs-tube-lights': 'Choosing the right light modifier, beam angle, and output for small studios.',
+  'cri-tlci-explained-skin-tones': 'Why 95+ CRI/TLCI scores matter to avoid green/magenta skin casts under LED lights.',
+  'gels-color-grading-on-set': 'Using CTB, CTO, and creative color gels on set to save grading time in post.',
+  'lighting-for-green-screen-chroma-key': 'Even background illumination, subject distance, and spill prevention for clean keying.',
+  'low-key-vs-high-key-lighting': 'Moody dramatic shadow ratio vs bright commercial lighting setups.',
+  'motivated-lighting-natural-look': 'Making artificial studio lights match practical windows, lamps, and sunlight.',
+  'natural-light-filmmaking-zero-gear': 'Bouncing sunlight with negative fill and window diffusion for zero-budget films.',
+  'one-light-setups-dramatic-results': 'Creating cinematic dramatic portraits using just one key light and a reflector.',
+  'practical-lights-in-frame-story-elements': 'Using desk lamps, neon signs, and practical light fixtures to add depth in frame.',
+  'softboxes-diffusion-modifiers-explained': 'Lantern diffusers, parabolic softboxes, grid egg-crates, and bounce boards.',
+  'three-point-lighting-explained': 'Classic Key, Fill, and Hair/Rim backlight positioning and intensity ratios.',
+  'understanding-color-temperature-kelvin': 'Matching 3200K tungsten bulbs with 5600K daylight windows on set.',
+
+  // Filmmaking & Gear Guides
+  'audio-gear-matters-more-than-camera': 'Why bad audio turns viewers away faster than low video quality.',
+  'b-roll-shooting-techniques-expensive-look': 'Parallax movement, foreground framing, speed ramps, and texture B-roll cuts.',
+  'backup-organize-footage-on-set-data-management': 'Checksum backups using Silverstack/ShotPut Pro, 3-2-1 backup rule, and folder trees.',
+  'best-field-monitor-under-15000-2026': 'Feelworld F6 Plus vs Portkeys PT5 vs Desview R6 2800 Nits monitor review.',
+  'best-gimbal-for-filmmaking-2026': 'DJI RS 3 Mini vs Zhiyun Weebill S 3-axis camera gimbals test.',
+  'best-gimbal-under-20000-beginners': 'Smooth 3-axis gimbal calibration, ninja walk technique, and movement modes.',
   'best-video-tripod-under-5000-2026': 'Digitek DTR-545VD vs Simpex 880 Pro video tripods & ₹1,400 fluid head hack.',
   'best-wireless-mic-under-5000-2026': 'Hollyland Lark A1 vs Boya BY-V20 vs Grenaro J13 wireless mic comparison.',
-  'best-studio-cob-light-under-12000-2026': 'Digitek DCL-250WBC vs Godox SL60IID COB studio lights breakdown.',
-  'best-gimbal-for-filmmaking-2026': 'DJI RS 3 Mini vs Zhiyun Weebill S 3-axis camera gimbals test.',
-  'best-field-monitor-under-15000-2026': 'Feelworld F6 Plus vs Portkeys PT5 vs Desview R6 2800 Nits monitor review.',
+  'building-first-camera-bag-run-and-gun-kit': 'Essential solo filmmaker kit: Body, fast prime, ND filter, wireless mic, and mini light.',
+  'client-wedding-shoot-day-workflow-gear-checklist': 'Complete wedding day timeline, battery charging station, audio recorders, and shot list.',
+  'gimbal-vs-tripod-vs-handheld-movement': 'Choosing when to shoot static tripod, organic handheld, or smooth gimbal moves.',
+  'home-studio-content-creation-budget-setup': 'Setting up a compact home studio in a small bedroom for YouTube videos.',
+  'pre-production-checklist-solo-filmmakers': 'Location scouting, gear charging, script breakdown, sound checks, and call sheets.',
+  'solo-filmmaking-workflow-shoot-direct-act-alone': 'How to direct, frame, record audio, and light yourself when filming alone.',
+
+  // Storytelling & Business Guides
+  'character-vs-plot-driven-storytelling': 'Creating character arcs, internal stakes, and compelling plot points for short films.',
+  'color-psychology-storytelling-emotion': 'How teal & orange, warm red, and cool blue hues evoke subconscious emotion.',
+  'composition-rules-rule-of-thirds-framing': 'Rule of thirds, leading lines, headroom, looking room, and golden ratio.',
+  'how-to-write-a-hook-first-5-seconds': 'Formulas to grab viewer attention in the first 5 seconds of social videos.',
+  'planning-visual-language-before-you-shoot': 'Creating moodboards, shot lists, and color palettes before rolling camera.',
+  'shot-list-storyboard-templates-youtube': 'Free shot list and storyboard templates for YouTube creators and short films.',
+  'sound-design-music-storytelling-role': 'Using ambient room tone, foley sounds, risers, and music cues to drive emotion.',
+  'three-act-structure-youtube-short-films': 'Adapting classic 3-act story structure for tight 5-15 minute YouTube videos.',
+  'visual-storytelling-show-dont-tell': 'Communicating emotion and backstories through camera angles, lighting, and props.',
+  'what-makes-a-story-cinematic': 'The key elements that separate home video clips from cinematic storytelling.',
+  'editor-rates-india-2026': 'Pricing guide for Indian video editors — Per video, per minute, retainer, and monthly rates.',
+  'should-you-become-a-video-editor-2026': 'Career roadmap, AI automation reality check, and earning potential for video editors.',
   'final-cut-pro-vs-premiere-pro-vs-davinci-resolve-2026': 'Pricing, performance, toolsets, and full NLE comparison chart across all three video editors.',
+
+  // Apps & Resources
   'best-free-movie-apps-for-iphone-2026': 'Top 7 safe and 100% legal free movie streaming apps for iPhone and iPad in 2026.',
-  'davinci-resolve-color-management-cst-vs-aces': 'Master Color Space Transforms (CST), ACEScct, and DaVinci YRGB Color Managed.',
-  'davinci-resolve-skin-tone-grading-vectorscope-guide': 'Dial in natural skin tones using Vectorscope skin line, HSL Qualifiers, and skin smoothing.',
-  'davinci-resolve-ai-tools-relight-depth-map-magic-mask': 'Master AI Relight 3D, Depth Map isolating backgrounds, and Magic Mask 2.0 subject tracking.',
-  'davinci-resolve-fairlight-audio-post-lufs-standards': 'Fairlight audio mastering: AI Voice Isolation, Dialogue Leveller, and target LUFS standards.',
+  'best-free-music-apps-for-iphone-2026': 'Top 5 safe and legal free music streaming apps for iOS with offline listening.',
   'viral-short-form-reels-shorts-editing-guide': 'Build high-retention 9:16 Instagram Reels & Shorts: Hook formulas, animated captions, and sound stacks.'
 };
 ---
@@ -190,7 +279,8 @@ const guideDescriptions: Record<string, string> = {
                 if (category === 'storytelling') badge = 'Storytelling';
                 if (category === 'career') badge = 'Career & Business';
 
-                const desc = guideDescriptions[slug] || `Learn practical tips and master your workflow in ${pageTitle}.`;
+                const desc = guideDescriptions[slug] || `Master professional filmmaking workflows, gear settings, and color grading in ${pageTitle}.`;
+
 
                 return (
                     <div class="asset-card eg-glass-card" data-category={category}>

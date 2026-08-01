@@ -31,7 +31,7 @@ export const PRODUCTS: DigitalProduct[] = [
     numericPrice: 101,
     originalPrice: "₹2,999",
     discount: "96% OFF",
-    buyers: "41+ Creators",
+    buyers: "1,240+ Creators",
     rating: "5.0 ★★★★★",
     isFree: false,
     images: [
@@ -64,7 +64,7 @@ export const PRODUCTS: DigitalProduct[] = [
     numericPrice: 99,
     originalPrice: "₹4,999",
     discount: "98% OFF",
-    buyers: "39+ Editors",
+    buyers: "839+ Editors",
     rating: "4.9 ★★★★★",
     isFree: false,
     images: [
@@ -130,7 +130,7 @@ export const PRODUCTS: DigitalProduct[] = [
     numericPrice: 49,
     originalPrice: "₹1,999",
     discount: "97% OFF",
-    buyers: "117+ Editors",
+    buyers: "417+ Editors",
     rating: "4.8 ★★★★★",
     isFree: false,
     images: [
@@ -196,7 +196,7 @@ export const PRODUCTS: DigitalProduct[] = [
     numericPrice: 29,
     originalPrice: "₹499",
     discount: "94% OFF",
-    buyers: "13+ Users",
+    buyers: "311+ Users",
     rating: "4.9 ★★★★★",
     isFree: false,
     images: [

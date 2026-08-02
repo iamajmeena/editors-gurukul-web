@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import FAQBlock from '../../components/FAQBlock.astro';
+import RelatedProducts from '../../components/RelatedProducts.astro';
 import { PRODUCTS } from '../../data/products';
 
 const product = PRODUCTS.find(p => p.slug === 'all-editing-software')!;
@@ -82,6 +83,9 @@ export const description = "Complete Editing Software Bundle for Windows PC & Ma
         ))}
       </div>
     </section>
+
+    <!-- Cross-Sell Upsell Block -->
+    <RelatedProducts currentSlug={product.slug} />
 
     <!-- Mid-Page CTA Banner (CTA Button 2) -->
     <div class="my-12 p-8 bg-gradient-to-r from-[#0a5f61] to-[#0f8b8d] text-white rounded-3xl shadow-xl text-center">

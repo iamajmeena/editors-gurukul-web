@@ -1,0 +1,60 @@
+---
+import { PRODUCTS, type DigitalProduct } from '../data/products';
+
+interface Props {
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+
+// Filter out current product and get up to 3 related paid products
+const relatedProducts: DigitalProduct[] = PRODUCTS.filter(p => p.slug !== currentSlug && !p.isFree).slice(0, 3);
+---
+
+<section class="my-16 p-8 bg-white border-2 border-[#e7e4dc] rounded-3xl shadow-xl">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+    <div>
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#e0692a]">⚡ RECOMMENDED FOR CREATORS</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#15181c] mt-1 m-0">Other Popular Digital Asset Packs</h2>
+    </div>
+    <a href="/digital-store" class="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#0a5f61] hover:underline">
+      View All 8 Asset Packs ➔
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {relatedProducts.map((p) => (
+      <a href={`/digital-store/${p.slug}`} class="group bg-[#faf9f6] border-2 border-[#e7e4dc] hover:border-[#0a5f61] p-5 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between no-underline">
+        <div>
+          <!-- Thumbnail Container -->
+          <div class="relative overflow-hidden aspect-video bg-[#15181c] rounded-xl mb-4 border border-[#e7e4dc]">
+            <img src={p.images[0]} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" />
+            <span class="absolute top-2 right-2 px-2.5 py-1 bg-[#e0692a] text-white text-[10px] font-extrabold uppercase tracking-wider rounded-md shadow-md">
+              {p.badge}
+            </span>
+          </div>
+
+          <!-- Metadata -->
+          <span class="text-[11px] font-mono font-bold text-[#0a5f61] uppercase tracking-wider block mb-1">{p.category}</span>
+          <h3 class="text-base font-extrabold text-[#15181c] group-hover:text-[#0a5f61] transition-colors leading-snug mb-2 m-0 line-clamp-2">
+            {p.title}
+          </h3>
+          <p class="text-xs text-[#4b5058] line-clamp-2 mb-4 leading-relaxed">
+            {p.shortDesc}
+          </p>
+        </div>
+
+        <!-- Pricing Footer -->
+        <div class="pt-4 border-t border-[#e7e4dc] flex items-center justify-between mt-auto">
+          <div>
+            <span class="text-xl font-extrabold text-[#15181c]">{p.price}</span>
+            <span class="text-[11px] text-gray-400 line-through ml-1.5">{p.originalPrice}</span>
+          </div>
+          <span class="px-3 py-1.5 bg-[#0a5f61] text-white text-xs font-extrabold rounded-full group-hover:bg-[#074749] transition-all">
+            Get Pack ➔
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

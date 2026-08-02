@@ -3,37 +3,6 @@ import Layout from '../layouts/Layout.astro';
 
 export const title = "Payment Successful — Instant PDF Download | Editors Gurukul";
 export const description = "Thank you for your purchase! Here is your instant PDF download link.";
-
-const DOWNLOAD_MAP: Record<string, { title: string; fileUrl: string }> = {
-  'movie-app-iphone': {
-    title: 'iPhone Free Movie & Shows Watch Guide (2026)',
-    fileUrl: '/downloads/iPhone_Free_Movie_Guide_2026.pdf'
-  },
-  '500-lut-pack': {
-    title: '500+ Cinematic LUTs Mega Collection',
-    fileUrl: 'https://drive.google.com'
-  },
-  '2tb-video-editing-pack': {
-    title: '2 TB Ultimate Video Editing Assets Pack',
-    fileUrl: 'https://drive.google.com'
-  },
-  'all-editing-software': {
-    title: 'All Video Editing Software Collection',
-    fileUrl: 'https://drive.google.com'
-  },
-  'toko-elements-pack': {
-    title: 'Toko Elements Motion Graphics Pack',
-    fileUrl: 'https://drive.google.com'
-  },
-  'capcut-pro-pc': {
-    title: 'CapCut Pro For Windows PC',
-    fileUrl: 'https://drive.google.com'
-  },
-  'capcut-pro-mac': {
-    title: 'CapCut Pro For Apple Mac & MacBook',
-    fileUrl: 'https://drive.google.com'
-  }
-};
 ---
 <Layout title={title} description={description}>
 
@@ -79,10 +48,11 @@ const DOWNLOAD_MAP: Record<string, { title: string; fileUrl: string }> = {
     <div class="bg-[#faf9f6] border border-[#e7e4dc] p-6 rounded-2xl max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="text-left">
         <div class="font-extrabold text-[#15181c] text-sm">Need help or missing files?</div>
-        <div class="text-xs text-gray-500">Contact Ajay K Meena on WhatsApp VIP Support</div>
+        <div class="text-xs text-gray-500">Contact DOP Ajay K Meena on WhatsApp VIP Support</div>
       </div>
       <a 
-        href="https://wa.me/919999999999?text=Hi%20Ajay,%20I%20just%20completed%20a%20digital%20purchase!" 
+        id="wa-support-btn"
+        href="https://wa.me/919928075788?text=Hi%20Ajay!%20I%20just%20completed%20a%20digital%20purchase!" 
         target="_blank" 
         rel="noopener"
         class="px-5 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl hover:bg-emerald-700 transition-colors no-underline whitespace-nowrap shadow-md"
@@ -96,8 +66,8 @@ const DOWNLOAD_MAP: Record<string, { title: string; fileUrl: string }> = {
   <script is:inline>
     (function() {
       var urlParams = new URLSearchParams(window.location.search);
-      var tx = urlParams.get('tx');
-      var product = urlParams.get('product');
+      var paymentId = urlParams.get('payment_id') || urlParams.get('razorpay_payment_id') || urlParams.get('tx') || 'Confirmed';
+      var product = urlParams.get('product') || 'digital-asset';
 
       var downloadMap = {
         'movie-app-iphone': {
@@ -130,14 +100,25 @@ const DOWNLOAD_MAP: Record<string, { title: string; fileUrl: string }> = {
         }
       };
 
-      if (tx) {
-        document.getElementById('tx-id').innerText = 'Razorpay Tx ID: ' + tx;
+      if (paymentId && paymentId !== 'Confirmed') {
+        document.getElementById('tx-id').innerText = 'Razorpay Payment ID: ' + paymentId;
       }
+
+      var currentProductTitle = 'Digital Asset Package';
       if (product && downloadMap[product]) {
-        document.getElementById('product-title').innerText = downloadMap[product].title;
+        currentProductTitle = downloadMap[product].title;
+        document.getElementById('product-title').innerText = currentProductTitle;
         document.getElementById('drive-download-btn').href = downloadMap[product].fileUrl;
       } else if (product) {
-        document.getElementById('product-title').innerText = product.replace(/-/g, ' ').toUpperCase();
+        currentProductTitle = product.replace(/-/g, ' ').toUpperCase();
+        document.getElementById('product-title').innerText = currentProductTitle;
+      }
+
+      // Dynamic WhatsApp Support Link with Real Phone Number & Product Context
+      var waMsg = "Hi Ajay! I purchased " + currentProductTitle + " (Payment ID: " + paymentId + "). Please help me with my files.";
+      var waBtn = document.getElementById('wa-support-btn');
+      if (waBtn) {
+        waBtn.href = "https://wa.me/919928075788?text=" + encodeURIComponent(waMsg);
       }
     })();
   </script>

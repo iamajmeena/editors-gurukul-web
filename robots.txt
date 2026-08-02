@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://editorsgurukul.com/sitemap.xml
+Sitemap: https://editorsgurukul.com/sitemap-index.xml

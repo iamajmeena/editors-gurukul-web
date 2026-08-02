@@ -52,18 +52,15 @@ export const description = "500+ Premium .CUBE LUTs for Sony S-Log3, Canon C-Log
           </span>
         </div>
 
-        <!-- CTA Button 1: Live Verified Razorpay Link -->
-        <a 
-          href={product.razorpayLink}
-          target="_blank"
-          rel="noopener"
-          class="w-full py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all shadow-xl flex items-center justify-center gap-2 no-underline cursor-pointer transform active:scale-95 mb-3"
-        >
-          🎨 Buy Now ({product.price}) →
-        </a>
+        <!-- CTA Button 1: Official Razorpay Payment Button -->
+        <div class="w-full flex justify-center mb-3">
+          <form>
+            <script is:inline src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TKsd76wo1YBP7E" async> </script>
+          </form>
+        </div>
 
         <p class="text-xs text-center text-[#0a5f61] font-bold m-0 mb-4">
-          ⚡ 100% Instant 2-Way Delivery (Screen Download + WhatsApp Direct)
+          ⚡ 100% Instant 2-Way Delivery (Screen Download + Email Direct)
         </p>
 
         <p class="text-sm text-[#4b5058] leading-relaxed mb-0">
@@ -92,14 +89,11 @@ export const description = "500+ Premium .CUBE LUTs for Sony S-Log3, Canon C-Log
       <p class="text-white/90 text-sm max-w-lg mx-auto mb-6">
         Get instant access to 500+ Cinematic .CUBE LUTs for just {product.price}!
       </p>
-      <a 
-        href={product.razorpayLink}
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-[#15181c] font-black text-base rounded-full hover:bg-yellow-300 transition-all shadow-lg no-underline cursor-pointer"
-      >
-        🛒 Buy Now ({product.price}) →
-      </a>
+      <div class="flex justify-center">
+        <form>
+          <script is:inline src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TKsd76wo1YBP7E" async> </script>
+        </form>
+      </div>
     </div>
 
     <!-- Sticky Bottom CTA Bar (CTA Button 3) -->
@@ -108,14 +102,11 @@ export const description = "500+ Premium .CUBE LUTs for Sony S-Log3, Canon C-Log
         <div class="font-extrabold text-[#15181c] text-sm">{product.title}</div>
         <div class="text-xs text-[#0a5f61] font-bold">Price: {product.price} <span class="line-through text-gray-400">{product.originalPrice}</span></div>
       </div>
-      <a 
-        href={product.razorpayLink}
-        target="_blank"
-        rel="noopener"
-        class="w-full sm:w-auto px-6 py-3 bg-[#0a5f61] text-white font-extrabold text-xs sm:text-sm rounded-full hover:bg-[#074749] transition-all no-underline text-center cursor-pointer"
-      >
-        Buy Now ({product.price}) ➔
-      </a>
+      <div>
+        <form>
+          <script is:inline src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TKsd76wo1YBP7E" async> </script>
+        </form>
+      </div>
     </div>
 
   </main>

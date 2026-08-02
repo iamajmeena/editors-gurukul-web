@@ -30,7 +30,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       <!-- Timer Box -->
       <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
         <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 1 LINK TIMER</div>
-        <div id="timer-display-1" class="text-4xl font-extrabold text-[#e0692a] font-mono">5s</div>
+        <div id="timer-display-1" class="text-4xl font-extrabold text-[#e0692a] font-mono">10s</div>
         
         <!-- Progress Bar -->
         <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
@@ -58,7 +58,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       <!-- Locked / Unlocked Button Container -->
       <div id="btn-container-1" class="mt-6">
         <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
-          ⏳ Please Wait (5s)...
+          ⏳ Please Wait (10s)...
         </button>
       </div>
     </div>
@@ -74,13 +74,13 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       </h1>
 
       <p class="text-xs sm:text-sm text-[#4b5058] max-w-md mx-auto mb-6">
-        Step 1 verified! Please wait 5 seconds while we assemble the final download package.
+        Step 1 verified! Please wait 10 seconds while we assemble the final download package.
       </p>
 
       <!-- Timer Box -->
       <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
         <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 2 LINK TIMER</div>
-        <div id="timer-display-2" class="text-4xl font-extrabold text-[#e0692a] font-mono">5s</div>
+        <div id="timer-display-2" class="text-4xl font-extrabold text-[#e0692a] font-mono">10s</div>
         
         <!-- Progress Bar -->
         <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
@@ -108,7 +108,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       <!-- Locked / Unlocked Button Container -->
       <div id="btn-container-2" class="mt-6">
         <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
-          ⏳ Please Wait (5s)...
+          ⏳ Please Wait (10s)...
         </button>
       </div>
     </div>
@@ -137,7 +137,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
 
       <div class="mt-6 flex flex-col items-center gap-4" id="final-download-btn-container">
         <a id="final-pdf-btn" href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href, true) : null" class="w-full max-w-md inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce cursor-pointer">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m4 4V4"></path></svg>
           📥 Download Free PDF Guide Now
         </a>
 
@@ -195,7 +195,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         step2Box.classList.remove('hidden');
         step3Box.classList.add('hidden');
 
-        let seconds = 5;
+        let seconds = 10;
         const timerDisplay2 = document.getElementById('timer-display-2');
         const progressBar2 = document.getElementById('progress-bar-2');
         const btnContainer2 = document.getElementById('btn-container-2');
@@ -204,7 +204,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
           seconds--;
           if (seconds > 0) {
             timerDisplay2.textContent = seconds + 's';
-            const percent = ((5 - seconds) / 5) * 100;
+            const percent = ((10 - seconds) / 10) * 100;
             progressBar2.style.width = percent + '%';
             btnContainer2.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Link (${seconds}s)...</button>`;
           } else {
@@ -223,7 +223,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         step2Box.classList.add('hidden');
         step3Box.classList.add('hidden');
 
-        let seconds = 5;
+        let seconds = 10;
         const timerDisplay1 = document.getElementById('timer-display-1');
         const progressBar1 = document.getElementById('progress-bar-1');
         const btnContainer1 = document.getElementById('btn-container-1');
@@ -232,7 +232,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
           seconds--;
           if (seconds > 0) {
             timerDisplay1.textContent = seconds + 's';
-            const percent = ((5 - seconds) / 5) * 100;
+            const percent = ((10 - seconds) / 10) * 100;
             progressBar1.style.width = percent + '%';
             btnContainer1.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Link (${seconds}s)...</button>`;
           } else {

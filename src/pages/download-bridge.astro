@@ -30,12 +30,24 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       <!-- Timer Box -->
       <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
         <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 1 LINK TIMER</div>
-        <div id="timer-display-1" class="text-4xl font-extrabold text-[#e0692a] font-mono">10s</div>
+        <div id="timer-display-1" class="text-4xl font-extrabold text-[#e0692a] font-mono">5s</div>
         
         <!-- Progress Bar -->
         <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
           <div id="progress-bar-1" class="bg-[#0a5f61] h-full w-0 transition-all duration-1000 ease-linear"></div>
         </div>
+      </div>
+
+      <!-- Native Upsell Banner (Hack 1 - Upsell) -->
+      <div class="my-6 p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-2 border-[#e0692a]/30 rounded-2xl text-left max-w-md mx-auto">
+        <span class="text-[10px] font-extrabold text-[#e0692a] uppercase tracking-wider block mb-1">⚡ WHILE YOU WAIT (5s OFFER)</span>
+        <div class="font-extrabold text-sm text-[#15181c] mb-1">500+ Hollywood Cinematic LUTs Pack</div>
+        <p class="text-xs text-[#4b5058] m-0 mb-3 leading-relaxed">
+          Transform S-Log3, C-Log &amp; Rec.709 videos into rich cinematic colors in 1 click!
+        </p>
+        <a href="/digital-store/500-lut-pack" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#e0692a] text-white font-extrabold text-xs rounded-full hover:bg-[#c85720] transition-colors no-underline shadow-md">
+          🎨 Get LUT Pack (₹101) ➔
+        </a>
       </div>
 
       <!-- Plain Text Scroll Notice -->
@@ -46,7 +58,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       <!-- Locked / Unlocked Button Container -->
       <div id="btn-container-1" class="mt-6">
         <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
-          ⏳ Please Wait (10s)...
+          ⏳ Please Wait (5s)...
         </button>
       </div>
     </div>
@@ -62,18 +74,30 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       </h1>
 
       <p class="text-xs sm:text-sm text-[#4b5058] max-w-md mx-auto mb-6">
-        Step 1 verified! Please wait 10 seconds while we assemble the final download package.
+        Step 1 verified! Please wait 5 seconds while we assemble the final download package.
       </p>
 
       <!-- Timer Box -->
       <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
         <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 2 LINK TIMER</div>
-        <div id="timer-display-2" class="text-4xl font-extrabold text-[#e0692a] font-mono">10s</div>
+        <div id="timer-display-2" class="text-4xl font-extrabold text-[#e0692a] font-mono">5s</div>
         
         <!-- Progress Bar -->
         <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
           <div id="progress-bar-2" class="bg-[#e0692a] h-full w-0 transition-all duration-1000 ease-linear"></div>
         </div>
+      </div>
+
+      <!-- Native Upsell Banner (Hack 1 - Upsell) -->
+      <div class="my-6 p-4 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border-2 border-[#0a5f61]/30 rounded-2xl text-left max-w-md mx-auto">
+        <span class="text-[10px] font-extrabold text-[#0a5f61] uppercase tracking-wider block mb-1">📦 SPECIAL CREATOR BUNDLE</span>
+        <div class="font-extrabold text-sm text-[#15181c] mb-1">2,000 GB Video Editing Assets Vault</div>
+        <p class="text-xs text-[#4b5058] m-0 mb-3 leading-relaxed">
+          10,000+ SFX, 4K Light Leaks, Film Grains, VFX Assets &amp; Motion Transitions!
+        </p>
+        <a href="/digital-store/2tb-video-editing-pack" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#0a5f61] text-white font-extrabold text-xs rounded-full hover:bg-[#074749] transition-colors no-underline shadow-md">
+          👑 Get 2TB Pack (₹99) ➔
+        </a>
       </div>
 
       <!-- Plain Text Scroll Notice -->
@@ -84,7 +108,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
       <!-- Locked / Unlocked Button Container -->
       <div id="btn-container-2" class="mt-6">
         <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
-          ⏳ Please Wait (10s)...
+          ⏳ Please Wait (5s)...
         </button>
       </div>
     </div>
@@ -111,10 +135,15 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         </p>
       </div>
 
-      <div class="mt-6" id="final-download-btn-container">
-        <a id="final-pdf-btn" href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href, true) : null" class="inline-flex items-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce">
+      <div class="mt-6 flex flex-col items-center gap-4" id="final-download-btn-container">
+        <a id="final-pdf-btn" href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href, true) : null" class="w-full max-w-md inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
           📥 Download Free PDF Guide Now
+        </a>
+
+        <!-- High-Yield SmartLink Bonus Button (Hack 2) -->
+        <a href="https://3nbf4.com/act/files/tag.min.js?z=11473498" target="_blank" onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href) : null" class="w-full max-w-md inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#faf9f6] border-2 border-[#0a5f61] text-[#0a5f61] font-bold text-xs rounded-full hover:bg-[#e4f3f2] transition-colors no-underline cursor-pointer">
+          🎁 Download Bonus Premiere &amp; DaVinci Cheat Sheet (Free) ➔
         </a>
       </div>
     </div>
@@ -166,7 +195,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         step2Box.classList.remove('hidden');
         step3Box.classList.add('hidden');
 
-        let seconds = 3;
+        let seconds = 5;
         const timerDisplay2 = document.getElementById('timer-display-2');
         const progressBar2 = document.getElementById('progress-bar-2');
         const btnContainer2 = document.getElementById('btn-container-2');
@@ -175,7 +204,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
           seconds--;
           if (seconds > 0) {
             timerDisplay2.textContent = seconds + 's';
-            const percent = ((3 - seconds) / 3) * 100;
+            const percent = ((5 - seconds) / 5) * 100;
             progressBar2.style.width = percent + '%';
             btnContainer2.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Link (${seconds}s)...</button>`;
           } else {
@@ -194,7 +223,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
         step2Box.classList.add('hidden');
         step3Box.classList.add('hidden');
 
-        let seconds = 3;
+        let seconds = 5;
         const timerDisplay1 = document.getElementById('timer-display-1');
         const progressBar1 = document.getElementById('progress-bar-1');
         const btnContainer1 = document.getElementById('btn-container-1');
@@ -203,7 +232,7 @@ const description = "Generating secure PDF download link for Editors Gurukul iPh
           seconds--;
           if (seconds > 0) {
             timerDisplay1.textContent = seconds + 's';
-            const percent = ((3 - seconds) / 3) * 100;
+            const percent = ((5 - seconds) / 5) * 100;
             progressBar1.style.width = percent + '%';
             btnContainer1.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Link (${seconds}s)...</button>`;
           } else {

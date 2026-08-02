@@ -10,32 +10,67 @@ const PRODUCT_DELIVERY_MAP = {
     downloadUrl: "https://editorsgurukul.com/downloads/iPhone_Free_Movie_Guide_2026.pdf",
     badge: "📱 iPhone Free Movie App PDF Guide"
   },
-  "lBNeGuno": {
+  "pl_TKsoAuIzSL69md": {
+    title: "iPhone Free Movie & Shows Watch Guide (2026)",
+    downloadUrl: "https://editorsgurukul.com/downloads/iPhone_Free_Movie_Guide_2026.pdf",
+    badge: "📱 iPhone Free Movie App PDF Guide"
+  },
+  "500-lut-pack": {
     title: "500+ Cinematic LUTs Mega Collection",
     downloadUrl: "https://editorsgurukul.com/payment-success?product=500-lut-pack",
     badge: "🎨 Color Presets Pack"
   },
-  "BLCoFqe": {
+  "pl_TKsd76wo1YBP7E": {
+    title: "500+ Cinematic LUTs Mega Collection",
+    downloadUrl: "https://editorsgurukul.com/payment-success?product=500-lut-pack",
+    badge: "🎨 Color Presets Pack"
+  },
+  "2tb-video-editing-pack": {
     title: "2 TB Ultimate Video Editing Assets Pack",
     downloadUrl: "https://editorsgurukul.com/payment-success?product=2tb-video-editing-pack",
     badge: "📦 2,000 GB Drive Pack"
   },
-  "U2NZbEVJ": {
+  "pl_TKshZWelekdTP0": {
+    title: "2 TB Ultimate Video Editing Assets Pack",
+    downloadUrl: "https://editorsgurukul.com/payment-success?product=2tb-video-editing-pack",
+    badge: "📦 2,000 GB Drive Pack"
+  },
+  "all-editing-software": {
     title: "All Video Editing Software Collection",
     downloadUrl: "https://editorsgurukul.com/payment-success?product=all-editing-software",
     badge: "👑 Full Software Master Suite"
   },
-  "MhcNXN2": {
+  "pl_TKsj7BOCCx9T9w": {
+    title: "All Video Editing Software Collection",
+    downloadUrl: "https://editorsgurukul.com/payment-success?product=all-editing-software",
+    badge: "👑 Full Software Master Suite"
+  },
+  "toko-elements-pack": {
     title: "Toko Elements Motion Graphics Pack",
     downloadUrl: "https://editorsgurukul.com/payment-success?product=toko-elements-pack",
     badge: "✨ 2,250+ Motion Elements"
   },
-  "5MqGFbSt": {
+  "pl_TKsk4KvXI6a5We": {
+    title: "Toko Elements Motion Graphics Pack",
+    downloadUrl: "https://editorsgurukul.com/payment-success?product=toko-elements-pack",
+    badge: "✨ 2,250+ Motion Elements"
+  },
+  "capcut-pro-pc": {
     title: "CapCut Pro For Windows PC",
     downloadUrl: "https://editorsgurukul.com/payment-success?product=capcut-pro-pc",
     badge: "💻 Windows PC Pro Setup"
   },
-  "ARslco46": {
+  "pl_TKslMErMKI75fq": {
+    title: "CapCut Pro For Windows PC",
+    downloadUrl: "https://editorsgurukul.com/payment-success?product=capcut-pro-pc",
+    badge: "💻 Windows PC Pro Setup"
+  },
+  "capcut-pro-mac": {
+    title: "CapCut Pro For Apple Mac & MacBook",
+    downloadUrl: "https://editorsgurukul.com/payment-success?product=capcut-pro-mac",
+    badge: "🍎 Apple Mac Pro Setup"
+  },
+  "pl_TKsmgGJrhNKxaX": {
     title: "CapCut Pro For Apple Mac & MacBook",
     downloadUrl: "https://editorsgurukul.com/payment-success?product=capcut-pro-mac",
     badge: "🍎 Apple Mac Pro Setup"
@@ -47,7 +82,7 @@ export async function onRequestPost(context) {
     const payload = await context.request.json();
 
     const event = payload.event;
-    if (event !== 'payment_link.paid' && event !== 'payment.captured') {
+    if (event !== 'payment_link.paid' && event !== 'payment.captured' && event !== 'payment_button.created') {
       return new Response(JSON.stringify({ message: "Ignored non-payment event" }), {
         status: 200,
         headers: { "content-type": "application/json" }
@@ -55,11 +90,12 @@ export async function onRequestPost(context) {
     }
 
     const paymentLinkEntity = payload.payload?.payment_link?.entity || {};
+    const paymentButtonEntity = payload.payload?.payment_button?.entity || {};
     const paymentEntity = payload.payload?.payment?.entity || {};
 
-    const linkId = paymentLinkEntity.id || '';
-    const buyerEmail = paymentEntity.email || paymentLinkEntity.customer?.email || '';
-    const buyerName = paymentEntity.notes?.name || paymentEntity.email?.split('@')[0] || 'Creator';
+    const linkId = paymentLinkEntity.id || paymentButtonEntity.id || paymentEntity.description || '';
+    const buyerEmail = paymentEntity.email || paymentLinkEntity.customer?.email || paymentEntity.notes?.email || '';
+    const buyerName = paymentEntity.notes?.name || paymentEntity.notes?.title || paymentEntity.email?.split('@')[0] || 'Creator';
     const amountPaid = paymentEntity.amount ? `₹${paymentEntity.amount / 100}` : '₹29';
 
     if (!buyerEmail) {
@@ -67,8 +103,10 @@ export async function onRequestPost(context) {
     }
 
     let matchedProduct = null;
+    const rawSearchStr = JSON.stringify(payload).toLowerCase();
+
     for (const [key, prod] of Object.entries(PRODUCT_DELIVERY_MAP)) {
-      if (linkId.includes(key) || paymentLinkEntity.short_url?.includes(key) || paymentLinkEntity.description?.includes(prod.title)) {
+      if (rawSearchStr.includes(key.toLowerCase()) || rawSearchStr.includes(prod.title.toLowerCase())) {
         matchedProduct = prod;
         break;
       }
@@ -76,8 +114,8 @@ export async function onRequestPost(context) {
 
     if (!matchedProduct) {
       matchedProduct = {
-        title: paymentLinkEntity.description || "Digital Product Package",
-        downloadUrl: "https://editorsgurukul.com/digital-store",
+        title: paymentEntity.description || paymentLinkEntity.description || "Digital Asset Package",
+        downloadUrl: "https://editorsgurukul.com/payment-success?product=movie-app-iphone",
         badge: "🛒 Editors Gurukul Asset"
       };
     }

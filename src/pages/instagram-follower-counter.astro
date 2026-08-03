@@ -88,7 +88,7 @@ const description = "Real-time live Instagram follower count tracker with instan
 
         <!-- BIG LIVE NUMBER COUNTER -->
         <div class="my-6">
-          <div id="follower-count" class="text-6xl sm:text-8xl font-black font-mono tracking-tight text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all duration-300">
+          <div id="follower-count" class="text-5xl sm:text-8xl font-black font-mono tracking-tight text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.4)]">
             99,920
           </div>
           <span id="counter-sublabel" class="text-xs font-bold text-gray-400 tracking-widest uppercase mt-2 block">
@@ -96,9 +96,9 @@ const description = "Real-time live Instagram follower count tracker with instan
           </span>
         </div>
 
-        <!-- 100K CELEBRATION POPUP BANNER (HIDDEN UNTIL 100K) -->
-        <div id="celebration-banner" class="hidden my-4 p-6 bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-purple-500/20 border-2 border-amber-400 rounded-2xl shadow-2xl text-center space-y-2 animate-bounce">
-          <div class="text-3xl sm:text-4xl font-black text-amber-300 drop-shadow-md">
+        <!-- 100K CELEBRATION POPUP BANNER (STABLE & NO JUMPING) -->
+        <div id="celebration-banner" class="hidden my-4 p-6 bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-purple-500/20 border-2 border-amber-400 rounded-2xl shadow-2xl text-center space-y-2">
+          <div class="text-2xl sm:text-4xl font-black text-amber-300 drop-shadow-md">
             🎉 100,000 MILESTONE REACHED! 🏆
           </div>
           <p class="text-xs sm:text-sm text-white font-extrabold m-0">
@@ -235,14 +235,14 @@ const description = "Real-time live Instagram follower count tracker with instan
         if (celebBanner) celebBanner.classList.remove('hidden');
         if (counterSublabel) {
           counterSublabel.textContent = "🏆 100,000 OFFICIAL MILESTONE REACHED!";
-          counterSublabel.className = "text-[#fbbf24] font-black text-sm tracking-widest uppercase mt-2 block animate-pulse";
+          counterSublabel.className = "text-[#fbbf24] font-black text-xs sm:text-sm tracking-widest uppercase mt-2 block";
         }
         if (liveBadge) {
-          liveBadge.className = "inline-flex items-center gap-2 px-4 py-1.5 bg-amber-500/20 border border-amber-400 text-amber-300 font-black text-xs rounded-full uppercase tracking-wider mb-6 shadow-xl animate-pulse";
+          liveBadge.className = "inline-flex items-center gap-2 px-4 py-1.5 bg-amber-500/20 border border-amber-400 text-amber-300 font-black text-xs rounded-full uppercase tracking-wider mb-6 shadow-xl";
           liveBadge.innerHTML = "🏆 100K VERIFIED MILESTONE!";
         }
         if (countEl) {
-          countEl.className = "text-6xl sm:text-9xl font-black font-mono tracking-tight text-amber-300 drop-shadow-[0_0_60px_rgba(251,191,36,0.95)] animate-pulse";
+          countEl.className = "text-5xl sm:text-8xl font-black font-mono tracking-tight text-amber-300 drop-shadow-[0_0_50px_rgba(251,191,36,0.9)]";
         }
         if (statNeeded) statNeeded.textContent = '0 Left 🎉';
       }
@@ -325,9 +325,9 @@ const description = "Real-time live Instagram follower count tracker with instan
             delay = Math.floor(Math.random() * 800) + 800;
           }
         } else if (count >= 99995 && count < 100000) {
-          // THE FINAL 5 FOLLOWERS (99,995 to 100,000): VERY SLOW & DRAMATIC (1 follower every 2.5s - 3.5s)!
+          // THE FINAL 5 FOLLOWERS (99,995 to 100,000): ULTRA SLOW (2.5s to 3.5s per tick)
           delta = 1;
-          delay = Math.floor(Math.random() * 1000) + 2500; // 2.5s to 3.5s delay per follower!
+          delay = Math.floor(Math.random() * 1000) + 2500;
         }
 
         if (count < target) {
@@ -373,7 +373,7 @@ const description = "Real-time live Instagram follower count tracker with instan
             liveBadge.innerHTML = '<span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> REAL-TIME COUNTER';
           }
           if (countEl) {
-            countEl.className = "text-6xl sm:text-8xl font-black font-mono tracking-tight text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all duration-300";
+            countEl.className = "text-5xl sm:text-8xl font-black font-mono tracking-tight text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.4)]";
           }
           updateDisplay(1);
           scheduleNextTick();

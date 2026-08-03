@@ -15,8 +15,9 @@ interface Props {
 
 const { repo } = Astro.props;
 
-const title = `${repo.name} Setup Guide & Free ${repo.alternativeTo} (${repo.stars} Stars) | Editors Gurukul`;
-const description = `Complete free setup guide, system requirements, terminal commands and practical Hindi review for ${repo.name} by ${repo.repoOwner}. Best free open-source alternative for creators.`;
+// Targeted High-Volume Google Search Intent SEO Metadata
+const title = `${repo.name} Guide: ${repo.alternativeTo} (2026 Free Open Source)`;
+const description = `Looking for a ${repo.alternativeTo}? Learn how to install & use ${repo.name} (${repo.stars} GitHub stars) 100% free with step-by-step commands and creator breakdown.`;
 
 // Get related repos in same category
 const relatedRepos = trendingRepos.filter(r => r.id !== repo.id && (r.category === repo.category || r.useCase === repo.useCase)).slice(0, 3);
@@ -60,18 +61,18 @@ const jsonLdSchema = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": `Is ${repo.name} completely free and open-source?`,
+          "name": `Is ${repo.name} a good ${repo.alternativeTo}?`,
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": `Yes, ${repo.name} is 100% free and open-source software hosted on GitHub with ${repo.stars} stars. You can run it locally without any subscription fees.`
+            "text": `Yes, ${repo.name} is one of the highest-rated open-source alternatives with ${repo.stars} stars on GitHub. It delivers pro-level features completely free without monthly fees.`
           }
         },
         {
           "@type": "Question",
-          "name": `What commercial software does ${repo.name} replace?`,
+          "name": `Is ${repo.name} completely free and open-source?`,
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": `${repo.name} is a high-performance open-source alternative to ${repo.alternativeTo}.`
+            "text": `Yes, ${repo.name} is 100% free and open-source software hosted on GitHub. You can run it locally without any subscription fees.`
           }
         },
         {
@@ -115,18 +116,18 @@ const jsonLdSchema = {
         <span class="text-white font-extrabold">{repo.name}</span>
       </nav>
 
-      <!-- Full-Width Hero Header Section (No External Outbound Button Here!) -->
+      <!-- Full-Width Hero Header Section -->
       <header class="bg-[#190d33] border-2 border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
         
-        <!-- Badges Row -->
+        <!-- SEO Target Search Intent Badge -->
         <div class="flex flex-wrap items-center gap-2.5">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 bg-gradient-to-r from-[#e0692a] to-[#f59e0b] text-white font-extrabold text-xs rounded-full shadow-md">
+            🔥 {repo.alternativeTo}
+          </span>
+
           <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#321754] text-amber-300 border border-amber-400/60 font-extrabold text-xs rounded-full shadow-sm">
             <svg class="w-3.5 h-3.5 fill-amber-400" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.165L12 18.896l-7.333 3.863 1.399-8.165-5.934-5.784 8.2-1.192z"/></svg>
             {repo.stars} GitHub Stars
-          </span>
-
-          <span class="px-3 py-1 bg-[#1e1b4b] border border-indigo-400/60 text-[#a5b4fc] font-extrabold text-xs rounded-lg">
-            ✨ {repo.alternativeTo}
           </span>
 
           <span class="px-3 py-1 bg-[#2b1747] text-[#e9d5ff] border border-[#5b21b6]/60 font-bold text-xs rounded-lg">
@@ -138,22 +139,22 @@ const jsonLdSchema = {
           </span>
         </div>
 
-        <!-- Repo Title (Tight Scaling sm:text-4xl) -->
+        <!-- Repo Title (Optimized for Search Keywords) -->
         <h1 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight flex flex-wrap items-baseline gap-3 m-0">
           {repo.name}
           <span class="text-sm sm:text-lg font-mono text-[#c084fc] font-semibold">by {repo.repoOwner}</span>
         </h1>
 
-        <!-- English Overview -->
+        <!-- English Overview with SEO Keyword Target -->
         <p class="text-xs sm:text-sm text-[#f3e8ff] leading-relaxed font-normal m-0">
-          {repo.description}
+          If you are searching on Google for a <strong>{repo.alternativeTo}</strong>, <strong>{repo.name}</strong> is the #1 open-source tool recommended by creators and DOPs. {repo.description}
         </p>
 
         <!-- Quick Jump Anchor Bar -->
         <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-[#3b1d5c] text-xs font-bold">
           <span class="text-purple-300 mr-1">Quick Jump:</span>
           <a href="#install-commands" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-cyan-300 rounded-lg no-underline transition-colors">⚡ Commands</a>
-          <a href="#overview" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#c084fc] rounded-lg no-underline transition-colors">💡 Overview</a>
+          <a href="#seo-breakdown" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#c084fc] rounded-lg no-underline transition-colors">💡 Why {repo.name}?</a>
           <a href="#comparison" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-amber-300 rounded-lg no-underline transition-colors">📊 Comparison Table</a>
           <a href="#setup-steps" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#e9d5ff] rounded-lg no-underline transition-colors">🛠️ Setup Steps</a>
           <a href="#faqs" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-purple-200 rounded-lg no-underline transition-colors">❓ FAQs</a>
@@ -164,7 +165,7 @@ const jsonLdSchema = {
       <section id="install-commands" class="bg-[#180d30] border-2 border-[#8b5cf6]/60 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#3b1d5c] pb-3">
           <h2 class="text-lg sm:text-xl font-extrabold text-white m-0 border-none">
-            ⚡ 1-Click Setup Commands
+            ⚡ 1-Click Setup Commands for {repo.name}
           </h2>
           <span class="text-xs text-purple-300">Copy &amp; paste in Terminal or Command Prompt:</span>
         </div>
@@ -228,17 +229,17 @@ const jsonLdSchema = {
         </div>
       </section>
 
-      <!-- Practical & In-Depth Creator Analysis (Detailed Paragraphs) -->
-      <section id="overview" class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+      <!-- Practical & In-Depth Creator Analysis (Targeting "Alternative To" Keywords) -->
+      <section id="seo-breakdown" class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
         <h2 class="text-lg sm:text-xl font-extrabold text-[#c084fc] border-none p-0 m-0">
-          💡 Creator In-Depth Breakdown &amp; Analysis
+          💡 Why {repo.name} is the Best {repo.alternativeTo}
         </h2>
         <div class="text-xs sm:text-sm text-white font-medium leading-relaxed space-y-3">
           <p class="m-0">
             {repo.summaryHindi}
           </p>
           <p class="text-[#e9d5ff] m-0">
-            Unlike proprietary software locked behind monthly subscriptions, <strong>{repo.name}</strong> runs completely locally on your hardware. It gives creators 100% control over processing pipelines, custom plugins, and data privacy without cloud rendering fees or export watermarks.
+            If you are tired of expensive monthly subscription fees and privacy concerns, <strong>{repo.name}</strong> offers a completely free, open-source alternative. Running 100% locally on your computer (Windows, Mac, or Linux), it delivers high performance without export limits or cloud dependencies.
           </p>
         </div>
       </section>
@@ -253,7 +254,7 @@ const jsonLdSchema = {
             <thead>
               <tr class="border-b border-[#3b1d5c] text-purple-300 font-extrabold">
                 <th class="py-3 px-4">Feature / Metric</th>
-                <th class="py-3 px-4 text-[#c084fc]">{repo.name} (Open Source)</th>
+                <th class="py-3 px-4 text-[#c084fc]">{repo.name} (Free Open-Source)</th>
                 <th class="py-3 px-4 text-amber-300">{repo.alternativeTo} (Paid)</th>
               </tr>
             </thead>
@@ -261,17 +262,17 @@ const jsonLdSchema = {
               <tr>
                 <td class="py-3 px-4 font-bold">Pricing Model</td>
                 <td class="py-3 px-4 text-emerald-400 font-bold">100% Free Forever (₹0)</td>
-                <td class="py-3 px-4 text-red-300">Paid Subscription / License</td>
+                <td class="py-3 px-4 text-red-300">Paid Monthly Subscription</td>
               </tr>
               <tr>
-                <td class="py-3 px-4 font-bold">Data Privacy</td>
+                <td class="py-3 px-4 font-bold">Data Privacy &amp; Security</td>
                 <td class="py-3 px-4 text-emerald-400">100% Offline Local Computer</td>
-                <td class="py-3 px-4 text-amber-200">Cloud Upload Required</td>
+                <td class="py-3 px-4 text-amber-200">Cloud Server Upload Required</td>
               </tr>
               <tr>
                 <td class="py-3 px-4 font-bold">System Control</td>
                 <td class="py-3 px-4 text-emerald-400">Full Source Code &amp; Custom Scripts</td>
-                <td class="py-3 px-4 text-amber-200">Restricted Proprietary Code</td>
+                <td class="py-3 px-4 text-amber-200">Restricted Closed Code</td>
               </tr>
               <tr>
                 <td class="py-3 px-4 font-bold">Community Extensions</td>
@@ -301,7 +302,7 @@ const jsonLdSchema = {
       <!-- Step-by-Step Installation Guide for Creators -->
       <section id="setup-steps" class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
         <h2 class="text-lg sm:text-xl font-extrabold text-white border-none p-0 m-0 flex items-center gap-2">
-          🛠️ Step-by-Step Installation Guide
+          🛠️ Step-by-Step Installation Guide for {repo.name}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm text-[#e9d5ff]">
           <div class="p-4 bg-[#110722] border border-[#3b1d5c] rounded-2xl">
@@ -337,19 +338,19 @@ const jsonLdSchema = {
         <div class="space-y-4">
           <div class="p-4 bg-[#120726] border border-[#3b1d5c] rounded-2xl">
             <h3 class="text-sm font-extrabold text-[#c084fc] mb-1.5 border-none p-0 m-0">
-              Is {repo.name} completely free to use?
+              Is {repo.name} a good {repo.alternativeTo}?
             </h3>
             <p class="text-xs sm:text-sm text-[#e9d5ff] leading-relaxed m-0">
-              Yes, {repo.name} is 100% free and open-source under open license terms. You can download, modify, and run it locally on your computer without subscription fees.
+              Yes, {repo.name} is one of the highest-rated open-source alternatives with {repo.stars} stars on GitHub. It delivers pro-level performance without monthly subscription fees.
             </p>
           </div>
 
           <div class="p-4 bg-[#120726] border border-[#3b1d5c] rounded-2xl">
             <h3 class="text-sm font-extrabold text-[#c084fc] mb-1.5 border-none p-0 m-0">
-              How does {repo.name} compare to {repo.alternativeTo}?
+              Is {repo.name} completely free to use?
             </h3>
             <p class="text-xs sm:text-sm text-[#e9d5ff] leading-relaxed m-0">
-              While {repo.alternativeTo} requires monthly subscriptions, {repo.name} provides powerful open-source capabilities with full local privacy and zero cloud fees.
+              Yes, {repo.name} is 100% free and open-source under open license terms. You can download, modify, and run it locally on your computer without subscription fees.
             </p>
           </div>
 

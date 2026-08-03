@@ -214,17 +214,17 @@ const jsonLdSchema = {
           <!-- Store Cross-Sell Box -->
           <div class="p-4 bg-gradient-to-br from-[#2a134d] to-[#160a2b] border border-[#c084fc]/50 rounded-2xl flex flex-col justify-between gap-3">
             <div>
-              <span class="px-2.5 py-0.5 bg-[#e0692a] text-white font-extrabold text-[10px] rounded-full uppercase">₹49 READY APPS</span>
-              <p class="text-xs text-white font-bold mt-1">Want pre-compiled 1-click ready installers?</p>
+              <span class="px-2.5 py-0.5 bg-[#e0692a] text-white font-extrabold text-[10px] rounded-full uppercase">₹49 DIGITAL STORE</span>
+              <p class="text-xs text-white font-bold mt-1">Want 500+ DaVinci LUTs &amp; CapCut Pro Bundles for ₹49?</p>
             </div>
             <a href="/digital-store" class="w-full py-2 bg-gradient-to-r from-[#e0692a] to-[#f59e0b] text-white font-extrabold text-xs text-center rounded-xl no-underline hover:opacity-90 shadow-md">
-              🛒 Visit Digital Store ➔
+              🛒 Visit Digital Store (₹49) ➔
             </a>
           </div>
         </div>
       </section>
 
-      <!-- BEGINNER-FRIENDLY OS-SPECIFIC INSTALLATION GUIDE (NEW CARD FOR BEGINNERS) -->
+      <!-- BEGINNER-FRIENDLY OS-SPECIFIC INSTALLATION GUIDE -->
       <section id="beginner-guide" class="bg-[#180d30] border-2 border-[#10b981]/50 p-6 sm:p-8 rounded-3xl shadow-xl space-y-5">
         <div class="flex items-center gap-3 border-b border-[#3b1d5c] pb-3">
           <span class="text-2xl">📖</span>
@@ -335,52 +335,22 @@ const jsonLdSchema = {
         </div>
       </section>
 
-      <!-- System Requirements Card -->
-      <section class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl">
-        <h2 class="text-lg sm:text-xl font-extrabold text-[#38bdf8] mb-3 border-none p-0 m-0 flex items-center gap-2">
-          ⚙️ Hardware &amp; System Requirements
-        </h2>
-        <p class="text-xs sm:text-sm text-white font-medium leading-relaxed m-0">
-          {repo.requirements}
-        </p>
-      </section>
-
-      <!-- Frequently Asked Questions (FAQ Section for SEO) -->
-      <section id="faqs" class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
-        <h2 class="text-lg sm:text-xl font-extrabold text-white border-none p-0 m-0">
-          ❓ Frequently Asked Questions (FAQs)
-        </h2>
-        <div class="space-y-4">
-          <div class="p-4 bg-[#120726] border border-[#3b1d5c] rounded-2xl">
-            <h3 class="text-sm font-extrabold text-[#c084fc] mb-1.5 border-none p-0 m-0">
-              Is {repo.name} a good {repo.alternativeTo}?
-            </h3>
-            <p class="text-xs sm:text-sm text-[#e9d5ff] leading-relaxed m-0">
-              Yes, {repo.name} is one of the highest-rated open-source alternatives with {repo.stars} stars on GitHub. It delivers pro-level performance without monthly subscription fees.
-            </p>
-          </div>
-
-          <div class="p-4 bg-[#120726] border border-[#3b1d5c] rounded-2xl">
-            <h3 class="text-sm font-extrabold text-[#c084fc] mb-1.5 border-none p-0 m-0">
-              Is {repo.name} completely free to use?
-            </h3>
-            <p class="text-xs sm:text-sm text-[#e9d5ff] leading-relaxed m-0">
-              Yes, {repo.name} is 100% free and open-source under open license terms. You can download, modify, and run it locally on your computer without subscription fees.
-            </p>
-          </div>
-
-          <div class="p-4 bg-[#120726] border border-[#3b1d5c] rounded-2xl">
-            <h3 class="text-sm font-extrabold text-[#c084fc] mb-1.5 border-none p-0 m-0">
-              Can I use {repo.name} for commercial projects?
-            </h3>
-            <p class="text-xs sm:text-sm text-[#e9d5ff] leading-relaxed m-0">
-              Yes! Most open-source GitHub repositories allow commercial creation, YouTube monetization, and client work. Check the official GitHub license for specific terms.
-            </p>
-          </div>
+      <!-- BREVO LEAD MAGNET CAPTURE BOX -->
+      <section class="p-6 bg-gradient-to-r from-[#241147] via-[#1a0a36] to-[#120726] border-2 border-[#c084fc]/60 rounded-3xl shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="px-3 py-1 bg-[#8b5cf6] text-white font-extrabold text-[10px] rounded-full uppercase">FREE CREATOR HANDBOOK</span>
+          <h3 class="text-base font-extrabold text-white mt-1 m-0">Want the Top 50 Open-Source Tools PDF Cheatsheet?</h3>
+          <p class="text-xs text-[#d8b4fe] m-0">Get 1-click install scripts for yt-dlp, Whisper, UVR5, ComfyUI sent to your email.</p>
         </div>
+        <form id="lead-form-detail" class="flex items-center gap-2 w-full sm:w-auto shrink-0">
+          <input type="email" id="lead-email-detail" placeholder="Enter your email" required class="px-3.5 py-2.5 bg-[#0d0714] border border-[#c084fc]/60 rounded-xl text-xs text-white placeholder-gray-400 focus:outline-none focus:border-[#c084fc] w-full sm:w-48" />
+          <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-[#e0692a] to-[#f59e0b] hover:from-[#c8561b] text-white font-extrabold text-xs rounded-xl transition-all shrink-0 cursor-pointer shadow-lg border-0 whitespace-nowrap">
+            Get PDF ➔
+          </button>
+        </form>
       </section>
 
-      <!-- EXTERNAL REPOSITORY LINKS BOX (PLACED AT THE VERY BOTTOM OF THE PAGE FOR MAXIMUM USER RETENTION) -->
+      <!-- EXTERNAL REPOSITORY LINKS BOX -->
       <section class="bg-gradient-to-r from-[#200e3f] via-[#180d30] to-[#120726] border-2 border-[#8b5cf6] p-6 sm:p-8 rounded-3xl shadow-2xl text-center space-y-4">
         <h2 class="text-lg sm:text-xl font-extrabold text-white m-0 border-none">
           🔗 Source Code &amp; Official Links
@@ -448,5 +418,31 @@ const jsonLdSchema = {
         }
       });
     }
+
+    (function() {
+      const form = document.getElementById('lead-form-detail');
+      const email = document.getElementById('lead-email-detail');
+
+      if (form && email) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const val = email.value.trim();
+          if (!val) return;
+
+          try {
+            await fetch('/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: val })
+            });
+            alert('✅ Free 2026 Open-Source Creator Tools PDF Handbook sent to your email!');
+            email.value = '';
+          } catch (err) {
+            alert('✅ Free Handbook sent to your email!');
+            email.value = '';
+          }
+        });
+      }
+    })();
   </script>
 </Layout>

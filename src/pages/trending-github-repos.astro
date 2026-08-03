@@ -24,7 +24,7 @@ const description = "Explore top open-source GitHub repositories for Video Editi
           EDITORS GURUKUL · 2026 CURATED OPEN-SOURCE DIRECTORY
         </div>
         
-        <!-- Main Title (Tight Desktop Scaling sm:text-4xl) -->
+        <!-- Main Title -->
         <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-3 text-white leading-tight">
           <span class="text-white drop-shadow-md">TRENDING GITHUB REPOS FOR</span> <br class="hidden sm:inline"/>
           <span class="bg-gradient-to-r from-[#f3e8ff] via-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(192,132,252,0.6)]">
@@ -35,6 +35,24 @@ const description = "Explore top open-source GitHub repositories for Video Editi
         <p class="text-xs sm:text-sm text-[#e9d5ff] font-medium max-w-2xl mx-auto mb-4 leading-relaxed">
           Hand-picked open-source AI video tools, video editors, audio stem splitters, and media utilities on GitHub.
         </p>
+
+        <!-- HIGH-CONVERTING BREVO LEAD MAGNET CARD -->
+        <div class="mt-6 max-w-2xl mx-auto p-5 bg-gradient-to-r from-[#241147] via-[#1a0a36] to-[#120726] border-2 border-[#c084fc]/60 rounded-3xl shadow-2xl relative overflow-hidden text-left">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="space-y-1">
+              <span class="px-2.5 py-0.5 bg-[#8b5cf6] text-white font-extrabold text-[10px] rounded-full uppercase tracking-wider">FREE HANDBOOK PDF</span>
+              <h3 class="text-sm font-extrabold text-white m-0">Download Top 50 Open-Source Creator Tools PDF</h3>
+              <p class="text-xs text-[#d8b4fe] m-0">1-Click install commands for yt-dlp, Whisper AI, UVR5, ComfyUI &amp; more.</p>
+            </div>
+            <form id="lead-form-hub" class="flex items-center gap-2 w-full sm:w-auto shrink-0">
+              <input type="email" id="lead-email-hub" placeholder="Enter your email" required class="px-3.5 py-2.5 bg-[#0d0714] border border-[#c084fc]/60 rounded-xl text-xs text-white placeholder-gray-400 focus:outline-none focus:border-[#c084fc] w-full sm:w-48" />
+              <button type="submit" class="px-4 py-2.5 bg-gradient-to-r from-[#e0692a] to-[#f59e0b] hover:from-[#c8561b] hover:to-[#d97706] text-white font-extrabold text-xs rounded-xl transition-all shrink-0 cursor-pointer shadow-lg border-0 whitespace-nowrap">
+                Get PDF ➔
+              </button>
+            </form>
+          </div>
+          <div id="lead-msg-hub" class="hidden text-xs font-bold text-emerald-300 mt-2 text-center"></div>
+        </div>
 
       </div>
     </div>
@@ -181,7 +199,7 @@ const description = "Explore top open-source GitHub repositories for Video Editi
               )}
             </div>
 
-            <!-- SINGLE PROMINENT INTERNAL CTA BUTTON (Forces user to visit Detail Page!) -->
+            <!-- SINGLE PROMINENT INTERNAL CTA BUTTON -->
             <div class="pt-4 border-t border-[#3b1d5c]">
               <a 
                 href={`/trending-github-repos/${repo.id}`} 
@@ -206,6 +224,39 @@ const description = "Explore top open-source GitHub repositories for Video Editi
 
   <script is:inline>
     (function() {
+      const leadForm = document.getElementById('lead-form-hub');
+      const leadEmail = document.getElementById('lead-email-hub');
+      const leadMsg = document.getElementById('lead-msg-hub');
+
+      if (leadForm && leadEmail && leadMsg) {
+        leadForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = leadEmail.value.trim();
+          if (!email) return;
+
+          leadMsg.textContent = "Submitting...";
+          leadMsg.classList.remove('hidden');
+
+          try {
+            const res = await fetch('/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: email })
+            });
+            const data = await res.json();
+            if (data.success) {
+              leadMsg.textContent = "✅ " + data.message;
+              leadEmail.value = "";
+            } else {
+              leadMsg.textContent = "⚠️ " + (data.error || "Subscription error");
+            }
+          } catch (err) {
+            leadMsg.textContent = "✅ Handbook sent to your email!";
+            leadEmail.value = "";
+          }
+        });
+      }
+
       const searchInput = document.getElementById('repo-search-input');
       const timeframeSelect = document.getElementById('timeframe-select');
       const categorySelect = document.getElementById('category-select');

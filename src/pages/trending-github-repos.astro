@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { trendingRepos, repoCategories } from '../data/trending-repos';
+
+const title = "Trending GitHub Repos & Open-Source Creator Tools (2026) | Editors Gurukul";
+const description = "Explore top open-source GitHub repositories for Video Editing, AI Video Generation, Audio Stem Separation, VFX, and Creator Utilities with live Star counts.";
+---
+
+<Layout title={title} description={description} enableAds={true}>
+  <div class="bg-gradient-to-b from-[#0b132b] via-[#0f172a] to-[#faf9f6] text-white py-14 px-4 border-b border-[#e7e4dc]/20">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#e0692a]/20 border border-[#e0692a]/40 text-[#e0692a] font-extrabold text-xs rounded-full uppercase tracking-wider mb-4">
+        ⚡ 2026 CURATED OPEN-SOURCE DIRECTORY
+      </div>
+      
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+        Trending GitHub Repos for <span class="bg-gradient-to-r from-[#e0692a] via-[#f59e0b] to-[#10b981] bg-clip-text text-transparent">Creators &amp; Editors</span>
+      </h1>
+      
+      <p class="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Discover the most powerful open-source AI video tools, video editors, audio stem splitters, and media utilities on GitHub — sorted by popularity and stars.
+      </p>
+
+      <!-- Stats Bar -->
+      <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-12 bg-white/5 backdrop-blur-md border border-white/10 p-4 rounded-2xl max-w-xl mx-auto text-xs sm:text-sm font-semibold text-gray-300">
+        <div>
+          <span class="block text-2xl font-extrabold text-[#e0692a]">{trendingRepos.length}+</span>
+          Curated Tools
+        </div>
+        <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+        <div>
+          <span class="block text-2xl font-extrabold text-[#10b981]">500k+</span>
+          Total GitHub Stars
+        </div>
+        <div class="w-px h-8 bg-white/10 hidden sm:block"></div>
+        <div>
+          <span class="block text-2xl font-extrabold text-amber-400">100%</span>
+          Free &amp; Open Source
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    
+    <!-- Controls Container: Category Tabs + Search Bar -->
+    <div class="mb-10 space-y-6">
+      
+      <!-- Search Input -->
+      <div class="max-w-md mx-auto relative">
+        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+        <input 
+          type="text" 
+          id="repo-search-input" 
+          placeholder="Search by tool name, Python, AI, video cut, SRT..." 
+          class="w-full pl-11 pr-4 py-3 bg-white border-2 border-[#e7e4dc] rounded-full text-sm font-medium text-[#15181c] placeholder-gray-400 focus:outline-none focus:border-[#0a5f61] shadow-sm transition-all"
+        />
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2" id="category-pills-container">
+        {repoCategories.map(cat => (
+          <button
+            data-category={cat.id}
+            class={`category-pill px-4 py-2 text-xs font-extrabold rounded-full transition-all cursor-pointer border ${
+              cat.id === 'all'
+                ? 'bg-[#0a5f61] text-white border-[#0a5f61] shadow-md'
+                : 'bg-white text-[#4b5058] border-[#e7e4dc] hover:border-[#0a5f61] hover:text-[#0a5f61]'
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Repository Cards Grid -->
+    <div id="repos-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {trendingRepos.map(repo => (
+        <article 
+          data-category={repo.category}
+          data-keywords={`${repo.name} ${repo.repoOwner} ${repo.language} ${repo.categoryLabel} ${repo.description} ${repo.summaryHindi}`.toLowerCase()}
+          class="repo-card p-6 bg-white border border-[#e7e4dc] rounded-3xl shadow-sm hover:shadow-xl hover:border-[#0a5f61]/40 transition-all flex flex-col justify-between"
+        >
+          <div>
+            <!-- Top Badges Row -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-900 border border-amber-300 font-extrabold text-xs rounded-full">
+                <svg class="w-3.5 h-3.5 fill-amber-500" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.165L12 18.896l-7.333 3.863 1.399-8.165-5.934-5.784 8.2-1.192z"/></svg>
+                {repo.stars} stars
+              </span>
+
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 bg-gray-100 text-gray-700 font-mono font-bold text-[11px] rounded-md">
+                  {repo.language}
+                </span>
+                <span class="px-2.5 py-0.5 bg-[#e4f3f2] text-[#0a5f61] font-bold text-[11px] rounded-md">
+                  {repo.categoryLabel}
+                </span>
+              </div>
+            </div>
+
+            <!-- Repo Title -->
+            <h3 class="text-xl font-extrabold text-[#15181c] mb-1 flex items-center gap-2">
+              <a href={repo.githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[#0a5f61] transition-colors no-underline">
+                {repo.name}
+              </a>
+              <span class="text-xs font-mono text-gray-400 font-normal">({repo.repoOwner})</span>
+            </h3>
+
+            <!-- English Overview -->
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">
+              {repo.description}
+            </p>
+
+            <!-- Hinglish Practical Explanation Box -->
+            <div class="p-3.5 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl mb-5 text-xs text-[#15181c] leading-relaxed">
+              <strong class="text-[#e0692a] block mb-0.5 font-extrabold">💡 Editor Summary:</strong>
+              {repo.summaryHindi}
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="flex items-center gap-3 pt-3 border-t border-gray-100">
+            <a 
+              href={repo.githubUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#15181c] text-white font-extrabold text-xs rounded-xl hover:bg-black transition-colors no-underline"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              View Repository on GitHub
+            </a>
+
+            {repo.websiteUrl && (
+              <a 
+                href={repo.websiteUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="px-4 py-2.5 bg-[#e4f3f2] text-[#0a5f61] font-extrabold text-xs rounded-xl hover:bg-[#d0ecea] transition-colors no-underline"
+              >
+                Website ➔
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-results-msg" class="hidden text-center py-16">
+      <div class="text-4xl mb-3">🔍</div>
+      <h3 class="text-lg font-bold text-gray-700 mb-1">No repositories found</h3>
+      <p class="text-xs text-gray-500">Try searching for a different keyword or select "🔥 All Repos".</p>
+    </div>
+
+  </section>
+
+  <script is:inline>
+    (function() {
+      const searchInput = document.getElementById('repo-search-input');
+      const categoryPills = document.querySelectorAll('.category-pill');
+      const cards = document.querySelectorAll('.repo-card');
+      const noResultsMsg = document.getElementById('no-results-msg');
+
+      let currentCategory = 'all';
+      let currentQuery = '';
+
+      function filterCards() {
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const cardCat = card.getAttribute('data-category');
+          const keywords = card.getAttribute('data-keywords') || '';
+
+          const matchesCat = (currentCategory === 'all' || cardCat === currentCategory);
+          const matchesQuery = (!currentQuery || keywords.includes(currentQuery));
+
+          if (matchesCat && matchesQuery) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        if (visibleCount === 0) {
+          noResultsMsg.classList.remove('hidden');
+        } else {
+          noResultsMsg.classList.add('hidden');
+        }
+      }
+
+      // Category Pill Click Event
+      categoryPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          categoryPills.forEach(p => {
+            p.classList.remove('bg-[#0a5f61]', 'text-white', 'border-[#0a5f61]', 'shadow-md');
+            p.classList.add('bg-white', 'text-[#4b5058]', 'border-[#e7e4dc]');
+          });
+
+          pill.classList.remove('bg-white', 'text-[#4b5058]', 'border-[#e7e4dc]');
+          pill.classList.add('bg-[#0a5f61]', 'text-white', 'border-[#0a5f61]', 'shadow-md');
+
+          currentCategory = pill.getAttribute('data-category');
+          filterCards();
+        });
+      });
+
+      // Search Input Event
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.toLowerCase().trim();
+          filterCards();
+        });
+      }
+    })();
+  </script>
+</Layout>

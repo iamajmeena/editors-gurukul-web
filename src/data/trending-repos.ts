@@ -1,0 +1,268 @@
+export interface GitHubRepo {
+  id: string;
+  name: string;
+  repoOwner: string;
+  repoName: string;
+  stars: string;
+  numericStars: number;
+  language: string;
+  category: 'ai-video' | 'video-editor' | 'color-vfx' | 'audio-music' | 'utilities';
+  categoryLabel: string;
+  description: string;
+  summaryHindi: string;
+  githubUrl: string;
+  websiteUrl?: string;
+  featured?: boolean;
+}
+
+export const trendingRepos: GitHubRepo[] = [
+  {
+    id: "yt-dlp",
+    name: "yt-dlp",
+    repoOwner: "yt-dlp",
+    repoName: "yt-dlp",
+    stars: "88.4k",
+    numericStars: 88400,
+    language: "Python",
+    category: "utilities",
+    categoryLabel: "Media Downloader",
+    description: "A feature-rich command-line audio/video downloader with support for thousands of video platforms.",
+    summaryHindi: "YouTube, Instagram Reels, aur 1,000+ sites se 4K video aur audio high-quality me download karne ka sabse powerful open-source command tool.",
+    githubUrl: "https://github.com/yt-dlp/yt-dlp",
+    featured: true
+  },
+  {
+    id: "comfyui",
+    name: "ComfyUI",
+    repoOwner: "comfyanonymous",
+    repoName: "ComfyUI",
+    stars: "61.2k",
+    numericStars: 61200,
+    language: "Python",
+    category: "ai-video",
+    categoryLabel: "AI Generation",
+    description: "The most powerful and modular visual node-based GUI for Stable Diffusion & AI Video generation.",
+    summaryHindi: "AI Video, Image Animation, aur Stable Diffusion ka sabse modular node-based visual tool. Professional AI creators ka #1 choice.",
+    githubUrl: "https://github.com/comfyanonymous/ComfyUI",
+    websiteUrl: "https://comfy.org",
+    featured: true
+  },
+  {
+    id: "whisper",
+    name: "OpenAI Whisper",
+    repoOwner: "openai",
+    repoName: "whisper",
+    stars: "74.8k",
+    numericStars: 74800,
+    language: "Python",
+    category: "audio-music",
+    categoryLabel: "AI Subtitles & Transcribe",
+    description: "Robust Speech Recognition & Automatic Subtitle Generation Model trained on 680,000 hours of audio.",
+    summaryHindi: "Video ki voice ko automatic 99% accuracy ke saath Text aur Subtitles (SRT) me convert karne waala OpenAI ka free AI model.",
+    githubUrl: "https://github.com/openai/whisper",
+    featured: true
+  },
+  {
+    id: "obs-studio",
+    name: "OBS Studio",
+    repoOwner: "obsproject",
+    repoName: "obs-studio",
+    stars: "59.1k",
+    numericStars: 59100,
+    language: "C++",
+    category: "utilities",
+    categoryLabel: "Screen Recording & Streaming",
+    description: "Free and open source software for video recording and live streaming.",
+    summaryHindi: "World ka #1 free 4K Screen Recorder aur Live Streaming software. YouTube Live, Gaming recording aur Studio recording ke liye best.",
+    githubUrl: "https://github.com/obsproject/obs-studio",
+    websiteUrl: "https://obsproject.com",
+    featured: true
+  },
+  {
+    id: "blender",
+    name: "Blender 3D",
+    repoOwner: "blender",
+    repoName: "blender",
+    stars: "34.5k",
+    numericStars: 34500,
+    language: "C++",
+    category: "color-vfx",
+    categoryLabel: "3D & VFX Pipeline",
+    description: "Official Mirror of Blender 3D creation suite - supports 3D pipeline, modeling, rigging, animation, and rendering.",
+    summaryHindi: "Hollywood-grade 3D Modeling, VFX, Animation, aur Video Editing ka complete open-source software suite.",
+    githubUrl: "https://github.com/blender/blender",
+    websiteUrl: "https://blender.org",
+    featured: true
+  },
+  {
+    id: "handbrake",
+    name: "HandBrake",
+    repoOwner: "HandBrake",
+    repoName: "HandBrake",
+    stars: "16.8k",
+    numericStars: 16800,
+    language: "C",
+    category: "utilities",
+    categoryLabel: "Video Transcoder",
+    description: "HandBrake is an open-source video transcoder available for Linux, Mac, and Windows.",
+    summaryHindi: "Badi video files ki size (MB/GB) bina quality kharab kiye 80% tak chhota (compress) karne waala sabse popular tool.",
+    githubUrl: "https://github.com/HandBrake/HandBrake",
+    websiteUrl: "https://handbrake.fr",
+    featured: true
+  },
+  {
+    id: "animatediff",
+    name: "AnimateDiff",
+    repoOwner: "guoyww",
+    repoName: "AnimateDiff",
+    stars: "11.2k",
+    numericStars: 11200,
+    language: "Python",
+    category: "ai-video",
+    categoryLabel: "AI Motion & Animation",
+    description: "Animate your personalized text-to-image diffusion models without specific tuning.",
+    summaryHindi: "Still photos aur text prompts ko ultra-smooth AI Motion Video aur Reels me animate karne waala open-source algorithm.",
+    githubUrl: "https://github.com/guoyww/AnimateDiff"
+  },
+  {
+    id: "rvc-webui",
+    name: "Retrieval-based Voice Conversion (RVC)",
+    repoOwner: "RVC-Project",
+    repoName: "Retrieval-based-Voice-Conversion-WebUI",
+    stars: "22.6k",
+    numericStars: 22600,
+    language: "Python",
+    category: "audio-music",
+    categoryLabel: "AI Voice Cloning",
+    description: "An easy-to-use Voice Conversion framework based on VITS for AI Voice cloning and song cover creation.",
+    summaryHindi: "Kisi bhi singer ya person ki voice clone karke AI songs aur voiceovers generate karne waala sabse top voice tool.",
+    githubUrl: "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI"
+  },
+  {
+    id: "demucs",
+    name: "Demucs (Meta AI)",
+    repoOwner: "facebookresearch",
+    repoName: "demucs",
+    stars: "13.9k",
+    numericStars: 13900,
+    language: "Python",
+    category: "audio-music",
+    categoryLabel: "Vocal & Music Stem Separator",
+    description: "Code for the Music Source Separation model Demucs from Meta AI. Separates Drums, Bass, Vocals and Instruments.",
+    summaryHindi: "Kisi bhi gaane se Background Music, Vocals, Drums, aur Bass ko bilkul alag-alag (stems) karne ka Meta ka official AI tool.",
+    githubUrl: "https://github.com/facebookresearch/demucs"
+  },
+  {
+    id: "shotcut",
+    name: "Shotcut Video Editor",
+    repoOwner: "mltframework",
+    repoName: "shotcut",
+    stars: "12.4k",
+    numericStars: 12400,
+    language: "C++",
+    category: "video-editor",
+    categoryLabel: "Cross-Platform Video Editor",
+    description: "Shotcut is a free, open source, cross-platform video editor supporting 4K multi-track editing.",
+    summaryHindi: "Low-end PC aur Laptop par 4K multi-track video editing karne waala 100% free open-source software.",
+    githubUrl: "https://github.com/mltframework/shotcut",
+    websiteUrl: "https://shotcut.org"
+  },
+  {
+    id: "lossless-cut",
+    name: "LosslessCut",
+    repoOwner: "mifi",
+    repoName: "lossless-cut",
+    stars: "25.1k",
+    numericStars: 25100,
+    language: "TypeScript",
+    category: "utilities",
+    categoryLabel: "Fast Video Trimmer",
+    description: "The Swiss army knife of lossless video/audio editing. Cut & trim videos instantly without re-encoding.",
+    summaryHindi: "Bina kisi re-render ya quality loss ke videos ko 1-second me super fast cut aur trim karne waala lightweight app.",
+    githubUrl: "https://github.com/mifi/lossless-cut"
+  },
+  {
+    id: "motion-canvas",
+    name: "Motion Canvas",
+    repoOwner: "motion-canvas",
+    repoName: "motion-canvas",
+    stars: "14.7k",
+    numericStars: 14700,
+    language: "TypeScript",
+    category: "video-editor",
+    categoryLabel: "Code-Driven Motion Graphics",
+    description: "A TypeScript library and editor for creating programmatic motion graphics videos.",
+    summaryHindi: "Code (TypeScript) likh kar 60fps cinematic Motion Graphics, diagrams aur animations banane waala modern editor.",
+    githubUrl: "https://github.com/motion-canvas/motion-canvas",
+    websiteUrl: "https://motioncanvas.io"
+  },
+  {
+    id: "opencolorio",
+    name: "OpenColorIO (OCIO)",
+    repoOwner: "AcademySoftwareFoundation",
+    repoName: "OpenColorIO",
+    stars: "1.8k",
+    numericStars: 1800,
+    language: "C++",
+    category: "color-vfx",
+    categoryLabel: "Color Management Engine",
+    description: "A complete color management solution focused on motion picture production with emphasis on visual effects and computer graphics.",
+    summaryHindi: "Hollywood Color Grading aur ACES color workflows me standardized skin tones aur color transform manage karne ka industry standard engine.",
+    githubUrl: "https://github.com/AcademySoftwareFoundation/OpenColorIO",
+    websiteUrl: "https://opencolorio.org"
+  },
+  {
+    id: "natron",
+    name: "Natron VFX",
+    repoOwner: "NatronDev-Team",
+    repoName: "Natron",
+    stars: "4.3k",
+    numericStars: 4300,
+    language: "C++",
+    category: "color-vfx",
+    categoryLabel: "Node-Based Compositing (Nuke Alternative)",
+    description: "Open-source, cross-platform node-based compositing software for visual effects (VFX) and motion graphics.",
+    summaryHindi: "Nuke jaisa professional node-based VFX compositing software — Green screen chroma keying, tracking aur keying ke liye free.",
+    githubUrl: "https://github.com/NatronDev-Team/Natron",
+    websiteUrl: "https://natrongithub.github.io"
+  },
+  {
+    id: "openshot",
+    name: "OpenShot Video Editor",
+    repoOwner: "OpenShot",
+    repoName: "openshot-qt",
+    stars: "14.2k",
+    numericStars: 14200,
+    language: "Python",
+    category: "video-editor",
+    categoryLabel: "Beginner Video Editor",
+    description: "OpenShot Video Editor is an easy-to-use, quick to learn, and surprisingly powerful video editor.",
+    summaryHindi: "Beginners ke liye bilkul simple drag-and-drop video editor, jisme title animations aur transitions built-in aate hain.",
+    githubUrl: "https://github.com/OpenShot/openshot-qt",
+    websiteUrl: "https://openshot.org"
+  },
+  {
+    id: "olive",
+    name: "Olive Video Editor 0.2",
+    repoOwner: "olive-editor",
+    repoName: "olive",
+    stars: "7.9k",
+    numericStars: 7900,
+    language: "C++",
+    category: "video-editor",
+    categoryLabel: "Node-Based NLE",
+    description: "Free non-linear video editor providing high end node-based color management and composite workflows.",
+    summaryHindi: "Premiere Pro aur DaVinci Resolve ka open-source rival, jo node-based video pipeline aur color grading support karta hai.",
+    githubUrl: "https://github.com/olive-editor/olive",
+    websiteUrl: "https://olivevideoeditor.org"
+  }
+];
+
+export const repoCategories = [
+  { id: 'all', label: '🔥 All Repos' },
+  { id: 'ai-video', label: '🤖 AI Video & Motion' },
+  { id: 'video-editor', label: '🎬 Video Editors' },
+  { id: 'audio-music', label: '🎵 Audio & Voice' },
+  { id: 'color-vfx', label: '🎨 Color & VFX' },
+  { id: 'utilities', label: '⚙️ Tools & Utilities' }
+];

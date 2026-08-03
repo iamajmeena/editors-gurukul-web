@@ -1,8 +1,26 @@
 // Cloudflare Pages Function / Serverless Webhook Endpoint for Razorpay -> Brevo Auto Emailer
 
-const k1 = "xkeysib-ac7e7351f94418bee681f4725c99b0950439906d8db31a676f8bcaf59565eff1";
-const k2 = "-rqTwEiVI9FlaiUsB";
-const getBrevoKey = () => k1 + k2;
+async function verifyRazorpaySignature(secret, rawBody, signatureHeader) {
+  if (!secret || !signatureHeader) return false;
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+  const sigBuffer = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(rawBody));
+  const computedHex = Array.from(new Uint8Array(sigBuffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+
+  if (computedHex.length !== signatureHeader.length) return false;
+  let diff = 0;
+  for (let i = 0; i < computedHex.length; i++) {
+    diff |= computedHex.charCodeAt(i) ^ signatureHeader.charCodeAt(i);
+  }
+  return diff === 0;
+}
 
 const PRODUCT_DELIVERY_MAP = {
   "movie-app-iphone": {
@@ -79,7 +97,19 @@ const PRODUCT_DELIVERY_MAP = {
 
 export async function onRequestPost(context) {
   try {
-    const payload = await context.request.json();
+    const rawBody = await context.request.text();
+    const signatureHeader = context.request.headers.get("x-razorpay-signature");
+    const webhookSecret = context.env.RAZORPAY_WEBHOOK_SECRET;
+
+    const isValid = await verifyRazorpaySignature(webhookSecret, rawBody, signatureHeader);
+    if (!isValid) {
+      return new Response(JSON.stringify({ error: "Invalid webhook signature" }), {
+        status: 400,
+        headers: { "content-type": "application/json" }
+      });
+    }
+
+    const payload = JSON.parse(rawBody);
 
     const event = payload.event;
     if (event !== 'payment_link.paid' && event !== 'payment.captured' && event !== 'payment_button.created') {
@@ -126,7 +156,7 @@ export async function onRequestPost(context) {
       headers: {
         "accept": "application/json",
         "content-type": "application/json",
-        "api-key": getBrevoKey()
+        "api-key": context.env.BREVO_API_KEY
       },
       body: JSON.stringify({
         sender: {

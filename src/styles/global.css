@@ -40,6 +40,15 @@ body.dark-portal div {
   color: inherit;
 }
 
+body.dark-portal a {
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+body.dark-portal a:hover {
+  color: #c084fc !important;
+}
+
 /* Container & Main Layout */
 main {
   max-width: 1100px;

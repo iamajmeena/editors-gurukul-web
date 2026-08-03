@@ -11,45 +11,45 @@ const description = "Explore top open-source GitHub repositories for Video Editi
   <div class="min-h-screen bg-[#0d0714] text-white relative overflow-hidden font-['Sora',sans-serif]">
     
     <!-- Glowing Background Orbs (Brevo Purple Aesthetic) -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-tr from-[#7c3aed]/20 via-[#a855f7]/20 to-[#3b82f6]/10 blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-[600px] right-0 w-[500px] h-[500px] bg-[#8b5cf6]/10 blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-tr from-[#7c3aed]/30 via-[#a855f7]/30 to-[#3b82f6]/20 blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-[600px] right-0 w-[500px] h-[500px] bg-[#8b5cf6]/20 blur-[150px] pointer-events-none"></div>
 
     <!-- Header Section -->
-    <div class="relative z-10 pt-16 pb-12 px-4 border-b border-[#2e1c4a]/60 bg-gradient-to-b from-[#130924] to-[#0d0714]">
+    <div class="relative z-10 pt-16 pb-12 px-4 border-b border-[#3b1d5c] bg-gradient-to-b from-[#160b2d] to-[#0d0714]">
       <div class="max-w-5xl mx-auto text-center">
         
         <!-- Header Pill Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#25123e] border border-[#a855f7]/40 text-[#c084fc] font-extrabold text-xs rounded-full uppercase tracking-wider mb-6 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
-          <span class="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#2a134a] border border-[#c084fc]/50 text-[#f3e8ff] font-extrabold text-xs rounded-full uppercase tracking-wider mb-6 shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#c084fc] animate-pulse"></span>
           EDITORS GURUKUL · 2026 CURATED OPEN-SOURCE DIRECTORY
         </div>
         
-        <!-- Main Title with Electric Purple Gradient -->
+        <!-- Main Title with High-Contrast White & Electric Purple Gradient -->
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-5 text-white leading-tight">
           Trending GitHub Repos for <br class="hidden sm:inline"/>
-          <span class="bg-gradient-to-r from-[#c084fc] via-[#a855f7] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(168,85,247,0.4)]">
+          <span class="bg-gradient-to-r from-[#e9d5ff] via-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(192,132,252,0.5)]">
             Creators, Editors &amp; AI Artists
           </span>
         </h1>
         
-        <p class="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+        <p class="text-sm sm:text-base text-[#e9d5ff] font-medium max-w-2xl mx-auto mb-8 leading-relaxed">
           Discover hand-picked open-source AI video tools, video editors, audio stem splitters, and media utilities on GitHub — sorted by live stars &amp; free alternatives.
         </p>
 
         <!-- Stats Bar in Brevo Theme -->
-        <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-12 bg-[#1a102f]/80 backdrop-blur-xl border border-[#3b1d5c] p-4 sm:p-5 rounded-3xl max-w-2xl mx-auto text-xs sm:text-sm font-semibold text-gray-200 shadow-2xl">
+        <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-12 bg-[#1f103a]/90 backdrop-blur-xl border-2 border-[#4c247d] p-4 sm:p-5 rounded-3xl max-w-2xl mx-auto text-xs sm:text-sm font-bold text-white shadow-2xl">
           <div>
-            <span class="block text-2xl sm:text-3xl font-extrabold text-[#c084fc]">{trendingRepos.length}+</span>
+            <span class="block text-2xl sm:text-3xl font-extrabold text-[#e9d5ff]">{trendingRepos.length}+</span>
             Curated Repos
           </div>
-          <div class="w-px h-8 bg-[#3b1d5c] hidden sm:block"></div>
+          <div class="w-px h-8 bg-[#4c247d] hidden sm:block"></div>
           <div>
             <span class="block text-2xl sm:text-3xl font-extrabold text-[#38bdf8]">500k+</span>
             Total GitHub Stars
           </div>
-          <div class="w-px h-8 bg-[#3b1d5c] hidden sm:block"></div>
+          <div class="w-px h-8 bg-[#4c247d] hidden sm:block"></div>
           <div>
-            <span class="block text-2xl sm:text-3xl font-extrabold text-[#f59e0b]">100%</span>
+            <span class="block text-2xl sm:text-3xl font-extrabold text-[#fbbf24]">100%</span>
             Free Alternatives
           </div>
         </div>
@@ -62,16 +62,16 @@ const description = "Explore top open-source GitHub repositories for Video Editi
       <!-- Controls Container: Search Bar + Category Filter Pills -->
       <div class="mb-12 space-y-6">
         
-        <!-- Search Input with Purple Focus Glow -->
+        <!-- Search Input with High Contrast -->
         <div class="max-w-xl mx-auto relative">
-          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-purple-400">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#c084fc]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
           </div>
           <input 
             type="text" 
             id="repo-search-input" 
             placeholder="Search by name, Python, Premiere alternative, Subtitles, Cut..." 
-            class="w-full pl-11 pr-4 py-3.5 bg-[#170e28] border-2 border-[#3b1d5c] rounded-full text-sm font-medium text-white placeholder-gray-400 focus:outline-none focus:border-[#a855f7] focus:ring-4 focus:ring-[#a855f7]/20 shadow-xl transition-all"
+            class="w-full pl-11 pr-4 py-3.5 bg-[#1c0f35] border-2 border-[#4c247d] rounded-full text-sm font-semibold text-white placeholder-purple-300/60 focus:outline-none focus:border-[#c084fc] focus:ring-4 focus:ring-[#c084fc]/30 shadow-2xl transition-all"
           />
         </div>
 
@@ -82,8 +82,8 @@ const description = "Explore top open-source GitHub repositories for Video Editi
               data-category={cat.id}
               class={`category-pill px-4 py-2.5 text-xs font-extrabold rounded-full transition-all cursor-pointer border ${
                 cat.id === 'all'
-                  ? 'bg-[#7c3aed] text-white border-[#a855f7] shadow-[0_0_20px_rgba(168,85,247,0.4)] scale-105'
-                  : 'bg-[#170e28] text-gray-300 border-[#2e1c4a] hover:border-[#a855f7] hover:text-white'
+                  ? 'bg-[#8b5cf6] text-white border-[#c084fc] shadow-[0_0_20px_rgba(192,132,252,0.5)] scale-105'
+                  : 'bg-[#1c0f35] text-[#e9d5ff] border-[#3b1d5c] hover:border-[#c084fc] hover:text-white'
               }`}
             >
               {cat.label}
@@ -100,32 +100,32 @@ const description = "Explore top open-source GitHub repositories for Video Editi
               data-category={repo.category}
               data-skill={repo.skillLevel}
               data-keywords={`${repo.name} ${repo.repoOwner} ${repo.language} ${repo.categoryLabel} ${repo.alternativeTo} ${repo.description} ${repo.summaryHindi}`.toLowerCase()}
-              class="repo-card p-6 bg-[#170e2b]/90 backdrop-blur-xl border border-[#2e1c4a] rounded-3xl shadow-xl hover:border-[#a855f7]/60 hover:shadow-[0_0_30px_rgba(168,85,247,0.25)] transition-all duration-300 flex flex-col justify-between group"
+              class="repo-card p-6 bg-[#1f113a] border-2 border-[#3b1d5c] rounded-3xl shadow-2xl hover:border-[#c084fc] hover:shadow-[0_0_35px_rgba(192,132,252,0.35)] transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 <!-- Top Badges Row -->
                 <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                   <!-- Star Badge -->
-                  <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#2a1745] text-amber-300 border border-amber-400/40 font-extrabold text-xs rounded-full shadow-sm">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#321754] text-amber-300 border border-amber-400/60 font-extrabold text-xs rounded-full shadow-md">
                     <svg class="w-3.5 h-3.5 fill-amber-400" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.165L12 18.896l-7.333 3.863 1.399-8.165-5.934-5.784 8.2-1.192z"/></svg>
                     {repo.stars} stars
                   </span>
 
                   <div class="flex items-center gap-1.5 flex-wrap">
                     {repo.trendingBadge && (
-                      <span class="px-2.5 py-0.5 bg-gradient-to-r from-purple-900/60 to-indigo-900/60 border border-purple-500/40 text-purple-200 font-extrabold text-[11px] rounded-full">
+                      <span class="px-2.5 py-0.5 bg-[#361858] border border-purple-400/50 text-[#f3e8ff] font-extrabold text-[11px] rounded-full">
                         {repo.trendingBadge}
                       </span>
                     )}
-                    <span class="px-2.5 py-0.5 bg-[#25133d] text-cyan-300 font-mono font-bold text-[11px] rounded-md border border-cyan-500/30">
+                    <span class="px-2.5 py-0.5 bg-[#172554] text-cyan-300 font-mono font-bold text-[11px] rounded-md border border-cyan-400/50">
                       {repo.language}
                     </span>
                   </div>
                 </div>
 
-                <!-- Free Alternative To Badge (KEY SEO FEATURE) -->
+                <!-- Free Alternative To Badge (KEY SEO FEATURE - HIGH CONTRAST) -->
                 <div class="mb-3">
-                  <span class="inline-block px-3 py-1 bg-indigo-950/80 border border-indigo-500/40 text-indigo-300 font-extrabold text-[11px] rounded-lg">
+                  <span class="inline-block px-3 py-1 bg-[#1e1b4b] border border-indigo-400/60 text-[#a5b4fc] font-extrabold text-[11px] rounded-lg shadow-sm">
                     ✨ {repo.alternativeTo}
                   </span>
                 </div>
@@ -135,37 +135,37 @@ const description = "Explore top open-source GitHub repositories for Video Editi
                   <a href={repo.githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[#c084fc] transition-colors no-underline group-hover:translate-x-1 duration-200">
                     {repo.name}
                   </a>
-                  <span class="text-xs font-mono text-purple-300/60 font-normal">({repo.repoOwner})</span>
+                  <span class="text-xs font-mono text-[#d8b4fe] font-semibold">({repo.repoOwner})</span>
                 </h3>
 
-                <!-- English Overview -->
-                <p class="text-xs text-gray-300 mb-4 leading-relaxed">
+                <!-- English Overview (High Contrast Crisp Text) -->
+                <p class="text-xs text-[#f3e8ff] font-normal mb-4 leading-relaxed">
                   {repo.description}
                 </p>
 
                 <!-- Skill Level & Category Badge Row -->
                 <div class="flex items-center gap-2 mb-4">
-                  <span class="px-2.5 py-1 bg-[#1e1438] text-purple-300 border border-[#3b1d5c] font-bold text-[11px] rounded-lg">
+                  <span class="px-2.5 py-1 bg-[#2b1747] text-[#e9d5ff] border border-[#5b21b6]/60 font-bold text-[11px] rounded-lg">
                     {repo.skillLevelLabel}
                   </span>
-                  <span class="px-2.5 py-1 bg-[#1e1438] text-gray-300 border border-[#3b1d5c] font-bold text-[11px] rounded-lg">
+                  <span class="px-2.5 py-1 bg-[#2b1747] text-[#e9d5ff] border border-[#5b21b6]/60 font-bold text-[11px] rounded-lg">
                     {repo.categoryLabel}
                   </span>
                 </div>
 
-                <!-- Hinglish Practical Explanation Box -->
-                <div class="p-4 bg-[#120a22] border border-[#2e1c4a] rounded-2xl mb-4 text-xs text-gray-200 leading-relaxed shadow-inner">
+                <!-- Hinglish Practical Explanation Box (Crisp Readable Text) -->
+                <div class="p-4 bg-[#140a28] border border-[#4c247d] rounded-2xl mb-4 text-xs text-[#ffffff] font-medium leading-relaxed shadow-inner">
                   <strong class="text-[#c084fc] block mb-1 font-extrabold">💡 Editor Practical Summary:</strong>
                   {repo.summaryHindi}
                 </div>
 
-                <!-- 1-Click Copy Install Command Box (If available) -->
+                <!-- 1-Click Copy Install Command Box -->
                 {repo.installCommand && (
-                  <div class="mb-5 p-3 bg-[#0a0514] border border-[#2e1c4a] rounded-xl flex items-center justify-between text-xs font-mono text-purple-200">
-                    <code class="truncate mr-2 text-cyan-300">{repo.installCommand}</code>
+                  <div class="mb-5 p-3 bg-[#0c051a] border border-[#4c247d] rounded-xl flex items-center justify-between text-xs font-mono text-purple-100">
+                    <code class="truncate mr-2 text-cyan-300 font-bold">{repo.installCommand}</code>
                     <button 
                       onclick={`navigator.clipboard.writeText('${repo.installCommand}').then(() => { this.innerText = '✅ Copied!'; setTimeout(() => this.innerText = '📋 Copy', 2000); })`}
-                      class="px-2.5 py-1 bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-sans font-extrabold text-[10px] rounded-md transition-all cursor-pointer whitespace-nowrap"
+                      class="px-3 py-1 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-sans font-extrabold text-[10px] rounded-md transition-all cursor-pointer whitespace-nowrap shadow-md"
                     >
                       📋 Copy
                     </button>
@@ -174,12 +174,12 @@ const description = "Explore top open-source GitHub repositories for Video Editi
               </div>
 
               <!-- Bottom Action Buttons -->
-              <div class="flex items-center gap-3 pt-4 border-t border-[#2e1c4a]">
+              <div class="flex items-center gap-3 pt-4 border-t border-[#3b1d5c]">
                 <a 
                   href={repo.githubUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#7c3aed] to-[#9333ea] hover:from-[#6d28d9] hover:to-[#7e22ce] text-white font-extrabold text-xs rounded-xl transition-all shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] no-underline"
+                  class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] hover:from-[#7c3aed] hover:to-[#9333ea] text-white font-extrabold text-xs rounded-xl transition-all shadow-lg hover:shadow-[0_0_25px_rgba(192,132,252,0.5)] no-underline"
                 >
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                   View on GitHub
@@ -190,7 +190,7 @@ const description = "Explore top open-source GitHub repositories for Video Editi
                     href={repo.websiteUrl} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    class="px-4 py-2.5 bg-[#25133d] border border-[#a855f7]/40 text-[#c084fc] font-extrabold text-xs rounded-xl hover:bg-[#341a52] transition-colors no-underline"
+                    class="px-4 py-2.5 bg-[#2e1552] border border-[#c084fc]/50 text-[#f3e8ff] font-extrabold text-xs rounded-xl hover:bg-[#3d1b6e] transition-colors no-underline"
                   >
                     Website ➔
                   </a>
@@ -200,11 +200,11 @@ const description = "Explore top open-source GitHub repositories for Video Editi
 
             <!-- Native Smart Cross-Sell Card inserted after 6th item -->
             {index === 5 && (
-              <div class="col-span-1 md:col-span-2 p-6 sm:p-8 bg-gradient-to-r from-[#200d3d] via-[#2d1254] to-[#1a0833] border-2 border-[#a855f7]/50 rounded-3xl shadow-2xl relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 my-2">
+              <div class="col-span-1 md:col-span-2 p-6 sm:p-8 bg-gradient-to-r from-[#29124a] via-[#371661] to-[#200b3b] border-2 border-[#c084fc]/60 rounded-3xl shadow-2xl relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 my-2">
                 <div class="space-y-2 text-left">
                   <span class="px-3 py-1 bg-[#e0692a] text-white font-extrabold text-[10px] uppercase rounded-full tracking-wider">⚡ NEED PRE-CONFIGURED READY APPS?</span>
                   <h4 class="text-xl sm:text-2xl font-extrabold text-white">Don't Want to Compile Code Yourself?</h4>
-                  <p class="text-xs sm:text-sm text-gray-300 max-w-xl">Get 1-Click ready-to-use iPhone Movie App setup, LUT Packs, &amp; Editing Software Bundles from ₹49!</p>
+                  <p class="text-xs sm:text-sm text-[#e9d5ff] font-medium max-w-xl">Get 1-Click ready-to-use iPhone Movie App setup, LUT Packs, &amp; Editing Software Bundles from ₹49!</p>
                 </div>
                 <a href="/digital-store" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#e0692a] to-[#f59e0b] hover:from-[#c85720] hover:to-[#d97706] text-white font-extrabold text-sm rounded-full text-center no-underline shadow-xl whitespace-nowrap transform hover:scale-105 transition-all">
                   🛒 Visit Digital Store (₹49) ➔
@@ -216,10 +216,10 @@ const description = "Explore top open-source GitHub repositories for Video Editi
       </div>
 
       <!-- Empty State -->
-      <div id="no-results-msg" class="hidden text-center py-20 bg-[#170e28] border border-[#2e1c4a] rounded-3xl mt-6">
+      <div id="no-results-msg" class="hidden text-center py-20 bg-[#1c0f35] border border-[#4c247d] rounded-3xl mt-6">
         <div class="text-5xl mb-4">🔍</div>
         <h3 class="text-xl font-bold text-white mb-2">No repositories found</h3>
-        <p class="text-xs text-purple-300">Try searching for a different keyword or select "🔥 All Repos".</p>
+        <p class="text-xs text-[#e9d5ff]">Try searching for a different keyword or select "🔥 All Repos".</p>
       </div>
 
     </section>
@@ -275,12 +275,12 @@ const description = "Explore top open-source GitHub repositories for Video Editi
       categoryPills.forEach(pill => {
         pill.addEventListener('click', () => {
           categoryPills.forEach(p => {
-            p.classList.remove('bg-[#7c3aed]', 'text-white', 'border-[#a855f7]', 'shadow-[0_0_20px_rgba(168,85,247,0.4)]', 'scale-105');
-            p.classList.add('bg-[#170e28]', 'text-gray-300', 'border-[#2e1c4a]');
+            p.classList.remove('bg-[#8b5cf6]', 'text-white', 'border-[#c084fc]', 'shadow-[0_0_20px_rgba(192,132,252,0.5)]', 'scale-105');
+            p.classList.add('bg-[#1c0f35]', 'text-[#e9d5ff]', 'border-[#3b1d5c]');
           });
 
-          pill.classList.remove('bg-[#170e28]', 'text-gray-300', 'border-[#2e1c4a]');
-          pill.classList.add('bg-[#7c3aed]', 'text-white', 'border-[#a855f7]', 'shadow-[0_0_20px_rgba(168,85,247,0.4)]', 'scale-105');
+          pill.classList.remove('bg-[#1c0f35]', 'text-[#e9d5ff]', 'border-[#3b1d5c]');
+          pill.classList.add('bg-[#8b5cf6]', 'text-white', 'border-[#c084fc]', 'shadow-[0_0_20px_rgba(192,132,252,0.5)]', 'scale-105');
 
           currentCategory = pill.getAttribute('data-category');
           filterCards();

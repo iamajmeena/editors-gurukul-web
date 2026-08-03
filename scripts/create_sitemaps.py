@@ -14,38 +14,28 @@ if os.path.exists(sitemap_0):
     shutil.copyfile(sitemap_0, sitemap_dest_public)
     print("Successfully copied sitemap-0.xml to sitemap.xml in dist & public!")
 
-# Sync homepage index.html
-dist_homepage = os.path.join(dist_dir, "index.html")
-root_homepage = os.path.join(root_dir, "index.html")
-public_homepage = os.path.join(public_dir, "index.html")
+# Remove legacy sw.js if present
+for legacy_sw in [os.path.join(root_dir, "sw.js"), os.path.join(public_dir, "sw.js")]:
+    if os.path.exists(legacy_sw):
+        os.remove(legacy_sw)
+        print(f"Removed legacy sw.js from {legacy_sw}")
 
-if os.path.exists(dist_homepage):
-    shutil.copyfile(dist_homepage, root_homepage)
-    shutil.copyfile(dist_homepage, public_homepage)
-    print("Successfully synced homepage index.html to root & public!")
+# Recursively sync all built directories and html files from dist to root
+for item in os.listdir(dist_dir):
+    dist_item_path = os.path.join(dist_dir, item)
+    root_item_path = os.path.join(root_dir, item)
+    public_item_path = os.path.join(public_dir, item)
 
-# Sync instagram-follower-counter
-ig_dist_html = os.path.join(dist_dir, "instagram-follower-counter", "index.html")
-ig_root_html = os.path.join(root_dir, "instagram-follower-counter.html")
-ig_root_dir = os.path.join(root_dir, "instagram-follower-counter")
-ig_root_dir_html = os.path.join(ig_root_dir, "index.html")
+    if os.path.isdir(dist_item_path):
+        if os.path.exists(root_item_path):
+            shutil.rmtree(root_item_path)
+        shutil.copytree(dist_item_path, root_item_path)
+        
+        if item == "_astro":
+            if os.path.exists(public_item_path):
+                shutil.rmtree(public_item_path)
+            shutil.copytree(dist_item_path, public_item_path)
+    elif item.endswith(".html") or item.endswith(".xml") or item.endswith(".txt"):
+        shutil.copyfile(dist_item_path, root_item_path)
 
-if os.path.exists(ig_dist_html):
-    shutil.copyfile(ig_dist_html, ig_root_html)
-    os.makedirs(ig_root_dir, exist_ok=True)
-    shutil.copyfile(ig_dist_html, ig_root_dir_html)
-    print("Successfully synced instagram-follower-counter static files!")
-
-dist_astro_dir = os.path.join(dist_dir, "_astro")
-root_astro_dir = os.path.join(root_dir, "_astro")
-public_astro_dir = os.path.join(public_dir, "_astro")
-
-if os.path.exists(dist_astro_dir):
-    if os.path.exists(root_astro_dir):
-        shutil.rmtree(root_astro_dir)
-    shutil.copytree(dist_astro_dir, root_astro_dir)
-
-    if os.path.exists(public_astro_dir):
-        shutil.rmtree(public_astro_dir)
-    shutil.copytree(dist_astro_dir, public_astro_dir)
-    print("Successfully synced _astro assets folder to root & public!")
+print("Successfully synced all dist output static files and folders to root repository!")

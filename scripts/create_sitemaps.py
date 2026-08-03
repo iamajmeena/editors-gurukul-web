@@ -24,3 +24,12 @@ if os.path.exists(ig_dist_html):
     os.makedirs(ig_root_dir, exist_ok=True)
     shutil.copyfile(ig_dist_html, ig_root_dir_html)
     print("Successfully synced instagram-follower-counter static files!")
+
+dist_astro_dir = os.path.join(dist_dir, "_astro")
+root_astro_dir = os.path.join(root_dir, "_astro")
+
+if os.path.exists(dist_astro_dir):
+    if os.path.exists(root_astro_dir):
+        shutil.rmtree(root_astro_dir)
+    shutil.copytree(dist_astro_dir, root_astro_dir)
+    print("Successfully synced _astro assets folder to root!")

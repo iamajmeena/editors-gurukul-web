@@ -1,9 +1,3 @@
-export interface RecommendedProduct {
-  name: string;
-  price: string;
-  url: string;
-  badge: string;
-}
 
 export interface HardwareSpecs {
   minVram: string;
@@ -54,7 +48,6 @@ export interface GitHubRepo {
   githubUrl: string;
   websiteUrl?: string;
   featured?: boolean;
-  recommendedProduct?: RecommendedProduct;
   hardwareSpecs?: HardwareSpecs;
   usageSteps?: RepoUsageStep[];
   troubleshooting?: RepoErrorFix[];
@@ -89,7 +82,6 @@ export const trendingRepos: GitHubRepo[] = [
     requirements: "Python 3.8+ or pre-compiled standalone executable binary.",
     githubUrl: "https://github.com/yt-dlp/yt-dlp",
     featured: true,
-    recommendedProduct: { name: "iPhone Movie App Setup", price: "₹49", url: "/digital-store/movie-app-iphone", badge: "📱 Want 1-Click Movie App?" }
   },
   {
     id: "stable-diffusion-webui",
@@ -115,7 +107,6 @@ export const trendingRepos: GitHubRepo[] = [
     features: ["Text-to-Image & Inpainting", "ControlNet pose guidance", "GFPGAN face restoration", "Custom LoRA support"],
     requirements: "Nvidia GPU with 4GB+ VRAM, Python 3.10.",
     githubUrl: "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
-    recommendedProduct: { name: "CapCut Pro PC & Mac Bundle", price: "₹49", url: "/digital-store/capcut-pro-pc", badge: "✂️ Get CapCut Pro PC & Mac" }
   },
   {
     id: "comfyui",
@@ -143,7 +134,6 @@ export const trendingRepos: GitHubRepo[] = [
     githubUrl: "https://github.com/comfyanonymous/ComfyUI",
     websiteUrl: "https://comfy.org",
     featured: true,
-    recommendedProduct: { name: "500+ Cinematic LUTs Pack", price: "₹49", url: "/digital-store/500-lut-pack", badge: "🎨 Get 500+ Color Presets" }
   },
   {
     id: "fooocus",
@@ -169,7 +159,6 @@ export const trendingRepos: GitHubRepo[] = [
     features: ["Midjourney-like simple prompt GUI", "Built-in SDXL optimization", "Face Swap & Image Prompt mixing", "Zero prompt engineering required"],
     requirements: "Nvidia GPU 4GB+ VRAM or Apple Silicon Mac.",
     githubUrl: "https://github.com/lllyasviel/Fooocus",
-    recommendedProduct: { name: "500+ Color Grading Presets", price: "₹49", url: "/digital-store/500-lut-pack", badge: "🎨 Get 500+ LUTs" }
   },
   {
     id: "invokeai",
@@ -196,7 +185,6 @@ export const trendingRepos: GitHubRepo[] = [
     requirements: "Nvidia GPU 6GB+ VRAM or Apple Silicon Mac.",
     githubUrl: "https://github.com/invoke-ai/InvokeAI",
     websiteUrl: "https://invoke.ai",
-    recommendedProduct: { name: "Toko 3D Motion Pack", price: "₹49", url: "/digital-store/toko-elements-pack", badge: "⚡ Get Toko Motion Pack" }
   },
   {
     id: "open-sora",
@@ -297,7 +285,6 @@ export const trendingRepos: GitHubRepo[] = [
     features: ["1-click transparent background PNG generation", "CLI, Python API & Browser GUI", "Supports batch processing folders", "Fine hair edge detection model"],
     requirements: "Python 3.8+ or ONNX runtime.",
     githubUrl: "https://github.com/danielgatis/rembg",
-    recommendedProduct: { name: "CapCut Pro PC Setup", price: "₹49", url: "/digital-store/capcut-pro-pc", badge: "✂️ Get CapCut Pro PC" }
   },
   {
     id: "lama-cleaner",
@@ -351,7 +338,6 @@ export const trendingRepos: GitHubRepo[] = [
     requirements: "Python 3.9+, ffmpeg.",
     githubUrl: "https://github.com/openai/whisper",
     featured: true,
-    recommendedProduct: { name: "DaVinci Resolve 21 Studio Setup", price: "₹49", url: "/digital-store/davinci-resolve-21-studio", badge: "🎙️ Need DaVinci 21 Fairlight?" }
   },
   {
     id: "bark",
@@ -377,7 +363,6 @@ export const trendingRepos: GitHubRepo[] = [
     features: ["Generates human speech with natural laughter & sighs", "Multi-speaker dialogue support", "Environmental sound effects", "100% open-source"],
     requirements: "Nvidia GPU with 8GB+ VRAM, Python 3.9+.",
     githubUrl: "https://github.com/suno-ai/bark",
-    recommendedProduct: { name: "2TB Sound Effects & Editing Bundle", price: "₹49", url: "/digital-store/2tb-video-editing-pack", badge: "🎧 Get 2TB Sound Effects" }
   },
   {
     id: "coqui-tts",
@@ -403,7 +388,6 @@ export const trendingRepos: GitHubRepo[] = [
     features: ["Clone voice with 3-second audio sample", "Supports 17 languages including Hindi", "Emotion & tone controls", "Offline local processing"],
     requirements: "Python 3.9+, Nvidia GPU recommended.",
     githubUrl: "https://github.com/coqui-ai/TTS",
-    recommendedProduct: { name: "DaVinci Resolve 21 Studio Setup", price: "₹49", url: "/digital-store/davinci-resolve-21-studio", badge: "🎙️ Get DaVinci 21 Fairlight" }
   },
   {
     id: "rvc-webui",
@@ -454,7 +438,6 @@ export const trendingRepos: GitHubRepo[] = [
     features: ["4-stem & 6-stem AI separation", "Hybrid Spectrogram Transformer engine", "Outputs studio-quality WAV stems", "Supports MP3, WAV, FLAC"],
     requirements: "Python 3.8+, PyTorch, ffmpeg.",
     githubUrl: "https://github.com/facebookresearch/demucs",
-    recommendedProduct: { name: "All Editing Software Suite", price: "₹49", url: "/digital-store/all-editing-software", badge: "🎵 Get Audio Suite" }
   },
   {
     id: "audacity",

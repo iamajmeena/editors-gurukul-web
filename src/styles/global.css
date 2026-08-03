@@ -16,12 +16,28 @@
 }
 
 body {
-  background-color: var(--bg) !important;
-  color: var(--ink) !important;
+  background-color: var(--bg);
+  color: var(--ink);
   margin: 0;
   font-family: 'Sora', sans-serif;
   overflow-x: hidden;
   padding-bottom: 90px;
+}
+
+body.dark-portal {
+  background-color: #0d0714 !important;
+  color: #ffffff !important;
+}
+
+body.dark-portal h1,
+body.dark-portal h2,
+body.dark-portal h3,
+body.dark-portal h4,
+body.dark-portal p,
+body.dark-portal li,
+body.dark-portal span,
+body.dark-portal div {
+  color: inherit;
 }
 
 /* Container & Main Layout */

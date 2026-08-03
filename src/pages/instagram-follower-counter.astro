@@ -233,7 +233,7 @@ const description = "Real-time live Instagram follower count tracker with instan
         }
         if (statNeeded) statNeeded.textContent = '100K Hit 🎉';
 
-        // 5-SECOND PAUSE AT 100,000 FOR CELEBRATION, THEN CONTINUE BEYOND 100K!
+        // 5-SECOND PAUSE AT 100,000 FOR CELEBRATION, THEN CONTINUE SLOWLY BEYOND 100K!
         setTimeout(() => {
           isPausedForMilestone = false;
           if (countEl) {
@@ -313,7 +313,7 @@ const description = "Real-time live Instagram follower count tracker with instan
         let delta = 1;
 
         if (count < 99995) {
-          // Normal phase (up to 99,995): fast & steady (+2 to +5)
+          // Normal approach (up to 99,995): fast & steady (+2 to +5)
           const roll = Math.random();
           if (roll < 0.70) {
             delta = Math.floor(Math.random() * 4) + 2;
@@ -330,15 +330,9 @@ const description = "Real-time live Instagram follower count tracker with instan
           delta = 1;
           delay = Math.floor(Math.random() * 1000) + 2500;
         } else if (count >= 100000) {
-          // BEYOND 100K: CONTINUE GROWING (100,001, 100,002, 100,003...) AT NORMAL ORGANIC PACE!
-          const roll = Math.random();
-          if (roll < 0.75) {
-            delta = Math.floor(Math.random() * 3) + 1; // +1 to +3
-            delay = Math.floor(Math.random() * 800) + 600;
-          } else {
-            delta = 1;
-            delay = Math.floor(Math.random() * 1200) + 800;
-          }
+          // BEYOND 100K: SLOW REALISTIC PACE (1 follower every 4.5s to 6.5s!)
+          delta = 1;
+          delay = Math.floor(Math.random() * 2000) + 4500; // 4.5 seconds to 6.5 seconds per follower!
         }
 
         count += delta;

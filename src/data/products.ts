@@ -99,104 +99,104 @@ export const PRODUCTS: DigitalProduct[] = [
     images: [
       "/assets/all_editing_software_bundle_cover.jpg"
     ],
-    shortDesc: "Complete Video Editing Suite — DaVinci Resolve Studio, Premiere Pro, After Effects, CapCut Pro & Plugins.",
-    fullDesc: "The ultimate video editor toolkit! Get full access to all industry-standard video editing software including DaVinci Resolve Studio, Adobe Premiere Pro, After Effects, CapCut Pro Desktop, and top plugins (Sapphire, Continuum, Neat Video).",
+    shortDesc: "Complete Pro Suite — DaVinci Resolve 21 Studio, CapCut Pro PC/Mac, Adobe Creative Cloud & VFX Plugins.",
+    fullDesc: "Get complete pre-activated pro editing software bundle for Windows & Mac! Includes DaVinci Resolve 21 Studio Neural Engine AI, CapCut Pro PC & Mac with auto-captions, Adobe Premiere Pro, After Effects, and Topaz Video AI.",
     features: [
-      "Complete Suite: DaVinci Resolve Studio, Premiere Pro & After Effects",
-      "Full Plugins: Sapphire, Continuum, Universe & Neat Noise Reduction",
-      "Step-by-step Video Installation & License Activation Tutorials",
-      "High-Speed Google Drive Direct Download Links"
+      "DaVinci Resolve 21 Studio + CapCut Pro PC & Mac Full Lifetime Access",
+      "Adobe Premiere Pro, After Effects, Photoshop & Audition Pre-activated",
+      "Topaz Video AI 4K Upscaler & Sapphire VFX Plugins Suite",
+      "1-Click Installation Setup Guides & Dedicated WhatsApp Support"
     ],
     includedItems: [
-      "Full Windows & Mac Installer Setup Packages",
-      "Plugin Bundle Collection & Activation Scripts",
-      "Lifetime Drive Access & Free Future Updates"
+      "Windows & Mac Installer Packages with Activation Tutorials",
+      "10,000+ Motion Graphics & Transition Templates",
+      "Direct Drive Download Links & Lifetime Updates"
     ],
-    razorpayLink: "https://rzp.io/rzp/U2NZbEVJ"
+    razorpayLink: "https://rzp.io/rzp/k2K7gOq5"
   },
   {
     id: "toko-elements-pack",
     slug: "toko-elements-pack",
-    title: "Toko Elements Motion Graphics Pack",
-    category: "Motion Templates",
-    badge: "✨ MOTION GRAPHICS",
-    price: "₹99",
-    numericPrice: 99,
-    originalPrice: "₹1,999",
-    discount: "95% OFF",
-    buyers: "417+ Editors",
-    rating: "4.8 ★★★★★",
+    title: "TOKO Motion Elements Pack (2,200+ Motion Graphics)",
+    category: "After Effects & Premiere",
+    badge: "🔥 HOT CREATOR PACK",
+    price: "₹49",
+    numericPrice: 49,
+    originalPrice: "₹3,499",
+    discount: "98% OFF",
+    buyers: "612+ Editors",
+    rating: "4.9 ★★★★★",
     isFree: false,
     images: [
-      "/assets/500_lut_pack_cover.jpg"
+      "/assets/editing_pack_ultra_premium_cover_1785610038113.jpg"
     ],
-    shortDesc: "2,250+ Motion Graphics Elements — Lower Thirds, Titles, Callouts & Transitions for DaVinci & Premiere.",
-    fullDesc: "Upgrade your edit quality with 2,250+ drag-and-drop motion graphic elements. Includes lower thirds, social media callouts, animated titles, typography presets, and 60fps vector transitions for DaVinci Resolve and Premiere Pro.",
+    shortDesc: "2,200+ Motion Graphics Elements, Lower Thirds, Transitions & Sound Effects for Premiere Pro & AE.",
+    fullDesc: "The ultimate motion graphics library used by top YouTube creators & editors! Includes 2,200+ drag-and-drop elements for Premiere Pro & After Effects: title animations, lower thirds, callouts, background loops, sound effects, and seamless transitions.",
     features: [
-      "2,250+ Motion Graphics Elements (Lower Thirds, Titles, Callouts)",
-      "1-Click Drag & Drop Preset Integration",
-      "Smooth 60fps Vector Animations with Custom Color Controls",
-      "Compatible with DaVinci Resolve 18/19/21 & Premiere Pro"
+      "2,200+ Drag-and-Drop Motion Graphics & Title Animations",
+      "Premiere Pro MOGRTs & After Effects Project Files",
+      "Clean Lower Thirds, Callouts, Kinetic Typography & Shapes",
+      "Includes Sound Effects (SFX) Matched to Every Animation"
     ],
     includedItems: [
-      "Toko Elements Preset Library Installer",
-      "Tutorial Video on Customizing Colors & Fonts",
-      "Commercial License"
+      "TOKO Graphic Pack Extension / MOGRT Files",
+      "Video Tutorial Guide on Drag-and-Drop Usage",
+      "Commercial Royalty-Free License"
     ],
-    razorpayLink: "https://rzp.io/rzp/MhcNXN2"
+    razorpayLink: "https://rzp.io/rzp/k2K7gOq5"
   },
   {
     id: "capcut-pro-pc",
     slug: "capcut-pro-pc",
-    title: "CapCut Pro For Windows PC",
-    category: "Windows Desktop Software",
-    badge: "🔥 TOP SELLER",
-    price: "₹39",
-    numericPrice: 39,
-    originalPrice: "₹1,999",
-    discount: "98% OFF",
-    buyers: "1,140+ PC Creators",
+    title: "CapCut Pro PC Full Version (Windows)",
+    category: "Windows Software",
+    badge: "⚡ TOP SELLER",
+    price: "₹49",
+    numericPrice: 49,
+    originalPrice: "₹1,499",
+    discount: "96% OFF",
+    buyers: "942+ Editors",
     rating: "4.9 ★★★★★",
     isFree: false,
     images: [
       "/assets/capcut_pro_pc_cover.jpg"
     ],
-    shortDesc: "Full CapCut Pro Desktop for Windows 10/11 PC — Auto Captions, AI Text-to-Speech & Pro Transitions.",
-    fullDesc: "Get complete access to CapCut Pro Desktop for Windows PC (Windows 10 & 11). Edit viral Instagram Reels and YouTube Shorts at 4K 60fps with Pro Auto Captions, AI background removal, trending transitions, and zero watermark export.",
+    shortDesc: "CapCut Pro for Windows PC — Unlimited AI Captions, 4K Export, Pro Effects & Transitions.",
+    fullDesc: "Unlock full CapCut Pro features on Windows PC! Get unlimited access to Pro AI Auto-Captions, 4K 60fps export without watermark, Pro transitions, AI background remover, and VIP visual effects without monthly fees.",
     features: [
-      "Full CapCut Pro Desktop Setup for Windows 10 & 11 PC",
-      "Auto Captions Generator with Trending Caption Styles",
-      "AI Background Remover & Auto Cutout Engine",
-      "No Watermark 4K 60fps Export Guarantee"
+      "CapCut Pro Full Version for Windows 10 & 11 PC",
+      "Unlimited AI Auto-Captions, Pro Transitions & Effects",
+      "Zero Watermark 4K 60fps Ultra HD Export Guarantee",
+      "Includes 1-Click Setup Guide & Lifetime Access"
     ],
     includedItems: [
-      "CapCut Pro Installer for Windows PC",
-      "Text-to-Speech & Auto Caption Setup Guide",
-      "Bonus 50+ Trending Shorts Transition Presets"
+      "CapCut Pro PC Windows Offline Setup Package",
+      "1-Click Installation Guide Video",
+      "Bonus 500+ Viral Reels Sound Effects"
     ],
-    razorpayLink: "https://rzp.io/rzp/5MqGFbSt"
+    razorpayLink: "https://rzp.io/rzp/5u2t8Xm"
   },
   {
     id: "capcut-pro-mac",
     slug: "capcut-pro-mac",
-    title: "CapCut Pro For Apple Mac & MacBook",
+    title: "CapCut Pro macOS Full Version (Apple Silicon & Intel)",
     category: "macOS Software",
-    badge: "🚀 MACBOOK EDITION",
-    price: "₹39",
-    numericPrice: 39,
-    originalPrice: "₹1,999",
-    discount: "98% OFF",
-    buyers: "584+ Mac Creators",
+    badge: "🍏 MAC EXCLUSIVE",
+    price: "₹49",
+    numericPrice: 49,
+    originalPrice: "₹1,499",
+    discount: "96% OFF",
+    buyers: "518+ Editors",
     rating: "5.0 ★★★★★",
     isFree: false,
     images: [
       "/assets/capcut_pro_mac_cover.jpg"
     ],
-    shortDesc: "Full CapCut Pro Desktop for Apple Silicon M1/M2/M3 & Intel Macs — Metal GPU Accelerated.",
-    fullDesc: "Full CapCut Pro Desktop optimized for Apple MacBooks and Macs (Apple Silicon M1, M2, M3 & Intel). Experience lightning-fast Metal GPU rendering, 4K 60fps export, auto captions, and pro effects.",
+    shortDesc: "CapCut Pro for macOS — Optimized for M1/M2/M3/M4 Apple Silicon & Intel Macs with AI Auto Captions.",
+    fullDesc: "Complete CapCut Pro version for macOS optimized for M1, M2, M3, M4 Apple Silicon and Intel Macs. Enjoy hardware-accelerated 4K rendering, pro motion tracking, AI noise reduction, and pro voiceovers without monthly subscription.",
     features: [
-      "Full CapCut Pro Desktop Setup for Apple macOS",
-      "Optimized for M1, M2, M3 Apple Silicon & Intel Macs",
+      "CapCut Pro for macOS (M1/M2/M3/M4 & Intel Supported)",
+      "Hardware Accelerated 4K Rendering & Pro Color Grading",
       "Auto Captions & AI Text-to-Speech",
       "Zero Watermark 4K 60fps Export Guarantee"
     ],
@@ -236,7 +236,7 @@ export const PRODUCTS: DigitalProduct[] = [
       "iPhone Free Music App Setup Method",
       "1-Click App Store Activation Links"
     ],
-    razorpayLink: "https://rzp.io/rzp/J7qakhn"
+    razorpayLink: "https://www.ajaykmeena.com/products/Movie-app-iphone-6a6d72b59eb42c64b6694cf5?dgps_s=pbl&dgps_u=c&dgps_uid=634e3400e4b0fa8faaf414aa&dgps_t=cp_m"
   },
 
   {

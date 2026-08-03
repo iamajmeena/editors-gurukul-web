@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const title = "100K Instagram Follower Live Counter & Celebration Blaster (2026) | Editors Gurukul";
-const description = "Real-time 100K Instagram follower milestone simulator with epic live confetti blasters, fireworks, and subscriber growth analytics.";
+const description = "Real-time 100K Instagram follower milestone simulator with epic live confetti blasters, fireworks, and live profile picture support.";
 ---
 
 <Layout title={title} description={description} enableAds={false} darkTheme={true}>
@@ -39,8 +39,8 @@ const description = "Real-time 100K Instagram follower milestone simulator with 
             <input 
               type="text" 
               id="ig-handle" 
-              placeholder="ajaykmeena" 
-              value="ajaykmeena"
+              placeholder="iampoojariya" 
+              value="iampoojariya"
               class="w-full pl-9 pr-4 py-3 bg-[#0d0714] border border-[#e1306c]/50 rounded-2xl text-sm font-bold text-white placeholder-gray-500 focus:outline-none focus:border-[#e1306c] shadow-inner"
             />
           </div>
@@ -48,7 +48,7 @@ const description = "Real-time 100K Instagram follower milestone simulator with 
             type="submit" 
             class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] hover:opacity-90 text-white font-black text-sm rounded-2xl transition-all shadow-xl hover:shadow-[0_0_25px_rgba(225,48,108,0.5)] shrink-0 cursor-pointer border-0 whitespace-nowrap"
           >
-            SET HANDLE ➔
+            LOAD PROFILE &amp; TRACK ➔
           </button>
         </form>
 
@@ -74,17 +74,26 @@ const description = "Real-time 100K Instagram follower milestone simulator with 
 
         <!-- Profile Avatar & Handle Header -->
         <div class="flex items-center justify-center gap-4 mb-6">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full p-1 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] shadow-2xl relative">
-            <div class="w-full h-full rounded-full bg-[#160a2b] flex items-center justify-center text-2xl font-black text-white uppercase border-2 border-white/20" id="avatar-text">
-              AK
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] shadow-2xl relative shrink-0">
+            <!-- Dynamic Avatar Image -->
+            <img 
+              id="avatar-img" 
+              src="https://unavatar.io/instagram/iampoojariya" 
+              alt="iampoojariya Instagram Profile Picture" 
+              class="w-full h-full rounded-full object-cover border-2 border-white/20"
+              onerror="this.style.display='none'; document.getElementById('avatar-text').style.display='flex';"
+            />
+            <!-- Fallback Initials Avatar -->
+            <div class="w-full h-full rounded-full bg-[#160a2b] hidden items-center justify-center text-2xl font-black text-white uppercase border-2 border-white/20" id="avatar-text">
+              IP
             </div>
           </div>
           <div class="text-left">
             <div class="flex items-center gap-1.5">
-              <h2 id="display-handle" class="text-xl sm:text-2xl font-black text-white m-0">@ajaykmeena</h2>
+              <h2 id="display-handle" class="text-xl sm:text-2xl font-black text-white m-0">@iampoojariya</h2>
               <span class="text-sky-400 text-sm" title="Verified Creator">✓</span>
             </div>
-            <span id="growth-status" class="text-xs font-bold text-emerald-400 flex items-center gap-1">
+            <span id="growth-status" class="text-xs font-bold text-emerald-400 flex items-center gap-1 mt-1">
               <span class="animate-bounce">▲</span> +<span id="rate-display">12</span> followers / sec
             </span>
           </div>
@@ -103,7 +112,7 @@ const description = "Real-time 100K Instagram follower milestone simulator with 
         <!-- 100K CELEBRATION POPUP BANNER (HIDDEN UNTIL 100K) -->
         <div id="celebration-banner" class="hidden my-4 p-6 bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-purple-500/20 border-2 border-amber-400 rounded-2xl shadow-2xl text-center space-y-2 animate-bounce">
           <div class="text-3xl sm:text-4xl font-black text-amber-300 drop-shadow-md">
-            🎉 CONGRATULATIONS! 100K HIT! 🏆
+            🎉 CONGRATULATIONS @<span id="celeb-handle">iampoojariya</span>! 100K HIT! 🏆
           </div>
           <p class="text-xs sm:text-sm text-white font-extrabold m-0">
             Official 100,000 Creator Milestone Reached! Fireworks &amp; Blasters Active! 💥
@@ -160,6 +169,8 @@ const description = "Real-time 100K Instagram follower milestone simulator with 
       const handleInput = document.getElementById('ig-handle');
       const handleForm = document.getElementById('ig-form');
       const displayHandle = document.getElementById('display-handle');
+      const celebHandle = document.getElementById('celeb-handle');
+      const avatarImg = document.getElementById('avatar-img');
       const avatarText = document.getElementById('avatar-text');
       const rateDisplay = document.getElementById('rate-display');
       const statNeeded = document.getElementById('stat-needed');
@@ -275,6 +286,20 @@ const description = "Real-time 100K Instagram follower milestone simulator with 
         }
       }
 
+      function loadProfile(username) {
+        const clean = username.trim().replace(/^@/, '');
+        if (!clean) return;
+        if (displayHandle) displayHandle.textContent = '@' + clean;
+        if (celebHandle) celebHandle.textContent = clean;
+        if (avatarText) avatarText.textContent = clean.substring(0, 2).toUpperCase();
+
+        if (avatarImg) {
+          avatarImg.style.display = 'block';
+          if (avatarText) avatarText.style.display = 'none';
+          avatarImg.src = 'https://unavatar.io/instagram/' + clean;
+        }
+      }
+
       function getTickIncrement() {
         if (currentMode === 'organic') return Math.floor(Math.random() * 2) + 1;
         if (currentMode === 'viral') return Math.floor(Math.random() * 4) + 2;
@@ -302,10 +327,7 @@ const description = "Real-time 100K Instagram follower milestone simulator with 
       if (handleForm) {
         handleForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          const val = handleInput.value.trim().replace(/^@/, '');
-          if (!val) return;
-          displayHandle.textContent = '@' + val;
-          avatarText.textContent = val.substring(0, 2).toUpperCase();
+          loadProfile(handleInput.value);
         });
       }
 
@@ -372,6 +394,7 @@ const description = "Real-time 100K Instagram follower milestone simulator with 
         });
       }
 
+      loadProfile('iampoojariya');
       updateDisplay();
       startTimer();
     })();

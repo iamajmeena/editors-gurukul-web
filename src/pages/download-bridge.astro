@@ -2,132 +2,205 @@
 import Layout from '../layouts/Layout.astro';
 
 const title = "Free iPhone Movie App — Editors Gurukul";
-const description = "100% Free iPhone Movie & Music Streaming App Direct App Store Download.";
+const description = "Choose between Fast Track Instant Download (₹49) or Slow Multistep Free Download.";
 ---
 
 <Layout title={title} description={description} enableAds={true}>
-  <section class="max-w-[700px] mx-auto my-8 px-4 text-center">
+  <section class="max-w-[720px] mx-auto my-8 px-4 text-center">
     
     <!-- Hero Cover Artwork Thumbnail Header -->
     <div class="relative overflow-hidden rounded-3xl shadow-xl border-2 border-[#e7e4dc] mb-6 bg-[#0b132b]">
       <img src="/assets/movie_app_free_cover.jpg" alt="Free iPhone Movie App Download Cover" class="w-full h-auto object-cover" />
     </div>
 
-    <!-- Minimal Top Notice Banner -->
-    <div class="bg-[#0a5f61] text-white text-center py-2.5 px-4 font-extrabold text-xs sm:text-sm rounded-xl mb-6 shadow-sm">
-      📄 100% Free Download · Complete all 3 steps to unlock App Store PDF Link.
+    <!-- Dual Choice Comparison Header Box -->
+    <div class="my-6 p-6 bg-white border-2 border-[#e7e4dc] rounded-3xl shadow-lg text-left">
+      <h2 class="text-xl font-extrabold text-[#15181c] mb-2 text-center">⚡ Choose Your Download Method</h2>
+      <p class="text-xs text-[#4b5058] text-center mb-6">Select how you want to download the iPhone Free Movie App setup:</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Option 1: Fast Track Paid ₹49 -->
+        <div class="p-5 bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-2 border-[#e0692a] rounded-2xl flex flex-col justify-between shadow-md">
+          <div>
+            <div class="inline-block px-3 py-1 bg-[#e0692a] text-white font-extrabold text-[10px] uppercase rounded-full mb-2">⚡ FAST TRACK (RECOMMENDED)</div>
+            <div class="font-extrabold text-base text-[#15181c] mb-1">1-Click Instant Download</div>
+            <p class="text-xs text-[#4b5058] m-0 mb-4 leading-relaxed">
+              • 0 Timers &amp; 0 Verification Steps<br/>
+              • 100% No Ads &amp; Instant Direct PDF<br/>
+              • VIP WhatsApp Support Included
+            </p>
+          </div>
+          <a href="/digital-store/movie-app-iphone" class="w-full py-3 bg-[#e0692a] text-white font-extrabold text-xs text-center rounded-xl hover:bg-[#c85720] transition-colors no-underline shadow-md">
+            🚀 Skip All Timers — Pay ₹49 Only ➔
+          </a>
+        </div>
+
+        <!-- Option 2: Slow Track Free -->
+        <div class="p-5 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="inline-block px-3 py-1 bg-gray-200 text-gray-700 font-extrabold text-[10px] uppercase rounded-full mb-2">🐢 SLOW TRACK</div>
+            <div class="font-extrabold text-base text-[#15181c] mb-1">4-Step Free Verification</div>
+            <p class="text-xs text-[#4b5058] m-0 mb-4 leading-relaxed">
+              • 4 Long Verification Steps<br/>
+              • 15-Second Timer on Every Step<br/>
+              • Contains Ads &amp; Verification Links
+            </p>
+          </div>
+          <a href="#slow-track-section" class="w-full py-3 bg-[#0a5f61] text-white font-extrabold text-xs text-center rounded-xl hover:bg-[#074749] transition-colors no-underline">
+            🐢 Continue Slow Free Download 👇
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- Step 1 View -->
-    <div id="step-1-container" class="p-6 sm:p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-xl">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#e4f3f2] text-[#0a5f61] font-extrabold text-xs rounded-full uppercase tracking-wider mb-4">
-        🔒 STEP 1 OF 3 · VERIFYING SESSION
-      </div>
+    <!-- Slow Track Multistep Section -->
+    <div id="slow-track-section">
+      <!-- Step 1 View -->
+      <div id="step-1-container" class="p-6 sm:p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#e4f3f2] text-[#0a5f61] font-extrabold text-xs rounded-full uppercase tracking-wider mb-4">
+          🔒 STEP 1 OF 4 · VERIFYING SESSION
+        </div>
 
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-[#15181c] mb-2">
-        Generating Free iPhone App Link...
-      </h1>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-[#15181c] mb-2">
+          Generating Free Link (Step 1/4)
+        </h1>
 
-      <!-- Timer Box -->
-      <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
-        <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 1 LINK TIMER</div>
-        <div id="timer-display-1" class="text-4xl font-extrabold text-[#e0692a] font-mono">10s</div>
-        
-        <!-- Progress Bar -->
-        <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
-          <div id="progress-bar-1" class="bg-[#0a5f61] h-full w-0 transition-all duration-1000 ease-linear"></div>
+        <!-- Timer Box -->
+        <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
+          <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 1 LINK TIMER</div>
+          <div id="timer-display-1" class="text-4xl font-extrabold text-[#e0692a] font-mono">15s</div>
+          
+          <!-- Progress Bar -->
+          <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
+            <div id="progress-bar-1" class="bg-[#0a5f61] h-full w-0 transition-all duration-1000 ease-linear"></div>
+          </div>
+        </div>
+
+        <!-- Fast Track Upsell Box on Every Step -->
+        <div class="my-6 p-4 bg-amber-50 border-2 border-[#e0692a]/40 rounded-2xl text-left max-w-md mx-auto">
+          <span class="text-[10px] font-extrabold text-[#e0692a] uppercase tracking-wider block mb-1">⚡ TIRED OF WAITING 15s TIMERS?</span>
+          <div class="font-extrabold text-sm text-[#15181c] mb-1">Skip All 4 Steps &amp; Download Instantly</div>
+          <p class="text-xs text-[#4b5058] m-0 mb-3">Get 1-click direct App Store PDF download for just ₹49!</p>
+          <a href="/digital-store/movie-app-iphone" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#e0692a] text-white font-extrabold text-xs rounded-full hover:bg-[#c85720] transition-colors no-underline shadow-md">
+            🚀 Skip Timers — Get Paid (₹49) ➔
+          </a>
+        </div>
+
+        <!-- Locked / Unlocked Button Container -->
+        <div id="btn-container-1" class="mt-6">
+          <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
+            ⏳ Please Wait (15s)...
+          </button>
         </div>
       </div>
 
-      <!-- Native Audience Offer Banner -->
-      <div class="my-6 p-4 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border-2 border-[#0a5f61]/30 rounded-2xl text-left max-w-md mx-auto">
-        <span class="text-[10px] font-extrabold text-[#0a5f61] uppercase tracking-wider block mb-1">🎁 INSTANT FREE BONUS REWARD</span>
-        <div class="font-extrabold text-sm text-[#15181c] mb-1">Claim Free ₹50 Welcome Cash Bonus</div>
-        <p class="text-xs text-[#4b5058] m-0 mb-3 leading-relaxed">
-          Get instant ₹50 welcome reward credited while your movie guide generates!
-        </p>
-        <a href="https://3nbf4.com/act/files/tag.min.js?z=11473498" target="_blank" onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href) : null" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#0a5f61] text-white font-extrabold text-xs rounded-full hover:bg-[#074749] transition-colors no-underline shadow-md cursor-pointer">
-          💰 Claim ₹50 Instant Bonus ➔
-        </a>
-      </div>
+      <!-- Step 2 View -->
+      <div id="step-2-container" class="hidden p-6 sm:p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#fdece0] text-[#e0692a] font-extrabold text-xs rounded-full uppercase tracking-wider mb-4">
+          ⚡ STEP 2 OF 4 · PREPARING PACKAGE
+        </div>
 
-      <!-- Locked / Unlocked Button Container -->
-      <div id="btn-container-1" class="mt-6">
-        <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
-          ⏳ Please Wait (10s)...
-        </button>
-      </div>
-    </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-[#15181c] mb-2">
+          Preparing Package (Step 2/4)
+        </h1>
 
-    <!-- Step 2 View -->
-    <div id="step-2-container" class="hidden p-6 sm:p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-xl">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#fdece0] text-[#e0692a] font-extrabold text-xs rounded-full uppercase tracking-wider mb-4">
-        ⚡ STEP 2 OF 3 · PREPARING PACKAGE
-      </div>
+        <!-- Timer Box -->
+        <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
+          <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 2 LINK TIMER</div>
+          <div id="timer-display-2" class="text-4xl font-extrabold text-[#e0692a] font-mono">15s</div>
+          
+          <!-- Progress Bar -->
+          <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
+            <div id="progress-bar-2" class="bg-[#e0692a] h-full w-0 transition-all duration-1000 ease-linear"></div>
+          </div>
+        </div>
 
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-[#15181c] mb-2">
-        Preparing App Download (Step 2/3)
-      </h1>
+        <!-- Fast Track Upsell Box on Every Step -->
+        <div class="my-6 p-4 bg-amber-50 border-2 border-[#e0692a]/40 rounded-2xl text-left max-w-md mx-auto">
+          <span class="text-[10px] font-extrabold text-[#e0692a] uppercase tracking-wider block mb-1">⚡ WANT INSTANT 1-CLICK ACCESS?</span>
+          <div class="font-extrabold text-sm text-[#15181c] mb-1">Skip Remaining 3 Steps</div>
+          <p class="text-xs text-[#4b5058] m-0 mb-3">Download 100% ad-free PDF directly for ₹49!</p>
+          <a href="/digital-store/movie-app-iphone" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#e0692a] text-white font-extrabold text-xs rounded-full hover:bg-[#c85720] transition-colors no-underline shadow-md">
+            🚀 Skip Timers — Get Paid (₹49) ➔
+          </a>
+        </div>
 
-      <!-- Timer Box -->
-      <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
-        <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 2 LINK TIMER</div>
-        <div id="timer-display-2" class="text-4xl font-extrabold text-[#e0692a] font-mono">10s</div>
-        
-        <!-- Progress Bar -->
-        <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
-          <div id="progress-bar-2" class="bg-[#e0692a] h-full w-0 transition-all duration-1000 ease-linear"></div>
+        <!-- Locked / Unlocked Button Container -->
+        <div id="btn-container-2" class="mt-6">
+          <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
+            ⏳ Please Wait (15s)...
+          </button>
         </div>
       </div>
 
-      <!-- Native Audience Offer Banner -->
-      <div class="my-6 p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-2 border-[#e0692a]/30 rounded-2xl text-left max-w-md mx-auto">
-        <span class="text-[10px] font-extrabold text-[#e0692a] uppercase tracking-wider block mb-1">🎬 BONUS MOVIE STREAMING LIST</span>
-        <div class="font-extrabold text-sm text-[#15181c] mb-1">Unlock 50+ Secret HD Streaming Websites</div>
-        <p class="text-xs text-[#4b5058] m-0 mb-3 leading-relaxed">
-          Watch 4K movies &amp; shows with 0 ads on mobile &amp; Smart TV!
-        </p>
-        <a href="https://3nbf4.com/act/files/tag.min.js?z=11473498" target="_blank" onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href) : null" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#e0692a] text-white font-extrabold text-xs rounded-full hover:bg-[#c85720] transition-colors no-underline shadow-md cursor-pointer">
-          🍿 Unlock 50+ Secret Sites ➔
-        </a>
+      <!-- Step 3 View -->
+      <div id="step-3-container" class="hidden p-6 sm:p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full uppercase tracking-wider mb-4">
+          🔐 STEP 3 OF 4 · FINAL VERIFICATION
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-[#15181c] mb-2">
+          Finalizing Verification (Step 3/4)
+        </h1>
+
+        <!-- Timer Box -->
+        <div class="my-6 p-6 bg-[#faf9f6] border border-[#e7e4dc] rounded-2xl max-w-xs mx-auto">
+          <div class="text-xs font-bold text-[#4b5058] uppercase tracking-wider mb-2">STEP 3 LINK TIMER</div>
+          <div id="timer-display-3" class="text-4xl font-extrabold text-[#e0692a] font-mono">15s</div>
+          
+          <!-- Progress Bar -->
+          <div class="w-full bg-[#e7e4dc] h-2.5 rounded-full mt-4 overflow-hidden">
+            <div id="progress-bar-3" class="bg-[#0a5f61] h-full w-0 transition-all duration-1000 ease-linear"></div>
+          </div>
+        </div>
+
+        <!-- Fast Track Upsell Box on Every Step -->
+        <div class="my-6 p-4 bg-amber-50 border-2 border-[#e0692a]/40 rounded-2xl text-left max-w-md mx-auto">
+          <span class="text-[10px] font-extrabold text-[#e0692a] uppercase tracking-wider block mb-1">⚡ INSTANT 1-CLICK OPTION</span>
+          <div class="font-extrabold text-sm text-[#15181c] mb-1">Skip Final Wait</div>
+          <p class="text-xs text-[#4b5058] m-0 mb-3">Download full verified PDF guide for ₹49!</p>
+          <a href="/digital-store/movie-app-iphone" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#e0692a] text-white font-extrabold text-xs rounded-full hover:bg-[#c85720] transition-colors no-underline shadow-md">
+            🚀 Skip Timers — Get Paid (₹49) ➔
+          </a>
+        </div>
+
+        <!-- Locked / Unlocked Button Container -->
+        <div id="btn-container-3" class="mt-6">
+          <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
+            ⏳ Please Wait (15s)...
+          </button>
+        </div>
       </div>
 
-      <!-- Locked / Unlocked Button Container -->
-      <div id="btn-container-2" class="mt-6">
-        <button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">
-          ⏳ Please Wait (10s)...
-        </button>
-      </div>
-    </div>
+      <!-- Step 4 View (Final Download) -->
+      <div id="step-4-container" class="hidden p-6 sm:p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-green-100 text-green-800 font-extrabold text-xs rounded-full uppercase tracking-wider mb-4">
+          ✅ STEP 4 OF 4 · VERIFICATION COMPLETE
+        </div>
 
-    <!-- Step 3 View (Final) -->
-    <div id="step-3-container" class="hidden p-6 sm:p-8 bg-white border border-[#e7e4dc] rounded-3xl shadow-xl">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-green-100 text-green-800 font-extrabold text-xs rounded-full uppercase tracking-wider mb-4">
-        ✅ STEP 3 OF 3 · VERIFICATION COMPLETE
-      </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-[#15181c] mb-3">
+          Your Free PDF Link is Ready!
+        </h1>
 
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-[#15181c] mb-3">
-        Your Free PDF Link is Ready!
-      </h1>
+        <!-- App Setup Instruction Card -->
+        <div class="p-4 bg-red-50 border border-red-200 rounded-2xl max-w-md mx-auto mb-6 text-xs text-red-800 text-left">
+          <div class="font-bold text-sm mb-1 text-red-900">⚠️ Important App Setup Note:</div>
+          <p class="m-0 leading-relaxed">
+            If you download this app first time, after downloading the app, type <strong class="underline font-extrabold text-red-950">ASK</strong> in the search bar.
+          </p>
+        </div>
 
-      <!-- App Setup Instruction Card -->
-      <div class="p-4 bg-red-50 border border-red-200 rounded-2xl max-w-md mx-auto mb-6 text-xs text-red-800 text-left">
-        <div class="font-bold text-sm mb-1 text-red-900">⚠️ Important App Setup Note:</div>
-        <p class="m-0 leading-relaxed">
-          If you download this app first time, after downloading the app, type <strong class="underline font-extrabold text-red-950">ASK</strong> in the search bar.
-        </p>
-      </div>
+        <div class="mt-6 flex flex-col items-center gap-4" id="final-download-btn-container">
+          <a id="final-pdf-btn" href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href, true) : null" class="w-full max-w-md inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m4 4V4"></path></svg>
+            📥 Download Free PDF Guide Now
+          </a>
 
-      <div class="mt-6 flex flex-col items-center gap-4" id="final-download-btn-container">
-        <a id="final-pdf-btn" href="/assets/best-free-movie-apps-for-iphone-2026.pdf" download onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href, true) : null" class="w-full max-w-md inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#e0692a] text-white font-extrabold text-base rounded-full hover:bg-[#c85720] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline animate-bounce cursor-pointer">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m4 4V4"></path></svg>
-          📥 Download Free PDF Guide Now
-        </a>
-
-        <!-- High-CTR High-Yield SmartLink Bonus Button -->
-        <a href="https://3nbf4.com/act/files/tag.min.js?z=11473498" target="_blank" onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href) : null" class="w-full max-w-md inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#faf9f6] border-2 border-[#0a5f61] text-[#0a5f61] font-bold text-xs rounded-full hover:bg-[#e4f3f2] transition-colors no-underline cursor-pointer">
-          💰 Claim Instant ₹50 Welcome Bonus / Reward ➔
-        </a>
+          <!-- High-CTR High-Yield SmartLink Bonus Button -->
+          <a href="https://3nbf4.com/act/files/tag.min.js?z=11473498" target="_blank" onclick="window.triggerPopDirect ? window.triggerPopDirect(event, this.href) : null" class="w-full max-w-md inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#faf9f6] border-2 border-[#0a5f61] text-[#0a5f61] font-bold text-xs rounded-full hover:bg-[#e4f3f2] transition-colors no-underline cursor-pointer">
+            💰 Claim Instant ₹50 Welcome Bonus / Reward ➔
+          </a>
+        </div>
       </div>
     </div>
 
@@ -174,6 +247,7 @@ const description = "100% Free iPhone Movie & Music Streaming App Direct App Sto
       const step1Box = document.getElementById('step-1-container');
       const step2Box = document.getElementById('step-2-container');
       const step3Box = document.getElementById('step-3-container');
+      const step4Box = document.getElementById('step-4-container');
 
       const finalPdfBtn = document.getElementById('final-pdf-btn');
       if (finalPdfBtn) {
@@ -186,17 +260,49 @@ const description = "100% Free iPhone Movie & Music Streaming App Direct App Sto
 
       const step2Url = '/download-bridge?app=' + appType + '&step=2';
       const step3Url = '/download-bridge?app=' + appType + '&step=3';
+      const step4Url = '/download-bridge?app=' + appType + '&step=4';
 
-      if (step === '3') {
+      if (step === '4') {
+        step1Box.classList.add('hidden');
+        step2Box.classList.add('hidden');
+        step3Box.classList.add('hidden');
+        step4Box.classList.remove('hidden');
+      } else if (step === '3') {
         step1Box.classList.add('hidden');
         step2Box.classList.add('hidden');
         step3Box.classList.remove('hidden');
+        step4Box.classList.add('hidden');
+
+        let seconds = 15;
+        const timerDisplay3 = document.getElementById('timer-display-3');
+        const progressBar3 = document.getElementById('progress-bar-3');
+        const btnContainer3 = document.getElementById('btn-container-3');
+
+        const interval3 = setInterval(() => {
+          seconds--;
+          if (seconds > 0) {
+            timerDisplay3.textContent = seconds + 's';
+            const percent = ((15 - seconds) / 15) * 100;
+            progressBar3.style.width = percent + '%';
+            btnContainer3.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Step 3 (${seconds}s)...</button>`;
+          } else {
+            clearInterval(interval3);
+            timerDisplay3.textContent = '0s';
+            progressBar3.style.width = '100%';
+            btnContainer3.innerHTML = `
+              <a href="${step4Url}" onclick="window.triggerPopDirect(event, '${step4Url}')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
+                Proceed to Final Step 4 ➔
+              </a>
+            `;
+          }
+        }, 1000);
       } else if (step === '2') {
         step1Box.classList.add('hidden');
         step2Box.classList.remove('hidden');
         step3Box.classList.add('hidden');
+        step4Box.classList.add('hidden');
 
-        let seconds = 10;
+        let seconds = 15;
         const timerDisplay2 = document.getElementById('timer-display-2');
         const progressBar2 = document.getElementById('progress-bar-2');
         const btnContainer2 = document.getElementById('btn-container-2');
@@ -205,16 +311,16 @@ const description = "100% Free iPhone Movie & Music Streaming App Direct App Sto
           seconds--;
           if (seconds > 0) {
             timerDisplay2.textContent = seconds + 's';
-            const percent = ((10 - seconds) / 10) * 100;
+            const percent = ((15 - seconds) / 15) * 100;
             progressBar2.style.width = percent + '%';
-            btnContainer2.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Link (${seconds}s)...</button>`;
+            btnContainer2.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Step 2 (${seconds}s)...</button>`;
           } else {
             clearInterval(interval2);
             timerDisplay2.textContent = '0s';
             progressBar2.style.width = '100%';
             btnContainer2.innerHTML = `
               <a href="${step3Url}" onclick="window.triggerPopDirect(event, '${step3Url}')" class="inline-flex items-center gap-2 px-8 py-4 bg-[#0a5f61] text-white font-extrabold text-base rounded-full hover:bg-[#074749] transition-all transform hover:-translate-y-0.5 shadow-lg no-underline">
-                Proceed to Final Step 3 ➔
+                Proceed to Step 3 ➔
               </a>
             `;
           }
@@ -223,8 +329,9 @@ const description = "100% Free iPhone Movie & Music Streaming App Direct App Sto
         step1Box.classList.remove('hidden');
         step2Box.classList.add('hidden');
         step3Box.classList.add('hidden');
+        step4Box.classList.add('hidden');
 
-        let seconds = 10;
+        let seconds = 15;
         const timerDisplay1 = document.getElementById('timer-display-1');
         const progressBar1 = document.getElementById('progress-bar-1');
         const btnContainer1 = document.getElementById('btn-container-1');
@@ -233,9 +340,9 @@ const description = "100% Free iPhone Movie & Music Streaming App Direct App Sto
           seconds--;
           if (seconds > 0) {
             timerDisplay1.textContent = seconds + 's';
-            const percent = ((10 - seconds) / 10) * 100;
+            const percent = ((15 - seconds) / 15) * 100;
             progressBar1.style.width = percent + '%';
-            btnContainer1.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Link (${seconds}s)...</button>`;
+            btnContainer1.innerHTML = `<button disabled class="px-8 py-3.5 bg-[#9ca3af] text-white font-extrabold text-sm rounded-full cursor-not-allowed opacity-80 shadow-none">⏳ Verifying Step 1 (${seconds}s)...</button>`;
           } else {
             clearInterval(interval1);
             timerDisplay1.textContent = '0s';

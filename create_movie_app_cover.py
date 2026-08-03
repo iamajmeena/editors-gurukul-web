@@ -101,8 +101,8 @@ for pill_text, pill_color in pills:
     draw.text((x_offset + 12, y_offset + 10), pill_text, font=font_tag, fill=(255, 255, 255))
     x_offset += pw + 14
 
-# 5. Pricing Offer Badge at Bottom Left
-offer_text = "SPECIAL OFFER: ₹29 ONLY (94% OFF)"
+# 5. Pricing Offer Badge at Bottom Left (UPDATED TO ₹49)
+offer_text = "SPECIAL OFFER: ₹49 ONLY (90% OFF)"
 bbox_o = draw.textbbox((0, 0), offer_text, font=font_offer)
 ow = bbox_o[2] - bbox_o[0] + 40
 draw.rounded_rectangle([60, 520, 60 + ow, 580], radius=18, fill=(224, 105, 42))
@@ -111,4 +111,4 @@ draw.text((80, 536), offer_text, font=font_offer, fill=(255, 255, 255))
 # Save image
 output_path = "public/assets/movie_app_iphone_cover.jpg"
 img.save(output_path, "JPEG", quality=95)
-print(f"Successfully regenerated pristine cover image at {output_path}")
+print(f"Successfully regenerated cover image with ₹49 price tag at {output_path}")

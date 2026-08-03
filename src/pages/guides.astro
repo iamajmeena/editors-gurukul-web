@@ -13,13 +13,12 @@ const categoryLabels: Record<string, string> = {
   "lighting": "💡 Lighting Guides",
   "filmmaking": "🎥 Filmmaking Process & Gear",
   "storytelling": "✍️ Storytelling & Craft",
-  "career": "💼 Career & Business",
-  "apps": "📱 Free Apps & Streaming Tools"
+  "career": "💼 Career & Business"
 };
 
-const categoryOrder = ["davinci-resolve", "camera", "lens", "lighting", "apps", "filmmaking", "storytelling", "career", "gear", "editing-fundamentals", "nle-comparison"];
+const categoryOrder = ["davinci-resolve", "camera", "lens", "lighting", "filmmaking", "storytelling", "career", "gear", "editing-fundamentals", "nle-comparison"];
 
-const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'free-resources.astro', 'my-gear.astro', 'camera-guides.astro', 'lens-guides.astro', 'lighting-guides.astro', 'filmmaking-guides.astro', 'storytelling-guides.astro', 'career-guides.astro', 'download-bridge.astro', 'decoding-davinci-20-course.astro'];
+const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'free-resources.astro', 'my-gear.astro', 'camera-guides.astro', 'lens-guides.astro', 'lighting-guides.astro', 'filmmaking-guides.astro', 'storytelling-guides.astro', 'career-guides.astro', 'decoding-davinci-20-course.astro'];
 
 const guides = allPages.filter(page => {
   const filename = page.file.split('/').pop() || '';

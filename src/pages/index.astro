@@ -7,7 +7,7 @@ const allPages = Object.values(import.meta.glob('./*.astro', { eager: true }));
 // Filter out utility pages and index
 const guides = allPages.filter(page => {
   const path = page.file.split('/').pop() || '';
-  const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'download-bridge.astro', 'guides.astro', 'decoding-davinci-20-course.astro', 'camera-guides.astro', 'lens-guides.astro', 'lighting-guides.astro', 'filmmaking-guides.astro', 'storytelling-guides.astro', 'career-guides.astro'];
+  const excludeList = ['index.astro', 'about-contact.astro', 'privacy-policy.astro', 'terms.astro', 'guides.astro', 'decoding-davinci-20-course.astro', 'camera-guides.astro', 'lens-guides.astro', 'lighting-guides.astro', 'filmmaking-guides.astro', 'storytelling-guides.astro', 'career-guides.astro'];
   return !excludeList.includes(path);
 });
 

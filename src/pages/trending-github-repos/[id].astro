@@ -21,7 +21,7 @@ const description = `Complete free setup guide, system requirements, terminal co
 // Get related repos in same category
 const relatedRepos = trendingRepos.filter(r => r.id !== repo.id && (r.category === repo.category || r.useCase === repo.useCase)).slice(0, 3);
 
-// Structured Data JSON-LD Schema for Google Rich Snippets
+// Structured Data JSON-LD Schema (SoftwareApplication, FAQPage & BreadcrumbList)
 const jsonLdSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -46,6 +46,14 @@ const jsonLdSchema = {
       },
       "downloadUrl": repo.githubUrl,
       "description": repo.description
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://editorsgurukul.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Trending GitHub Repos", "item": "https://editorsgurukul.com/trending-github-repos" },
+        { "@type": "ListItem", "position": 3, "name": repo.name, "item": `https://editorsgurukul.com/trending-github-repos/${repo.id}` }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -87,11 +95,16 @@ const jsonLdSchema = {
 
   <div class="min-h-screen bg-[#0d0714] text-white relative overflow-hidden font-['Sora',sans-serif]">
     
+    <!-- Toast Notification Popup for 1-Click Copy -->
+    <div id="copy-toast" class="fixed bottom-6 right-6 z-50 bg-[#7c3aed] text-white px-5 py-3 rounded-2xl shadow-2xl font-bold text-xs flex items-center gap-2 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none border border-[#c084fc]">
+      <span>📋 Command copied to clipboard!</span>
+    </div>
+
     <!-- Background Ambient Glow -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[500px] bg-gradient-to-tr from-[#7c3aed]/30 via-[#a855f7]/20 to-[#38bdf8]/10 blur-[160px] pointer-events-none"></div>
 
     <!-- Main Container - FULL WIDE CONTAINER (max-w-6xl) -->
-    <div class="max-w-6xl mx-auto px-4 py-10 relative z-10 space-y-8">
+    <div class="max-w-6xl mx-auto px-4 py-8 relative z-10 space-y-8">
       
       <!-- Breadcrumb Navigation -->
       <nav class="flex items-center gap-2 text-xs font-semibold text-purple-300">
@@ -103,7 +116,7 @@ const jsonLdSchema = {
       </nav>
 
       <!-- Full-Width Hero Header Section (No External Outbound Button Here!) -->
-      <header class="bg-[#190d33] border-2 border-[#4c247d] p-6 sm:p-10 rounded-3xl shadow-2xl space-y-4">
+      <header class="bg-[#190d33] border-2 border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
         
         <!-- Badges Row -->
         <div class="flex flex-wrap items-center gap-2.5">
@@ -125,23 +138,32 @@ const jsonLdSchema = {
           </span>
         </div>
 
-        <!-- Repo Title -->
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight flex flex-wrap items-baseline gap-3 m-0">
+        <!-- Repo Title (Tight Scaling sm:text-4xl) -->
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight flex flex-wrap items-baseline gap-3 m-0">
           {repo.name}
-          <span class="text-base sm:text-xl font-mono text-[#c084fc] font-semibold">by {repo.repoOwner}</span>
+          <span class="text-sm sm:text-lg font-mono text-[#c084fc] font-semibold">by {repo.repoOwner}</span>
         </h1>
 
         <!-- English Overview -->
-        <p class="text-base sm:text-lg text-[#f3e8ff] leading-relaxed font-normal m-0">
+        <p class="text-xs sm:text-sm text-[#f3e8ff] leading-relaxed font-normal m-0">
           {repo.description}
         </p>
 
+        <!-- Quick Jump Anchor Bar -->
+        <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-[#3b1d5c] text-xs font-bold">
+          <span class="text-purple-300 mr-1">Quick Jump:</span>
+          <a href="#install-commands" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-cyan-300 rounded-lg no-underline transition-colors">⚡ Commands</a>
+          <a href="#overview" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#c084fc] rounded-lg no-underline transition-colors">💡 Overview</a>
+          <a href="#comparison" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-amber-300 rounded-lg no-underline transition-colors">📊 Comparison Table</a>
+          <a href="#setup-steps" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#e9d5ff] rounded-lg no-underline transition-colors">🛠️ Setup Steps</a>
+          <a href="#faqs" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-purple-200 rounded-lg no-underline transition-colors">❓ FAQs</a>
+        </div>
       </header>
 
       <!-- FULL-WIDTH 1-CLICK SETUP COMMAND BANNER -->
-      <section class="bg-[#180d30] border-2 border-[#8b5cf6]/60 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
+      <section id="install-commands" class="bg-[#180d30] border-2 border-[#8b5cf6]/60 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#3b1d5c] pb-3">
-          <h2 class="text-xl font-extrabold text-white m-0 border-none">
+          <h2 class="text-lg sm:text-xl font-extrabold text-white m-0 border-none">
             ⚡ 1-Click Setup Commands
           </h2>
           <span class="text-xs text-purple-300">Copy &amp; paste in Terminal or Command Prompt:</span>
@@ -155,7 +177,7 @@ const jsonLdSchema = {
                 <code class="font-mono text-xs text-cyan-300 block break-all">{repo.installCommand}</code>
               </div>
               <button 
-                onclick={`navigator.clipboard.writeText('${repo.installCommand}').then(() => { this.innerText = '✅ Copied!'; setTimeout(() => this.innerText = '📋 Copy Command', 2000); })`}
+                onclick={`copyCommand('${repo.installCommand}')`}
                 class="w-full py-2 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-sans font-extrabold text-xs rounded-xl transition-all cursor-pointer shadow-md"
               >
                 📋 Copy Command
@@ -170,7 +192,7 @@ const jsonLdSchema = {
                 <code class="font-mono text-xs text-purple-300 block break-all">{repo.brewCommand}</code>
               </div>
               <button 
-                onclick={`navigator.clipboard.writeText('${repo.brewCommand}').then(() => { this.innerText = '✅ Copied!'; setTimeout(() => this.innerText = '📋 Copy Command', 2000); })`}
+                onclick={`copyCommand('${repo.brewCommand}')`}
                 class="w-full py-2 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-sans font-extrabold text-xs rounded-xl transition-all cursor-pointer shadow-md"
               >
                 📋 Copy Command
@@ -185,7 +207,7 @@ const jsonLdSchema = {
                 <code class="font-mono text-xs text-amber-300 block break-all">{repo.wingetCommand}</code>
               </div>
               <button 
-                onclick={`navigator.clipboard.writeText('${repo.wingetCommand}').then(() => { this.innerText = '✅ Copied!'; setTimeout(() => this.innerText = '📋 Copy Command', 2000); })`}
+                onclick={`copyCommand('${repo.wingetCommand}')`}
                 class="w-full py-2 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-sans font-extrabold text-xs rounded-xl transition-all cursor-pointer shadow-md"
               >
                 📋 Copy Command
@@ -206,24 +228,69 @@ const jsonLdSchema = {
         </div>
       </section>
 
-      <!-- Practical Editor Explanation Card -->
-      <section class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl">
-        <h2 class="text-xl font-extrabold text-[#c084fc] mb-3 flex items-center gap-2 border-none p-0 m-0">
-          💡 Creator Practical Breakdown (Hinglish)
+      <!-- Practical & In-Depth Creator Analysis (Detailed Paragraphs) -->
+      <section id="overview" class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+        <h2 class="text-lg sm:text-xl font-extrabold text-[#c084fc] border-none p-0 m-0">
+          💡 Creator In-Depth Breakdown &amp; Analysis
         </h2>
-        <p class="text-sm sm:text-base text-white font-medium leading-relaxed m-0">
-          {repo.summaryHindi}
-        </p>
+        <div class="text-xs sm:text-sm text-white font-medium leading-relaxed space-y-3">
+          <p class="m-0">
+            {repo.summaryHindi}
+          </p>
+          <p class="text-[#e9d5ff] m-0">
+            Unlike proprietary software locked behind monthly subscriptions, <strong>{repo.name}</strong> runs completely locally on your hardware. It gives creators 100% control over processing pipelines, custom plugins, and data privacy without cloud rendering fees or export watermarks.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEO COMPARISON TABLE: Open-Source vs Paid Alternative -->
+      <section id="comparison" class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+        <h2 class="text-lg sm:text-xl font-extrabold text-white border-none p-0 m-0">
+          📊 Comparison: {repo.name} vs {repo.alternativeTo}
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-[#3b1d5c] text-purple-300 font-extrabold">
+                <th class="py-3 px-4">Feature / Metric</th>
+                <th class="py-3 px-4 text-[#c084fc]">{repo.name} (Open Source)</th>
+                <th class="py-3 px-4 text-amber-300">{repo.alternativeTo} (Paid)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#3b1d5c]/60 text-white">
+              <tr>
+                <td class="py-3 px-4 font-bold">Pricing Model</td>
+                <td class="py-3 px-4 text-emerald-400 font-bold">100% Free Forever (₹0)</td>
+                <td class="py-3 px-4 text-red-300">Paid Subscription / License</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-bold">Data Privacy</td>
+                <td class="py-3 px-4 text-emerald-400">100% Offline Local Computer</td>
+                <td class="py-3 px-4 text-amber-200">Cloud Upload Required</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-bold">System Control</td>
+                <td class="py-3 px-4 text-emerald-400">Full Source Code &amp; Custom Scripts</td>
+                <td class="py-3 px-4 text-amber-200">Restricted Proprietary Code</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-bold">Community Extensions</td>
+                <td class="py-3 px-4 text-emerald-400">Unlimited GitHub Plugins</td>
+                <td class="py-3 px-4 text-amber-200">Limited Official Marketplace</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- Key Features List -->
       <section class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl">
-        <h2 class="text-xl font-extrabold text-white mb-4 border-none p-0 m-0">
+        <h2 class="text-lg sm:text-xl font-extrabold text-white mb-4 border-none p-0 m-0">
           🚀 Key Features &amp; Technical Capabilities
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {repo.features.map(feat => (
-            <div class="flex items-start gap-3 p-3.5 bg-[#120726] border border-[#3b1d5c] rounded-2xl text-sm text-[#f3e8ff]">
+            <div class="flex items-start gap-3 p-3.5 bg-[#120726] border border-[#3b1d5c] rounded-2xl text-xs sm:text-sm text-[#f3e8ff]">
               <span class="text-[#c084fc] font-bold text-base shrink-0">✓</span>
               <span>{feat}</span>
             </div>
@@ -232,8 +299,8 @@ const jsonLdSchema = {
       </section>
 
       <!-- Step-by-Step Installation Guide for Creators -->
-      <section class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
-        <h2 class="text-xl font-extrabold text-white border-none p-0 m-0 flex items-center gap-2">
+      <section id="setup-steps" class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+        <h2 class="text-lg sm:text-xl font-extrabold text-white border-none p-0 m-0 flex items-center gap-2">
           🛠️ Step-by-Step Installation Guide
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm text-[#e9d5ff]">
@@ -254,17 +321,17 @@ const jsonLdSchema = {
 
       <!-- System Requirements Card -->
       <section class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl">
-        <h2 class="text-xl font-extrabold text-[#38bdf8] mb-3 border-none p-0 m-0 flex items-center gap-2">
+        <h2 class="text-lg sm:text-xl font-extrabold text-[#38bdf8] mb-3 border-none p-0 m-0 flex items-center gap-2">
           ⚙️ Hardware &amp; System Requirements
         </h2>
-        <p class="text-sm sm:text-base text-white font-medium leading-relaxed m-0">
+        <p class="text-xs sm:text-sm text-white font-medium leading-relaxed m-0">
           {repo.requirements}
         </p>
       </section>
 
       <!-- Frequently Asked Questions (FAQ Section for SEO) -->
-      <section class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
-        <h2 class="text-xl font-extrabold text-white border-none p-0 m-0">
+      <section id="faqs" class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+        <h2 class="text-lg sm:text-xl font-extrabold text-white border-none p-0 m-0">
           ❓ Frequently Asked Questions (FAQs)
         </h2>
         <div class="space-y-4">
@@ -299,7 +366,7 @@ const jsonLdSchema = {
 
       <!-- EXTERNAL REPOSITORY LINKS BOX (PLACED AT THE VERY BOTTOM OF THE PAGE FOR MAXIMUM USER RETENTION) -->
       <section class="bg-gradient-to-r from-[#200e3f] via-[#180d30] to-[#120726] border-2 border-[#8b5cf6] p-6 sm:p-8 rounded-3xl shadow-2xl text-center space-y-4">
-        <h2 class="text-xl font-extrabold text-white m-0 border-none">
+        <h2 class="text-lg sm:text-xl font-extrabold text-white m-0 border-none">
           🔗 Source Code &amp; Official Links
         </h2>
         <p class="text-xs sm:text-sm text-[#e9d5ff] max-w-xl mx-auto m-0">
@@ -332,14 +399,14 @@ const jsonLdSchema = {
       <!-- Related Open-Source Tools Section -->
       {relatedRepos.length > 0 && (
         <section class="pt-6 border-t border-[#3b1d5c]">
-          <h2 class="text-2xl font-extrabold text-white mb-6 border-none p-0 m-0">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-white mb-6 border-none p-0 m-0">
             🔥 Related Open-Source Tools
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedRepos.map(rel => (
               <a href={`/trending-github-repos/${rel.id}`} class="p-5 bg-[#180d30] border border-[#4c247d] rounded-2xl hover:border-[#c084fc] transition-all no-underline block group">
                 <span class="text-xs text-amber-300 font-extrabold block mb-1">★ {rel.stars} stars</span>
-                <h3 class="text-lg font-extrabold text-white group-hover:text-[#c084fc] transition-colors m-0 mb-2">{rel.name}</h3>
+                <h3 class="text-base font-extrabold text-white group-hover:text-[#c084fc] transition-colors m-0 mb-2">{rel.name}</h3>
                 <p class="text-xs text-[#f3e8ff] line-clamp-2 m-0 mb-3">{rel.description}</p>
                 <span class="text-xs text-[#c084fc] font-bold">View Guide ➔</span>
               </a>
@@ -350,4 +417,20 @@ const jsonLdSchema = {
 
     </div>
   </div>
+
+  <script is:inline>
+    function copyCommand(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        if (toast) {
+          toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+          toast.classList.add('opacity-100', 'translate-y-0');
+          setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+          }, 2500);
+        }
+      });
+    }
+  </script>
 </Layout>

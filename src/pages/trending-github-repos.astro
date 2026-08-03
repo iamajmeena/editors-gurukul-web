@@ -15,24 +15,24 @@ const description = "Explore top open-source GitHub repositories for Video Editi
     <div id="orb-2" class="absolute top-[600px] right-0 w-[700px] h-[700px] bg-[#8b5cf6]/20 blur-[170px] pointer-events-none transition-transform duration-1000 ease-out"></div>
 
     <!-- Header Section -->
-    <div class="relative z-10 pt-14 pb-10 px-4 border-b border-[#3b1d5c] bg-gradient-to-b from-[#160b2d] to-[#0d0714]">
+    <div class="relative z-10 pt-12 pb-8 px-4 border-b border-[#3b1d5c] bg-gradient-to-b from-[#160b2d] to-[#0d0714]">
       <div class="max-w-6xl mx-auto text-center">
         
         <!-- Header Pill Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#2a134a] border border-[#c084fc]/50 text-[#f3e8ff] font-extrabold text-xs rounded-full uppercase tracking-wider mb-5 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-105 transition-transform cursor-default">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#2a134a] border border-[#c084fc]/50 text-[#f3e8ff] font-extrabold text-xs rounded-full uppercase tracking-wider mb-4 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-105 transition-transform cursor-default">
           <span class="w-2.5 h-2.5 rounded-full bg-[#c084fc] animate-ping"></span>
           EDITORS GURUKUL · 2026 CURATED OPEN-SOURCE DIRECTORY
         </div>
         
-        <!-- Main Title -->
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white leading-tight">
+        <!-- Main Title (Tight Desktop Scaling sm:text-4xl) -->
+        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-3 text-white leading-tight">
           <span class="text-white drop-shadow-md">TRENDING GITHUB REPOS FOR</span> <br class="hidden sm:inline"/>
           <span class="bg-gradient-to-r from-[#f3e8ff] via-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(192,132,252,0.6)]">
             CREATORS, EDITORS &amp; AI ARTISTS
           </span>
         </h1>
         
-        <p class="text-xs sm:text-sm text-[#e9d5ff] font-medium max-w-2xl mx-auto mb-6 leading-relaxed">
+        <p class="text-xs sm:text-sm text-[#e9d5ff] font-medium max-w-2xl mx-auto mb-4 leading-relaxed">
           Hand-picked open-source AI video tools, video editors, audio stem splitters, and media utilities on GitHub.
         </p>
 
@@ -40,10 +40,10 @@ const description = "Explore top open-source GitHub repositories for Video Editi
     </div>
 
     <!-- Main Content Section - FULL WIDE CONTAINER (max-w-6xl) -->
-    <section class="max-w-6xl mx-auto px-4 py-10 relative z-10">
+    <section class="max-w-6xl mx-auto px-4 py-8 relative z-10">
       
-      <!-- SINGLE HORIZONTAL FILTER ROW -->
-      <div class="mb-10 flex flex-wrap items-center justify-between gap-3 p-3 bg-[#160a2b]/90 border border-[#3b1d5c] rounded-2xl backdrop-blur-xl shadow-xl hover:border-[#c084fc]/40 transition-colors">
+      <!-- SINGLE HORIZONTAL FILTER ROW WITH RESET BUTTON -->
+      <div class="mb-8 flex flex-wrap items-center justify-between gap-3 p-3 bg-[#160a2b]/90 border border-[#3b1d5c] rounded-2xl backdrop-blur-xl shadow-xl hover:border-[#c084fc]/40 transition-colors">
         
         <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
           
@@ -78,6 +78,15 @@ const description = "Explore top open-source GitHub repositories for Video Editi
             </select>
             <svg class="w-3.5 h-3.5 text-[#c084fc] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
           </div>
+
+          <!-- 1-Click Clear Filters Reset Pill -->
+          <button 
+            type="button" 
+            id="reset-filters-btn" 
+            class="px-3 py-2 bg-[#2d1552] border border-[#c084fc]/40 hover:bg-[#3d1b6e] text-purple-200 font-extrabold text-xs rounded-xl transition-all cursor-pointer hidden"
+          >
+            Clear Filters ✖
+          </button>
 
         </div>
 
@@ -201,6 +210,7 @@ const description = "Explore top open-source GitHub repositories for Video Editi
       const timeframeSelect = document.getElementById('timeframe-select');
       const categorySelect = document.getElementById('category-select');
       const usecaseSelect = document.getElementById('usecase-select');
+      const resetBtn = document.getElementById('reset-filters-btn');
       const cards = document.querySelectorAll('.repo-card');
       const noResultsMsg = document.getElementById('no-results-msg');
       const orb1 = document.getElementById('orb-1');
@@ -236,6 +246,12 @@ const description = "Explore top open-source GitHub repositories for Video Editi
 
       function filterCards() {
         let visibleCount = 0;
+        let isFiltered = (currentTimeframe !== 'month' || currentCategory !== 'all-cat' || currentUseCase !== 'all-use' || currentQuery !== '');
+
+        if (resetBtn) {
+          if (isFiltered) resetBtn.classList.remove('hidden');
+          else resetBtn.classList.add('hidden');
+        }
 
         cards.forEach(card => {
           const cardCat = card.getAttribute('data-category');
@@ -278,6 +294,20 @@ const description = "Explore top open-source GitHub repositories for Video Editi
       if (categorySelect) categorySelect.addEventListener('change', (e) => { currentCategory = e.target.value; filterCards(); });
       if (usecaseSelect) usecaseSelect.addEventListener('change', (e) => { currentUseCase = e.target.value; filterCards(); });
       if (searchInput) searchInput.addEventListener('input', (e) => { currentQuery = e.target.value.toLowerCase().trim(); filterCards(); });
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          currentTimeframe = 'month';
+          currentCategory = 'all-cat';
+          currentUseCase = 'all-use';
+          currentQuery = '';
+          if (timeframeSelect) timeframeSelect.value = 'month';
+          if (categorySelect) categorySelect.value = 'all-cat';
+          if (usecaseSelect) usecaseSelect.value = 'all-use';
+          if (searchInput) searchInput.value = '';
+          filterCards();
+        });
+      }
 
       filterCards();
     })();

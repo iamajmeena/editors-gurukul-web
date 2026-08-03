@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && python3 scripts/create_sitemaps.py",
     "preview": "astro preview",
     "astro": "astro"
   },

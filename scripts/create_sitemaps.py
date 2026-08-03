@@ -14,6 +14,17 @@ if os.path.exists(sitemap_0):
     shutil.copyfile(sitemap_0, sitemap_dest_public)
     print("Successfully copied sitemap-0.xml to sitemap.xml in dist & public!")
 
+# Sync homepage index.html
+dist_homepage = os.path.join(dist_dir, "index.html")
+root_homepage = os.path.join(root_dir, "index.html")
+public_homepage = os.path.join(public_dir, "index.html")
+
+if os.path.exists(dist_homepage):
+    shutil.copyfile(dist_homepage, root_homepage)
+    shutil.copyfile(dist_homepage, public_homepage)
+    print("Successfully synced homepage index.html to root & public!")
+
+# Sync instagram-follower-counter
 ig_dist_html = os.path.join(dist_dir, "instagram-follower-counter", "index.html")
 ig_root_html = os.path.join(root_dir, "instagram-follower-counter.html")
 ig_root_dir = os.path.join(root_dir, "instagram-follower-counter")

@@ -6,16 +6,16 @@ const title = "Trending GitHub Repos & Open-Source Creator Tools (2026) | Editor
 const description = "Explore top open-source GitHub repositories for Video Editing, AI Video Generation, Audio Stem Separation, VFX, and Creator Utilities with live Star counts.";
 ---
 
-<Layout title={title} description={description} enableAds={false}>
+<Layout title={title} description={description} enableAds={false} darkTheme={true}>
   <!-- Deep Blue-Purple Cyber Background Wrapper -->
   <div class="min-h-screen bg-[#0d0714] text-white relative overflow-hidden font-['Sora',sans-serif]">
     
     <!-- Glowing Background Orbs (Brevo Purple Aesthetic) -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-tr from-[#7c3aed]/30 via-[#a855f7]/30 to-[#3b82f6]/20 blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-[600px] right-0 w-[500px] h-[500px] bg-[#8b5cf6]/20 blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-tr from-[#7c3aed]/30 via-[#a855f7]/30 to-[#3b82f6]/20 blur-[140px] pointer-events-none"></div>
+    <div class="absolute top-[600px] right-0 w-[600px] h-[600px] bg-[#8b5cf6]/20 blur-[160px] pointer-events-none"></div>
 
     <!-- Header Section -->
-    <div class="relative z-10 pt-16 pb-12 px-4 border-b border-[#3b1d5c] bg-gradient-to-b from-[#160b2d] to-[#0d0714]">
+    <div class="relative z-10 pt-16 pb-14 px-4 border-b border-[#3b1d5c] bg-gradient-to-b from-[#160b2d] to-[#0d0714]">
       <div class="max-w-5xl mx-auto text-center">
         
         <!-- Header Pill Badge -->
@@ -24,11 +24,11 @@ const description = "Explore top open-source GitHub repositories for Video Editi
           EDITORS GURUKUL · 2026 CURATED OPEN-SOURCE DIRECTORY
         </div>
         
-        <!-- Main Title with High-Contrast White & Electric Purple Gradient -->
+        <!-- Main Title: PURE BRIGHT WHITE + Electric Purple Gradient -->
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-5 text-white leading-tight">
-          Trending GitHub Repos for <br class="hidden sm:inline"/>
-          <span class="bg-gradient-to-r from-[#e9d5ff] via-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(192,132,252,0.5)]">
-            Creators, Editors &amp; AI Artists
+          <span class="text-white drop-shadow-md">TRENDING GITHUB REPOS FOR</span> <br class="hidden sm:inline"/>
+          <span class="bg-gradient-to-r from-[#f3e8ff] via-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(192,132,252,0.6)]">
+            CREATORS, EDITORS &amp; AI ARTISTS
           </span>
         </h1>
         
@@ -39,18 +39,18 @@ const description = "Explore top open-source GitHub repositories for Video Editi
         <!-- Stats Bar in Brevo Theme -->
         <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-12 bg-[#1f103a]/90 backdrop-blur-xl border-2 border-[#4c247d] p-4 sm:p-5 rounded-3xl max-w-2xl mx-auto text-xs sm:text-sm font-bold text-white shadow-2xl">
           <div>
-            <span class="block text-2xl sm:text-3xl font-extrabold text-[#e9d5ff]">{trendingRepos.length}+</span>
-            Curated Repos
+            <span class="block text-2xl sm:text-3xl font-extrabold text-[#f3e8ff]">{trendingRepos.length}+</span>
+            <span class="text-[#e9d5ff]">Curated Repos</span>
           </div>
           <div class="w-px h-8 bg-[#4c247d] hidden sm:block"></div>
           <div>
             <span class="block text-2xl sm:text-3xl font-extrabold text-[#38bdf8]">500k+</span>
-            Total GitHub Stars
+            <span class="text-[#e9d5ff]">Total GitHub Stars</span>
           </div>
           <div class="w-px h-8 bg-[#4c247d] hidden sm:block"></div>
           <div>
             <span class="block text-2xl sm:text-3xl font-extrabold text-[#fbbf24]">100%</span>
-            Free Alternatives
+            <span class="text-[#e9d5ff]">Free Alternatives</span>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ const description = "Explore top open-source GitHub repositories for Video Editi
             type="text" 
             id="repo-search-input" 
             placeholder="Search by name, Python, Premiere alternative, Subtitles, Cut..." 
-            class="w-full pl-11 pr-4 py-3.5 bg-[#1c0f35] border-2 border-[#4c247d] rounded-full text-sm font-semibold text-white placeholder-purple-300/60 focus:outline-none focus:border-[#c084fc] focus:ring-4 focus:ring-[#c084fc]/30 shadow-2xl transition-all"
+            class="w-full pl-11 pr-4 py-3.5 bg-[#1c0f35] border-2 border-[#4c247d] rounded-full text-sm font-semibold text-white placeholder-[#d8b4fe]/60 focus:outline-none focus:border-[#c084fc] focus:ring-4 focus:ring-[#c084fc]/30 shadow-2xl transition-all"
           />
         </div>
 
@@ -123,22 +123,22 @@ const description = "Explore top open-source GitHub repositories for Video Editi
                   </div>
                 </div>
 
-                <!-- Free Alternative To Badge (KEY SEO FEATURE - HIGH CONTRAST) -->
+                <!-- Free Alternative To Badge -->
                 <div class="mb-3">
                   <span class="inline-block px-3 py-1 bg-[#1e1b4b] border border-indigo-400/60 text-[#a5b4fc] font-extrabold text-[11px] rounded-lg shadow-sm">
                     ✨ {repo.alternativeTo}
                   </span>
                 </div>
 
-                <!-- Repo Title -->
+                <!-- Repo Title - PURE WHITE -->
                 <h3 class="text-xl font-extrabold text-white mb-1 flex items-center gap-2">
-                  <a href={repo.githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[#c084fc] transition-colors no-underline group-hover:translate-x-1 duration-200">
+                  <a href={repo.githubUrl} target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#c084fc] transition-colors no-underline group-hover:translate-x-1 duration-200">
                     {repo.name}
                   </a>
-                  <span class="text-xs font-mono text-[#d8b4fe] font-semibold">({repo.repoOwner})</span>
+                  <span class="text-xs font-mono text-[#c084fc] font-bold">({repo.repoOwner})</span>
                 </h3>
 
-                <!-- English Overview (High Contrast Crisp Text) -->
+                <!-- English Overview (High Contrast Crisp Lavender-White) -->
                 <p class="text-xs text-[#f3e8ff] font-normal mb-4 leading-relaxed">
                   {repo.description}
                 </p>
@@ -153,10 +153,10 @@ const description = "Explore top open-source GitHub repositories for Video Editi
                   </span>
                 </div>
 
-                <!-- Hinglish Practical Explanation Box (Crisp Readable Text) -->
-                <div class="p-4 bg-[#140a28] border border-[#4c247d] rounded-2xl mb-4 text-xs text-[#ffffff] font-medium leading-relaxed shadow-inner">
+                <!-- Hinglish Practical Explanation Box (PURE WHITE TEXT) -->
+                <div class="p-4 bg-[#140a28] border border-[#4c247d] rounded-2xl mb-4 text-xs text-white font-medium leading-relaxed shadow-inner">
                   <strong class="text-[#c084fc] block mb-1 font-extrabold">💡 Editor Practical Summary:</strong>
-                  {repo.summaryHindi}
+                  <span class="text-white">{repo.summaryHindi}</span>
                 </div>
 
                 <!-- 1-Click Copy Install Command Box -->

@@ -252,9 +252,31 @@ const guideDescriptions: Record<string, string> = {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="eg-assets-grid">
 
+            <!-- Featured IG Follower Counter Hero Card -->
+            <div class="asset-card eg-glass-card border-2 border-[#e1306c]/40 bg-gradient-to-br from-[#160a2b] via-[#140826] to-[#0d0619] text-white p-6 rounded-3xl shadow-xl hover:shadow-[0_0_30px_rgba(225,48,108,0.3)] transition-all flex flex-col justify-between" data-category="apps">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 bg-[#e1306c] text-white font-extrabold text-[11px] rounded-full uppercase tracking-wider shadow-md">🔥 Live Interactive Tool</span>
+                        <span class="text-xs font-bold text-emerald-400 flex items-center gap-1">● LIVE 100K SIMULATOR</span>
+                    </div>
+                    <h3 class="text-lg font-black text-white my-2 flex items-center gap-2">
+                        📸 Live Instagram Follower Counter
+                    </h3>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-4">
+                        Track real-time Instagram follower growth, test the 100K milestone confetti explosion, and analyze live rate velocity for @iampoojariya and custom handles.
+                    </p>
+                </div>
+                <div class="mt-auto pt-2">
+                    <a href="/instagram-follower-counter" class="w-full text-center py-2.5 bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] text-white font-extrabold text-xs rounded-xl hover:opacity-90 transition-all shadow-md block no-underline">
+                        LAUNCH LIVE COUNTER →
+                    </a>
+                </div>
+            </div>
+
             <!-- All Guides Grid -->
             {guides.map((guide) => {
                 const slug = guide.file.split('/').pop().replace('.astro', '');
+                if (slug === 'instagram-follower-counter') return null; // Handled by featured card above
                 
                 let rawTitle = slug.split('-').map(w => w.length <= 3 && !['new', 'log', 'hdr', 'cob', 'rgb', 'mic', 'pdf', '50mm', '24fps'].includes(w) ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
                 let pageTitle = guide.title || rawTitle.replace(/2026/g, '').replace(/Davinci/g, 'DaVinci').trim();
@@ -268,7 +290,7 @@ const guideDescriptions: Record<string, string> = {
                     if (slug.includes('lighting')) category = 'lighting';
                     if (slug.includes('storytelling') || slug.includes('character') || slug.includes('three-act') || slug.includes('hook') || slug.includes('visual-storytelling')) category = 'storytelling';
                     if (slug.includes('career') || slug.includes('editor-rates') || slug.includes('client-wedding')) category = 'career';
-                    if (slug.includes('movie') || slug.includes('music') || slug.includes('app')) category = 'apps';
+                    if (slug.includes('movie') || slug.includes('music') || slug.includes('app') || slug.includes('instagram') || slug.includes('follower')) category = 'apps';
                 }
 
                 let badge = 'Guide';

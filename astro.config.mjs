@@ -9,6 +9,13 @@ export default defineConfig({
   site: 'https://editorsgurukul.com',
   integrations: [sitemap()],
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      rollupOptions: {
+        output: {
+          assetFileNames: '_astro/[name].[ext]'
+        }
+      }
+    }
   }
 });

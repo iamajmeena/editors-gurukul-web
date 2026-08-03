@@ -5,6 +5,27 @@ export interface RecommendedProduct {
   badge: string;
 }
 
+export interface HardwareSpecs {
+  minVram: string;
+  recVram: string;
+  sysRam: string;
+  storage: string;
+  gpuSupport: string;
+}
+
+export interface RepoUsageStep {
+  stepNumber: number;
+  title: string;
+  instruction: string;
+  commandOrSetting?: string;
+}
+
+export interface RepoErrorFix {
+  error: string;
+  cause: string;
+  solution: string;
+}
+
 export interface GitHubRepo {
   id: string;
   name: string;
@@ -34,6 +55,9 @@ export interface GitHubRepo {
   websiteUrl?: string;
   featured?: boolean;
   recommendedProduct?: RecommendedProduct;
+  hardwareSpecs?: HardwareSpecs;
+  usageSteps?: RepoUsageStep[];
+  troubleshooting?: RepoErrorFix[];
 }
 
 export const trendingRepos: GitHubRepo[] = [

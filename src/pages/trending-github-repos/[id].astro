@@ -16,13 +16,76 @@ interface Props {
 const { repo } = Astro.props;
 
 // Targeted High-Volume Google Search Intent SEO Metadata
-const title = `${repo.name} Guide: ${repo.alternativeTo} (2026 Free Open Source)`;
-const description = `Looking for a ${repo.alternativeTo}? Learn how to install & use ${repo.name} (${repo.stars} GitHub stars) 100% free with step-by-step commands and creator breakdown.`;
+const title = `${repo.name} Complete Guide (2026): Install, PC Specs, How to Use & Fix Errors`;
+const description = `Complete 2026 setup guide for ${repo.name} (${repo.alternativeTo}). Learn system specs, Windows/Mac installation, beginner usage tutorial, and solutions for common errors.`;
 
 // Get related repos in same category
 const relatedRepos = trendingRepos.filter(r => r.id !== repo.id && (r.category === repo.category || r.useCase === repo.useCase)).slice(0, 3);
 
-// Structured Data JSON-LD Schema (SoftwareApplication, FAQPage & BreadcrumbList)
+// Dynamic Fallback Hardware Specs
+const hw = repo.hardwareSpecs || {
+  minVram: repo.category === 'ai-video' ? "4GB VRAM (GTX 1060 / RX 580)" : "Integrated Graphics / 2GB VRAM",
+  recVram: repo.category === 'ai-video' ? "8GB-16GB VRAM (RTX 3060 / 4070)" : "4GB+ Dedicated GPU VRAM",
+  sysRam: repo.category === 'ai-video' ? "16GB - 32GB RAM" : "8GB - 16GB RAM",
+  storage: "5GB - 15GB Free SSD Space",
+  gpuSupport: "Nvidia CUDA / Apple Silicon Metal / AMD ROCm"
+};
+
+// Dynamic Fallback How-To-Use Steps
+const defaultUsageSteps = [
+  {
+    stepNumber: 1,
+    title: "Launch & Initialize Environment",
+    instruction: `Open your Terminal / Command Prompt and run the startup script or command to start ${repo.name}.`,
+    commandOrSetting: repo.installCommand || `python app.py`
+  },
+  {
+    stepNumber: 2,
+    title: "Load Models & Input Resources",
+    instruction: "Place required AI model checkpoints, LUTs, or input media files into the designated input/models folder.",
+    commandOrSetting: "Place files in ./models/ or ./inputs/"
+  },
+  {
+    stepNumber: 3,
+    title: "Configure Quality Parameters",
+    instruction: "Set resolution, sample steps, audio bitrate, or quality presets according to your GPU capacity.",
+    commandOrSetting: "Recommended: 512x512 or 1080p, 20-30 steps"
+  },
+  {
+    stepNumber: 4,
+    title: "Generate & Export Final File",
+    instruction: "Click Generate / Run process to export your finished high-quality media file to the output directory.",
+    commandOrSetting: "Saved to ./output/ or downloads folder"
+  }
+];
+const usageSteps = repo.usageSteps || defaultUsageSteps;
+
+// Dynamic Fallback Troubleshooting & Error Fixes
+const defaultTroubleshooting = [
+  {
+    error: "CUDA Out of Memory (OOM) Error",
+    cause: "Your GPU VRAM is full because the AI model batch size or resolution is too high.",
+    solution: "Add '--lowvram' or '--medvram' argument to your launch command script, or lower the image/video batch size to 1."
+  },
+  {
+    error: "'git', 'python' or 'ffmpeg' is not recognized as an internal command",
+    cause: "The required software is installed but not added to your Windows Environment System PATH.",
+    solution: "Reinstall Python / Git and make sure to check the box 'Add Python.exe to PATH' during installation."
+  },
+  {
+    error: "Torch / PyTorch CUDA Version Mismatch",
+    cause: "Installed PyTorch binary does not match your Nvidia GPU CUDA driver version.",
+    solution: "Run: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118"
+  },
+  {
+    error: "Port 7860 or 8888 Already in Use",
+    cause: "Another WebUI or Python background process is already running on the default local port.",
+    solution: "Close existing terminal windows, or add '--port 7861' parameter to change the default listening port."
+  }
+];
+const troubleshooting = repo.troubleshooting || defaultTroubleshooting;
+
+// Structured Data JSON-LD Schema (SoftwareApplication, HowTo, FAQPage & BreadcrumbList)
 const jsonLdSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -56,6 +119,14 @@ const jsonLdSchema = {
       "mainEntity": [
         {
           "@type": "Question",
+          "name": `What PC specs are needed to run ${repo.name}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Minimum: ${hw.minVram}, ${hw.sysRam}. Recommended: ${hw.recVram} with ${hw.storage}.`
+          }
+        },
+        {
+          "@type": "Question",
           "name": `Is ${repo.name} a good ${repo.alternativeTo}?`,
           "acceptedAnswer": {
             "@type": "Answer",
@@ -64,18 +135,10 @@ const jsonLdSchema = {
         },
         {
           "@type": "Question",
-          "name": `How to install ${repo.name} on Windows and Mac?`,
+          "name": `How to fix CUDA Out of Memory error in ${repo.name}?`,
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": `For Windows, open Command Prompt and run Winget or Pip command. For Mac, open Terminal and use Homebrew or Git clone.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `Is ${repo.name} completely free and open-source?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Yes, ${repo.name} is 100% free and open-source software hosted on GitHub. You can run it locally without any subscription fees.`
+            "text": `Pass --lowvram or --medvram flag in launch script and set batch size to 1.`
           }
         }
       ]
@@ -148,15 +211,54 @@ const jsonLdSchema = {
         <!-- Quick Jump Anchor Bar -->
         <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-[#3b1d5c] text-xs font-bold">
           <span class="text-purple-300 mr-1">Quick Jump:</span>
-          <a href="#install-commands" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-cyan-300 rounded-lg no-underline transition-colors">⚡ Commands</a>
-          <a href="#beginner-guide" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-emerald-300 rounded-lg no-underline transition-colors">💻 How to Install (Win &amp; Mac)</a>
-          <a href="#seo-breakdown" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#c084fc] rounded-lg no-underline transition-colors">💡 Why {repo.name}?</a>
-          <a href="#comparison" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-amber-300 rounded-lg no-underline transition-colors">📊 Comparison Table</a>
-          <a href="#faqs" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-purple-200 rounded-lg no-underline transition-colors">❓ FAQs</a>
+          <a href="#pc-specs" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-cyan-300 rounded-lg no-underline transition-colors">🖥️ PC Specs</a>
+          <a href="#install-commands" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-emerald-300 rounded-lg no-underline transition-colors">⚡ Commands</a>
+          <a href="#how-to-use" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-amber-300 rounded-lg no-underline transition-colors">🚀 How to Use</a>
+          <a href="#troubleshooting" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-rose-300 rounded-lg no-underline transition-colors">🛠️ Fix Errors</a>
+          <a href="#comparison" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#c084fc] rounded-lg no-underline transition-colors">📊 Comparison</a>
         </div>
       </header>
 
-      <!-- FULL-WIDTH 1-CLICK SETUP COMMAND BANNER -->
+      <!-- 1. HARDWARE & PC SPECS REQUIREMENTS CARD -->
+      <section id="pc-specs" class="bg-[#180d30] border-2 border-[#38bdf8]/60 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
+        <div class="flex items-center gap-3 border-b border-[#3b1d5c] pb-3">
+          <span class="text-2xl">🖥️</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-cyan-300 m-0 border-none">
+              Hardware &amp; PC System Requirements
+            </h2>
+            <p class="text-xs text-purple-200 m-0">Check if your laptop / PC can run {repo.name} smoothly:</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="p-4 bg-[#0c1829] border border-cyan-500/40 rounded-2xl space-y-1">
+            <span class="text-gray-400 font-bold uppercase tracking-wider block text-[10px]">Minimum VRAM / GPU</span>
+            <div class="text-white font-extrabold text-sm text-cyan-300">{hw.minVram}</div>
+          </div>
+          <div class="p-4 bg-[#0c1829] border border-emerald-500/40 rounded-2xl space-y-1">
+            <span class="text-gray-400 font-bold uppercase tracking-wider block text-[10px]">Recommended GPU</span>
+            <div class="text-white font-extrabold text-sm text-emerald-300">{hw.recVram}</div>
+          </div>
+          <div class="p-4 bg-[#0c1829] border border-purple-500/40 rounded-2xl space-y-1">
+            <span class="text-gray-400 font-bold uppercase tracking-wider block text-[10px]">System RAM Required</span>
+            <div class="text-white font-extrabold text-sm text-purple-300">{hw.sysRam}</div>
+          </div>
+          <div class="p-4 bg-[#0c1829] border border-amber-500/40 rounded-2xl space-y-1">
+            <span class="text-gray-400 font-bold uppercase tracking-wider block text-[10px]">Free SSD Disk Space</span>
+            <div class="text-white font-extrabold text-sm text-amber-300">{hw.storage}</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 pt-2 text-xs font-semibold text-purple-200">
+          <span class="text-gray-400">Supported Platforms:</span>
+          <span class="px-2.5 py-1 bg-[#1e293b] text-sky-300 rounded-md border border-sky-400/30">🪟 Windows 10 / 11</span>
+          <span class="px-2.5 py-1 bg-[#1e293b] text-purple-300 rounded-md border border-purple-400/30">🍎 macOS (Apple Silicon M1/M2/M3)</span>
+          <span class="px-2.5 py-1 bg-[#1e293b] text-emerald-300 rounded-md border border-emerald-400/30">🐧 Linux (Ubuntu CUDA)</span>
+        </div>
+      </section>
+
+      <!-- 2. FULL-WIDTH 1-CLICK SETUP COMMAND BANNER -->
       <section id="install-commands" class="bg-[#180d30] border-2 border-[#8b5cf6]/60 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#3b1d5c] pb-3">
           <h2 class="text-lg sm:text-xl font-extrabold text-white m-0 border-none">
@@ -224,7 +326,7 @@ const jsonLdSchema = {
         </div>
       </section>
 
-      <!-- BEGINNER-FRIENDLY OS-SPECIFIC INSTALLATION GUIDE -->
+      <!-- 3. BEGINNER-FRIENDLY OS-SPECIFIC INSTALLATION GUIDE -->
       <section id="beginner-guide" class="bg-[#180d30] border-2 border-[#10b981]/50 p-6 sm:p-8 rounded-3xl shadow-xl space-y-5">
         <div class="flex items-center gap-3 border-b border-[#3b1d5c] pb-3">
           <span class="text-2xl">📖</span>
@@ -262,6 +364,70 @@ const jsonLdSchema = {
             </ol>
           </div>
 
+        </div>
+      </section>
+
+      <!-- 4. STEP-BY-STEP HOW TO USE TUTORIAL -->
+      <section id="how-to-use" class="bg-[#180d30] border-2 border-amber-400/50 p-6 sm:p-8 rounded-3xl shadow-xl space-y-5">
+        <div class="flex items-center gap-3 border-b border-[#3b1d5c] pb-3">
+          <span class="text-2xl">🚀</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-amber-300 m-0 border-none">
+              How to Use {repo.name} (Beginner Quick Start Tutorial)
+            </h2>
+            <p class="text-xs text-purple-200 m-0">Peheli baar use kar rahe hain? Step-by-step workflow dekhein:</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {usageSteps.map(step => (
+            <div class="p-4 bg-[#140a26] border border-[#4c247d] rounded-2xl space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-amber-400 text-black font-extrabold text-xs flex items-center justify-center shrink-0">
+                  {step.stepNumber}
+                </span>
+                <h3 class="text-sm font-extrabold text-white m-0">{step.title}</h3>
+              </div>
+              <p class="text-xs text-[#e9d5ff] m-0 leading-relaxed">{step.instruction}</p>
+              {step.commandOrSetting && (
+                <div class="pt-1">
+                  <code class="px-2.5 py-1 bg-[#0c051a] border border-[#4c247d] rounded-lg font-mono text-[11px] text-amber-300 block break-all">
+                    {step.commandOrSetting}
+                  </code>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 5. TROUBLESHOOTING & FIX COMMON ERRORS -->
+      <section id="troubleshooting" class="bg-[#180d30] border-2 border-rose-500/50 p-6 sm:p-8 rounded-3xl shadow-xl space-y-5">
+        <div class="flex items-center gap-3 border-b border-[#3b1d5c] pb-3">
+          <span class="text-2xl">🛠️</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-rose-300 m-0 border-none">
+              Troubleshooting &amp; Fix Common Errors
+            </h2>
+            <p class="text-xs text-purple-200 m-0">Koi error ya crash aaye toh is tarah fix karein:</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          {troubleshooting.map(item => (
+            <div class="p-5 bg-[#17081c] border border-rose-500/30 rounded-2xl space-y-2">
+              <div class="flex items-center gap-2 text-rose-400 font-extrabold text-sm">
+                <span>❌</span>
+                <span>{item.error}</span>
+              </div>
+              <p class="text-xs text-gray-300 m-0 leading-relaxed">
+                <strong>Wajah (Cause):</strong> {item.cause}
+              </p>
+              <div class="p-3 bg-[#0d0412] border border-emerald-500/30 rounded-xl text-xs text-emerald-300 leading-relaxed font-semibold">
+                <strong>💡 Solution Fix:</strong> {item.solution}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

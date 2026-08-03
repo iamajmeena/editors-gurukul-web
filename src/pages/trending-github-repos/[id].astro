@@ -88,10 +88,10 @@ const jsonLdSchema = {
   <div class="min-h-screen bg-[#0d0714] text-white relative overflow-hidden font-['Sora',sans-serif]">
     
     <!-- Background Ambient Glow -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-tr from-[#7c3aed]/30 via-[#a855f7]/20 to-[#38bdf8]/10 blur-[160px] pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[500px] bg-gradient-to-tr from-[#7c3aed]/30 via-[#a855f7]/20 to-[#38bdf8]/10 blur-[160px] pointer-events-none"></div>
 
-    <!-- Main Container - EXPANDED WIDE CONTAINER (No Side Constraint) -->
-    <div class="max-w-4xl mx-auto px-4 py-10 relative z-10 space-y-8">
+    <!-- Main Container - FULL WIDE CONTAINER (max-w-6xl) -->
+    <div class="max-w-6xl mx-auto px-4 py-10 relative z-10 space-y-8">
       
       <!-- Breadcrumb Navigation -->
       <nav class="flex items-center gap-2 text-xs font-semibold text-purple-300">
@@ -102,8 +102,8 @@ const jsonLdSchema = {
         <span class="text-white font-extrabold">{repo.name}</span>
       </nav>
 
-      <!-- Full-Width Hero Header Section -->
-      <header class="bg-[#190d33] border-2 border-[#4c247d] p-6 sm:p-10 rounded-3xl shadow-2xl space-y-5">
+      <!-- Full-Width Hero Header Section (No External Outbound Button Here!) -->
+      <header class="bg-[#190d33] border-2 border-[#4c247d] p-6 sm:p-10 rounded-3xl shadow-2xl space-y-4">
         
         <!-- Badges Row -->
         <div class="flex flex-wrap items-center gap-2.5">
@@ -136,36 +136,13 @@ const jsonLdSchema = {
           {repo.description}
         </p>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-[#3b1d5c]">
-          <a 
-            href={repo.githubUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="px-6 py-3.5 bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] hover:from-[#7c3aed] hover:to-[#9333ea] text-white font-extrabold text-sm rounded-xl transition-all shadow-lg hover:shadow-[0_0_25px_rgba(192,132,252,0.5)] no-underline flex items-center gap-2"
-          >
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            Official GitHub Repository ↗
-          </a>
-
-          {repo.websiteUrl && (
-            <a 
-              href={repo.websiteUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="px-6 py-3.5 bg-[#2e1552] border border-[#c084fc]/50 text-[#f3e8ff] font-extrabold text-sm rounded-xl hover:bg-[#3d1b6e] transition-colors no-underline"
-            >
-              Official Website 🌐
-            </a>
-          )}
-        </div>
       </header>
 
-      <!-- FULL-WIDTH 1-CLICK SETUP COMMAND BANNER (INTEGRATED FRONT & CENTER) -->
+      <!-- FULL-WIDTH 1-CLICK SETUP COMMAND BANNER -->
       <section class="bg-[#180d30] border-2 border-[#8b5cf6]/60 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#3b1d5c] pb-3">
           <h2 class="text-xl font-extrabold text-white m-0 border-none">
-            ⚡ 1-Click Install Commands
+            ⚡ 1-Click Setup Commands
           </h2>
           <span class="text-xs text-purple-300">Copy &amp; paste in Terminal or Command Prompt:</span>
         </div>
@@ -229,8 +206,6 @@ const jsonLdSchema = {
         </div>
       </section>
 
-      <!-- STREAMLINED FULL-WIDTH CONTENT SECTIONS (No Narrow Sidebar Constraints) -->
-      
       <!-- Practical Editor Explanation Card -->
       <section class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl">
         <h2 class="text-xl font-extrabold text-[#c084fc] mb-3 flex items-center gap-2 border-none p-0 m-0">
@@ -319,6 +294,38 @@ const jsonLdSchema = {
               Yes! Most open-source GitHub repositories allow commercial creation, YouTube monetization, and client work. Check the official GitHub license for specific terms.
             </p>
           </div>
+        </div>
+      </section>
+
+      <!-- EXTERNAL REPOSITORY LINKS BOX (PLACED AT THE VERY BOTTOM OF THE PAGE FOR MAXIMUM USER RETENTION) -->
+      <section class="bg-gradient-to-r from-[#200e3f] via-[#180d30] to-[#120726] border-2 border-[#8b5cf6] p-6 sm:p-8 rounded-3xl shadow-2xl text-center space-y-4">
+        <h2 class="text-xl font-extrabold text-white m-0 border-none">
+          🔗 Source Code &amp; Official Links
+        </h2>
+        <p class="text-xs sm:text-sm text-[#e9d5ff] max-w-xl mx-auto m-0">
+          Finished reading the guide? You can inspect the source code or star the repository directly on GitHub below:
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <a 
+            href={repo.githubUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="px-8 py-3.5 bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] hover:from-[#7c3aed] hover:to-[#9333ea] text-white font-extrabold text-sm rounded-xl transition-all shadow-lg hover:shadow-[0_0_25px_rgba(192,132,252,0.5)] no-underline flex items-center gap-2"
+          >
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Visit Official GitHub Repository ↗
+          </a>
+
+          {repo.websiteUrl && (
+            <a 
+              href={repo.websiteUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="px-8 py-3.5 bg-[#2e1552] border border-[#c084fc]/50 text-[#f3e8ff] font-extrabold text-sm rounded-xl hover:bg-[#3d1b6e] transition-colors no-underline"
+            >
+              Visit Official Website 🌐
+            </a>
+          )}
         </div>
       </section>
 

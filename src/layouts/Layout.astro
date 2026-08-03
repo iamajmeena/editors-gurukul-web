@@ -2,49 +2,104 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-const { title, description, enableAds = false, darkTheme = false } = Astro.props;
+const { title, description, keywords, category, enableAds = false, darkTheme = false } = Astro.props;
 
-const pageTitle = title || "Editors Gurukul | Free Filmmaking Guides, LUTs & Gear";
-const pageDesc = description || "Editors Gurukul offers free filmmaking guides, LUT resources, camera cheat sheets, and premium courses for creators and editors.";
+const pageTitle = title || "Editors Gurukul | Free DaVinci Resolve Tutorials, Filmmaking Guides & Camera Secrets by DOP Ajay K Meena";
+const pageDesc = description || "India's #1 educational resource hub for video editors and cinematographers. Explore 50+ free DaVinci Resolve color grading masterclasses, LUTs, camera setup cheat sheets, and practical filmmaking workflows by DOP Ajay K Meena.";
 const canonicalURL = new URL(Astro.url.pathname, "https://editorsgurukul.com").toString();
 
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 const schemaType = isHome ? "WebSite" : "TechArticle";
+const pageKeywords = keywords || "DaVinci Resolve tutorials, video editing guides, color grading LUTs, camera settings 2026, cinematography cheat sheets, Ajay K Meena, Editors Gurukul, Wedream Production, free video editing resources, NLE comparisons, camera reviews India";
 
 const schemaData = JSON.stringify({
   "@context": "https://schema.org",
-  "@type": schemaType,
-  "name": pageTitle,
-  "headline": pageTitle,
-  "description": pageDesc,
-  "url": canonicalURL,
-  "mainEntityOfPage": canonicalURL,
-  "inLanguage": "en",
-  "datePublished": "2026-01-15T08:00:00+05:30",
-  "dateModified": "2026-08-01T22:00:00+05:30",
-  "proficiencyLevel": "Beginner to Professional",
-  "image": "https://editorsgurukul.com/assets/og-default.jpg",
-  "author": {
-    "@type": "Person",
-    "name": "Ajay K Meena",
-    "jobTitle": "Cinematographer & Colorist",
-    "sameAs": [
-      "https://youtube.com/@ajaykmeenaa",
-      "https://instagram.com/iamajmeena",
-      "https://ajaykmeena.com"
-    ]
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Editors Gurukul",
-    "url": "https://editorsgurukul.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://editorsgurukul.com/assets/og-default.jpg"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://editorsgurukul.com/#organization",
+      "name": "Editors Gurukul",
+      "url": "https://editorsgurukul.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://editorsgurukul.com/assets/og-default.jpg",
+        "caption": "Editors Gurukul Logo"
+      },
+      "founder": {
+        "@id": "https://ajaykmeena.com/#person"
+      },
+      "sameAs": [
+        "https://www.youtube.com/@AjayKMeenaa",
+        "https://instagram.com/iamajmeena",
+        "https://ajaykmeena.com"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ajaykmeena.com/#person",
+      "name": "Ajay K Meena",
+      "jobTitle": "Cinematographer, Colorist & Director",
+      "description": "Professional Director of Photography (DOP) and Colorist with over 6 years of industry experience across music videos, corporate films, and branding. Founder of Wedream Production and Editors Gurukul.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Wedream Production"
+      },
+      "sameAs": [
+        "https://www.youtube.com/@AjayKMeenaa",
+        "https://instagram.com/iamajmeena",
+        "https://ajaykmeena.com"
+      ]
+    },
+    {
+      "@type": schemaType,
+      "@id": canonicalURL + "#content",
+      "url": canonicalURL,
+      "name": pageTitle,
+      "headline": pageTitle,
+      "description": pageDesc,
+      "inLanguage": "en-US",
+      "datePublished": "2026-01-15T08:00:00+05:30",
+      "dateModified": new Date().toISOString(),
+      "author": {
+        "@id": "https://ajaykmeena.com/#person"
+      },
+      "publisher": {
+        "@id": "https://editorsgurukul.com/#organization"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonicalURL
+      },
+      "image": "https://editorsgurukul.com/assets/og-default.jpg",
+      "keywords": pageKeywords
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": canonicalURL + "#breadcrumb",
+      "itemListElement": isHome ? [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://editorsgurukul.com/"
+        }
+      ] : [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://editorsgurukul.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": pageTitle.split('|')[0].trim(),
+          "item": canonicalURL
+        }
+      ]
     }
-  }
+  ]
 });
-
 ---
 
 <!DOCTYPE html>
@@ -54,20 +109,34 @@ const schemaData = JSON.stringify({
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc}>
-    <meta name="robots" content="index, follow">
+    <meta name="keywords" content={pageKeywords}>
+    <meta name="author" content="Ajay K Meena">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href={canonicalURL}>
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Editors Gurukul RSS Feed" href="/rss.xml" />
     <link rel="icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- Open Graph & Twitter Meta -->
+    <!-- Open Graph & Facebook Meta -->
+    <meta property="og:type" content={isHome ? "website" : "article"}>
     <meta property="og:title" content={pageTitle}>
     <meta property="og:description" content={pageDesc}>
     <meta property="og:image" content="https://editorsgurukul.com/assets/og-default.jpg">
     <meta property="og:url" content={canonicalURL}>
+    <meta property="og:site_name" content="Editors Gurukul">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ajaykmeenaa">
+    <meta name="twitter:creator" content="@ajaykmeenaa">
+    <meta name="twitter:title" content={pageTitle}>
+    <meta name="twitter:description" content={pageDesc}>
+    <meta name="twitter:image" content="https://editorsgurukul.com/assets/og-default.jpg">
 
     <!-- Schema.org JSON-LD Structured Data for Google SEO & AdSense -->
     <script type="application/ld+json" set:html={schemaData} />

@@ -126,7 +126,6 @@ export const PRODUCTS: DigitalProduct[] = [
     discount: "95% OFF",
     buyers: "417+ Editors",
     rating: "4.8 ★★★★★",
-
     isFree: false,
     images: [
       "/assets/500_lut_pack_cover.jpg"
@@ -211,8 +210,8 @@ export const PRODUCTS: DigitalProduct[] = [
   {
     id: "movie-app-iphone",
     slug: "movie-app-iphone",
-    title: "iPhone Free Movie & Music App PDF Bundle",
-    category: "iOS Guide PDF",
+    title: "iPhone Free Movie & Music Streaming App",
+    category: "iOS Streaming App",
     badge: "📱 POPULAR",
     price: "₹29",
     numericPrice: 29,
@@ -224,18 +223,18 @@ export const PRODUCTS: DigitalProduct[] = [
     images: [
       "/assets/movie_app_iphone_cover.jpg"
     ],
-    shortDesc: "Direct App Store Links & Setup Guide PDF for 100% Legal Free Movie & Music Streaming Apps on iOS.",
-    fullDesc: "Complete verified guide PDF for streaming HD movies, web series, and music on iPhone with 100% legal App Store apps. Includes step-by-step setup, AirPlay casting tips, and direct download links.",
+    shortDesc: "Direct App Store Links & Setup Method for 100% Legal Free Movie & Music Streaming App on iPhone iOS.",
+    fullDesc: "Complete verified setup for streaming 4K HD movies, web series, and music on iPhone with 100% legal App Store app. Includes step-by-step 1-click activation, AirPlay casting, and direct download links.",
     features: [
       "Direct Verified App Store Download Links",
-      "Step-by-step Setup & AirPlay Smart TV Casting Guide",
+      "Step-by-step Setup & AirPlay Smart TV Casting Method",
       "100% Legal & Safe (No Jailbreak or Profile Installation Required)",
-      "Instant PDF Download Access"
+      "Instant 1-Click Access & Fast 4K Playback"
     ],
     includedItems: [
-      "iPhone Free Movie Apps PDF Guide",
-      "iPhone Free Music Apps PDF Guide",
-      "Setup Video Instructions"
+      "iPhone Free Movie App Setup Method",
+      "iPhone Free Music App Setup Method",
+      "1-Click App Store Activation Links"
     ],
     razorpayLink: "https://rzp.io/rzp/J7qakhn"
   },

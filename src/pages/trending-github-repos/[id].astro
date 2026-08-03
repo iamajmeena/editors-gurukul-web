@@ -1,0 +1,237 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { trendingRepos, type GitHubRepo } from '../../data/trending-repos';
+
+export async function getStaticPaths() {
+  return trendingRepos.map((repo) => ({
+    params: { id: repo.id },
+    props: { repo },
+  }));
+}
+
+interface Props {
+  repo: GitHubRepo;
+}
+
+const { repo } = Astro.props;
+
+const title = `${repo.name} (${repo.stars} Stars) - Free ${repo.alternativeTo} | Editors Gurukul`;
+const description = `Download & setup guide for ${repo.name} (${repo.repoOwner}). ${repo.description} - Free alternative for creators and editors.`;
+
+// Get related repos in same category
+const relatedRepos = trendingRepos.filter(r => r.id !== repo.id && (r.category === repo.category || r.useCase === repo.useCase)).slice(0, 3);
+---
+
+<Layout title={title} description={description} enableAds={false} darkTheme={true}>
+  <div class="min-h-screen bg-[#0d0714] text-white relative overflow-hidden font-['Sora',sans-serif]">
+    
+    <!-- Background Ambient Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-tr from-[#7c3aed]/30 via-[#a855f7]/20 to-[#38bdf8]/10 blur-[150px] pointer-events-none"></div>
+
+    <!-- Main Container -->
+    <div class="max-w-5xl mx-auto px-4 py-10 relative z-10">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav class="flex items-center gap-2 text-xs font-semibold text-purple-300 mb-8">
+        <a href="/" class="hover:text-white transition-colors no-underline">Home</a>
+        <span>/</span>
+        <a href="/trending-github-repos" class="hover:text-white transition-colors no-underline">GitHub Repos</a>
+        <span>/</span>
+        <span class="text-white font-extrabold">{repo.name}</span>
+      </nav>
+
+      <!-- Hero Header Section -->
+      <header class="bg-[#190d33] border-2 border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-2xl mb-8">
+        
+        <!-- Badges Row -->
+        <div class="flex flex-wrap items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#321754] text-amber-300 border border-amber-400/60 font-extrabold text-xs rounded-full shadow-sm">
+            <svg class="w-3.5 h-3.5 fill-amber-400" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.165L12 18.896l-7.333 3.863 1.399-8.165-5.934-5.784 8.2-1.192z"/></svg>
+            {repo.stars} GitHub Stars
+          </span>
+
+          <span class="px-3 py-1 bg-[#1e1b4b] border border-indigo-400/60 text-[#a5b4fc] font-extrabold text-xs rounded-lg">
+            ✨ {repo.alternativeTo}
+          </span>
+
+          <span class="px-3 py-1 bg-[#2b1747] text-[#e9d5ff] border border-[#5b21b6]/60 font-bold text-xs rounded-lg">
+            {repo.skillLevelLabel}
+          </span>
+
+          <span class="px-3 py-1 bg-[#172554] text-cyan-300 font-mono font-bold text-xs rounded-md border border-cyan-400/50">
+            {repo.language}
+          </span>
+        </div>
+
+        <!-- Repo Title -->
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-2 leading-tight flex flex-wrap items-baseline gap-3">
+          {repo.name}
+          <span class="text-base sm:text-xl font-mono text-[#c084fc] font-semibold">by {repo.repoOwner}</span>
+        </h1>
+
+        <!-- English Overview -->
+        <p class="text-base text-[#f3e8ff] leading-relaxed mb-6 font-normal">
+          {repo.description}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-[#3b1d5c]">
+          <a 
+            href={repo.githubUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="px-6 py-3 bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] hover:from-[#7c3aed] hover:to-[#9333ea] text-white font-extrabold text-sm rounded-xl transition-all shadow-lg hover:shadow-[0_0_25px_rgba(192,132,252,0.5)] no-underline flex items-center gap-2"
+          >
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Official GitHub Repository ↗
+          </a>
+
+          {repo.websiteUrl && (
+            <a 
+              href={repo.websiteUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="px-6 py-3 bg-[#2e1552] border border-[#c084fc]/50 text-[#f3e8ff] font-extrabold text-sm rounded-xl hover:bg-[#3d1b6e] transition-colors no-underline"
+            >
+              Official Website 🌐
+            </a>
+          )}
+        </div>
+      </header>
+
+      <!-- Main Content Grid: Left Column Details + Right Column Setup Commands -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left 2-Column: Practical Summary & Key Features -->
+        <div class="lg:col-span-2 space-y-8">
+          
+          <!-- Practical Editor Explanation Card -->
+          <section class="bg-[#180d30] border border-[#4c247d] p-6 rounded-3xl shadow-xl">
+            <h2 class="text-xl font-extrabold text-[#c084fc] mb-3 flex items-center gap-2 border-none p-0 m-0">
+              💡 Editor Practical Breakdown (Hinglish)
+            </h2>
+            <p class="text-sm text-white font-medium leading-relaxed">
+              {repo.summaryHindi}
+            </p>
+          </section>
+
+          <!-- Key Features List -->
+          <section class="bg-[#180d30] border border-[#4c247d] p-6 rounded-3xl shadow-xl">
+            <h2 class="text-xl font-extrabold text-white mb-4 border-none p-0 m-0">
+              🚀 Key Features &amp; Capabilities
+            </h2>
+            <ul class="space-y-3 pl-0 list-none m-0">
+              {repo.features.map(feat => (
+                <li class="flex items-start gap-3 text-sm text-[#f3e8ff]">
+                  <span class="text-[#c084fc] font-bold text-base shrink-0">✓</span>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <!-- System Requirements Card -->
+          <section class="bg-[#180d30] border border-[#4c247d] p-6 rounded-3xl shadow-xl">
+            <h2 class="text-xl font-extrabold text-[#38bdf8] mb-3 border-none p-0 m-0 flex items-center gap-2">
+              ⚙️ System Requirements &amp; Prerequisites
+            </h2>
+            <p class="text-sm text-white font-medium leading-relaxed">
+              {repo.requirements}
+            </p>
+          </section>
+
+        </div>
+
+        <!-- Right Column: 1-Click Install Command Setup Box -->
+        <div class="space-y-6">
+          
+          <div class="bg-[#180d30] border-2 border-[#8b5cf6]/60 p-6 rounded-3xl shadow-2xl sticky top-24">
+            <h3 class="text-lg font-extrabold text-white mb-2 m-0 border-none">
+              ⚡ 1-Click Setup Commands
+            </h3>
+            <p class="text-xs text-purple-200 mb-4">
+              Copy &amp; paste this command in your Terminal or Command Prompt to install:
+            </p>
+
+            {repo.installCommand && (
+              <div class="mb-4">
+                <span class="block text-[11px] font-bold text-cyan-300 uppercase tracking-wider mb-1">Python / Pip / Git:</span>
+                <div class="p-3 bg-[#0c051a] border border-[#4c247d] rounded-xl flex items-center justify-between font-mono text-xs text-cyan-300">
+                  <code class="truncate mr-2">{repo.installCommand}</code>
+                  <button 
+                    onclick={`navigator.clipboard.writeText('${repo.installCommand}').then(() => { this.innerText = '✅ Copied!'; setTimeout(() => this.innerText = '📋 Copy', 2000); })`}
+                    class="px-3 py-1 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-sans font-extrabold text-[10px] rounded-md transition-all cursor-pointer whitespace-nowrap"
+                  >
+                    📋 Copy
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {repo.brewCommand && (
+              <div class="mb-4">
+                <span class="block text-[11px] font-bold text-purple-300 uppercase tracking-wider mb-1">macOS Homebrew:</span>
+                <div class="p-3 bg-[#0c051a] border border-[#4c247d] rounded-xl flex items-center justify-between font-mono text-xs text-purple-300">
+                  <code class="truncate mr-2">{repo.brewCommand}</code>
+                  <button 
+                    onclick={`navigator.clipboard.writeText('${repo.brewCommand}').then(() => { this.innerText = '✅ Copied!'; setTimeout(() => this.innerText = '📋 Copy', 2000); })`}
+                    class="px-3 py-1 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-sans font-extrabold text-[10px] rounded-md transition-all cursor-pointer whitespace-nowrap"
+                  >
+                    📋 Copy
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {repo.wingetCommand && (
+              <div class="mb-4">
+                <span class="block text-[11px] font-bold text-amber-300 uppercase tracking-wider mb-1">Windows Winget:</span>
+                <div class="p-3 bg-[#0c051a] border border-[#4c247d] rounded-xl flex items-center justify-between font-mono text-xs text-amber-300">
+                  <code class="truncate mr-2">{repo.wingetCommand}</code>
+                  <button 
+                    onclick={`navigator.clipboard.writeText('${repo.wingetCommand}').then(() => { this.innerText = '✅ Copied!'; setTimeout(() => this.innerText = '📋 Copy', 2000); })`}
+                    class="px-3 py-1 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white font-sans font-extrabold text-[10px] rounded-md transition-all cursor-pointer whitespace-nowrap"
+                  >
+                    📋 Copy
+                  </button>
+                </div>
+              </div>
+            )}
+
+            <!-- Native Smart Store Cross-Sell Box -->
+            <div class="mt-6 p-4 bg-gradient-to-br from-[#2a134d] to-[#160a2b] border border-[#c084fc]/50 rounded-2xl text-center space-y-2">
+              <span class="px-2.5 py-0.5 bg-[#e0692a] text-white font-extrabold text-[10px] rounded-full uppercase">₹49 READY APPS</span>
+              <p class="text-xs text-white font-bold">Want pre-compiled 1-click ready installers?</p>
+              <a href="/digital-store" class="block w-full py-2 bg-gradient-to-r from-[#e0692a] to-[#f59e0b] text-white font-extrabold text-xs rounded-xl no-underline hover:opacity-90">
+                🛒 Visit Digital Store ➔
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Related Open-Source Tools Section -->
+      {relatedRepos.length > 0 && (
+        <section class="mt-16 pt-10 border-t border-[#3b1d5c]">
+          <h2 class="text-2xl font-extrabold text-white mb-6 border-none p-0 m-0">
+            🔥 Related Open-Source Tools
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedRepos.map(rel => (
+              <a href={`/trending-github-repos/${rel.id}`} class="p-5 bg-[#180d30] border border-[#4c247d] rounded-2xl hover:border-[#c084fc] transition-all no-underline block group">
+                <span class="text-xs text-amber-300 font-extrabold block mb-1">★ {rel.stars} stars</span>
+                <h3 class="text-lg font-extrabold text-white group-hover:text-[#c084fc] transition-colors m-0 mb-2">{rel.name}</h3>
+                <p class="text-xs text-[#f3e8ff] line-clamp-2 m-0 mb-3">{rel.description}</p>
+                <span class="text-xs text-[#c084fc] font-bold">View Guide ➔</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+    </div>
+  </div>
+</Layout>

@@ -309,6 +309,25 @@ tbody tr:hover {
   box-shadow: var(--card-shadow);
 }
 
+body.dark-portal .eg-author-box,
+body.dark-portal .author-info {
+  background: #180d30 !important;
+  border-color: #4c247d !important;
+  color: #ffffff !important;
+}
+
+body.dark-portal .eg-author-name {
+  color: #ffffff !important;
+}
+
+body.dark-portal .eg-author-title {
+  color: #c084fc !important;
+}
+
+body.dark-portal .eg-author-desc {
+  color: #f3e8ff !important;
+}
+
 /* Floating Hindi Button */
 .eg-lang-toggle {
   position: fixed;

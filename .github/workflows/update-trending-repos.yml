@@ -1,4 +1,4 @@
-name: Daily GitHub Repos Star Update
+name: Daily GitHub Repos Star Update & Auto Page Rebuild
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 jobs:
-  update-stars:
+  update-and-rebuild:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -18,12 +18,26 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
       - name: Run Star Update Script
         run: python scripts/update_github_stars.py
+
+      - name: Build Astro Site & Dynamic Detail Pages
+        run: |
+          npm run build
+          cp -r dist/* .
 
       - name: Commit & Push Changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add src/data/trending-repos.ts
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update GitHub repository star counts [skip ci]" && git push)
+          git add -A
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update GitHub repo stars & rebuild pages [skip ci]" && git push)

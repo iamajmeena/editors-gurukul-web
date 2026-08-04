@@ -205,12 +205,14 @@ const jsonLdSchema = {
 
         <!-- English Overview -->
         <p class="text-xs sm:text-sm text-[#f3e8ff] leading-relaxed font-normal m-0">
-          If you are searching on Google for a <strong>{repo.alternativeTo}</strong>, <strong>{repo.name}</strong> is the #1 open-source tool recommended by creators and DOPs. {repo.description}
+          {repo.description} It's also a popular <strong>{repo.alternativeTo}</strong> for creators who don't want to pay a monthly subscription.
         </p>
 
         <!-- Quick Jump Anchor Bar -->
         <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-[#3b1d5c] text-xs font-bold">
           <span class="text-purple-300 mr-1">Quick Jump:</span>
+          <a href="#what-is-this" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#c084fc] rounded-lg no-underline transition-colors">❓ What Is This?</a>
+          <a href="#pros-cons-safety" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-emerald-300 rounded-lg no-underline transition-colors">⚖️ Pros, Cons &amp; Safety</a>
           <a href="#pc-specs" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-cyan-300 rounded-lg no-underline transition-colors">🖥️ PC Specs</a>
           <a href="#install-commands" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-emerald-300 rounded-lg no-underline transition-colors">⚡ Commands</a>
           <a href="#how-to-use" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-amber-300 rounded-lg no-underline transition-colors">🚀 How to Use</a>
@@ -218,6 +220,61 @@ const jsonLdSchema = {
           <a href="#comparison" class="px-3 py-1 bg-[#2a134a] hover:bg-[#3d1b6e] text-[#c084fc] rounded-lg no-underline transition-colors">📊 Comparison</a>
         </div>
       </header>
+
+      <!-- 0A. WHAT IS THIS? (BEGINNER-FIRST STANDALONE EXPLANATION) -->
+      <section id="what-is-this" class="bg-[#180d30] border-2 border-[#c084fc]/60 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5">
+        <div class="flex items-center gap-3 border-b border-[#3b1d5c] pb-3">
+          <span class="text-2xl">❓</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-[#c084fc] m-0 border-none">
+              What Is {repo.name}?
+            </h2>
+            <p class="text-xs text-purple-200 m-0">New to GitHub repos? Here's what this actually does, in plain language:</p>
+          </div>
+        </div>
+        <p class="text-sm text-white leading-relaxed m-0">{repo.summaryHindi}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          {repo.features.map(feat => (
+            <div class="flex items-start gap-3 p-3.5 bg-[#120726] border border-[#3b1d5c] rounded-2xl text-xs sm:text-sm text-[#f3e8ff]">
+              <span class="text-[#c084fc] font-bold text-base shrink-0">✓</span>
+              <span>{feat}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 0B. STRENGTHS, LIMITATIONS & SAFETY -->
+      <section id="pros-cons-safety" class="bg-[#180d30] border-2 border-emerald-500/50 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5">
+        <div class="flex items-center gap-3 border-b border-[#3b1d5c] pb-3">
+          <span class="text-2xl">⚖️</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-emerald-300 m-0 border-none">
+              Strengths, Limitations &amp; Is It Safe to Install?
+            </h2>
+            <p class="text-xs text-purple-200 m-0">An honest breakdown before you install anything on your PC:</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="p-4 bg-[#0e1f20]/90 border border-emerald-500/40 rounded-2xl space-y-2">
+            <h3 class="text-sm font-extrabold text-emerald-300 m-0 border-none">✅ What It Does Well</h3>
+            <ul class="space-y-1.5 text-xs text-[#e9d5ff] pl-4 m-0 list-disc">
+              {repo.strengths.map(s => <li>{s}</li>)}
+            </ul>
+          </div>
+          <div class="p-4 bg-[#2a0f0f]/90 border border-rose-500/40 rounded-2xl space-y-2">
+            <h3 class="text-sm font-extrabold text-rose-300 m-0 border-none">❌ What It Can't Do / Limitations</h3>
+            <ul class="space-y-1.5 text-xs text-[#e9d5ff] pl-4 m-0 list-disc">
+              {repo.limitations.map(l => <li>{l}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-4 bg-[#0c1829] border border-cyan-500/40 rounded-2xl">
+          <h3 class="text-sm font-extrabold text-cyan-300 m-0 mb-1.5 border-none">🛡️ Is It Safe to Install?</h3>
+          <p class="text-xs text-[#e9d5ff] m-0 leading-relaxed">{repo.safetyNote}</p>
+        </div>
+      </section>
 
       <!-- 1. HARDWARE & PC SPECS REQUIREMENTS CARD -->
       <section id="pc-specs" class="bg-[#180d30] border-2 border-[#38bdf8]/60 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
@@ -334,7 +391,7 @@ const jsonLdSchema = {
             <h2 class="text-lg sm:text-xl font-extrabold text-emerald-300 m-0 border-none">
               Beginner Installation Guide (Windows &amp; Mac)
             </h2>
-            <p class="text-xs text-purple-200 m-0">Naye creators ke liye bilkul simple step-by-step tareeka:</p>
+            <p class="text-xs text-purple-200 m-0">Straightforward step-by-step installation instructions for Windows and macOS systems:</p>
           </div>
         </div>
 
@@ -375,7 +432,7 @@ const jsonLdSchema = {
             <h2 class="text-lg sm:text-xl font-extrabold text-amber-300 m-0 border-none">
               How to Use {repo.name} (Beginner Quick Start Tutorial)
             </h2>
-            <p class="text-xs text-purple-200 m-0">Peheli baar use kar rahe hain? Step-by-step workflow dekhein:</p>
+            <p class="text-xs text-purple-200 m-0">First time launching this application? Follow our beginner operational workflow:</p>
           </div>
         </div>
 
@@ -409,7 +466,7 @@ const jsonLdSchema = {
             <h2 class="text-lg sm:text-xl font-extrabold text-rose-300 m-0 border-none">
               Troubleshooting &amp; Fix Common Errors
             </h2>
-            <p class="text-xs text-purple-200 m-0">Koi error ya crash aaye toh is tarah fix karein:</p>
+            <p class="text-xs text-purple-200 m-0">If you encounter unexpected errors or installation failures, apply these verified diagnostic fixes:</p>
           </div>
         </div>
 
@@ -421,7 +478,7 @@ const jsonLdSchema = {
                 <span>{item.error}</span>
               </div>
               <p class="text-xs text-gray-300 m-0 leading-relaxed">
-                <strong>Wajah (Cause):</strong> {item.cause}
+                <strong>Root Cause:</strong> {item.cause}
               </p>
               <div class="p-3 bg-[#0d0412] border border-emerald-500/30 rounded-xl text-xs text-emerald-300 leading-relaxed font-semibold">
                 <strong>💡 Solution Fix:</strong> {item.solution}
@@ -483,21 +540,6 @@ const jsonLdSchema = {
               </tr>
             </tbody>
           </table>
-        </div>
-      </section>
-
-      <!-- Key Features List -->
-      <section class="bg-[#180d30] border border-[#4c247d] p-6 sm:p-8 rounded-3xl shadow-xl">
-        <h2 class="text-lg sm:text-xl font-extrabold text-white mb-4 border-none p-0 m-0">
-          🚀 Key Features &amp; Technical Capabilities
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {repo.features.map(feat => (
-            <div class="flex items-start gap-3 p-3.5 bg-[#120726] border border-[#3b1d5c] rounded-2xl text-xs sm:text-sm text-[#f3e8ff]">
-              <span class="text-[#c084fc] font-bold text-base shrink-0">✓</span>
-              <span>{feat}</span>
-            </div>
-          ))}
         </div>
       </section>
 

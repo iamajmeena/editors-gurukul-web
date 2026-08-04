@@ -44,6 +44,9 @@ export interface GitHubRepo {
   description: string;
   summaryHindi: string;
   features: string[];
+  strengths: string[];
+  limitations: string[];
+  safetyNote: string;
   requirements: string;
   githubUrl: string;
   websiteUrl?: string;
@@ -79,7 +82,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "A feature-rich command-line audio/video downloader with support for thousands of video platforms.",
     summaryHindi: "The most powerful command-line open-source downloader to retrieve 4K high-resolution video and lossless audio directly from YouTube, Instagram Reels, and over 1,000+ streaming sites.",
     features: ["Download 4K/8K 60fps videos", "Automatic MP3/WAV audio extraction", "Playlist & channel archives download", "Bypass region restrictions"],
+    strengths: ["Actively maintained fork of youtube-dl — updated within days when YouTube changes something", "Works with 1,800+ sites, not just YouTube", "No ads, no popups, no bundled malware — unlike most 'free downloader' websites"],
+    limitations: ["No official graphical interface — it's a command-line tool (separate GUI wrappers exist but aren't official)", "Downloading content you don't own the rights to can violate the source platform's Terms of Service and copyright law", "Some sites actively block downloaders, so success rate varies by platform"],
+    safetyNote: "The software itself is safe — open-source, no telemetry, huge trusted community. The real caution is what you download: only save content you have the rights to (your own uploads, Creative Commons content, or personal backups of things you're licensed to keep).",
     requirements: "Python 3.8+ or pre-compiled standalone executable binary.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open Terminal / Command Prompt", instruction: "After installing via pip, open your terminal or command prompt.", commandOrSetting: "pip install yt-dlp" },
+      { stepNumber: 2, title: "Copy the Video URL", instruction: "Open the video on YouTube or any of 1,800+ supported sites and copy its URL from the address bar." },
+      { stepNumber: 3, title: "Run the Download Command", instruction: "Paste the URL right after the yt-dlp command to download in the best available quality.", commandOrSetting: "yt-dlp <video-URL>" },
+      { stepNumber: 4, title: "Find Your File", instruction: "The downloaded video appears in the folder you ran the command from, named after the video title." }
+    ],
     githubUrl: "https://github.com/yt-dlp/yt-dlp",
     featured: true,
   },
@@ -105,7 +117,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Stable Diffusion browser interface for AI image generation, inpainting, face swapping, and controlnet.",
     summaryHindi: "The world's most popular local browser interface for generating photorealistic AI imagery, conducting face replacements, and executing resolution upscaling.",
     features: ["Text-to-Image & Inpainting", "ControlNet pose guidance", "GFPGAN face restoration", "Custom LoRA support"],
+    strengths: ["Largest extension ecosystem of any AI image tool — thousands of community add-ons", "Most tutorials and community troubleshooting help available online, since it's the oldest and most widely used", "Extremely customizable once you learn the interface"],
+    limitations: ["Interface looks cluttered and overwhelming for a first-time user", "Needs a dedicated Nvidia GPU with at least 4GB VRAM — struggles or fails on laptops with only integrated graphics", "Slower and less actively developed recently compared to newer tools like ComfyUI"],
+    safetyNote: "The software itself (from the official GitHub repo) is safe. The real risk is downloading AI model files (checkpoints) from untrusted third-party links — stick to reputable sources like Hugging Face or Civitai, and prefer '.safetensors' model files over older '.ckpt' files, since .ckpt can technically contain executable code from bad actors.",
     requirements: "Nvidia GPU with 4GB+ VRAM, Python 3.10.",
+    usageSteps: [
+      { stepNumber: 1, title: "Run the Launch Script", instruction: "After installation, double-click webui-user.bat (Windows) or run ./webui.sh (Mac/Linux).", commandOrSetting: "webui-user.bat" },
+      { stepNumber: 2, title: "Open the Browser Interface", instruction: "Your browser opens automatically to http://127.0.0.1:7860 — this is your local AI studio." },
+      { stepNumber: 3, title: "Type a Prompt & Generate", instruction: "Type a description of the image you want in the 'txt2img' prompt box and click Generate." },
+      { stepNumber: 4, title: "Save Your Image", instruction: "Right-click any generated image to save it, or find it automatically saved in the outputs folder." }
+    ],
     githubUrl: "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
   },
   {
@@ -130,7 +151,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "The most powerful visual node-based GUI for Stable Diffusion & AI Video generation.",
     summaryHindi: "The leading modular node-based workflow software for complex AI video generation, image animation, and advanced Stable Diffusion control.",
     features: ["Visual node-graph editor", "50% lower VRAM usage", "Flux.1 & SVD video support", "Saveable JSON workflows"],
+    strengths: ["Noticeably faster and more memory-efficient than older tools like AUTOMATIC1111", "First to support the newest models (Flux, video generation) — most actively developed AI image tool right now", "Node-based workflow gives precise, repeatable control once you understand it"],
+    limitations: ["Steep learning curve — the node-graph interface can be intimidating if you've never used node-based software before", "No simple one-click extension manager like other tools have", "Community workflows found online sometimes use missing custom nodes that need separate installation"],
+    safetyNote: "Safe to install from the official repo. Same caution applies as with any AI image tool: only download model checkpoints from trusted sources (Hugging Face, official model pages), never from random forum links.",
     requirements: "Nvidia GPU with 6GB+ VRAM, Python 3.10+.",
+    usageSteps: [
+      { stepNumber: 1, title: "Launch ComfyUI", instruction: "Run the launch script to start the local server.", commandOrSetting: "python main.py" },
+      { stepNumber: 2, title: "Open the Node Editor", instruction: "Your browser opens to the node-graph interface at http://127.0.0.1:8188." },
+      { stepNumber: 3, title: "Load a Workflow", instruction: "Drag-and-drop a sample workflow JSON file onto the canvas — this loads a ready-made chain of nodes." },
+      { stepNumber: 4, title: "Queue the Prompt", instruction: "Edit the text prompt node, then click 'Queue Prompt' to generate your image or video." }
+    ],
     githubUrl: "https://github.com/comfyanonymous/ComfyUI",
     websiteUrl: "https://comfy.org",
     featured: true,
@@ -157,7 +187,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Image generation software automating prompt weighting & quality tuning like Midjourney.",
     summaryHindi: "An intuitive, streamlined generation interface designed to create Midjourney-grade photorealistic imagery without requiring complex configuration parameters.",
     features: ["Midjourney-like simple prompt GUI", "Built-in SDXL optimization", "Face Swap & Image Prompt mixing", "Zero prompt engineering required"],
+    strengths: ["By far the easiest AI image tool to get started with — closest thing to Midjourney's simplicity", "Good default results with zero configuration or technical settings to tweak", "Lightest install of the major AI image generators"],
+    limitations: ["Far less customizable than ComfyUI or AUTOMATIC1111 — few advanced controls", "Development has slowed compared to more active projects", "No support for complex multi-step ControlNet workflows that pros use"],
+    safetyNote: "Safe — official repo, and it manages its own model downloads internally, which is actually lower-risk than tools where you manually download model files from random links.",
     requirements: "Nvidia GPU 4GB+ VRAM or Apple Silicon Mac.",
+    usageSteps: [
+      { stepNumber: 1, title: "Run the Launcher", instruction: "Double-click run.bat (Windows) — it auto-downloads required models on first run.", commandOrSetting: "run.bat" },
+      { stepNumber: 2, title: "Wait for the Browser to Open", instruction: "Fooocus opens automatically in your browser once ready — no manual setup needed." },
+      { stepNumber: 3, title: "Type Your Prompt", instruction: "Just type what you want to see in plain English in the prompt box." },
+      { stepNumber: 4, title: "Click Generate", instruction: "Click Generate — Fooocus handles all the technical settings automatically." }
+    ],
     githubUrl: "https://github.com/lllyasviel/Fooocus",
   },
   {
@@ -182,7 +221,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Leading creative engine for Visual Artists, Animators, and Studios powering AI workflows.",
     summaryHindi: "An open-source infinite digital art canvas enabling visual creators to apply generative AI blending and layer restorations across professional painting workflows.",
     features: ["Unified Infinite Canvas", "ControlNet & IP-Adapter stack", "Professional asset management", "Node-based architecture"],
+    strengths: ["Most polished, professional-feeling interface of the free AI image tools", "Built-in model manager downloads and organizes models safely, avoiding manual file hunting", "Infinite canvas makes inpainting/outpainting genuinely intuitive"],
+    limitations: ["Heavier install than Fooocus, moderate learning curve", "Smaller community and fewer third-party tutorials than AUTOMATIC1111 or ComfyUI", "Advanced node editor still requires some learning to use fully"],
+    safetyNote: "Safe — official repo with a built-in model manager, which is one of the safer ways to get AI models since it fetches from vetted sources rather than random links.",
     requirements: "Nvidia GPU 6GB+ VRAM or Apple Silicon Mac.",
+    usageSteps: [
+      { stepNumber: 1, title: "Run the Installer", instruction: "The InvokeAI installer sets up a local environment and downloads a starter model.", commandOrSetting: "pip install InvokeAI" },
+      { stepNumber: 2, title: "Launch the Web Server", instruction: "Start the local studio server.", commandOrSetting: "invokeai-web" },
+      { stepNumber: 3, title: "Open the Unified Canvas", instruction: "In your browser, open the Unified Canvas tab to start generating and editing images." },
+      { stepNumber: 4, title: "Generate or Inpaint", instruction: "Type a prompt to generate a new image, or use the brush tool to inpaint part of an existing one." }
+    ],
     githubUrl: "https://github.com/invoke-ai/InvokeAI",
     websiteUrl: "https://invoke.ai",
   },
@@ -208,7 +256,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Open-source initiative dedicated to efficiently building OpenAI's Sora video generation pipeline.",
     summaryHindi: "A pioneering open-source text-to-video generation architecture capable of rendering sustained high-definition 1080p cinematic sequences locally.",
     features: ["Generates up to 16-second HD video clips", "Text-to-Video & Image-to-Video diffusion", "Efficient multi-GPU training", "Open weights for commercial use"],
+    strengths: ["A genuine free, open-weight alternative in a space dominated by closed commercial AI video generators", "Model weights are open for commercial use, unlike closed competitors", "Active research backing from a real AI infrastructure company"],
+    limitations: ["Extremely GPU-intensive — realistically needs a high-end or multi-GPU setup, not a typical home PC", "Output coherence and quality is still behind closed commercial tools like Sora or Runway", "Complex setup aimed at developers/researchers, not casual creators"],
+    safetyNote: "Safe, official research repo. Be realistic about hardware — this is not something most beginners can run smoothly on a normal laptop.",
     requirements: "Nvidia GPU with 12GB+ VRAM, PyTorch 2.1+.",
+    usageSteps: [
+      { stepNumber: 1, title: "Set Up the Environment", instruction: "Install dependencies and PyTorch matching your GPU's CUDA version.", commandOrSetting: "pip install opensora" },
+      { stepNumber: 2, title: "Download Model Weights", instruction: "Download the pretrained Open-Sora checkpoint from the official Hugging Face page." },
+      { stepNumber: 3, title: "Run the Inference Script", instruction: "Run the provided text-to-video script, passing your prompt as an argument." },
+      { stepNumber: 4, title: "Render and Export", instruction: "The generated video clip saves to your output folder as an MP4." }
+    ],
     githubUrl: "https://github.com/hpcaitech/Open-Sora"
   },
   {
@@ -233,7 +290,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "State-of-the-art 12 billion parameter image generation model created by original Stable Diffusion founders.",
     summaryHindi: "The industry's sharpest AI image synthesis engine featuring flawless textual accuracy and complex visual geometry that routinely surpasses Midjourney v6.1.",
     features: ["12B parameter hybrid architecture", "Exceptional typography & text rendering", "Unmatched prompt adherence", "Photorealistic human skin details"],
+    strengths: ["Currently one of the sharpest open-weight image models available — genuinely competitive with Midjourney", "Unusually good at rendering readable text inside images, a common weak point for AI generators", "Backed by the original Stable Diffusion team, so development quality is high"],
+    limitations: ["Large model size needs 12GB+ VRAM for full quality (8GB possible with quantized GGUF versions, at some quality cost)", "Not a standalone app by itself — you need ComfyUI or a similar interface to actually use it", "The 'dev' license has restrictions on certain commercial uses — read the license before using outputs commercially"],
+    safetyNote: "Safe when downloaded from the official Black Forest Labs page or Hugging Face. Since it's just model weights (not an app), always verify you're pulling from the official source.",
     requirements: "Nvidia GPU with 12GB+ VRAM (8GB with GGUF quantization).",
+    usageSteps: [
+      { stepNumber: 1, title: "Install ComfyUI First", instruction: "FLUX.1 needs a UI like ComfyUI to run — install that first." },
+      { stepNumber: 2, title: "Download FLUX Model Files", instruction: "Download the FLUX.1-dev checkpoint and VAE from the official Black Forest Labs Hugging Face page." },
+      { stepNumber: 3, title: "Place Models in ComfyUI", instruction: "Move the downloaded files into ComfyUI's models/checkpoints folder." },
+      { stepNumber: 4, title: "Load the FLUX Workflow", instruction: "Load a FLUX-compatible workflow in ComfyUI, type your prompt, and queue the generation." }
+    ],
     githubUrl: "https://github.com/black-forest-labs/flux"
   },
   {
@@ -258,7 +324,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "A pipeline-level solution for real-time interactive image & video generation running at 100+ fps.",
     summaryHindi: "An advanced real-time video animation framework that translates webcam feeds into responsive, fluid 100fps facial performance motion capture.",
     features: ["Real-time 100fps image generation", "Webcam live stream AI filtering", "Denoising batching architecture", "Ultra low latency 50ms response"],
+    strengths: ["One of the few open-source pipelines that can do genuinely real-time AI image generation", "Useful for live avatar filters, VJ visuals, and interactive installations", "Optimized pipeline architecture designed specifically for low latency"],
+    limitations: ["A developer pipeline/library, not a ready-made app — expect to write integration code", "True real-time speed needs a strong GPU (RTX 3080/4090 class)", "Much less polished/productized than consumer-facing tools"],
+    safetyNote: "Safe, official research repo. This is squarely a developer tool — beginners looking for a plug-and-play app should start with Fooocus or InvokeAI instead.",
     requirements: "Nvidia RTX 3080/4090 GPU, Python 3.10.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install the Pipeline", instruction: "Install via pip along with a compatible PyTorch/CUDA setup.", commandOrSetting: "pip install streamdiffusion" },
+      { stepNumber: 2, title: "Connect a Video Source", instruction: "Point the pipeline at your webcam or a video input stream in the example script." },
+      { stepNumber: 3, title: "Run the Real-Time Script", instruction: "Run the provided example script to start real-time generation from your video feed." },
+      { stepNumber: 4, title: "View Live Output", instruction: "The processed, AI-stylized frames display in real time in the output window." }
+    ],
     githubUrl: "https://github.com/cumulo-autumn/StreamDiffusion"
   },
   {
@@ -283,7 +358,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Tool to remove images background automatically using ONNX U2-Net models.",
     summaryHindi: "A rapid open-source matte extraction algorithm capable of automatically removing cluttered backgrounds from photographs and video frames instantly.",
     features: ["1-click transparent background PNG generation", "CLI, Python API & Browser GUI", "Supports batch processing folders", "Fine hair edge detection model"],
+    strengths: ["Genuinely free with no watermark, no daily limit — unlike remove.bg's free tier", "Fast, works from command line, Python, or a simple local web GUI", "Good default quality for common cases like portraits and product photos"],
+    limitations: ["Best used via command line or Python — no polished standalone desktop app of its own", "Edge quality on tricky details (flyaway hair, fur, glass) can be less refined than paid AI models", "Batch processing large folders needs decent CPU/GPU to stay fast"],
+    safetyNote: "Safe and lightweight — downloads its own small ONNX models on first run from the official source, nothing manual to verify.",
     requirements: "Python 3.8+ or ONNX runtime.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install Rembg", instruction: "Install via pip.", commandOrSetting: "pip install rembg" },
+      { stepNumber: 2, title: "Run on a Single Image", instruction: "Use the command-line tool to process one image at a time.", commandOrSetting: "rembg i input.jpg output.png" },
+      { stepNumber: 3, title: "Or Batch Process a Folder", instruction: "Point rembg at an entire folder to remove backgrounds from all images at once.", commandOrSetting: "rembg p input_folder output_folder" },
+      { stepNumber: 4, title: "Check the Transparent Output", instruction: "Open the output PNG — the background is now transparent, ready to use." }
+    ],
     githubUrl: "https://github.com/danielgatis/rembg",
   },
   {
@@ -308,7 +392,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Free and open-source inpainting tool powered by SOTA AI models for erasing objects and text from images/video frames.",
     summaryHindi: "A precision visual restoration tool utilizing intelligent segmentation brushes to cleanly erase intrusive watermarks, logos, and unwanted visual distractions from frames.",
     features: ["LaMa, Mat, Manga Inpainting models", "Text & Watermark remover brush", "Run locally in your browser", "Plug & play web interface"],
+    strengths: ["Comes with an actual browser-based GUI, unlike many AI tools that are command-line only", "Supports several different AI models so you can pick the best one for your image type", "Genuinely comparable results to Photoshop's Content-Aware Fill, for free"],
+    limitations: ["GPU recommended for speed — CPU-only works but is noticeably slow", "First run downloads sizable AI models, needs a decent internet connection", "Project was renamed to 'IOPaint', so older tutorials/search results referencing 'lama-cleaner' can be confusing"],
+    safetyNote: "Safe, official repo — models download automatically from Hugging Face on first use, no manual file-hunting required.",
     requirements: "Python 3.8+, GPU or CPU support.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install IOPaint", instruction: "Install via pip.", commandOrSetting: "pip install iopaint" },
+      { stepNumber: 2, title: "Start the Web App", instruction: "Run the start command to launch the local browser interface.", commandOrSetting: "iopaint start --model=lama --device=cpu" },
+      { stepNumber: 3, title: "Upload Your Image", instruction: "Drag and drop the image you want to edit into the browser window." },
+      { stepNumber: 4, title: "Brush Over the Object", instruction: "Paint over the object, watermark, or text you want removed — IOPaint fills it in automatically." }
+    ],
     githubUrl: "https://github.com/Sanster/IOPaint"
   },
 
@@ -335,7 +428,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Robust Speech Recognition & Automatic Subtitle Generation Model trained on 680,000 hours of audio.",
     summaryHindi: "OpenAI's benchmark automated speech recognition model capable of generating precision synchronized subtitles (SRT) and transcripts with 99% accuracy.",
     features: ["99% accurate speech-to-text in 98+ languages", "Export to SRT, VTT & TXT", "Automatic timestamp alignment", "Runs 100% offline"],
+    strengths: ["Genuinely industry-leading free transcription accuracy — can replace paid transcription services for many uses", "Supports 90+ languages including Hindi", "Multiple model sizes let you trade off speed vs. accuracy based on your hardware"],
+    limitations: ["Larger, more accurate models need a decent GPU and RAM — CPU-only transcription of long files is slow", "No built-in graphical interface — runs from command line or Python (GUI wrappers exist separately)", "Doesn't identify 'who said what' (speaker diarization) out of the box — needs an add-on tool for that"],
+    safetyNote: "Very safe — official OpenAI open-source release, models auto-download from OpenAI's own servers, no third-party files involved.",
     requirements: "Python 3.9+, ffmpeg.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install Whisper", instruction: "Install via pip along with ffmpeg.", commandOrSetting: "pip install -U openai-whisper" },
+      { stepNumber: 2, title: "Run on Your Audio/Video File", instruction: "Run the whisper command pointing at your file.", commandOrSetting: "whisper myvideo.mp4 --model medium" },
+      { stepNumber: 3, title: "Choose a Model Size", instruction: "Pick a model size (tiny to large) based on your hardware — larger models are more accurate but slower." },
+      { stepNumber: 4, title: "Get Your Subtitle File", instruction: "Whisper generates an .srt subtitle file in the same folder, ready to import into your editor." }
+    ],
     githubUrl: "https://github.com/openai/whisper",
     featured: true,
   },
@@ -361,7 +463,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Bark is a transformer-based text-to-audio model created by Suno. Generates speech, laughter, and sound effects.",
     summaryHindi: "An expressive transformer-based audio synthesis engine that converts text into natural human speech, authentic laughing, emotional variations, and spatial soundscapes.",
     features: ["Generates human speech with natural laughter & sighs", "Multi-speaker dialogue support", "Environmental sound effects", "100% open-source"],
+    strengths: ["Can generate expressive, emotional speech (laughing, sighing) that plain TTS tools can't", "Also generates non-speech audio like music snippets and sound effects from text", "Fully generative — it creates new voices rather than needing to clone a real person"],
+    limitations: ["Generation is slow, not usable for real-time applications", "Output length is limited per generation, so long scripts need to be split into chunks", "Quality is less consistent than commercial tools like ElevenLabs, and GPU is strongly recommended for reasonable speed"],
+    safetyNote: "Safe — official Suno AI repo. Since it generates novel voices rather than cloning real people by default, it carries lower misuse risk than voice-cloning tools.",
     requirements: "Nvidia GPU with 8GB+ VRAM, Python 3.9+.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install Bark", instruction: "Install via pip from the GitHub repo.", commandOrSetting: "pip install git+https://github.com/suno-ai/bark.git" },
+      { stepNumber: 2, title: "Write Your Script in Python", instruction: "Import the generate_audio function and pass in your text." },
+      { stepNumber: 3, title: "Add Emotion Cues (Optional)", instruction: "Add cues like [laughs] or [sighs] in your text to control expression." },
+      { stepNumber: 4, title: "Export the Audio", instruction: "Save the generated waveform as a WAV file using the provided helper function." }
+    ],
     githubUrl: "https://github.com/suno-ai/bark",
   },
   {
@@ -386,7 +497,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Deep learning toolkit for Text-to-Speech synthesis with 3-second voice cloning in 17 languages.",
     summaryHindi: "A high-fidelity conversational voice replication framework capable of creating authentic text-to-speech audio streams using merely a three-second vocal sample.",
     features: ["Clone voice with 3-second audio sample", "Supports 17 languages including Hindi", "Emotion & tone controls", "Offline local processing"],
+    strengths: ["Can clone a voice from just a 3-second sample, which is genuinely impressive for a free tool", "Supports 17 languages including Hindi", "Runs fully offline once set up, so no data leaves your machine"],
+    limitations: ["Voice cloning means you must be careful about consent — only clone voices you have permission to use", "Technical setup required (Python environment), no simple installer for beginners", "Quality varies noticeably depending on which underlying model you pick"],
+    safetyNote: "The software is safe and open-source. The real caution is ethical: never clone a real person's voice (a public figure, a colleague, a stranger) without their explicit permission — this can have legal and platform-policy consequences.",
     requirements: "Python 3.9+, Nvidia GPU recommended.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install Coqui TTS", instruction: "Install via pip.", commandOrSetting: "pip install TTS" },
+      { stepNumber: 2, title: "Prepare a Voice Sample", instruction: "Record or find a clean 3-10 second audio sample of a voice you have permission to clone." },
+      { stepNumber: 3, title: "Run the Cloning Command", instruction: "Run the tts command with your text and reference audio sample.", commandOrSetting: "tts --text \"Hello\" --speaker_wav sample.wav --language_idx en" },
+      { stepNumber: 4, title: "Play the Generated Audio", instruction: "The cloned-voice audio file saves to your output folder." }
+    ],
     githubUrl: "https://github.com/coqui-ai/TTS",
   },
   {
@@ -411,7 +531,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Easy-to-use Voice Conversion framework based on VITS for AI Voice cloning and song cover creation.",
     summaryHindi: "The premier vocal restoration and conversion suite designed to perform pitch-accurate vocal simulations and studio voiceovers across musical compositions.",
     features: ["Train custom voice models", "Real-time pitch changing", "Built-in vocal separation", "Browser WebUI interface"],
+    strengths: ["Popular and effective for AI 'cover song' style voice conversion, with genuinely good pitch accuracy given enough training data", "Comes with a browser-based interface, not just raw command line", "Includes built-in vocal separation so you don't need a separate tool first"],
+    limitations: ["Needs training audio samples per voice — you can't just type text like a TTS tool", "Technical setup (Python, GPU drivers) is involved for a genuinely non-technical beginner", "Quality drops noticeably with limited or noisy training data"],
+    safetyNote: "The software is safe. The serious caution here is legal/ethical: using this to clone a real singer's or public figure's voice without permission — for 'AI cover songs' or otherwise — can violate copyright, personality rights, and platform policies (YouTube regularly takes down unauthorized AI voice covers). Only use voices you have the right to use.",
     requirements: "Nvidia GPU (6GB+ VRAM), Python 3.10+.",
+    usageSteps: [
+      { stepNumber: 1, title: "Launch the WebUI", instruction: "Run the provided go-web.bat (Windows) to start the local browser interface.", commandOrSetting: "go-web.bat" },
+      { stepNumber: 2, title: "Get a Voice Model", instruction: "Either train a model on voice samples you have rights to use, or use a properly licensed pre-trained model." },
+      { stepNumber: 3, title: "Load the Model & Input Audio", instruction: "Select your voice model and upload the source audio you want to convert." },
+      { stepNumber: 4, title: "Convert and Export", instruction: "Click Convert — the output audio in the new voice saves to the output folder." }
+    ],
     githubUrl: "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI"
   },
   {
@@ -436,7 +565,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Code for the Music Source Separation model Demucs from Meta AI. Separates Drums, Bass, Vocals and Instruments.",
     summaryHindi: "Meta's flagship stem isolation algorithm engineered to cleanly separate background instrumentation, leading vocals, drum acoustics, and basslines from mixed master recordings.",
     features: ["4-stem & 6-stem AI separation", "Hybrid Spectrogram Transformer engine", "Outputs studio-quality WAV stems", "Supports MP3, WAV, FLAC"],
+    strengths: ["Built by Meta AI's research team — genuinely competitive with paid stem separators for typical songs", "Free, with no per-song limits unlike most paid alternatives", "Outputs clean studio-quality WAV stems, not compressed/lossy files"],
+    limitations: ["Command-line only — no official graphical app", "GPU recommended for speed; CPU works but takes noticeably longer per song", "First run downloads sizable AI model files"],
+    safetyNote: "Safe — official Meta AI research repository, well maintained and widely used.",
     requirements: "Python 3.8+, PyTorch, ffmpeg.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install Demucs", instruction: "Install via pip.", commandOrSetting: "pip install -U demucs" },
+      { stepNumber: 2, title: "Run on a Song", instruction: "Run the demucs command pointing at your audio file.", commandOrSetting: "demucs mysong.mp3" },
+      { stepNumber: 3, title: "Wait for Separation", instruction: "Demucs processes the track and splits it into stems — this can take a few minutes depending on your hardware." },
+      { stepNumber: 4, title: "Find Your Stems", instruction: "Separated vocals.wav, drums.wav, bass.wav, and other.wav files appear in the separated/ folder." }
+    ],
     githubUrl: "https://github.com/facebookresearch/demucs",
   },
   {
@@ -460,7 +598,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Audacity is an easy-to-use, multi-track audio editor and recorder for Windows, macOS, Linux.",
     summaryHindi: "The world-renowned desktop audio production workstation optimized for multi-track voice recordings, background noise subtraction, and broadcast audio mastering.",
     features: ["Record live mic audio", "Noise reduction filter", "VST3 & AU plugin support", "Multi-track timeline"],
+    strengths: ["Mature, full desktop app (not command-line) — over 20 years of active development", "Huge plugin ecosystem and community documentation", "Genuinely one of the most trusted, widely used open-source audio tools in existence"],
+    limitations: ["Interface feels dated compared to modern DAWs", "Not built for multi-track music production the way a dedicated DAW (like Reaper or FL Studio) is — better suited to editing/podcasting/basic recording", "Some advanced mixing/mastering features found in paid DAWs are missing"],
+    safetyNote: "Safe — download only from the official audacityteam.org site or the official GitHub repo. (Note: a 2021 controversy involved added telemetry in the app; it was scaled back after community pushback, and the current official releases are well-vetted — just avoid unofficial third-party mirrors.)",
     requirements: "Windows, macOS, or Linux.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open Audacity", instruction: "Launch the installed desktop application." },
+      { stepNumber: 2, title: "Import or Record Audio", instruction: "Use File > Import to open an existing file, or click the red Record button to record from your mic." },
+      { stepNumber: 3, title: "Edit Your Track", instruction: "Select sections to cut, then apply effects like Noise Reduction from the Effects menu." },
+      { stepNumber: 4, title: "Export the Final File", instruction: "Use File > Export to save as MP3, WAV, or another format." }
+    ],
     githubUrl: "https://github.com/audacity/audacity",
     websiteUrl: "https://audacityteam.org"
   },
@@ -486,7 +633,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "State-of-the-art GUI application for music source separation powered by MDX-Net & Demucs AI models.",
     summaryHindi: "An elite desktop audio isolation platform utilizing deep neural networks to extract clean leading vocals and instrumental stems with zero residual reverb artifacts.",
     features: ["MDX-Net, VR Architecture & Demucs models", "Zero-reverb vocal isolation", "Batch process entire music folders", "Clean dark GUI interface"],
+    strengths: ["Actual desktop GUI, easier for non-technical users than running Demucs from the command line", "Lets you pick between several different AI models depending on what you're separating", "Popular and well-tested in the karaoke/remix creator community"],
+    limitations: ["Primarily built and tested for Windows — Mac/Linux support is less smooth", "GPU recommended for reasonable processing speed", "Many model options can be confusing for a first-time user unsure which one to pick"],
+    safetyNote: "Safe from the official repo (Anjok07/ultimatevocalremovergui) — note that several outdated or incorrect repo links for this project circulate online, so always verify you're using the official GitHub URL above.",
     requirements: "Windows 10/11, macOS, or Linux.",
+    usageSteps: [
+      { stepNumber: 1, title: "Launch UVR5", instruction: "Open the installed desktop application." },
+      { stepNumber: 2, title: "Load Your Audio File", instruction: "Drag and drop your song or audio file into the app." },
+      { stepNumber: 3, title: "Choose a Separation Model", instruction: "Pick a model (MDX-Net for vocals, VR Architecture for specific instruments) from the dropdown." },
+      { stepNumber: 4, title: "Start Processing", instruction: "Click Start — separated stems save to your chosen output folder." }
+    ],
     githubUrl: "https://github.com/Anjok07/ultimatevocalremovergui"
   },
   {
@@ -511,7 +667,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "A fast, local neural text-to-speech system that sounds great and runs on Raspberry Pi & low-end PCs.",
     summaryHindi: "A specialized lightweight local speech synthesis engine optimized to run ultra-fast, natural-sounding voiceover processing on lower-end hardware and ARM systems.",
     features: ["Ultra fast offline neural TTS execution", "Runs on low-end CPUs without GPU", "Supports 30+ languages & voices", "Low latency Real-time streaming"],
+    strengths: ["Runs fast even on very low-power hardware — no GPU needed at all, works on something as small as a Raspberry Pi", "Great choice for offline, privacy-friendly voice projects since nothing needs the internet after setup", "Low latency makes it usable for near real-time applications"],
+    limitations: ["Voice quality is good but noticeably less expressive/natural than heavier models like Bark or commercial tools", "Fewer voice options than premium TTS services", "More of a developer building-block than an end-user app — needs integration work to use practically"],
+    safetyNote: "Safe, official repo maintained by the Rhasspy voice-assistant project.",
     requirements: "Runs on any CPU (Windows, Mac, Linux, Raspberry Pi).",
+    usageSteps: [
+      { stepNumber: 1, title: "Install Piper", instruction: "Install via pip.", commandOrSetting: "pip install piper-tts" },
+      { stepNumber: 2, title: "Download a Voice Model", instruction: "Download a voice model file (.onnx) for your desired language from the official voices repository." },
+      { stepNumber: 3, title: "Run the TTS Command", instruction: "Pipe your text into the piper command with the voice model.", commandOrSetting: "echo 'Hello' | piper --model en_US-voice.onnx --output_file out.wav" },
+      { stepNumber: 4, title: "Play the Output", instruction: "Play the generated out.wav file — done, fully offline." }
+    ],
     githubUrl: "https://github.com/rhasspy/piper"
   },
 
@@ -537,7 +702,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Shotcut is a free, open source, cross-platform video editor supporting 4K multi-track editing.",
     summaryHindi: "A robust, 100% free open-source multi-track video editor engineered to handle complex 4K timeline editing smoothly across standard desktop and laptop hardware.",
     features: ["Native timeline editing", "Supports 4K 60fps", "Hardware NVENC encoding", "Multi-track timeline"],
+    strengths: ["Genuinely capable free cross-platform editor, no watermark and no feature restrictions", "Supports a very wide range of file formats natively", "Customizable, resizable interface that works well on lower-spec PCs"],
+    limitations: ["Interface feels less polished/intuitive than DaVinci Resolve or paid NLEs", "Some users report occasional stability issues on complex, effect-heavy projects", "Smaller plugin/extension ecosystem than bigger editors"],
+    safetyNote: "Safe — established open-source project built on the MLT multimedia framework, download only from shotcut.org or the official GitHub repo.",
     requirements: "Windows, macOS, or Linux. 4GB RAM.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open Shotcut and Start a Project", instruction: "Launch Shotcut and create a new project with your desired resolution and frame rate." },
+      { stepNumber: 2, title: "Import Your Clips", instruction: "Drag your video/audio files into the Playlist panel." },
+      { stepNumber: 3, title: "Edit on the Timeline", instruction: "Drag clips onto the timeline, trim them, add transitions, and apply filters." },
+      { stepNumber: 4, title: "Export Your Video", instruction: "Go to Export, choose a preset like YouTube, and click Export File." }
+    ],
     githubUrl: "https://github.com/mltframework/shotcut",
     websiteUrl: "https://shotcut.org",
     featured: true
@@ -563,7 +737,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Kdenlive is a non-linear video editor built on MLT Framework with support for multi-track editing.",
     summaryHindi: "A professional cross-platform linear video editing suite featuring comprehensive multi-track timeline processing, color grading palettes, and broadcast titling engines.",
     features: ["Multi-track timeline editing", "Automatic audio alignment", "Built-in title creator", "Keyframeable effects"],
+    strengths: ["Mature, feature-rich free NLE backed by the long-running KDE open-source project", "Especially strong choice for Linux users where paid NLE options are limited", "Proxy editing support helps smooth playback on modest hardware"],
+    limitations: ["Has a history of stability/crash reports on complex projects, though recent versions have improved this", "Steeper learning curve than simplified tools like CapCut", "Rendering can be slower than some competing free editors"],
+    safetyNote: "Safe — long-established KDE project, download from kdenlive.org or the official GitHub repo.",
     requirements: "Windows, macOS, or Linux. 8GB RAM.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open Kdenlive and Set Up a Project", instruction: "Launch Kdenlive and choose your project's resolution and frame rate." },
+      { stepNumber: 2, title: "Import Media", instruction: "Drag your clips into the Project Bin." },
+      { stepNumber: 3, title: "Build Your Timeline", instruction: "Drag clips onto tracks, trim them, and apply effects from the Effects panel." },
+      { stepNumber: 4, title: "Render the Final Video", instruction: "Open the Render dialog, pick a format preset, and click Render to File." }
+    ],
     githubUrl: "https://github.com/KDE/kdenlive",
     websiteUrl: "https://kdenlive.org"
   },
@@ -588,7 +771,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "The Swiss army knife of lossless video/audio editing. Cut & trim videos instantly without re-encoding.",
     summaryHindi: "An ultra-fast video extraction tool designed to trim, split, and re-encode multi-gigabyte video clips in seconds with absolutely zero quality compression or re-rendering.",
     features: ["Lossless cutting with 0 render time", "Merge video clips instantly", "Extract audio & subtitles", "Full-resolution snapshots"],
+    strengths: ["Does one job extremely well — near-instant lossless trimming with zero quality loss, since it doesn't re-encode", "Great for quickly pulling clips from long recordings before editing", "Lightweight, fast, no fuss desktop app"],
+    limitations: ["Not a full editor at all — no transitions, effects, color grading, or multi-track timeline", "Only useful for simple cut/trim/remux tasks, not for actually 'editing' a video", "Because it avoids re-encoding, cuts can only happen at keyframe-adjacent points for perfectly lossless results"],
+    safetyNote: "Safe, well-regarded lightweight utility — download from the official GitHub repo.",
     requirements: "Windows, macOS, or Linux desktop.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open Your Video File", instruction: "Launch LosslessCut and drag your video file into the window." },
+      { stepNumber: 2, title: "Set In and Out Points", instruction: "Play through the video and press 'i' to mark the start and 'o' to mark the end of the section you want to keep." },
+      { stepNumber: 3, title: "Add More Segments (Optional)", instruction: "Repeat to mark multiple segments if you want to cut out several sections." },
+      { stepNumber: 4, title: "Export the Trimmed File", instruction: "Click Export — the cut file saves instantly with zero quality loss, since nothing is re-encoded." }
+    ],
     githubUrl: "https://github.com/mifi/lossless-cut"
   },
   {
@@ -613,7 +805,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "A TypeScript library and editor for creating programmatic motion graphics videos.",
     summaryHindi: "An innovative development framework enabling creators to build professional 60fps cinematic animations and data-driven motion graphics utilizing standard TypeScript code.",
     features: ["Programmatic 60fps animations", "Real-time visual editor preview", "Frame-by-frame precision", "Export to WebM & MP4"],
+    strengths: ["Gives frame-perfect, precisely repeatable animations since everything is defined in code", "Popular for explainer/educational-style animation (the '3Blue1Brown' style of math/tech videos)", "Version-control friendly — great for teams already comfortable with code"],
+    limitations: ["Requires actual TypeScript coding knowledge — this is NOT a drag-and-drop tool at all", "Steep learning curve for anyone without a programming background", "Not suited to typical vlog/wedding/YouTube editing workflows"],
+    safetyNote: "Safe, official open-source repo. Realistically only worth installing if you're comfortable with code — most beginner creators should look at a traditional editor instead.",
     requirements: "Node.js 18+.",
+    usageSteps: [
+      { stepNumber: 1, title: "Create a New Project", instruction: "Run the setup command to scaffold a new Motion Canvas project.", commandOrSetting: "npm create motion-canvas@latest" },
+      { stepNumber: 2, title: "Open the Editor", instruction: "Run the dev server and open the local preview in your browser.", commandOrSetting: "npm run serve" },
+      { stepNumber: 3, title: "Write Your Animation in Code", instruction: "Edit the scene file with TypeScript to define shapes, text, and animations." },
+      { stepNumber: 4, title: "Render the Final Video", instruction: "Use the built-in renderer to export your animation as an MP4 or WebM file." }
+    ],
     githubUrl: "https://github.com/motion-canvas/motion-canvas",
     websiteUrl: "https://motioncanvas.io"
   },
@@ -639,7 +840,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Command line application for automatically analyzing and cutting silent sections of video and audio.",
     summaryHindi: "An automated time-saving production tool that instantly analyzes podcast recordings and conversational video timelines to detect and slice out silent pauses.",
     features: ["Automatic silence detection & jumpcut creation", "Export timeline directly to Premiere Pro & Final Cut Pro", "Motion & audio volume threshold analysis", "10x faster video editing workflow"],
+    strengths: ["Huge time-saver for podcast/talking-head editing by automatically removing dead air", "Can export a timeline directly into Premiere Pro or Final Cut Pro instead of a flattened video, so you keep editing flexibility", "Free alternative to paid 'auto jump cut' plugins"],
+    limitations: ["Command-line only, no graphical interface", "Automated cuts sometimes need manual review — it can occasionally cut too aggressively or miss context", "Not a full editor — it's a pre-processing step before you edit"],
+    safetyNote: "Safe, straightforward open-source utility.",
     requirements: "Python 3.10+, ffmpeg.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install Auto-Editor", instruction: "Install via pip.", commandOrSetting: "pip install auto-editor" },
+      { stepNumber: 2, title: "Run on Your Video", instruction: "Run the command on your raw footage file.", commandOrSetting: "auto-editor myvideo.mp4" },
+      { stepNumber: 3, title: "Let It Analyze Silence", instruction: "Auto-Editor scans the audio track and automatically detects silent sections to cut." },
+      { stepNumber: 4, title: "Get Your Cut Video", instruction: "It outputs either a finished edited video, or an XML/timeline file you can import into Premiere Pro or Final Cut for further editing." }
+    ],
     githubUrl: "https://github.com/WyattBlue/auto-editor"
   },
   {
@@ -664,7 +874,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Open source API and interchange format created by Pixar for reading & writing video edit timelines between Premiere, DaVinci & Final Cut.",
     summaryHindi: "Pixar's professional interchange editing structure designed to seamlessly transfer project timelines between Premiere Pro, DaVinci Resolve, and Final Cut Pro without data loss.",
     features: ["Convert between Final Cut XML, Premiere FCPXML & AAF", "Preserves clips, tracks, cuts & speed effects", "Supported by Pixar, Netflix & Disney pipeline", "Python & C++ bindings"],
+    strengths: ["Real studio-pipeline technology, backed by Pixar, Netflix, and the Academy Software Foundation", "Solves a genuine pain point — moving a timeline between DaVinci, Premiere, and Final Cut without losing edit data", "Actively maintained by major industry players"],
+    limitations: ["This is a developer library, not an app you open and edit videos in — it has no editing GUI of its own", "Needs to be integrated into other software or scripts to be useful", "Not relevant for beginners unless they're building pipeline tools"],
+    safetyNote: "Safe, official Academy Software Foundation project. Important to know upfront: this is plumbing/infrastructure for studios and pipeline engineers, not an end-user editing app.",
     requirements: "Python 3.8+.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install the Library", instruction: "Install via pip into your Python environment.", commandOrSetting: "pip install opentimelineio" },
+      { stepNumber: 2, title: "Export a Timeline from Your NLE", instruction: "In DaVinci Resolve, Premiere, or Final Cut, export your project timeline as XML, AAF, or EDL." },
+      { stepNumber: 3, title: "Convert with OTIO", instruction: "Use the otioconvert command-line tool to convert between formats.", commandOrSetting: "otioconvert -i timeline.xml -o timeline.otio" },
+      { stepNumber: 4, title: "Import into the Target App", instruction: "Import the converted file into your destination editing software." }
+    ],
     githubUrl: "https://github.com/AcademySoftwareFoundation/OpenTimelineIO"
   },
 
@@ -690,7 +909,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Official Mirror of Blender 3D creation suite - supports 3D pipeline, modeling, rigging, animation, and rendering.",
     summaryHindi: "The definitive open-source cinematic 3D creation studio encompassing Hollywood-grade visual modeling, character animation, VFX compositing, and sequence rendering.",
     features: ["Modeling, Sculpting, Rigging & VFX", "Cycles Ray-trace render engine", "Video Sequence Editor VSE", "Grease Pencil 2D animation"],
+    strengths: ["A genuinely complete, professional-grade 3D suite used in real films and studios — not a 'lite' version of anything", "Massive community, tutorials, and plugin ecosystem", "Regularly updated with major feature releases"],
+    limitations: ["Very steep learning curve — 3D software in general takes real time to learn", "Its built-in video editor (VSE) is basic compared to dedicated NLEs like DaVinci Resolve", "Complex scenes with heavy rendering demand serious CPU/GPU resources"],
+    safetyNote: "Very safe — one of the most trusted, well-established open-source projects in existence. Download only from blender.org or the official GitHub repo.",
     requirements: "64-bit Quad-Core CPU, 8GB+ RAM, OpenGL 4.3 GPU.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open Blender", instruction: "Launch the installed application — you'll see the default 3D viewport." },
+      { stepNumber: 2, title: "Choose Your Workspace", instruction: "Use the tabs at the top (Modeling, Animation, VFX, Video Editing) to switch between Blender's tools." },
+      { stepNumber: 3, title: "Build or Import Your Scene", instruction: "Model objects, import 3D assets, or — for video — drag clips into the Video Sequence Editor tab." },
+      { stepNumber: 4, title: "Render Your Output", instruction: "Go to Render Properties, choose your output settings, and click Render > Render Image/Animation." }
+    ],
     githubUrl: "https://github.com/blender/blender",
     websiteUrl: "https://blender.org",
     featured: true
@@ -716,7 +944,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Complete color management solution focused on motion picture production with emphasis on visual effects.",
     summaryHindi: "The motion picture standard color management framework utilized across ACES workflows to maintain consistent color transformation and accurate skin tones across CGI finishing.",
     features: ["ACES color management pipeline", "3D LUT transformation & calibration", "Integrated into DaVinci & Nuke", "Consistent cross-department color"],
+    strengths: ["The real industry standard for keeping color consistent across VFX, animation, and color grading pipelines", "Already built into tools you may use, like DaVinci Resolve and Nuke", "Backed by the Academy Software Foundation, used at major studios"],
+    limitations: ["This is a backend technical library for color scientists and pipeline engineers, not something with its own everyday GUI", "Requires real color-management knowledge to configure correctly", "Not something a casual editor installs and uses directly"],
+    safetyNote: "Safe, official Academy Software Foundation project. Worth knowing this is studio/pipeline infrastructure — most solo creators will only ever encounter it indirectly through DaVinci Resolve's own ACES support.",
     requirements: "Supported in major NLEs.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install the Library", instruction: "Install via your package manager or pip into your pipeline environment.", commandOrSetting: "pip install opencolorio" },
+      { stepNumber: 2, title: "Get or Create a Config File", instruction: "Use an existing OCIO config, like the free ACES config, or create a custom one for your studio's color pipeline." },
+      { stepNumber: 3, title: "Set the OCIO Environment Variable", instruction: "Point your color-managed software, like DaVinci Resolve or Nuke, at your config file via the OCIO environment variable." },
+      { stepNumber: 4, title: "Apply Color Transforms", instruction: "Your NLE or compositor now uses this config to apply consistent color transforms across your pipeline." }
+    ],
     githubUrl: "https://github.com/AcademySoftwareFoundation/OpenColorIO",
     websiteUrl: "https://opencolorio.org"
   },
@@ -741,7 +978,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Open-source node-based compositing software for visual effects (VFX) and motion graphics.",
     summaryHindi: "A powerful node-based visual compositing desktop suite offering Nuke-grade VFX tracking tools and precision chroma keying entirely for free.",
     features: ["Node-based GUI like Nuke", "OpenFX plugin support", "2D Tracking & Chroma Keying", "Multi-threaded rendering"],
+    strengths: ["A genuinely free node-based compositor when the industry standard (Nuke) costs thousands per year", "Supports OpenFX plugins, so some professional plugin ecosystems partially work with it", "Capable 2D tracking and chroma keying tools for VFX compositing"],
+    limitations: ["Much smaller community and far fewer tutorials than Blender's compositor or DaVinci's Fusion page", "Development has slowed in recent years compared to some alternatives", "Some plugin compatibility gaps compared to Nuke"],
+    safetyNote: "Safe, established open-source project — download from the official GitHub repo (note the correct current owner is NatronGitHub, an older 'NatronDev-Team' link circulating online is outdated/broken).",
     requirements: "Windows, macOS, or Linux.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open Natron", instruction: "Launch the installed desktop application." },
+      { stepNumber: 2, title: "Import Your Footage", instruction: "Use a Read node to bring in your video or image sequence." },
+      { stepNumber: 3, title: "Build Your Node Tree", instruction: "Connect nodes like Color Correct, Tracker, and Keyer to build your compositing effect." },
+      { stepNumber: 4, title: "Render the Composite", instruction: "Add a Write node at the end of your node chain and render out the final composited footage." }
+    ],
     githubUrl: "https://github.com/NatronGitHub/Natron"
   },
   {
@@ -766,7 +1012,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "3D Reconstruction Software based on AliceVision framework. Turn photos of real objects into textured 3D meshes.",
     summaryHindi: "An industry-standard 3D reconstruction and photogrammetry application that transforms routine smartphone photo arrays into textured 3D geometric meshes.",
     features: ["Automatic 3D mesh reconstruction from phone photos", "Textured 3D model export for Blender", "Node-based visual pipeline", "Open-source photogrammetry"],
+    strengths: ["A genuinely capable free alternative to expensive photogrammetry software like RealityCapture", "Comes with a real GUI and a visual node pipeline, not just command-line scripts", "Exports textured models directly usable in Blender and game engines"],
+    limitations: ["Very compute/GPU-intensive processing — reconstructions can take a long time", "Needs many good-quality, well-overlapping source photos for decent results", "Steep learning curve to get clean results — bad photo sets produce broken/holey meshes"],
+    safetyNote: "Safe, official AliceVision/Mikros Image research project. Requires an Nvidia CUDA-compatible GPU to run at all.",
     requirements: "Nvidia CUDA-compatible GPU required.",
+    usageSteps: [
+      { stepNumber: 1, title: "Take Overlapping Photos", instruction: "Photograph your subject from many angles with 60-80% overlap between shots." },
+      { stepNumber: 2, title: "Import Photos into Meshroom", instruction: "Drag all your photos into the Meshroom window to start a new project." },
+      { stepNumber: 3, title: "Run the Pipeline", instruction: "Click Start — Meshroom automatically runs camera alignment, depth mapping, and mesh reconstruction." },
+      { stepNumber: 4, title: "Export the 3D Model", instruction: "Once processing completes, export the textured mesh (OBJ/FBX) for use in Blender or a game engine." }
+    ],
     githubUrl: "https://github.com/alicevision/Meshroom"
   },
   {
@@ -791,7 +1046,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Real-time radiance field rendering for 3D scene reconstruction from video/photos with 1080p 60fps rendering.",
     summaryHindi: "A revolutionary real-time rendering framework capable of transforming simple location video sweeps into photorealistic, navigable 60fps 3D cinematic environments.",
     features: ["Real-time 60fps 3D environment rendering", "Train 3D scene in 15 minutes", "Unmatched photorealistic lighting & reflection", "Importable into Unreal Engine & Unity"],
+    strengths: ["The original research implementation behind one of the most exciting recent breakthroughs in 3D scene capture", "Produces impressively photorealistic, navigable 3D scenes from ordinary video", "Can train a usable scene in around 15 minutes on suitable hardware"],
+    limitations: ["This is research-grade code, not a polished consumer app — expect rough edges", "Needs a strong Nvidia GPU with good VRAM (RTX 3080/4090-class recommended)", "Requires comfort with Python environments and CUDA setup — not for casual beginners"],
+    safetyNote: "Safe, official academic research repo from Inria. Flagged clearly: this is for advanced/technical users, not a beginner's first project.",
     requirements: "Nvidia RTX GPU with 8GB+ VRAM.",
+    usageSteps: [
+      { stepNumber: 1, title: "Capture a Video Sweep", instruction: "Film a smooth video walking around your subject or scene, covering it from multiple angles." },
+      { stepNumber: 2, title: "Run Structure-from-Motion First", instruction: "Process your video/photos through COLMAP to estimate camera positions — this is a required prerequisite step." },
+      { stepNumber: 3, title: "Train the Gaussian Splat Model", instruction: "Run the training script pointing at your COLMAP output — this takes roughly 15-30 minutes on a good GPU.", commandOrSetting: "python train.py -s <path-to-colmap-data>" },
+      { stepNumber: 4, title: "View Your 3D Scene", instruction: "Use the included real-time viewer to fly around your reconstructed 3D scene." }
+    ],
     githubUrl: "https://github.com/graphdeco-inria/gaussian-splatting"
   },
 
@@ -817,7 +1081,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Free and open source software for video recording and live streaming.",
     summaryHindi: "The undisputed industry standard open-source desktop software for multi-source screen recording, production switching, and uninterrupted live streaming.",
     features: ["Real-time video/audio mixing", "Unlimited scenes & transitions", "VST plugin audio support", "Direct streaming to YouTube"],
+    strengths: ["The genuine industry standard for free screen recording and live streaming — used by professional streamers, not just hobbyists", "Extremely reliable with a huge plugin ecosystem", "Works identically well on Windows, Mac, and Linux"],
+    limitations: ["Initial scene/source setup has a learning curve for complete beginners", "Encoding settings (bitrate, encoder choice) can be confusing without some guidance", "Not an editor — it only records/streams, you still need separate software to edit the footage"],
+    safetyNote: "Extremely safe — one of the most widely used and thoroughly vetted open-source applications in the entire creator space. Download only from obsproject.com or the official GitHub repo.",
     requirements: "Windows, macOS, or Linux.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open OBS and Run Auto-Configure", instruction: "Launch OBS Studio — on first run, the Auto-Configuration Wizard sets sensible defaults for your hardware." },
+      { stepNumber: 2, title: "Add a Scene and Sources", instruction: "Click + under Sources to add a Display Capture, Webcam, or Audio Input." },
+      { stepNumber: 3, title: "Set Up Recording or Streaming", instruction: "Configure your output settings, then click Start Recording or Start Streaming." },
+      { stepNumber: 4, title: "Find Your Recording", instruction: "Recorded files save to the folder set in Settings > Output — ready to import into your editor." }
+    ],
     githubUrl: "https://github.com/obsproject/obs-studio",
     websiteUrl: "https://obsproject.com",
     featured: true
@@ -846,7 +1119,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Complete solution to record, convert and stream audio and video.",
     summaryHindi: "The versatile audio/video codec architecture serving as the foundational computational engine powering global broadcast transcoders and modern editing suites.",
     features: ["Encode & transcode any video/audio format", "NVENC & QSV hardware acceleration", "Universal media stream processing", "CLI automation"],
+    strengths: ["The actual engine that powers a huge share of the video industry — including several other tools on this list (HandBrake, Shotcut, and more all use it under the hood)", "Can do virtually anything to a video or audio file — convert, compress, trim, overlay — all for free", "Unmatched flexibility once you know the commands"],
+    limitations: ["Command-line only, with no official graphical interface", "Notoriously steep learning curve — the syntax is dense and unforgiving for beginners", "One typo in a command can silently produce the wrong output, so double-checking results matters"],
+    safetyNote: "Extremely safe — foundational open-source project trusted and used across almost the entire video industry. Download only from ffmpeg.org or via trusted package managers (brew, winget).",
     requirements: "Cross-platform CLI binary.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open a Terminal", instruction: "Open Command Prompt, Terminal, or PowerShell after installing FFmpeg." },
+      { stepNumber: 2, title: "Run a Basic Command", instruction: "Try a simple conversion to test your install.", commandOrSetting: "ffmpeg -i input.mov output.mp4" },
+      { stepNumber: 3, title: "Learn Common Flags", instruction: "Explore flags for compression (-crf), resolution (-vf scale=), and trimming (-ss / -t) as needed." },
+      { stepNumber: 4, title: "Check Your Output File", instruction: "The converted/processed file appears in the same folder, ready to use." }
+    ],
     githubUrl: "https://github.com/FFmpeg/FFmpeg",
     websiteUrl: "https://ffmpeg.org"
   },
@@ -871,7 +1153,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Free and Open Source AI Image Upscaler for Linux, MacOS, and Windows.",
     summaryHindi: "An advanced AI restoration model designed to eliminate compression artifacts and transform blurred, low-resolution media directly into ultra-sharp 4K and 8K visual masters.",
     features: ["Upscale photos by 4x & 8x", "Runs 100% offline on GPU", "Batch upscale image folders", "Split-screen before/after preview"],
+    strengths: ["Comes with an actual easy-to-use desktop GUI, not just a command-line script", "Genuine free alternative to paid upscalers like Topaz Gigapixel AI", "Batch processing lets you upscale entire folders at once"],
+    limitations: ["A GPU is strongly recommended — CPU-only upscaling is very slow", "Result quality depends heavily on the source image and which AI model you choose", "Can introduce visible artifacts on complex textures (fine text, intricate patterns)"],
+    safetyNote: "Safe, official repo — downloads its own AI models from official sources on first run.",
     requirements: "Vulkan-compatible GPU.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open Upscayl", instruction: "Launch the installed desktop application." },
+      { stepNumber: 2, title: "Select Your Image(s)", instruction: "Drag and drop a single image or an entire folder into the app." },
+      { stepNumber: 3, title: "Choose a Model and Scale", instruction: "Pick an AI model suited to your image type (photo, digital art) and set the upscale factor (2x, 4x)." },
+      { stepNumber: 4, title: "Upscale and Save", instruction: "Click Upscale — the enhanced image saves to your chosen output folder." }
+    ],
     githubUrl: "https://github.com/upscayl/upscayl",
     websiteUrl: "https://upscayl.org"
   },
@@ -897,7 +1188,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Command-line program to download image galleries and albums from hundreds of image hosting sites.",
     summaryHindi: "A comprehensive high-speed terminal downloading tool built to archive full high-resolution photographic portfolios and media feeds across Pinterest, Reddit, and ArtStation.",
     features: ["Bulk download full image galleries & albums", "Supports Pinterest, Reddit, Instagram & Flickr", "Automatic metadata tagging & folder sorting", "Bypass pagination"],
+    strengths: ["Supports hundreds of sites (Pinterest, Reddit, Instagram, Flickr, ArtStation and more) in one tool", "Highly configurable for power users, and actively maintained", "Automatic metadata tagging and folder sorting keeps large downloads organized"],
+    limitations: ["Command-line only, no graphical interface", "Configuration file setup can be intimidating for a first-time user", "Downloading content from some platforms this way may violate that platform's Terms of Service"],
+    safetyNote: "The software itself is safe and open-source. As with any bulk downloader, only download content you have rights to or that's explicitly permitted for download — respect the source platform's terms and the original creator's copyright.",
     requirements: "Python 3.8+.",
+    usageSteps: [
+      { stepNumber: 1, title: "Install Gallery-dl", instruction: "Install via pip.", commandOrSetting: "pip install gallery-dl" },
+      { stepNumber: 2, title: "Copy the Gallery/Album URL", instruction: "Find the gallery or profile page you want to download and copy its URL." },
+      { stepNumber: 3, title: "Run the Download Command", instruction: "Run gallery-dl with the URL.", commandOrSetting: "gallery-dl <gallery-URL>" },
+      { stepNumber: 4, title: "Find Your Downloaded Files", instruction: "Files download into an organized folder structure based on the site and album name." }
+    ],
     githubUrl: "https://github.com/mikf/gallery-dl"
   },
   {
@@ -921,7 +1221,16 @@ export const trendingRepos: GitHubRepo[] = [
     description: "Powerful video encoding program for Windows supporting x264, x265, AV1, NVENC and VapourSynth filters.",
     summaryHindi: "An essential open-source desktop transcoding suite optimized to convert massive camera video files into lightweight AV1 and x265 streaming masters with maximum compression efficiency.",
     features: ["Supports x264, x265, AV1 & NVENC hardware encoding", "VapourSynth & AviSynth filter scripting", "Batch video processing queue", "Full control over CRF & bitrate"],
+    strengths: ["Gives enthusiast-level control over video compression (CRF, bitrate, encoder choice) that most free tools don't expose", "Supports the latest codecs including AV1, plus advanced filter scripting via VapourSynth", "Popular and trusted in the video encoding enthusiast community"],
+    limitations: ["Windows-only — no Mac or Linux version", "Steep learning curve — encoding settings require some background knowledge to use well", "Not a video editor — it's a compression/encoding tool only, with no cutting or effects"],
+    safetyNote: "Safe, well-established in the enthusiast encoding community — download from the official GitHub repo.",
     requirements: "Windows 10/11 64-bit.",
+    usageSteps: [
+      { stepNumber: 1, title: "Open StaxRip", instruction: "Launch the installed application on Windows." },
+      { stepNumber: 2, title: "Load Your Source Video", instruction: "Open your source video file via File > Open." },
+      { stepNumber: 3, title: "Choose Encoder and Settings", instruction: "Pick your target codec (x264, x265, AV1) and set quality (CRF) or bitrate." },
+      { stepNumber: 4, title: "Start Encoding", instruction: "Click Encode — StaxRip processes the queue and saves the compressed output file." }
+    ],
     githubUrl: "https://github.com/staxrip/staxrip"
   }
 ];

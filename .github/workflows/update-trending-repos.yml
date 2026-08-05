@@ -32,6 +32,13 @@ jobs:
       - name: Run Star Update Script
         run: python scripts/update_github_stars.py
 
+      - name: Discover & Add New Trending Repos (AI-generated content)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DAILY_REPO_LIMIT: '30'
+          MIN_STARS: '1000'
+        run: python scripts/discover_and_add_repos.py
+
       - name: Build Astro Site & Dynamic Detail Pages
         run: |
           npm run build

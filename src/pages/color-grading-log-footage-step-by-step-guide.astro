@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const title = "How to Color Grade LOG Footage — Step by Step Guide";
+export const category = "davinci-resolve";
+export const description = "Step-by-step node tree workflow for grading S-Log3, C-Log, V-Log footage in DaVinci Resolve — exposure correction, CST, primary balance, secondary isolation, and final look.";
+---
+<Layout title="How to Color Grade LOG Footage Step by Step in DaVinci Resolve (2026) | Editors Gurukul" description="Step-by-step node tree workflow for grading S-Log3, C-Log, V-Log footage in DaVinci Resolve — exposure correction, CST, primary balance, secondary isolation, and final look." keywords="how to color grade LOG footage, S-Log3 color grading tutorial, color grading DaVinci Resolve step by step, V-Log grading, C-Log color grading">
+
+<h1>How to Color Grade LOG Footage: Step-by-Step Node Tree in DaVinci Resolve</h1>
+
+<p>LOG footage looks flat, washed out, and terrible straight out of camera. That's by design — it captures maximum dynamic range so you have more latitude in post. But if you don't know how to grade it properly, your footage will look worse than if you'd just shot in standard Rec.709. I've been grading LOG footage professionally for 6+ years (S-Log3, C-Log3, V-Log, BRAW) and this is the exact workflow I use on every single project.</p>
+
+<div class="callout">
+<strong>This guide assumes:</strong> You're using DaVinci Resolve (free or Studio). The concepts apply to any grading software, but the node references are Resolve-specific. If you're new to nodes, read our <a href="/davinci-resolve-nodes-explained-2026">Nodes Explained guide</a> first.
+</div>
+
+<h2>Why LOG Looks So Flat (30-Second Explanation)</h2>
+
+<p>Standard video mode (Rec.709) bakes in contrast and color — your footage looks "done" but you can't recover highlights or shadows in post. LOG mode maps the sensor's full dynamic range into a flat, low-contrast image that preserves all the detail your sensor captured. Your job as a colorist is to transform that flat image back into something beautiful — but now you have 2-4 extra stops of dynamic range to work with.</p>
+
+<p>Common LOG formats and their cameras:</p>
+<table>
+<tr><th>LOG Format</th><th>Camera Brand</th><th>Common Cameras</th></tr>
+<tr><td><strong>S-Log3 / S-Gamut3.Cine</strong></td><td>Sony</td><td>A7S III, FX3, FX6, A7 IV</td></tr>
+<tr><td><strong>C-Log3 / Cinema Gamut</strong></td><td>Canon</td><td>R5, R6, C70, C300 III</td></tr>
+<tr><td><strong>V-Log / V-Gamut</strong></td><td>Panasonic</td><td>GH6, S5 II, S1H, BGH1</td></tr>
+<tr><td><strong>N-Log</strong></td><td>Nikon</td><td>Z8, Z9</td></tr>
+<tr><td><strong>F-Log2</strong></td><td>Fujifilm</td><td>X-H2S, X-T5</td></tr>
+<tr><td><strong>Blackmagic Film / Gen 5</strong></td><td>Blackmagic</td><td>BMPCC 4K/6K, URSA Mini Pro</td></tr>
+</table>
+
+<h2>The 6-Node Grading Workflow</h2>
+
+<p>This is my standard node tree for any LOG footage. I use this same structure whether I'm grading a wedding, a music video, or a corporate film. Once you internalize this order, you'll never feel lost staring at flat footage again.</p>
+
+<h3>Node 1: Color Space Transform (LOG → Working Space)</h3>
+
+<p>This is the most important node. It converts your camera's LOG/Gamut encoding into a standard working color space. Without this, all your adjustments will fight against the LOG curve.</p>
+
+<p><strong>In DaVinci Resolve:</strong></p>
+<ol>
+<li>Add a Serial Node (Alt+S)</li>
+<li>Go to Effects Library → ResolveFX Color → Color Space Transform</li>
+<li>Set <strong>Input Color Space</strong>: Your camera's gamut (e.g., S-Gamut3.Cine)</li>
+<li>Set <strong>Input Gamma</strong>: Your camera's LOG curve (e.g., S-Log3)</li>
+<li>Set <strong>Output Color Space</strong>: Rec.709</li>
+<li>Set <strong>Output Gamma</strong>: Gamma 2.4</li>
+</ol>
+
+<p>Your footage should now look "normal" — proper contrast and saturation. If it looks over-contrasty or weird, your input settings are wrong. Double-check your camera's recording format.</p>
+
+<div class="callout">
+<strong>Alternative method:</strong> Instead of CST, you can use DaVinci Color Management (Project Settings → Color Management → set Input and Output color spaces). This applies the transform at the project level instead of per-clip. I prefer per-clip CST nodes because I often mix cameras on the same timeline. See our <a href="/davinci-resolve-color-management-cst-vs-aces">CST vs ACES guide</a> for the full comparison.
+</div>
+
+<h3>Node 2: Exposure & Balance Correction</h3>
+
+<p>Now that your footage is in Rec.709 space, correct any exposure and white balance issues:</p>
+
+<ul>
+<li><strong>Lift</strong> — adjust shadow brightness. If shadows look crushed, lift them slightly.</li>
+<li><strong>Gain</strong> — adjust highlight brightness. Recover any blown highlights.</li>
+<li><strong>Offset</strong> — overall brightness shift. Use this for overall exposure correction.</li>
+<li><strong>Temperature/Tint</strong> — fix white balance. Use the eyedropper on a neutral gray/white surface.</li>
+</ul>
+
+<p>Use the Parade scope (View → Scopes → Parade) to ensure your RGB channels are balanced and nothing is clipping.</p>
+
+<h3>Node 3: Primary Grade (Contrast & Saturation)</h3>
+
+<p>This is where you establish the overall "feel" of the shot:</p>
+
+<ul>
+<li><strong>Contrast curve</strong> — add an S-curve for cinematic contrast. Subtle is better than dramatic. Pull down shadows slightly, push up highlights slightly.</li>
+<li><strong>Pivot</strong> — controls where the contrast curve "pivots." Adjust this to protect skin tones from the contrast adjustment.</li>
+<li><strong>Saturation</strong> — global saturation boost or reduction. I typically boost 10-20% for wedding work, reduce 5-10% for moody corporate films.</li>
+</ul>
+
+<h3>Node 4: Secondary Isolation (Skin Tones, Sky, Specific Colors)</h3>
+
+<p>This is where you isolate specific elements for targeted adjustments:</p>
+
+<ul>
+<li><strong>Skin tone protection:</strong> Use the HSL Qualifier (eyedropper) to select skin tones. Adjust hue, saturation, and luminance independently. The <a href="/davinci-resolve-skin-tone-grading-vectorscope-guide">skin tone I-line on the Vectorscope</a> is your best friend here.</li>
+<li><strong>Sky enhancement:</strong> Qualify the blue sky, darken it slightly, boost saturation. Or desaturate for a moody look.</li>
+<li><strong>Specific color pops:</strong> Isolate the bride's red lehenga in a wedding shot and make it pop against a desaturated background.</li>
+</ul>
+
+<h3>Node 5: Creative Look / Film Emulation</h3>
+
+<p>This is the "vibe" node. Everything before this was technical correction. Now you're making creative choices:</p>
+
+<ul>
+<li><strong>Teal & Orange:</strong> Push shadows toward teal, highlights toward warm orange. The most popular cinematic look — use it sparingly. See our <a href="/cinematic-color-grading-looks-teal-orange-film-emulation">cinematic looks guide</a>.</li>
+<li><strong>Desaturated film:</strong> Reduce saturation 20-30%, shift midtones slightly warm, lift blacks for a faded film look.</li>
+<li><strong>LUT application:</strong> If you're using a creative LUT, apply it on this node AFTER all your corrections. Never apply a LUT on Node 1 — it'll fight your corrections.</li>
+</ul>
+
+<h3>Node 6: Final Output Adjustments</h3>
+
+<p>Final touch-ups before delivery:</p>
+
+<ul>
+<li><strong>Sharpening:</strong> Subtle sharpening (Resolve's Blur/Sharpen → Sharpen, keep it under 0.30)</li>
+<li><strong>Film grain:</strong> Optional — adds organic texture. ResolveFX → Film Grain at 10-20% opacity.</li>
+<li><strong>Final levels check:</strong> Ensure nothing clips at 0 or 100 IRE. Use the Waveform scope.</li>
+</ul>
+
+<h2>Common Mistakes (I've Made All of These)</h2>
+
+<ol>
+<li><strong>Grading before converting from LOG.</strong> If you add contrast to LOG footage without a CST, your shadows and highlights will clip unpredictably. Always convert first, grade second.</li>
+<li><strong>Over-saturating LOG footage.</strong> LOG footage has a wider color gamut than Rec.709. If you boost saturation without converting color spaces, you'll get illegal, oversaturated colors that look terrible on most screens.</li>
+<li><strong>Using a LUT as your only grade.</strong> LUTs are starting points, not finishing points. They can't account for your specific exposure, white balance, and lighting conditions. Every shot needs manual adjustment.</li>
+<li><strong>Matching by eye instead of scopes.</strong> Your monitor lies. Use the Parade for exposure, the Vectorscope for skin tones, and the Waveform for overall levels. Trust the numbers.</li>
+<li><strong>Not shot-matching.</strong> If you grade one shot beautifully but the next shot looks completely different, the viewer notices. Use the Gallery (right-click → Grab Still) to A/B compare shots from the same scene.</li>
+</ol>
+
+<h2>Camera-Specific Notes</h2>
+
+<h3>Sony S-Log3</h3>
+<p>Expose +1.5 to +2 stops above "correct" in-camera. S-Log3 noise lives in the shadows — overexposing shifts your image data into cleaner highlight territory. I set my Sony FX3 to +1.7 stops when shooting S-Log3.</p>
+
+<h3>Canon C-Log3</h3>
+<p>Canon's C-Log3 is less noisy in the shadows than Sony's S-Log3 at equivalent ISOs. You can expose at meter recommendation without the overexposure trick. The color science is gorgeous — Canon skin tones often need minimal correction.</p>
+
+<h3>Blackmagic Film</h3>
+<p>BRAW (Blackmagic RAW) is different from traditional LOG — you can change ISO and white balance non-destructively in Resolve's Camera RAW tab before it hits your node tree. Always adjust these in the RAW tab first, then grade.</p>
+
+<h2>FAQ</h2>
+
+<details><summary>Should I shoot in LOG if I'm a beginner?</summary>
+<p>Honestly? No. If you don't know how to expose LOG footage correctly (+1.5 stops overexposed) and grade it in post, you'll end up with noisy, ugly footage that looks worse than standard Rec.709. Master exposure and composition in standard mode first. Move to LOG when you're comfortable with manual exposure and have a basic grading workflow. Read our <a href="/3-what-is-log">What Is LOG?</a> guide for the full explanation.</p>
+</details>
+
+<details><summary>Can I grade LOG footage in the free version of DaVinci Resolve?</summary>
+<p>Yes, absolutely. The Color Space Transform (CST) plugin, the full Color page, and all node tools are available in the free version. The only LOG-related feature you miss is the DaVinci Color Management system — but manual CST nodes work just as well.</p>
+</details>
+
+<details><summary>What's the difference between a LUT and a CST?</summary>
+<p>A CST (Color Space Transform) mathematically converts your footage from one defined color space to another. It's precise and predictable. A LUT (Look-Up Table) is a fixed mapping — it doesn't adapt to your specific exposure or white balance. Use CST for technical conversion, LUTs for creative looks (after CST).</p>
+</details>
+
+<details><summary>How do I match footage from two different cameras (e.g., Sony + Canon)?</summary>
+<p>Convert each camera's footage to the same working space (Rec.709) using separate CST nodes with correct input settings for each camera. Once both are in Rec.709, they'll look similar enough to match with standard primary grading tools (lift/gamma/gain + temperature).</p>
+</details>
+
+<details><summary>My LOG footage looks noisy after grading — what went wrong?</summary>
+<p>Almost certainly underexposure. LOG footage puts noise in the shadows. When you lift shadows during grading, you're amplifying that noise. Solution: overexpose by +1 to +2 stops when shooting LOG (especially S-Log3). In post, if noise is already there, use DaVinci's Temporal Noise Reduction (Studio only) or Neat Video plugin.</p>
+</details>
+
+<p style="margin-top: 2rem; padding: 1rem; border-left: 3px solid var(--accent); background: var(--bg-alt); border-radius: 8px;">
+<strong>Related guides:</strong> 
+<a href="/3-what-is-log">What Is LOG?</a> · 
+<a href="/davinci-resolve-color-management-cst-vs-aces">CST vs ACES Color Management</a> · 
+<a href="/davinci-resolve-nodes-explained-2026">Nodes Explained</a> · 
+<a href="/davinci-resolve-skin-tone-grading-vectorscope-guide">Skin Tone Grading Guide</a> · 
+<a href="/davinci-resolve-white-balance-method-2026">White Balance Method</a>
+</p>
+
+</Layout>

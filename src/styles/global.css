@@ -366,6 +366,23 @@ body.dark-portal .eg-author-desc {
   box-shadow: 0 8px 24px rgba(15, 139, 141, 0.45);
 }
 
+/* Hide Google Translate intrusive top banner and prevent body layout shifts */
+.goog-te-banner-frame, #google_translate_element {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+  position: static !important;
+}
+.goog-tooltip {
+  display: none !important;
+}
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 /* My Gear & Utility Grids */
 .card .grid, div.grid {
   display: grid !important;

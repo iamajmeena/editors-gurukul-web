@@ -124,14 +124,24 @@
     return m ? decodeURIComponent(m[1]) : null;
   }
 
-  function toggleHindi() {
+  function toggleHindi(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (window.egToggleInProgress) return;
+    window.egToggleInProgress = true;
+
     var cur = getCookie("googtrans");
-    if (cur && cur.indexOf("/hi") !== -1) {
-      document.cookie = "googtrans=/en/en;path=/;";
-      document.cookie = "googtrans=/en/en;path=/;domain=" + location.hostname + ";";
-    } else {
-      document.cookie = "googtrans=/en/hi;path=/;";
-      document.cookie = "googtrans=/en/hi;path=/;domain=" + location.hostname + ";";
+    var isHindi = cur && cur.indexOf("/hi") !== -1;
+    var targetVal = isHindi ? "/en/en" : "/en/hi";
+    var expires = "expires=" + (new Date(Date.now() + 365 * 86400000)).toUTCString();
+
+    document.cookie = "googtrans=" + targetVal + ";path=/;" + expires;
+    if (location.hostname && location.hostname !== "localhost") {
+      document.cookie = "googtrans=" + targetVal + ";path=/;domain=" + location.hostname + ";" + expires;
+      var parts = location.hostname.split(".");
+      if (parts.length > 1) {
+        var rootDomain = "." + parts.slice(-2).join(".");
+        document.cookie = "googtrans=" + targetVal + ";path=/;domain=" + rootDomain + ";" + expires;
+      }
     }
     location.reload();
   }
@@ -148,7 +158,8 @@
         clearInterval(iv);
         if (combo.value !== "hi") {
           combo.value = "hi";
-          combo.dispatchEvent(new Event("change"));
+          combo.dispatchEvent(new Event("change", { bubbles: true }));
+          combo.dispatchEvent(new Event("input", { bubbles: true }));
         }
       } else if (tries > 40) {
         clearInterval(iv);
@@ -186,13 +197,13 @@
       btn.textContent = "हिंदी में पढ़ें";
       document.body.appendChild(btn);
     }
-    btn.addEventListener("click", toggleHindi);
+    btn.onclick = toggleHindi;
 
     var cur = getCookie("googtrans");
     if (cur && cur.indexOf("/hi") !== -1) {
       // Translation is already active for this visitor — load immediately
       // so this pageview actually renders translated.
-      btn.textContent = "English";
+      btn.textContent = "📖 Read in English";
       loadTranslateScript();
       forceApplyTranslation();
     }

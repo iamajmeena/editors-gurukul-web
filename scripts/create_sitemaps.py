@@ -1,7 +1,7 @@
 import os
 import shutil
 
-root_dir = "/Applications/Documents/editors-gurukul"
+root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 dist_dir = os.path.join(root_dir, "dist")
 public_dir = os.path.join(root_dir, "public")
 

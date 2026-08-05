@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const title = "YouTube Video Editing Workflow — Start to Finish (2026)";
+export const category = "editing-fundamentals";
+export const description = "Complete 8-step YouTube video editing workflow from importing footage to uploading — folder structure, rough cut, sound design, color, graphics, and export settings.";
+---
+<Layout title="How to Edit a YouTube Video — Complete Workflow Start to Finish (2026) | Editors Gurukul" description="Complete 8-step YouTube video editing workflow from importing footage to uploading — folder structure, rough cut, sound design, color, graphics, and export settings." keywords="how to edit YouTube video, YouTube video editing tutorial, YouTube editing workflow 2026, edit YouTube videos for beginners">
+
+<h1>How to Edit a YouTube Video: Complete 8-Step Workflow from Import to Upload</h1>
+
+<p>Every YouTube video — whether it's a 60-second Short or a 45-minute documentary — follows the same fundamental editing workflow. I've edited hundreds of videos across corporate, wedding, and YouTube content. This is the exact process I use, step by step. No fluff, no "just be creative" nonsense. Actual steps you can follow today.</p>
+
+<div class="callout">
+<strong>Software doesn't matter (much).</strong> This workflow works in DaVinci Resolve (free), Premiere Pro, Final Cut Pro, or even CapCut. The process is universal. I'll note software-specific tips where relevant.
+</div>
+
+<h2>Step 1: Organize & Import — Don't Skip This</h2>
+
+<p>I know you want to jump straight into cutting. Don't. Spending 10 minutes organizing your footage saves hours of "where's that clip?" frustration later.</p>
+
+<h3>Folder Structure I Use:</h3>
+<pre><code>Project_Name_YYYY-MM-DD/
+├── 01_RAW_Footage/
+│   ├── A-Cam/
+│   └── B-Cam/
+├── 02_Audio/
+│   ├── Voiceover/
+│   └── Music/
+├── 03_Graphics/
+│   ├── Thumbnails/
+│   └── Lower_Thirds/
+├── 04_Project_Files/
+├── 05_Exports/
+└── 06_Assets/ (stock footage, SFX, fonts)</code></pre>
+
+<p><strong>Why this matters:</strong> When a client calls 3 months later asking for a re-edit, you can find everything instantly. I learned this the hard way after losing 2 days searching for wedding footage on an unorganized 4TB drive.</p>
+
+<h3>Import Settings:</h3>
+<ul>
+<li><strong>DaVinci Resolve:</strong> Import into Media Pool → Create bins matching your folder structure → Set timeline resolution/framerate BEFORE dropping clips</li>
+<li><strong>Premiere Pro:</strong> Use "Import as New Sequence" for your main A-cam footage to auto-set sequence settings</li>
+<li><strong>Frame Rate:</strong> Match your project to your source footage. Shot at 24fps? Timeline = 24fps. Don't mismatch.</li>
+</ul>
+
+<h2>Step 2: Assembly Cut — Get Everything on the Timeline</h2>
+
+<p>The assembly cut is ugly and that's fine. The goal is to get all your usable footage onto the timeline in roughly the right order.</p>
+
+<ol>
+<li><strong>Mark In/Out points</strong> on every clip in the source viewer. Only bring the usable portions to the timeline.</li>
+<li><strong>Lay down your A-roll first</strong> (talking head, main content). This is the backbone of every YouTube video.</li>
+<li><strong>Sync your audio</strong> to video if recorded separately (Resolve: right-click → Auto Sync Audio). Always use waveform sync, not timecode.</li>
+<li><strong>Don't worry about B-roll yet.</strong> Just get the story structure right first.</li>
+</ol>
+
+<div class="callout">
+<strong>Speed tip:</strong> Use keyboard shortcuts, not mouse clicks. Learn J-K-L for playback control and I/O for marking in/out points. See our <a href="/davinci-resolve-shortcuts-cheatsheet-2026">DaVinci Resolve Shortcuts Cheat Sheet</a> for the full list.
+</div>
+
+<h2>Step 3: Story Edit — Cut for Retention</h2>
+
+<p>This is where amateurs and professionals diverge. YouTube's algorithm rewards watch time. Every cut you make should serve one purpose: <strong>keep the viewer watching.</strong></p>
+
+<h3>What to Cut:</h3>
+<ul>
+<li><strong>Dead air.</strong> Any pause longer than 1.5 seconds where nothing is happening — cut it.</li>
+<li><strong>Filler words.</strong> "Um", "uh", "so basically", "you know" — ruthlessly cut these. Your audience will thank you.</li>
+<li><strong>Repeated takes.</strong> If the creator said the same thing twice, keep the better delivery.</li>
+<li><strong>Slow intros.</strong> The first 5 seconds determine whether viewers stay. Start with the hook, not "Hey guys, welcome back to my channel." Read our <a href="/how-to-write-a-hook-first-5-seconds">Hook Writing Guide</a>.</li>
+</ul>
+
+<h3>Retention Editing Tricks That Actually Work:</h3>
+<ol>
+<li><strong>Jump cuts every 3-5 seconds</strong> on talking-head sections. Keeps energy high.</li>
+<li><strong>Zoom cuts (2-5% scale punch-in)</strong> on alternate clips. Creates visual variety without B-roll. Don't zoom more than 10% or quality drops noticeably.</li>
+<li><strong>Pattern interrupts every 30-45 seconds.</strong> A B-roll clip, a text graphic, a sound effect — anything to break visual monotony.</li>
+<li><strong>Music energy matching.</strong> When the topic gets exciting, the music should lift. When it's serious, pull back. Don't keep one song at one volume throughout.</li>
+</ol>
+
+<h2>Step 4: B-Roll & Cutaways</h2>
+
+<p>B-roll is what separates "talking head with jump cuts" from "professional YouTube video." Layer it over your A-roll to cover jump cuts, illustrate points, and add visual interest.</p>
+
+<h3>Where to Get B-Roll:</h3>
+<table>
+<tr><th>Source</th><th>Quality</th><th>Price</th><th>Best For</th></tr>
+<tr><td><strong>Shoot your own</strong></td><td>⭐⭐⭐⭐⭐</td><td>Free (your time)</td><td>Product shots, screen recordings, location footage</td></tr>
+<tr><td><strong>Pexels / Pixabay</strong></td><td>⭐⭐⭐</td><td>Free</td><td>Generic landscape/city/nature shots</td></tr>
+<tr><td><strong>Artgrid (by Artlist)</strong></td><td>⭐⭐⭐⭐⭐</td><td>$25/month</td><td>Cinema-quality stock footage</td></tr>
+<tr><td><strong>Screen recording (OBS)</strong></td><td>⭐⭐⭐⭐</td><td>Free</td><td>Tutorial/tech content</td></tr>
+</table>
+
+<h2>Step 5: Graphics & Text</h2>
+
+<p>YouTube viewers expect certain visual elements. Here's the minimum set you should include:</p>
+
+<ul>
+<li><strong>Title card</strong> in the first 3 seconds (topic of the video — text on screen)</li>
+<li><strong>Lower thirds</strong> when introducing yourself or guests</li>
+<li><strong>Key point callouts</strong> — when stating an important number, stat, or fact, put it on screen</li>
+<li><strong>Subscribe/like reminder</strong> — once per video, not three times. Place it after you've delivered value, not in the intro.</li>
+<li><strong>End screen elements</strong> — leave 15-20 seconds at the end for YouTube's end screen cards</li>
+</ul>
+
+<div class="callout">
+<strong>Font tip:</strong> Use 2 fonts maximum. One bold sans-serif for headings (Inter, Montserrat, Bebas Neue) and one readable body font. Don't use more than 2 fonts — it looks chaotic. And please, never use Papyrus or Comic Sans. I've seen it on professional channels. It hurts.
+</div>
+
+<h2>Step 6: Sound Design & Music</h2>
+
+<p>Audio quality matters more than video quality on YouTube. Seriously. Viewers will watch a 720p video with clean audio, but they'll click away from 4K footage with echo or background hum.</p>
+
+<h3>Audio Mixing Targets for YouTube:</h3>
+<table>
+<tr><th>Element</th><th>Level (dBFS)</th><th>Notes</th></tr>
+<tr><td>Dialogue/Voiceover</td><td>-12 to -6 dBFS</td><td>This is your primary audio. Everything else supports it.</td></tr>
+<tr><td>Background Music</td><td>-25 to -18 dBFS</td><td>Low enough to not compete with voice. Duck during speech.</td></tr>
+<tr><td>Sound Effects</td><td>-18 to -12 dBFS</td><td>Swooshes, clicks, transitions. Subtle but noticeable.</td></tr>
+<tr><td>Overall Mix Peak</td><td>-3 to -1 dBFS</td><td>Never hit 0 dBFS (clipping). Leave headroom.</td></tr>
+</table>
+
+<p><strong>Essential sound effects for YouTube:</strong> Whoosh transitions (for topic changes), subtle click sounds (for text appearing), low bass hits (for emphasis), and ambient room tone (fill the silence between sentences so it doesn't feel dead).</p>
+
+<p>Read our <a href="/davinci-resolve-fairlight-audio-post-lufs-standards">Fairlight Audio Post Guide</a> for professional-level audio mixing in DaVinci Resolve.</p>
+
+<h2>Step 7: Color Correction (Quick Grade for YouTube)</h2>
+
+<p>YouTube content doesn't need cinema-level color grading. But it does need to look clean and consistent. Here's my quick YouTube grading workflow:</p>
+
+<ol>
+<li><strong>White balance correction</strong> — fix any color casts from mixed lighting</li>
+<li><strong>Exposure normalization</strong> — make sure face is properly exposed across all clips</li>
+<li><strong>Contrast lift</strong> — YouTube compression kills shadow detail, so lift your shadows slightly (+5-10%)</li>
+<li><strong>Saturation boost</strong> — subtle boost (+10-15%) makes thumbnails and scrub previews pop</li>
+<li><strong>Match shots</strong> — if you're cutting between multiple cameras/takes, match exposure and color temperature</li>
+</ol>
+
+<p><strong>That's it for YouTube.</strong> Don't spend 3 hours grading a talking-head video. Spend that time on better content instead. For deep grading techniques, see our <a href="/davinci-resolve-white-balance-method-2026">White Balance Method</a> and <a href="/davinci-resolve-skin-tone-grading-vectorscope-guide">Skin Tone Grading Guide</a>.</p>
+
+<h2>Step 8: Export & Upload</h2>
+
+<h3>Optimal YouTube Export Settings (2026):</h3>
+<table>
+<tr><th>Setting</th><th>1080p Upload</th><th>4K Upload</th></tr>
+<tr><td>Codec</td><td>H.264 (most compatible)</td><td>H.265 (smaller file) or H.264</td></tr>
+<tr><td>Resolution</td><td>1920×1080</td><td>3840×2160</td></tr>
+<tr><td>Frame Rate</td><td>Match source (24/30/60fps)</td><td>Match source</td></tr>
+<tr><td>Bitrate (CBR)</td><td>16-20 Mbps</td><td>45-68 Mbps</td></tr>
+<tr><td>Audio</td><td>AAC, 320 kbps, Stereo</td><td>AAC, 320 kbps, Stereo</td></tr>
+</table>
+
+<p>For complete export settings with platform-specific profiles (Instagram Reels, YouTube Shorts, etc.), see our <a href="/davinci-resolve-export-settings-youtube-instagram-reels-2026">Export Settings Guide</a>.</p>
+
+<h2>Bonus: The Software Comparison for YouTube Editing</h2>
+
+<table>
+<tr><th>Software</th><th>Price</th><th>Best For</th><th>Learning Curve</th></tr>
+<tr><td><strong>DaVinci Resolve Free</strong></td><td>₹0</td><td>Color grading + editing combined workflow</td><td>Medium-High</td></tr>
+<tr><td><strong>CapCut Desktop</strong></td><td>₹0</td><td>Quick Reels/Shorts with auto-captions</td><td>Low</td></tr>
+<tr><td><strong>Premiere Pro</strong></td><td>~₹1,700/month</td><td>Industry standard, best plugin ecosystem</td><td>Medium</td></tr>
+<tr><td><strong>Final Cut Pro</strong></td><td>~₹25,000 one-time (Mac only)</td><td>Fastest timeline performance on Mac</td><td>Medium</td></tr>
+</table>
+
+<p>For a detailed 3-way comparison, read our <a href="/final-cut-pro-vs-premiere-pro-vs-davinci-resolve-2026">FCP vs Premiere vs Resolve deep-dive</a>.</p>
+
+<h2>FAQ</h2>
+
+<details><summary>How long should it take to edit a 10-minute YouTube video?</summary>
+<p>For a talking-head video with B-roll and basic graphics: 3-5 hours for a beginner, 1.5-2.5 hours for an experienced editor. A heavily produced mini-documentary style video can take 8-15 hours. The ratio is roughly 2-3 hours of editing per 1 minute of finished content for polished work.</p>
+</details>
+
+<details><summary>Should I edit in 1080p or 4K for YouTube?</summary>
+<p>If your camera shoots 4K and your computer can handle it — edit in 4K. YouTube gives higher bitrate to 4K uploads, so even viewers watching at 1080p see a better image. If your computer struggles with 4K, use proxy workflows or edit in 1080p — the quality difference on YouTube is minimal for most content types.</p>
+</details>
+
+<details><summary>What's the best free software for YouTube editing in 2026?</summary>
+<p>DaVinci Resolve Free. It's not even close. You get professional-grade editing, color grading, audio mixing (Fairlight), and visual effects (Fusion) — all free, no watermark, no time limit. The only reason to use something else is if Resolve is too complex for your needs, in which case CapCut Desktop is excellent for simpler content.</p>
+</details>
+
+<details><summary>How do I make my YouTube edits look more professional?</summary>
+<p>Three things make the biggest difference: (1) clean audio with no background noise, (2) consistent color/exposure across cuts, and (3) purposeful pacing — every cut has a reason. Fancy transitions and effects are usually signs of a beginner editor trying to compensate. The best YouTube edits are invisible — the viewer focuses on the content, not the editing.</p>
+</details>
+
+<details><summary>Should I add subtitles/captions to every YouTube video?</summary>
+<p>Yes. YouTube's algorithm indexes captions for search ranking, and 80%+ of mobile viewers watch with sound off at least sometimes. Use CapCut or Premiere's auto-transcription to generate them, then manually correct errors. It takes 15-20 minutes and significantly boosts your reach.</p>
+</details>
+
+<p style="margin-top: 2rem; padding: 1rem; border-left: 3px solid var(--accent); background: var(--bg-alt); border-radius: 8px;">
+<strong>Related guides:</strong> 
+<a href="/davinci-resolve-shortcuts-cheatsheet-2026">Resolve Shortcuts Cheat Sheet</a> · 
+<a href="/davinci-resolve-export-settings-youtube-instagram-reels-2026">Export Settings for YouTube & Instagram</a> · 
+<a href="/viral-short-form-reels-shorts-editing-guide">Short-Form Reels Editing Guide</a> · 
+<a href="/how-to-write-a-hook-first-5-seconds">Hook Writing Guide</a> · 
+<a href="/best-free-video-editing-software-beginners-2026">Best Free Editing Software 2026</a>
+</p>
+
+</Layout>

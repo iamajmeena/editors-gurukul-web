@@ -97,6 +97,11 @@ def _gh_headers():
     return headers
 
 
+# Unauthenticated search API allows only 10 req/min; authenticated allows 30/min.
+# Space calls accordingly so a long discovery run doesn't get rate-limited mid-way.
+SEARCH_SLEEP = 2.5 if (os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")) else 6.5
+
+
 OFF_TOPIC_TOPICS = {
     "coding-agent", "ai-agent", "ai-agents", "cursor-design", "claude-code",
     "claude-code-for-design", "codex-design", "figma-alternative", "no-code",
@@ -147,7 +152,7 @@ def discover_candidates(existing_pairs, needed):
                 continue
             seen.add(key)
             rising.append(item)
-        time.sleep(0.5)
+        time.sleep(SEARCH_SLEEP)
 
     # Pass 2: broad established search across many keywords/categories.
     for kw in SEARCH_KEYWORDS:
@@ -160,7 +165,7 @@ def discover_candidates(existing_pairs, needed):
                 continue
             seen.add(key)
             established.append(item)
-        time.sleep(0.5)
+        time.sleep(SEARCH_SLEEP)
 
     rising.sort(key=lambda x: x["stargazers_count"], reverse=True)
     established.sort(key=lambda x: x["stargazers_count"], reverse=True)

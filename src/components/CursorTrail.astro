@@ -1,0 +1,135 @@
+<canvas id="eg-cursor-trail" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;mix-blend-mode:screen;"></canvas>
+
+<script is:inline>
+(function() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
+
+  var canvas = document.getElementById('eg-cursor-trail');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var w = window.innerWidth, h = window.innerHeight;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var pointsCount = 14;
+  var trail = [];
+  for (var i = 0; i < pointsCount; i++) trail.push({ x: w / 2, y: h / 2 });
+
+  var target = { x: w / 2, y: h / 2 };
+  var active = false;
+  var hue = 265;
+  var sparks = [];
+
+  function onMove(e) {
+    var p = e.touches ? e.touches[0] : e;
+    target.x = p.clientX;
+    target.y = p.clientY;
+    active = true;
+  }
+  function onLeave() { active = false; }
+  function onDown(e) {
+    var p = e.touches ? e.touches[0] : e;
+    for (var i = 0; i < 10; i++) {
+      var angle = Math.random() * Math.PI * 2;
+      var speed = 1.5 + Math.random() * 3;
+      sparks.push({
+        x: p.clientX, y: p.clientY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        size: 1.5 + Math.random() * 2,
+        color: 'hsl(' + (hue + Math.random() * 60) + ', 100%, 65%)'
+      });
+    }
+  }
+
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('touchmove', onMove, { passive: true });
+  window.addEventListener('mouseleave', onLeave);
+  window.addEventListener('mousedown', onDown);
+  window.addEventListener('touchstart', onDown, { passive: true });
+
+  function step() {
+    var lead = trail[0];
+    lead.x += (target.x - lead.x) * 0.35;
+    lead.y += (target.y - lead.y) * 0.35;
+    for (var i = 1; i < trail.length; i++) {
+      trail[i].x += (trail[i - 1].x - trail[i].x) * 0.35;
+      trail[i].y += (trail[i - 1].y - trail[i].y) * 0.35;
+    }
+
+    for (var s = sparks.length - 1; s >= 0; s--) {
+      var sp = sparks[s];
+      sp.x += sp.vx;
+      sp.y += sp.vy;
+      sp.vy += 0.15;
+      sp.life -= 0.03;
+      if (sp.life <= 0) sparks.splice(s, 1);
+    }
+
+    hue += 0.4;
+    if (hue > 360) hue -= 360;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    if (active) {
+      ctx.beginPath();
+      var glow = ctx.createRadialGradient(target.x, target.y, 0, target.x, target.y, 90);
+      glow.addColorStop(0, 'hsla(' + hue + ', 100%, 60%, 0.12)');
+      glow.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = glow;
+      ctx.arc(target.x, target.y, 90, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(trail[0].x, trail[0].y);
+    for (var i = 1; i < trail.length - 1; i++) {
+      var mx = (trail[i].x + trail[i + 1].x) / 2;
+      var my = (trail[i].y + trail[i + 1].y) / 2;
+      ctx.quadraticCurveTo(trail[i].x, trail[i].y, mx, my);
+    }
+    var last = trail[trail.length - 1];
+    var grad = ctx.createLinearGradient(trail[0].x, trail[0].y, last.x, last.y);
+    grad.addColorStop(0, 'hsl(' + hue + ', 100%, 62%)');
+    grad.addColorStop(1, 'hsl(' + (hue + 50) + ', 100%, 45%)');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = 'hsl(' + hue + ', 100%, 55%)';
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    for (var j = 0; j < sparks.length; j++) {
+      var p2 = sparks[j];
+      ctx.globalAlpha = Math.max(0, p2.life);
+      ctx.fillStyle = p2.color;
+      ctx.beginPath();
+      ctx.arc(p2.x, p2.y, p2.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function loop() {
+    step();
+    draw();
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>

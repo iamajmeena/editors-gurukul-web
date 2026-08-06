@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CursorTrail from '../components/CursorTrail.astro';
 const { title, description, keywords, category, enableAds = false, darkTheme = false } = Astro.props;
 
 const pageTitle = title || "Editors Gurukul | Free DaVinci Resolve Tutorials, Filmmaking Guides & Camera Secrets by DOP Ajay K Meena";
@@ -169,6 +170,8 @@ const schemaData = JSON.stringify({
         }
       })();
     </script>
+
+    {darkTheme && <CursorTrail />}
 
     <Header darkTheme={darkTheme} />
 

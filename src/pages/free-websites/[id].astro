@@ -1,0 +1,250 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BgVideoSwitcher from '../../components/BgVideoSwitcher.astro';
+import { freeWebsites, type FreeWebsite } from '../../data/free-websites';
+
+export async function getStaticPaths() {
+  return freeWebsites.map((site) => ({
+    params: { id: site.id },
+    props: { site },
+  }));
+}
+
+interface Props {
+  site: FreeWebsite;
+}
+
+const { site } = Astro.props;
+
+const title = `${site.name} Review (2026): Is It Really Free? Features, Pros & How to Use`;
+const description = `Honest 2026 review of ${site.name} (${site.alternativeTo}). What it does, free plan limits, pros/cons, and a step-by-step guide to using it.`;
+
+const relatedSites = freeWebsites.filter(s => s.id !== site.id && s.category === site.category).slice(0, 3);
+
+const jsonLdSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": site.name,
+      "url": site.url,
+      "applicationCategory": "MultimediaApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": site.description
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://editorsgurukul.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Free Websites", "item": "https://editorsgurukul.com/free-websites" },
+        { "@type": "ListItem", "position": 3, "name": site.name, "item": `https://editorsgurukul.com/free-websites/${site.id}` }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": `Is ${site.name} really free?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": site.freePlanNote
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `What is ${site.name} best used for?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": site.bestFor
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description} enableAds={false} darkTheme={true}>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLdSchema)} />
+
+  <BgVideoSwitcher />
+
+  <div class="min-h-screen text-white relative overflow-hidden font-['Sora',sans-serif]">
+
+    <div class="max-w-6xl mx-auto px-4 py-8 relative z-10 space-y-8">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs font-semibold text-white/70">
+        <a href="/" class="hover:text-white transition-colors no-underline">Home</a>
+        <span>/</span>
+        <a href="/free-websites" class="hover:text-white transition-colors no-underline">Free Websites</a>
+        <span>/</span>
+        <span class="text-white font-extrabold">{site.name}</span>
+      </nav>
+
+      <!-- Hero -->
+      <header class="bg-black/18 backdrop-blur-md border border-white/15 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 bg-gradient-to-r from-[#e0692a] to-[#f59e0b] text-white font-extrabold text-xs rounded-full shadow-md">
+            🔥 {site.alternativeTo}
+          </span>
+          <span class="px-2.5 py-0.5 bg-black/20 text-emerald-300 font-mono font-bold text-[11px] rounded-md border border-white/15">
+            100% Free to Start
+          </span>
+          <span class="px-3 py-1 bg-black/20 text-white/90 border border-white/15 font-bold text-xs rounded-lg">
+            {site.logoEmoji} {site.categoryLabel}
+          </span>
+        </div>
+
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight m-0 drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]">
+          {site.name}
+        </h1>
+        <p class="text-sm sm:text-base text-[#e0c3ff] font-bold m-0">{site.tagline}</p>
+
+        <p class="text-xs sm:text-sm text-white/85 leading-relaxed font-normal m-0">
+          {site.description}
+        </p>
+
+        <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-white/15 text-xs font-bold">
+          <span class="text-white/60 mr-1">Quick Jump:</span>
+          <a href="#what-is-this" class="px-3 py-1 bg-black/20 hover:bg-black/60 text-white/90 rounded-lg no-underline transition-colors backdrop-blur-sm">❓ What Is This?</a>
+          <a href="#pros-cons" class="px-3 py-1 bg-black/20 hover:bg-black/60 text-emerald-300 rounded-lg no-underline transition-colors backdrop-blur-sm">⚖️ Pros &amp; Cons</a>
+          <a href="#free-plan" class="px-3 py-1 bg-black/20 hover:bg-black/60 text-cyan-300 rounded-lg no-underline transition-colors backdrop-blur-sm">💰 Is It Really Free?</a>
+          <a href="#how-to-use" class="px-3 py-1 bg-black/20 hover:bg-black/60 text-amber-300 rounded-lg no-underline transition-colors backdrop-blur-sm">🚀 How to Use</a>
+        </div>
+      </header>
+
+      <!-- What Is This -->
+      <section id="what-is-this" class="bg-black/18 backdrop-blur-md border border-white/15 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5">
+        <div class="flex items-center gap-3 border-b border-white/15 pb-3">
+          <span class="text-2xl">❓</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-[#e0c3ff] m-0 border-none">What Is {site.name}?</h2>
+            <p class="text-xs text-white/60 m-0">In plain language, here's what this website actually does:</p>
+          </div>
+        </div>
+        <p class="text-sm text-white leading-relaxed m-0">{site.summaryHindi}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          {site.features.map(feat => (
+            <div class="flex items-start gap-3 p-3.5 bg-black/15 border border-white/10 rounded-2xl text-xs sm:text-sm text-white/90 backdrop-blur-md">
+              <span class="text-[#e0c3ff] font-bold text-base shrink-0">✓</span>
+              <span>{feat}</span>
+            </div>
+          ))}
+        </div>
+        <div class="p-4 bg-black/15 border border-cyan-400/30 rounded-2xl backdrop-blur-md">
+          <h3 class="text-sm font-extrabold text-cyan-300 m-0 mb-1.5 border-none">🎯 Best For</h3>
+          <p class="text-xs text-white/85 m-0 leading-relaxed">{site.bestFor}</p>
+        </div>
+      </section>
+
+      <!-- Pros & Cons -->
+      <section id="pros-cons" class="bg-black/18 backdrop-blur-md border border-white/15 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5">
+        <div class="flex items-center gap-3 border-b border-white/15 pb-3">
+          <span class="text-2xl">⚖️</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-emerald-300 m-0 border-none">Pros &amp; Cons</h2>
+            <p class="text-xs text-white/60 m-0">An honest breakdown before you build a workflow around it:</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="p-4 bg-black/15 border border-emerald-400/30 rounded-2xl space-y-2 backdrop-blur-md">
+            <h3 class="text-sm font-extrabold text-emerald-300 m-0 border-none">✅ What It Does Well</h3>
+            <ul class="space-y-1.5 text-xs text-white/85 pl-4 m-0 list-disc">
+              {site.pros.map(p => <li>{p}</li>)}
+            </ul>
+          </div>
+          <div class="p-4 bg-black/15 border border-rose-400/30 rounded-2xl space-y-2 backdrop-blur-md">
+            <h3 class="text-sm font-extrabold text-rose-300 m-0 border-none">❌ Limitations</h3>
+            <ul class="space-y-1.5 text-xs text-white/85 pl-4 m-0 list-disc">
+              {site.cons.map(c => <li>{c}</li>)}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Is It Really Free -->
+      <section id="free-plan" class="bg-black/18 backdrop-blur-md border border-white/15 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4">
+        <div class="flex items-center gap-3 border-b border-white/15 pb-3">
+          <span class="text-2xl">💰</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-cyan-300 m-0 border-none">Is {site.name} Really Free?</h2>
+            <p class="text-xs text-white/60 m-0">What you actually get without paying:</p>
+          </div>
+        </div>
+        <div class="p-4 bg-black/15 border border-cyan-400/30 rounded-2xl backdrop-blur-md">
+          <p class="text-xs sm:text-sm text-white/85 m-0 leading-relaxed">{site.freePlanNote}</p>
+        </div>
+        <p class="text-[10px] text-white/50 m-0">⚠️ Free plans and limits change over time — always check the current pricing page on the official site before relying on it for a paid project.</p>
+      </section>
+
+      <!-- How to Use -->
+      <section id="how-to-use" class="bg-black/18 backdrop-blur-md border border-white/15 p-6 sm:p-8 rounded-3xl shadow-xl space-y-5">
+        <div class="flex items-center gap-3 border-b border-white/15 pb-3">
+          <span class="text-2xl">🚀</span>
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-amber-300 m-0 border-none">How to Use {site.name} (Quick Start)</h2>
+            <p class="text-xs text-white/60 m-0">First time here? Follow this beginner workflow:</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {site.howToUseSteps.map(step => (
+            <div class="p-4 bg-black/15 border border-white/10 rounded-2xl space-y-2 backdrop-blur-md">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-amber-400 text-black font-extrabold text-xs flex items-center justify-center shrink-0">
+                  {step.stepNumber}
+                </span>
+                <h3 class="text-sm font-extrabold text-white m-0">{step.title}</h3>
+              </div>
+              <p class="text-xs text-white/85 m-0 leading-relaxed">{step.instruction}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Visit Website CTA -->
+      <section class="bg-black/18 backdrop-blur-md border border-white/20 p-6 sm:p-8 rounded-3xl shadow-2xl text-center space-y-4">
+        <h2 class="text-lg sm:text-xl font-extrabold text-white m-0 border-none">🔗 Ready to Try {site.name}?</h2>
+        <p class="text-xs sm:text-sm text-white/85 max-w-xl mx-auto m-0">
+          No install, no signup wall for most features — open it directly in your browser:
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <a
+            href={site.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-3.5 bg-white !text-[#1a0c33] hover:bg-white/90 font-extrabold text-sm rounded-xl transition-all shadow-lg no-underline"
+          >
+            Visit {site.name} ↗
+          </a>
+        </div>
+      </section>
+
+      <!-- Related Sites -->
+      {relatedSites.length > 0 && (
+        <section class="pt-6 border-t border-white/15">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-white mb-6 border-none p-0 m-0">🔥 Related Free Websites</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedSites.map(rel => (
+              <a href={`/free-websites/${rel.id}`} class="p-5 bg-black/18 border border-white/15 rounded-2xl hover:border-white/40 hover:bg-black/45 transition-all no-underline block group backdrop-blur-md">
+                <span class="text-xs text-amber-300 font-extrabold block mb-1">{rel.logoEmoji} {rel.categoryLabel}</span>
+                <h3 class="text-base font-extrabold text-white group-hover:text-[#e0c3ff] transition-colors m-0 mb-2">{rel.name}</h3>
+                <p class="text-xs text-white/80 line-clamp-2 m-0 mb-3">{rel.description}</p>
+                <span class="text-xs text-[#e0c3ff] font-bold">View Guide ➔</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+    </div>
+  </div>
+</Layout>

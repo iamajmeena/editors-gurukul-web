@@ -1,0 +1,57 @@
+---
+const videos = [
+  "/assets/bg-videos/glowing-sphere.mp4",
+  "/assets/bg-videos/light-ribbons.mp4",
+  "/assets/bg-videos/silhouette-fog-walk.mp4",
+  "/assets/bg-videos/noir-rooftop.mp4",
+  "/assets/bg-videos/ethereal-portrait-1.mp4",
+  "/assets/bg-videos/ethereal-portrait-2.mp4",
+];
+---
+
+<div id="eg-bg-video-container" class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+  <video id="eg-bg-video" muted autoplay loop playsinline class="w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-out"></video>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/35"></div>
+</div>
+
+<button
+  id="eg-bg-change-btn"
+  type="button"
+  class="fixed bottom-6 left-6 z-40 flex items-center gap-2 px-4 py-2.5 bg-black/25 border border-white/20 hover:bg-black/45 text-white font-bold text-xs rounded-full backdrop-blur-sm shadow-lg transition-all hover:scale-105 active:scale-95 cursor-pointer"
+>
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+  Change BG
+</button>
+
+<script define:vars={{ videos }}>
+  (function () {
+    var videoEl = document.getElementById("eg-bg-video");
+    var btn = document.getElementById("eg-bg-change-btn");
+    if (!videoEl) return;
+
+    // Always defaults to the noir-rooftop clip on every visit. The button lets a visitor
+    // manually cycle through the other clips if they want to.
+    var DEFAULT_IDX = videos.indexOf("/assets/bg-videos/noir-rooftop.mp4");
+    var currentIdx = -1;
+
+    function play(i) {
+      if (i === currentIdx) return;
+      currentIdx = i;
+      videoEl.style.opacity = "0";
+      setTimeout(function () {
+        videoEl.src = videos[i];
+        videoEl.load();
+        videoEl.play().catch(function () {});
+        videoEl.style.opacity = "0.9";
+      }, 400);
+    }
+
+    play(DEFAULT_IDX >= 0 ? DEFAULT_IDX : 0);
+
+    if (btn) {
+      btn.addEventListener("click", function () {
+        play((currentIdx + 1) % videos.length);
+      });
+    }
+  })();
+</script>

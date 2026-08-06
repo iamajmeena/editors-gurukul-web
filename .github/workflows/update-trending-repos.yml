@@ -35,8 +35,11 @@ jobs:
       - name: Discover & Add New Trending Repos (AI-generated content)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DAILY_REPO_LIMIT: '30'
           MIN_STARS: '1000'
+          RISING_MIN_STARS: '250'
+          RISING_SHARE: '0.5'
         run: python scripts/discover_and_add_repos.py
 
       - name: Build Astro Site & Dynamic Detail Pages

@@ -9,6 +9,7 @@ Requires GEMINI_API_KEY in the environment (loaded from .env when run locally).
 Daily volume is capped by DAILY_REPO_LIMIT (default 15) to keep content quality
 controllable and stay well inside Gemini's free tier.
 """
+import datetime
 import json
 import os
 import re
@@ -23,15 +24,37 @@ ENV_FILE = os.path.join(ROOT_DIR, ".env")
 
 DAILY_REPO_LIMIT = int(os.environ.get("DAILY_REPO_LIMIT", "15"))
 MIN_STARS = int(os.environ.get("MIN_STARS", "1000"))
+RISING_MIN_STARS = int(os.environ.get("RISING_MIN_STARS", "250"))
+RISING_MAX_AGE_DAYS = int(os.environ.get("RISING_MAX_AGE_DAYS", "120"))
+RISING_SHARE = float(os.environ.get("RISING_SHARE", "0.5"))  # up to 50% of today's quota reserved for rising repos
 GEMINI_MODEL = "gemini-flash-lite-latest"
 
-SEARCH_TOPICS = [
-    "video-editing", "video-editor", "ffmpeg", "color-grading", "vfx",
-    "stable-diffusion", "text-to-speech", "voice-cloning", "text-to-video",
-    "background-removal", "image-upscaling", "audio-processing",
-    "speech-to-text", "photogrammetry", "motion-graphics", "subtitle-generator",
-    "video-generation", "image-to-video", "lip-sync", "noise-reduction",
+# Broad keyword search across name+description (NOT restricted to fixed GitHub
+# topic tags, which miss most repos since maintainers rarely tag consistently).
+SEARCH_KEYWORDS = [
+    "video editor", "video editing", "AI video generator", "text to video",
+    "video compression encoder", "screen recorder", "video stabilization",
+    "voice cloning", "text to speech", "speech to text", "lip sync",
+    "face swap", "background removal", "image upscaler", "AI photo editor",
+    "subtitle generator", "3D reconstruction", "motion capture",
+    "audio separation stem", "noise reduction audio", "AI avatar digital human",
+    "photogrammetry", "color grading LUT", "video vfx compositing",
+    "video downloader", "AI image generator", "video enhancer",
 ]
+
+# Rising pass reuses the same specific SEARCH_KEYWORDS (not generic terms like
+# "video" or "AI image") — generic terms pulled in off-topic tools (design/
+# presentation/coding-agent repos that merely mention video/image as one of
+# many features), which is exactly the false-positive problem we're avoiding.
+
+# Obvious false-positive patterns from broad keyword matching (course/config/
+# political/list repos that incidentally match a keyword but aren't tools).
+JUNK_PATTERNS = re.compile(
+    r"dictatorship|propaganda|dotfiles|\.config$|assignment|homework|cheatsheet|"
+    r"interview-prep|roadmap|course-notes|study-notes|boilerplate|starter-template|"
+    r"awesome-list|^awesome-",
+    re.IGNORECASE,
+)
 
 VALID_CATEGORIES = ["ai-video", "video-editor", "color-vfx", "audio-music", "utilities"]
 VALID_USECASES = ["downloader", "subtitles", "stems", "compressor", "vfx-3d", "animation", "editor"]
@@ -66,35 +89,89 @@ def get_existing_pairs():
     return pairs, content
 
 
-def discover_candidates(existing_pairs, needed):
+def _gh_headers():
     headers = {"Accept": "application/vnd.github+json", "User-Agent": "editorsgurukul-discovery-bot"}
-    seen = set()
-    candidates = []
-    for topic in SEARCH_TOPICS:
-        if len(candidates) >= needed * 3:
-            break
-        url = f"https://api.github.com/search/repositories?q=topic:{topic}&sort=stars&order=desc&per_page=15"
-        try:
-            data = http_get_json(url, headers)
-        except urllib.error.HTTPError as e:
-            print(f"  search failed for topic={topic}: {e}", file=sys.stderr)
-            time.sleep(2)
-            continue
-        for item in data.get("items", []):
-            owner = item["owner"]["login"]
-            name = item["name"]
-            key = (owner.lower(), name.lower())
-            if key in existing_pairs or key in seen:
-                continue
-            if item.get("stargazers_count", 0) < MIN_STARS:
-                continue
-            if item.get("archived") or item.get("disabled"):
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
+
+
+OFF_TOPIC_TOPICS = {
+    "coding-agent", "ai-agent", "ai-agents", "cursor-design", "claude-code",
+    "claude-code-for-design", "codex-design", "figma-alternative", "no-code",
+    "presentation", "slide-deck", "ppt", "design-tools", "design-systems",
+    "ui-generator", "vibe-coding", "web-ppt",
+}
+
+
+def _is_junk(item):
+    text = f"{item['name']} {item.get('description') or ''}"
+    if JUNK_PATTERNS.search(text) or JUNK_PATTERNS.search(item["name"]):
+        return True
+    if item.get("archived") or item.get("disabled"):
+        return True
+    if not item.get("description"):
+        return True  # no description = can't verify relevance, skip
+    if OFF_TOPIC_TOPICS & set(item.get("topics", [])):
+        return True  # coding-agent/design/presentation tool, not a video/audio/creative tool
+    return False
+
+
+def _search(query, headers):
+    url = f"https://api.github.com/search/repositories?q={query}&sort=stars&order=desc&per_page=20"
+    try:
+        return http_get_json(url, headers).get("items", [])
+    except urllib.error.HTTPError as e:
+        print(f"  search failed for query={query}: {e}", file=sys.stderr)
+        return []
+    except Exception as e:
+        print(f"  search error for query={query}: {e}", file=sys.stderr)
+        return []
+
+
+def discover_candidates(existing_pairs, needed):
+    headers = _gh_headers()
+    seen = set(existing_pairs)
+    rising, established = [], []
+
+    # Pass 1: rising repos — created recently but already gaining real traction.
+    # These are prioritized ahead of old giants so the site keeps surfacing
+    # what's actually new, not just re-confirming the same top-10 forever.
+    cutoff = (datetime.date.today() - datetime.timedelta(days=RISING_MAX_AGE_DAYS)).isoformat()
+    for term in SEARCH_KEYWORDS:
+        q = f"{term.replace(' ', '+')}+in:name,description+created:%3E{cutoff}+stars:%3E{RISING_MIN_STARS}"
+        for item in _search(q, headers):
+            key = (item["owner"]["login"].lower(), item["name"].lower())
+            if key in seen or _is_junk(item):
                 continue
             seen.add(key)
-            candidates.append(item)
-        time.sleep(1)
-    candidates.sort(key=lambda x: x["stargazers_count"], reverse=True)
-    return candidates[:needed]
+            rising.append(item)
+        time.sleep(0.5)
+
+    # Pass 2: broad established search across many keywords/categories.
+    for kw in SEARCH_KEYWORDS:
+        if len(established) >= needed * 4:
+            break
+        q = f"{kw.replace(' ', '+')}+in:name,description+stars:%3E{MIN_STARS}"
+        for item in _search(q, headers):
+            key = (item["owner"]["login"].lower(), item["name"].lower())
+            if key in seen or _is_junk(item):
+                continue
+            seen.add(key)
+            established.append(item)
+        time.sleep(0.5)
+
+    rising.sort(key=lambda x: x["stargazers_count"], reverse=True)
+    established.sort(key=lambda x: x["stargazers_count"], reverse=True)
+
+    rising_quota = min(len(rising), max(1, int(needed * RISING_SHARE)))
+    picked = rising[:rising_quota]
+    remaining = needed - len(picked)
+    picked += established[:remaining]
+
+    print(f"  discovery: {len(rising)} rising candidates, {len(established)} established candidates found; picked {len(picked)} ({rising_quota} rising)")
+    return picked[:needed]
 
 
 def slugify(owner, name):

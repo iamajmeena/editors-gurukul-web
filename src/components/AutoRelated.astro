@@ -1,0 +1,68 @@
+---
+// Auto-generates a "Related Guides" block from pages sharing the same `category`,
+// so every article page gets internal links without hand-curating a `links` array.
+// Rotates through the category (ring topology) instead of always showing the same
+// first N pages, so link equity spreads across the whole topic cluster.
+import { getPagesByCategory } from '../lib/pages';
+
+interface Props {
+  category: string;
+  currentPath: string;
+  heading?: string;
+  count?: number;
+}
+
+const { category, currentPath, heading = "Related Guides", count = 4 } = Astro.props;
+
+const allPages = Object.values(import.meta.glob('../pages/*.astro', { eager: true })) as any[];
+const categoryPages = getPagesByCategory(allPages, category);
+
+const selfIndex = categoryPages.findIndex((p) => p.path === currentPath);
+const startIndex = selfIndex >= 0 ? selfIndex + 1 : 0;
+
+const related: { path: string; title: string; desc: string }[] = [];
+for (let i = 0; i < categoryPages.length && related.length < count; i++) {
+  const idx = (startIndex + i) % categoryPages.length;
+  const candidate = categoryPages[idx];
+  if (candidate.path !== currentPath) related.push(candidate);
+}
+---
+{related.length > 0 && (
+  <section class="related-articles-block">
+    <h2>{heading}</h2>
+    <div class="related-articles-grid">
+      {related.map((r) => (
+        <a href={r.path} class="related-article-card">{r.title} →</a>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+.related-articles-block {
+  margin: 48px 0;
+}
+.related-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.related-article-card {
+  display: block;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--teal-deep);
+  text-decoration: none;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.related-article-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--teal-deep);
+  box-shadow: 0 12px 28px -10px rgba(15, 139, 141, 0.22);
+}
+</style>

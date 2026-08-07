@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PillarGrid from '../components/PillarGrid.astro';
+import { getPagesByCategory } from '../lib/pages';
+
+export const title = "DaVinci Resolve Guides";
+export const category = "davinci-resolve";
+export const pillarHub = true;
+export const description = "Every free DaVinci Resolve guide on Editors Gurukul in one place — color grading, nodes, Fusion, Fairlight audio, system requirements, shortcuts, and beginner-to-pro workflows.";
+
+const allPages = Object.values(import.meta.glob('./*.astro', { eager: true })) as any[];
+const resolveGuides = getPagesByCategory(allPages, 'davinci-resolve');
+---
+
+<Layout title="DaVinci Resolve Guides | Editors Gurukul" description={description}>
+
+  <div class="container">
+    <div class="card">
+      <h1>DaVinci Resolve Guides</h1>
+      <p>Every free DaVinci Resolve tutorial on Editors Gurukul, in one place — color grading workflows, node trees, Fusion, Fairlight audio, system requirements, shortcuts, and a full beginner-to-pro roadmap, based on real production work.</p>
+      <PillarGrid items={resolveGuides} />
+      <p style="margin-top:20px;"><a href="/camera-guides">Camera Guides →</a> · <a href="/lighting-guides">Lighting Guides →</a> · <a href="/guides">All Guides →</a></p>
+    </div>
+  </div>
+
+</Layout>

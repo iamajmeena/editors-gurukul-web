@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AutoRelated from '../components/AutoRelated.astro';
 import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
 
 export const title = "Decoding DaVinci Resolve 20 Course | Ajay K. Meena";
@@ -942,5 +943,8 @@ export const category = "course";
     </a>
   </div>
 </section>
+
+
+<AutoRelated category={category} currentPath="/decoding-davinci-20-course" />
 
 </Layout>

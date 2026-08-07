@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+import AutoRelated from '../components/AutoRelated.astro';
 export const title = "Color Grading Order of Operations: The Correct Workflow in DaVinci Resolve";
 export const category = "davinci-resolve";
 export const description = "What order do I color grade in? Complete guide to the correct node tree order of operations in DaVinci Resolve — balance, match, isolate, look, and output transform.";
@@ -84,5 +85,8 @@ export const description = "What order do I color grade in? Complete guide to th
 <a href="/cinematic-color-grading-looks-teal-orange-film-emulation">How to Create Cinematic Teal & Orange and Film Looks</a> · 
 <a href="/davinci-resolve-skin-tone-grading-vectorscope-guide">Mastering Skin Tone Grading on the Vectorscope</a>
 </p>
+
+
+<AutoRelated category={category} currentPath="/color-grading-order-of-operations-correct-workflow" />
 
 </Layout>

@@ -341,8 +341,9 @@ def main():
     load_env_file()
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        print("GEMINI_API_KEY not set (checked env and .env) — skipping repo discovery for today.", file=sys.stderr)
+        print("::warning::GEMINI_API_KEY not set (checked env and .env) — skipping repo discovery for today. Check the GEMINI_API_KEY repository secret.", file=sys.stderr)
         return
+    print(f"GEMINI_API_KEY loaded, length={len(api_key)}, prefix={api_key[:6]}...")
 
     existing_pairs, content = get_existing_pairs()
     print(f"Existing repos on site: {len(existing_pairs)}")
@@ -368,7 +369,7 @@ def main():
         time.sleep(2)
 
     if not new_entries_ts:
-        print("No entries generated successfully.")
+        print("::warning::All candidate repos failed content generation — check Gemini API key/quota.", file=sys.stderr)
         return
 
     insertion = "\n" + "\n".join(new_entries_ts)

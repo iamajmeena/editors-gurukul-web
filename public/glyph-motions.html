@@ -252,7 +252,7 @@ linear-gradient(145deg,#101710,#040604)}
 <div class="sticky-buy" id="stickyBuy">
   <div class="sticky-buy-price"><s>&#8377;1,999</s> <b>&#8377;399</b></div>
   <a class="btn primary" href="https://www.ajaykmeena.com/products/Glyph-Motions-For-Davinci-Resolve-Users-6a9e3bf13fc068398d06c3ef?dgps_s=pbl&dgps_u=c&dgps_uid=634e3400e4b0fa8faaf414aa&dgps_t=cp_m" target="_blank" rel="noopener">BUY NOW</a>
-  <div class="sticky-buy-timer">First 100 buyers &middot; <b id="stickyTimer">--:--:--</b></div>
+  <div class="sticky-buy-timer">First 100 buyers only</div>
 </div>
 
 <header class="nav">
@@ -523,7 +523,6 @@ linear-gradient(145deg,#101710,#040604)}
     <h2 class="display">GLYPH<br><span style="color:var(--g)">MOTIONS.</span></h2>
     <div class="final-scarcity">
       <p>Grab it or miss it. Price is going back up to <s>&#8377;1,999</s> once the first 100 spots are gone.</p>
-      <div class="final-timer">PRICE INCREASES IN &middot; <b id="finalTimer">--:--:--</b></div>
     </div>
     <div class="cta" style="margin-top:26px"><a class="btn primary btn-pulse" href="https://www.ajaykmeena.com/products/Glyph-Motions-For-Davinci-Resolve-Users-6a9e3bf13fc068398d06c3ef?dgps_s=pbl&dgps_u=c&dgps_uid=634e3400e4b0fa8faaf414aa&dgps_t=cp_m" target="_blank" rel="noopener">GRAB THIS OFFER &middot; &#8377;399</a><a class="btn" href="#editable">LEARN MORE</a></div>
     <div class="footer-row"><span>Native Fusion node graphs</span><span>DaVinci Resolve Studio · Mac + Windows · One-time payment, lifetime access</span><span>© Glyph Motions</span></div>
@@ -682,21 +681,8 @@ linear-gradient(145deg,#101710,#040604)}
     el.addEventListener('mouseleave',()=>{cursor.style.width='14px';cursor.style.height='14px'});
   });
 
-  // Persistent buy widget: reveal once the hero has scrolled past, real fixed
-  // countdown deadline (not a per-visitor fake reset) -- extend LAUNCH_END
-  // before it lapses, or the timer just holds at 00:00:00 rather than lying.
-  const LAUNCH_END = new Date('2026-09-12T23:59:59+05:30').getTime();
-  const stickyBuy = $('#stickyBuy'), stickyTimer = $('#stickyTimer'), finalTimer = $('#finalTimer');
-  function tickCountdown(){
-    const diff = LAUNCH_END - Date.now();
-    const txt = diff <= 0 ? '00:00:00' :
-      (() => { const h=Math.floor(diff/3600000), m=Math.floor(diff%3600000/60000), s=Math.floor(diff%60000/1000);
-        return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; })();
-    if (stickyTimer) stickyTimer.textContent = txt;
-    if (finalTimer) finalTimer.textContent = txt;
-  }
-  tickCountdown();
-  setInterval(tickCountdown, 1000);
+  // Persistent buy widget: reveal once the hero has scrolled past.
+  const stickyBuy = $('#stickyBuy');
   addEventListener('scroll',()=>{
     if (stickyBuy) stickyBuy.classList.toggle('show', (window.scrollY||0) > innerHeight*0.6);
   }, {passive:true});

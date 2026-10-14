@@ -14,7 +14,7 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 const normalizedPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const pageDatePublished = publishDates[normalizedPath] || "2026-01-15T08:00:00+05:30";
 const schemaType = isHome ? "WebSite" : "TechArticle";
-const pageKeywords = keywords || "DaVinci Resolve tutorials, video editing guides, color grading LUTs, camera settings 2026, cinematography cheat sheets, Ajay K Meena, Editors Gurukul, Wedream Production, free video editing resources, NLE comparisons, camera reviews India";
+const pageKeywords = keywords || "DaVinci Resolve tutorials, video editing guides, color grading LUTs, camera settings 2026, cinematography cheat sheets, Ajay K Meena, Editors Gurukul, WEDREAM PRODUCTION, free video editing resources, NLE comparisons, camera reviews India";
 
 const schemaData = JSON.stringify({
   "@context": "https://schema.org",
@@ -69,7 +69,7 @@ const schemaData = JSON.stringify({
       "@id": "https://ajaykmeena.com/#person",
       "name": "Ajay K Meena",
       "jobTitle": "Cinematographer, Colorist & Director",
-      "description": "Professional Director of Photography (DOP) and Colorist with over 6 years of industry experience across music videos, corporate films, and branding. Founder of Wedream Production and Editors Gurukul.",
+      "description": "Professional Director of Photography (DOP) and Colorist with over 6 years of industry experience across music videos, corporate films, and branding. Founder of WEDREAM PRODUCTION and Editors Gurukul.",
       "worksFor": {
         "@id": "https://wedreamproduction.shop/#organization"
       },

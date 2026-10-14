@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Links Dashboard | Editors Gurukul</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#faf9f6;--card:#fff;--ink:#15181c;--soft:#4b5058;--line:#e7e4dc;--teal:#0f8b8d;--teal-deep:#0a5f61;--orange:#e0692a;--teal-soft:#e4f3f2;--red:#b3261e}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1112;--card:#171b1d;--ink:#f2f1ec;--soft:#a6adb3;--line:#2a3033;--teal:#2bb3b5;--teal-deep:#2bb3b5;--teal-soft:#13292a;--red:#ff8a80}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45;padding:24px 16px 120px}
+main{max-width:720px;margin:0 auto}
+h1{font-size:1.4rem}
+.sub{color:var(--soft);font-size:.92rem;margin:4px 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+label{display:block;font-size:.8rem;font-weight:600;color:var(--soft);margin:0 0 4px}
+input[type=text],input[type=url],input[type=password]{
+  width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);
+  border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.row{display:grid;gap:10px}
+.two{grid-template-columns:1fr 1fr}
+@media (max-width:560px){.two{grid-template-columns:1fr}}
+.item-head{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.badge{width:30px;height:30px;border-radius:9px;background:var(--teal-soft);color:var(--teal-deep);display:grid;place-items:center;font-weight:700;font-size:.85rem;flex:none}
+.spacer{flex:1}
+.hidden-item{opacity:.55}
+button{font:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-height:40px;padding:0 12px}
+button:hover{border-color:var(--teal)}
+button.icon{width:40px;padding:0;font-size:1.05rem}
+button.primary{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff;font-weight:650;padding:0 20px;min-height:46px}
+button.primary:disabled{opacity:.6;cursor:default}
+button.danger{color:var(--red)}
+.toggle{display:flex;align-items:center;gap:6px;font-size:.85rem;color:var(--soft);cursor:pointer;margin:0;font-weight:500}
+.toggle input{width:18px;height:18px;accent-color:var(--teal)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:12px 16px;z-index:5}
+.bar-in{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.msg{font-size:.9rem;flex:1;min-width:140px}
+.msg.ok{color:var(--teal-deep)}.msg.err{color:var(--red)}
+.notice{background:var(--teal-soft);border:1px solid var(--teal);border-radius:12px;padding:14px;font-size:.92rem;margin-bottom:14px}
+.notice ol{margin:8px 0 0 20px}
+.err-text{color:var(--red);font-size:.9rem;margin-top:8px;min-height:1.2em}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+a{color:var(--teal-deep);font-weight:600}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <!-- Login -->
+  <section id="login" hidden>
+    <h1>Links Dashboard</h1>
+    <p class="sub">Enter your admin password to edit your LinkedIn links page.</p>
+    <div class="card">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="current-password">
+      <p class="err-text" id="loginErr" role="alert"></p>
+      <div style="margin-top:12px"><button class="primary" id="loginBtn">Open dashboard</button></div>
+    </div>
+  </section>
+
+  <!-- Not set up yet -->
+  <section id="setup" hidden>
+    <h1>One-time setup needed</h1>
+    <p class="sub">The dashboard needs a place to save your links. It takes about 2 minutes in Cloudflare.</p>
+    <div class="notice">
+      <ol>
+        <li>Cloudflare dashboard, then <b>Storage &amp; Databases, KV</b>, then <b>Create namespace</b> named <code>links</code>.</li>
+        <li>Open your Pages project, then <b>Settings, Bindings, Add, KV namespace</b>. Variable name: <code>LINKS_KV</code>. Pick the <code>links</code> namespace.</li>
+        <li>Same place: <b>Variables and Secrets, Add</b>. Name: <code>ADMIN_PASSWORD</code>, type Secret, value is your password.</li>
+        <li>Redeploy the latest deployment, then reload this page.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Editor -->
+  <section id="editor" hidden>
+    <div class="top">
+      <div>
+        <h1>Links Dashboard</h1>
+        <p class="sub">Change titles and links, then press Save. The page updates in seconds.</p>
+      </div>
+      <div><a href="/links" target="_blank" rel="noopener">View live page</a> &nbsp; <button id="logout">Log out</button></div>
+    </div>
+
+    <div class="card">
+      <div class="row two">
+        <div><label for="name">Your name</label><input id="name" type="text" maxlength="60"></div>
+        <div><label for="tagline">Short line under your name</label><input id="tagline" type="text" maxlength="160"></div>
+      </div>
+    </div>
+
+    <div id="items"></div>
+    <button id="add">+ Add a link</button>
+  </section>
+</main>
+
+<div class="bar" id="bar" hidden>
+  <div class="bar-in">
+    <span class="msg" id="msg" role="status"></span>
+    <button class="primary" id="save">Save changes</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var API = "/api/links";
+  var pwKey = "eg_links_pw";
+  var state = { name: "", tagline: "", links: [] };
+  var $ = function (id) { return document.getElementById(id); };
+  var password = "";
+  try { password = sessionStorage.getItem(pwKey) || ""; } catch (e) {}
+
+  var DEFAULT_LINKS = [
+    { title: "Free Resources & LUTs", desc: "Free downloads for editors", url: "https://editorsgurukul.com/free-resources", visible: true },
+    { title: "Free Camera Guide", desc: "Pick and set up your camera", url: "https://editorsgurukul.com/free-camera-guide", visible: true },
+    { title: "Glyph Motions", desc: "127 DaVinci Resolve title templates", url: "https://editorsgurukul.com/glyph-motions", visible: true },
+    { title: "DaVinci Resolve Tips 2026", desc: "Quick wins for faster editing", url: "https://editorsgurukul.com/davinci-resolve-tips-2026", visible: true },
+    { title: "Editors Gurukul", desc: "All guides in one place", url: "https://editorsgurukul.com/", visible: true }
+  ];
+
+  function show(which) {
+    ["login", "setup", "editor"].forEach(function (id) { $(id).hidden = id !== which; });
+    $("bar").hidden = which !== "editor";
+  }
+  function say(text, kind) { var m = $("msg"); m.textContent = text || ""; m.className = "msg" + (kind ? " " + kind : ""); }
+  function uid() { return "l" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+  function el(tag, props, kids) {
+    var n = document.createElement(tag);
+    Object.keys(props || {}).forEach(function (k) {
+      if (k === "text") n.textContent = props[k];
+      else if (k === "class") n.className = props[k];
+      else n.setAttribute(k, props[k]);
+    });
+    (kids || []).forEach(function (c) { n.appendChild(c); });
+    return n;
+  }
+
+  function field(label, id, type, value, onInput, placeholder) {
+    var i = el("input", { id: id, type: type, maxlength: type === "url" ? 600 : 120 });
+    if (placeholder) i.setAttribute("placeholder", placeholder);
+    i.value = value || "";
+    i.addEventListener("input", function () { onInput(i.value); });
+    return el("div", {}, [el("label", { "for": id, text: label }), i]);
+  }
+
+  function renderItems() {
+    var box = $("items");
+    box.textContent = "";
+    state.links.forEach(function (l, idx) {
+      var card = el("div", { "class": "card" + (l.visible === false ? " hidden-item" : "") });
+      var up = el("button", { "class": "icon", type: "button", "aria-label": "Move up", text: "↑" });
+      var dn = el("button", { "class": "icon", type: "button", "aria-label": "Move down", text: "↓" });
+      var del = el("button", { "class": "icon danger", type: "button", "aria-label": "Delete link", text: "✕" });
+      up.disabled = idx === 0; dn.disabled = idx === state.links.length - 1;
+      up.addEventListener("click", function () { swap(idx, idx - 1); });
+      dn.addEventListener("click", function () { swap(idx, idx + 1); });
+      del.addEventListener("click", function () {
+        if (confirm("Delete \"" + (l.title || "this link") + "\"?")) { state.links.splice(idx, 1); renderItems(); }
+      });
+      var vis = el("input", { type: "checkbox" });
+      vis.checked = l.visible !== false;
+      vis.addEventListener("change", function () { l.visible = vis.checked; renderItems(); });
+      var tog = el("label", { "class": "toggle" }, [vis, el("span", { text: "Show" })]);
+      card.appendChild(el("div", { "class": "item-head" }, [
+        el("span", { "class": "badge", text: String(idx + 1) }), tog, el("span", { "class": "spacer" }), up, dn, del
+      ]));
+      var grid = el("div", { "class": "row" });
+      grid.appendChild(field("Button title", "t" + idx, "text", l.title, function (v) { l.title = v; }));
+      grid.appendChild(field("Link (where it opens)", "u" + idx, "url", l.url, function (v) { l.url = v; }, "https://..."));
+      grid.appendChild(field("Small line under the title (optional)", "d" + idx, "text", l.desc, function (v) { l.desc = v; }));
+      card.appendChild(grid);
+      box.appendChild(card);
+    });
+  }
+
+  function swap(a, b) {
+    if (b < 0 || b >= state.links.length) return;
+    var t = state.links[a]; state.links[a] = state.links[b]; state.links[b] = t;
+    renderItems();
+  }
+
+  function openEditor(data) {
+    state.name = (data && data.name) || "Ajay K Meena";
+    state.tagline = (data && data.tagline) || "Free DaVinci Resolve assets and courses";
+    state.links = (data && data.links && data.links.length ? data.links : DEFAULT_LINKS).map(function (l) {
+      return { id: l.id || uid(), title: l.title || "", desc: l.desc || "", url: l.url || "", visible: l.visible !== false };
+    });
+    $("name").value = state.name; $("tagline").value = state.tagline;
+    renderItems(); show("editor"); say("");
+  }
+
+  function load() {
+    return fetch(API, { cache: "no-store" }).then(function (r) { return r.json(); });
+  }
+
+  function start() {
+    load().then(function (res) {
+      if (!res.configured) { show("setup"); return; }
+      if (!password) { show("login"); return; }
+      return fetch(API, { method: "POST", headers: { "x-admin-password": password } }).then(function (r) {
+        if (r.status === 503) { show("setup"); return; }
+        if (!r.ok) { try { sessionStorage.removeItem(pwKey); } catch (e) {} password = ""; show("login"); return; }
+        openEditor(res.data);
+      });
+    }).catch(function () { show("setup"); });
+  }
+
+  $("loginBtn").addEventListener("click", function () {
+    var v = $("pw").value;
+    if (!v) { $("loginErr").textContent = "Type your password."; return; }
+    $("loginErr").textContent = "";
+    fetch(API, { method: "POST", headers: { "x-admin-password": v } }).then(function (r) {
+      if (r.status === 503) { show("setup"); return; }
+      if (!r.ok) { $("loginErr").textContent = "Wrong password. Try again."; return; }
+      password = v;
+      try { sessionStorage.setItem(pwKey, v); } catch (e) {}
+      start();
+    }).catch(function () { $("loginErr").textContent = "Network error. Try again."; });
+  });
+  $("pw").addEventListener("keydown", function (e) { if (e.key === "Enter") $("loginBtn").click(); });
+
+  $("logout").addEventListener("click", function () {
+    try { sessionStorage.removeItem(pwKey); } catch (e) {}
+    password = ""; $("pw").value = ""; show("login");
+  });
+  $("name").addEventListener("input", function (e) { state.name = e.target.value; });
+  $("tagline").addEventListener("input", function (e) { state.tagline = e.target.value; });
+  $("add").addEventListener("click", function () {
+    state.links.push({ id: uid(), title: "", desc: "", url: "", visible: true });
+    renderItems();
+    var last = $("t" + (state.links.length - 1)); if (last) last.focus();
+  });
+
+  $("save").addEventListener("click", function () {
+    var bad = state.links.findIndex(function (l) { return !/^(https?:\/\/|mailto:)/i.test((l.url || "").trim()); });
+    if (bad !== -1) { say("Link " + (bad + 1) + " must start with https://", "err"); var f = $("u" + bad); if (f) f.focus(); return; }
+    var btn = $("save"); btn.disabled = true; say("Saving...");
+    fetch(API, {
+      method: "PUT",
+      headers: { "content-type": "application/json", "x-admin-password": password },
+      body: JSON.stringify({ name: state.name, tagline: state.tagline, links: state.links })
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        btn.disabled = false;
+        if (x.ok) say("Saved. Your /links page is updated.", "ok");
+        else if (x.j && x.j.error === "wrong_password") { say("Session expired. Log in again.", "err"); show("login"); }
+        else say("Could not save. Try again.", "err");
+      }).catch(function () { btn.disabled = false; say("Network error. Try again.", "err"); });
+  });
+
+  window.addEventListener("beforeunload", function () {});
+  start();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Assets &amp; Courses | Ajay K Meena</title>
+<meta name="description" content="Free DaVinci Resolve assets, LUTs and courses by Ajay K Meena, Editors Gurukul.">
+<link rel="canonical" href="https://editorsgurukul.com/links">
+<meta name="theme-color" content="#faf9f6">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Editors Gurukul">
+<meta property="og:title" content="Free Assets &amp; Courses | Ajay K Meena">
+<meta property="og:description" content="Free DaVinci Resolve assets, LUTs and courses by Ajay K Meena.">
+<meta property="og:image" content="https://editorsgurukul.com/assets/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --bg:#faf9f6; --card:#ffffff; --ink:#15181c; --soft:#4b5058; --line:#e7e4dc;
+  --teal:#0f8b8d; --teal-deep:#0a5f61; --orange:#e0692a; --teal-soft:#e4f3f2;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0e1112; --card:#171b1d; --ink:#f2f1ec; --soft:#a6adb3; --line:#2a3033; --teal:#2bb3b5; --teal-deep:#2bb3b5; --teal-soft:#13292a}
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);min-height:100vh;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.45;padding:40px 16px 56px;
+  background-image:radial-gradient(900px 380px at 50% -120px,var(--teal-soft),transparent 70%);
+}
+main{max-width:520px;margin:0 auto}
+header{text-align:center;margin-bottom:28px}
+.avatar{
+  width:96px;height:96px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 14px;
+  border:3px solid var(--card);box-shadow:0 0 0 2px var(--teal),0 8px 24px rgba(15,139,141,.18);
+}
+h1{font-size:1.5rem;letter-spacing:-.01em}
+.tag{color:var(--soft);margin-top:6px;font-size:.98rem}
+ul{list-style:none;padding:0;display:grid;gap:12px}
+a.link{
+  display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;
+  min-height:64px;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+}
+a.link:hover,a.link:focus-visible{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 8px 22px rgba(15,139,141,.14);outline:none}
+.num{
+  flex:none;width:34px;height:34px;border-radius:10px;background:var(--teal-soft);color:var(--teal-deep);
+  display:grid;place-items:center;font-weight:700;font-size:.9rem;
+}
+.txt{flex:1;min-width:0}
+.t{font-weight:650;font-size:1.02rem;overflow-wrap:anywhere}
+.d{color:var(--soft);font-size:.88rem;margin-top:2px;overflow-wrap:anywhere}
+.arr{flex:none;color:var(--orange);font-size:1.2rem}
+.empty{text-align:center;color:var(--soft);padding:24px 0}
+footer{text-align:center;margin-top:30px;font-size:.85rem}
+footer a{color:var(--teal-deep);text-decoration:none;font-weight:600}
+footer a:hover{text-decoration:underline}
+@media (prefers-reduced-motion:reduce){a.link{transition:none}a.link:hover{transform:none}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img class="avatar" src="/assets/ajay-k-meena-headshot-v2.jpg" alt="Ajay K Meena" width="96" height="96">
+    <h1 id="name">Ajay K Meena</h1>
+    <p class="tag" id="tagline">Free DaVinci Resolve assets and courses</p>
+  </header>
+  <ul id="list"></ul>
+  <footer><a href="/">editorsgurukul.com</a></footer>
+</main>
+<script>
+// Default content. It shows until the dashboard (/links-admin) saves its own list.
+var DEFAULT_DATA = {
+  name: "Ajay K Meena",
+  tagline: "Free DaVinci Resolve assets and courses",
+  links: [
+    { title: "Free Resources & LUTs", desc: "Free downloads for editors", url: "/free-resources", visible: true },
+    { title: "Free Camera Guide", desc: "Pick and set up your camera", url: "/free-camera-guide", visible: true },
+    { title: "Glyph Motions", desc: "127 DaVinci Resolve title templates", url: "/glyph-motions", visible: true },
+    { title: "DaVinci Resolve Tips 2026", desc: "Quick wins for faster editing", url: "/davinci-resolve-tips-2026", visible: true },
+    { title: "Editors Gurukul", desc: "All guides in one place", url: "/", visible: true }
+  ]
+};
+
+function render(data) {
+  var list = document.getElementById("list");
+  list.textContent = "";
+  document.getElementById("name").textContent = data.name || "Ajay K Meena";
+  document.getElementById("tagline").textContent = data.tagline || "";
+  var shown = (data.links || []).filter(function (l) { return l.visible !== false && l.url; });
+  if (!shown.length) {
+    var p = document.createElement("p");
+    p.className = "empty";
+    p.textContent = "New links coming soon.";
+    list.appendChild(p);
+    return;
+  }
+  shown.forEach(function (l, i) {
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.className = "link";
+    a.href = l.url;
+    if (/^https?:\/\//i.test(l.url) && l.url.indexOf(location.origin) !== 0) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    }
+    var n = document.createElement("span"); n.className = "num"; n.textContent = String(i + 1);
+    var box = document.createElement("span"); box.className = "txt";
+    var t = document.createElement("span"); t.className = "t"; t.textContent = l.title || l.url;
+    box.appendChild(t);
+    if (l.desc) {
+      var d = document.createElement("span"); d.className = "d"; d.style.display = "block"; d.textContent = l.desc;
+      box.appendChild(d);
+    }
+    var ar = document.createElement("span"); ar.className = "arr"; ar.setAttribute("aria-hidden", "true"); ar.textContent = "→";
+    a.appendChild(n); a.appendChild(box); a.appendChild(ar);
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+}
+
+render(DEFAULT_DATA);
+fetch("/api/links", { cache: "no-store" })
+  .then(function (r) { return r.ok ? r.json() : null; })
+  .then(function (res) { if (res && res.data && Array.isArray(res.data.links)) render(res.data); })
+  .catch(function () {});
+</script>
+</body>
+</html>

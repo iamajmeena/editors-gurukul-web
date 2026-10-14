@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BusinessDetails from '../components/BusinessDetails.astro';
 
 export const title = "Privacy Policy | Editors Gurukul";
 export const category = "editing-fundamentals";
@@ -11,6 +12,7 @@ export const category = "editing-fundamentals";
     <div class="card">
       <h1>Privacy Policy</h1>
       <p><em>Last updated: July 2026</em></p>
+      <p>This website is operated by <strong>WEDREAM PRODUCTION</strong>, operating the Editors Gurukul brand.</p>
       <p>This website respects your privacy. We do not sell your personal data, and we only collect information that is necessary for site operation, analytics, and improving the content we publish.</p>
 
       <h2 style="font-size:1.25rem;margin-top:28px;">Information We Collect</h2>
@@ -33,7 +35,8 @@ export const category = "editing-fundamentals";
       </ul>
 
       <h2 style="font-size:1.25rem;margin-top:28px;">Contact</h2>
-      <p>Questions about this policy or your data? Reach out via the <a href="/about-contact">About / Contact</a> page.</p>
+      <p>Questions about this policy, or requests to access, correct or delete the personal information you have sent us, can be emailed to <a href="mailto:editorsgurukul@gmail.com">editorsgurukul@gmail.com</a> or sent by post or phone to the business below. See also the <a href="/about-contact">About / Contact</a> page.</p>
+      <BusinessDetails />
     </div>
   </div>
   

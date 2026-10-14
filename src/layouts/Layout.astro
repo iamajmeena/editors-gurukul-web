@@ -32,11 +32,33 @@ const schemaData = JSON.stringify({
       "founder": {
         "@id": "https://ajaykmeena.com/#person"
       },
+      "parentOrganization": {
+        "@id": "https://wedreamproduction.shop/#organization"
+      },
       "sameAs": [
         "https://www.youtube.com/@AjayKMeenaa",
         "https://instagram.com/iamajmeena",
         "https://ajaykmeena.com"
       ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wedreamproduction.shop/#organization",
+      "name": "WEDREAM PRODUCTION",
+      "legalName": "WEDREAM PRODUCTION",
+      "url": "https://wedreamproduction.shop/",
+      "telephone": "+91 9587575788",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Plot No. 1, WeDream Production, Ward No. 9, Bhorki",
+        "addressLocality": "Jhunjhunu",
+        "addressRegion": "Rajasthan",
+        "postalCode": "333032",
+        "addressCountry": "IN"
+      },
+      "brand": {
+        "@id": "https://editorsgurukul.com/#organization"
+      }
     },
     {
       "@type": "Person",
@@ -45,8 +67,7 @@ const schemaData = JSON.stringify({
       "jobTitle": "Cinematographer, Colorist & Director",
       "description": "Professional Director of Photography (DOP) and Colorist with over 6 years of industry experience across music videos, corporate films, and branding. Founder of Wedream Production and Editors Gurukul.",
       "worksFor": {
-        "@type": "Organization",
-        "name": "Wedream Production"
+        "@id": "https://wedreamproduction.shop/#organization"
       },
       "sameAs": [
         "https://www.youtube.com/@AjayKMeenaa",

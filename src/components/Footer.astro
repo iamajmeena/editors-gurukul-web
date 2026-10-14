@@ -1,5 +1,6 @@
 ---
 import AuthorBox from './AuthorBox.astro';
+import BusinessDetails from './BusinessDetails.astro';
 const { darkTheme = false } = Astro.props;
 ---
 <AuthorBox darkTheme={darkTheme} />
@@ -57,6 +58,11 @@ const { darkTheme = false } = Astro.props;
       </div>
     </div>
 
+  </div>
+
+  <div class="max-w-[1100px] mx-auto mb-8 text-xs leading-relaxed">
+    <p class="mb-2 font-semibold">Editors Gurukul is an educational brand owned and operated by <a href="https://wedreamproduction.shop/" target="_blank" rel="noopener" class="underline">WEDREAM PRODUCTION</a>.</p>
+    <BusinessDetails compact />
   </div>
 
   <div class={darkTheme ? "max-w-[1100px] mx-auto border-t border-[#3b1d5c] pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-purple-300 gap-3" : "max-w-[1100px] mx-auto border-t border-[#e7e4dc] pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-3"}>

@@ -1,0 +1,10 @@
+---
+// Single source for the registered-business details (matches the Udyam certificate).
+const { compact = false } = Astro.props;
+---
+<address style="font-style:normal;line-height:1.7;">
+  <div><strong>Registered business:</strong> <a href="https://wedreamproduction.shop/" target="_blank" rel="noopener" style="font-weight:700;text-decoration:underline;">WEDREAM PRODUCTION</a></div>
+  <div><strong>Address:</strong> Plot No. 1, WeDream Production, Ward No. 9, Bhorki, Jhunjhunu, Rajasthan 333032, India</div>
+  <div><strong>Phone:</strong> <a href="tel:+919587575788" style="text-decoration:underline;">+91 9587575788</a></div>
+  {!compact && <div><strong>Email:</strong> <a href="mailto:editorsgurukul@gmail.com" style="text-decoration:underline;">editorsgurukul@gmail.com</a></div>}
+</address>

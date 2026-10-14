@@ -5,6 +5,8 @@
 
 const JSON_HEADERS = { "content-type": "application/json", "cache-control": "no-store" };
 
+const TAGS = ["FREE", "NEW", "COURSE", "HOT", "PRO"];
+
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: JSON_HEADERS });
 
@@ -24,6 +26,8 @@ function clean(input) {
       title: str(l.title, 80),
       desc: str(l.desc, 120),
       url,
+      tag: TAGS.includes(str(l.tag, 10).toUpperCase()) ? str(l.tag, 10).toUpperCase() : "",
+      star: l.star === true,
       visible: l.visible !== false,
     });
   }

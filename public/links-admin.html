@@ -19,7 +19,8 @@ label{display:block;font-size:.8rem;font-weight:600;color:var(--soft);margin:0 0
 input[type=text],input[type=url],input[type=password]{
   width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);
   border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px}
-input:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 .row{display:grid;gap:10px}
 .two{grid-template-columns:1fr 1fr}
 @media (max-width:560px){.two{grid-template-columns:1fr}}
@@ -114,10 +115,10 @@ a{color:var(--teal-deep);font-weight:600}
   try { password = sessionStorage.getItem(pwKey) || ""; } catch (e) {}
 
   var DEFAULT_LINKS = [
-    { title: "All DaVinci Plugins", desc: "Effects, transitions and colour tools for Resolve", url: "https://www.ajaykmeena.com/products/All-Davinci-Plugins-6acf00a55eb074774c8f9dd1", visible: true },
-    { title: "Free Resources & LUTs", desc: "Free downloads for editors", url: "https://editorsgurukul.com/free-resources", visible: true },
-    { title: "Free Camera Guide", desc: "Pick and set up your camera", url: "https://editorsgurukul.com/free-camera-guide", visible: true },
-    { title: "Glyph Motions", desc: "127 DaVinci Resolve title templates", url: "https://editorsgurukul.com/glyph-motions", visible: true },
+    { title: "All DaVinci Plugins", desc: "Effects, transitions and colour tools for Resolve", url: "https://www.ajaykmeena.com/products/All-Davinci-Plugins-6acf00a55eb074774c8f9dd1", tag: "FREE", star: true, visible: true },
+    { title: "Free Resources & LUTs", desc: "Free downloads for editors", url: "https://editorsgurukul.com/free-resources", tag: "FREE", visible: true },
+    { title: "Free Camera Guide", desc: "Pick and set up your camera", url: "https://editorsgurukul.com/free-camera-guide", tag: "FREE", visible: true },
+    { title: "Glyph Motions", desc: "127 DaVinci Resolve title templates", url: "https://editorsgurukul.com/glyph-motions", tag: "PRO", visible: true },
     { title: "DaVinci Resolve Tips 2026", desc: "Quick wins for faster editing", url: "https://editorsgurukul.com/davinci-resolve-tips-2026", visible: true },
     { title: "Editors Gurukul", desc: "All guides in one place", url: "https://editorsgurukul.com/", visible: true }
   ];
@@ -173,6 +174,17 @@ a{color:var(--teal-deep);font-weight:600}
       grid.appendChild(field("Button title", "t" + idx, "text", l.title, function (v) { l.title = v; }));
       grid.appendChild(field("Link (where it opens)", "u" + idx, "url", l.url, function (v) { l.url = v; }, "https://..."));
       grid.appendChild(field("Small line under the title (optional)", "d" + idx, "text", l.desc, function (v) { l.desc = v; }));
+      var sel = el("select", { id: "g" + idx });
+      [["", "No badge"], ["FREE", "FREE"], ["NEW", "NEW"], ["COURSE", "COURSE"], ["HOT", "HOT"], ["PRO", "PRO (paid)"]].forEach(function (o) {
+        var op = el("option", { value: o[0], text: o[1] }); if ((l.tag || "") === o[0]) op.selected = true; sel.appendChild(op);
+      });
+      sel.addEventListener("change", function () { l.tag = sel.value; });
+      var starBox = el("input", { type: "checkbox" }); starBox.checked = l.star === true;
+      starBox.addEventListener("change", function () { l.star = starBox.checked; });
+      grid.appendChild(el("div", { "class": "row two" }, [
+        el("div", {}, [el("label", { "for": "g" + idx, text: "Small badge on the button" }), sel]),
+        el("div", {}, [el("label", { "class": "toggle", style: "margin-top:24px" }, [starBox, el("span", { text: "Big START HERE card (top link only)" })])])
+      ]));
       card.appendChild(grid);
       box.appendChild(card);
     });
@@ -188,7 +200,7 @@ a{color:var(--teal-deep);font-weight:600}
     state.name = (data && data.name) || "Ajay K Meena";
     state.tagline = (data && data.tagline) || "Free DaVinci Resolve assets and courses";
     state.links = (data && data.links && data.links.length ? data.links : DEFAULT_LINKS).map(function (l) {
-      return { id: l.id || uid(), title: l.title || "", desc: l.desc || "", url: l.url || "", visible: l.visible !== false };
+      return { id: l.id || uid(), title: l.title || "", desc: l.desc || "", url: l.url || "", tag: l.tag || "", star: l.star === true, visible: l.visible !== false };
     });
     $("name").value = state.name; $("tagline").value = state.tagline;
     renderItems(); show("editor"); say("");
@@ -231,7 +243,7 @@ a{color:var(--teal-deep);font-weight:600}
   $("name").addEventListener("input", function (e) { state.name = e.target.value; });
   $("tagline").addEventListener("input", function (e) { state.tagline = e.target.value; });
   $("add").addEventListener("click", function () {
-    state.links.push({ id: uid(), title: "", desc: "", url: "", visible: true });
+    state.links.push({ id: uid(), title: "", desc: "", url: "", tag: "", star: false, visible: true });
     renderItems();
     var last = $("t" + (state.links.length - 1)); if (last) last.focus();
   });

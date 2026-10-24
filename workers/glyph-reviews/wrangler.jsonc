@@ -1,0 +1,21 @@
+{
+  "name": "glyph-motions-reviews",
+  "main": "index.js",
+  "compatibility_date": "2026-10-24",
+  "account_id": "7ad2a204c7b29254522bf57bd5aaeb73",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "editorsgurukul.com/api/glyph-reviews*", "zone_name": "editorsgurukul.com" },
+    { "pattern": "www.editorsgurukul.com/api/glyph-reviews*", "zone_name": "editorsgurukul.com" }
+  ],
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "glyph-motions-reviews",
+    "database_id": "b8c8fa1b-31fa-4c65-aa93-4be0eccc7311"
+  }],
+  "ratelimits": [{
+    "name": "SUBMISSIONS",
+    "namespace_id": "1001",
+    "simple": { "limit": 10, "period": 60 }
+  }]
+}

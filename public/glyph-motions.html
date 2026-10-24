@@ -488,6 +488,8 @@ linear-gradient(145deg,#101710,#040604)}
 .gmp-card li:before{content:"\2713";position:absolute;left:0;color:var(--g);font-weight:900}
 .gmp-card li.no{color:#657069}.gmp-card li.no:before{content:"\2013";color:#657069}
 .gmp-card .btn{display:block;text-align:center}
+.gmp-was{font-size:24px;font-weight:700;color:#657069;margin-right:6px}
+.gmp-limited{display:inline-block;background:rgba(183,255,50,.12);border:1px solid var(--g);color:var(--g);font:800 10px ui-monospace;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;margin:0 0 12px}
 .gmp-note{margin-top:8px;text-align:center;font:600 10px ui-monospace;color:#758278;letter-spacing:.1em;text-transform:uppercase}
 .gmp-compare{margin:46px 0 10px;overflow-x:auto}
 .gmp-compare table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
@@ -557,9 +559,9 @@ linear-gradient(145deg,#101710,#040604)}
 <div class="gmp-card"><h3>Glyph Motions Lite</h3><div class="gmp-price">&#8377;299<small>one-time</small></div><p class="gmp-tag">Everyday titles for reels and YouTube. One file, nothing extra.</p>
 <ul><li>45 titles in 4 folders</li><li>Word motion, elegant text, glow, kinetic</li><li>Single .drfx file: double-click to install</li><li>Updates for 3 months</li><li>Install help on WhatsApp</li><li class="no">No preview panel</li></ul>
 <a class="btn primary" data-buy="lite" href="#plans">GET LITE &middot; &#8377;299</a><div class="gmp-note">Mac + Windows</div></div>
-<div class="gmp-card pro"><span class="gmp-badge">Most complete</span><h3>Glyph Motions Pro</h3><div class="gmp-price">&#8377;599<small>one-time</small></div><p class="gmp-tag">The full library, plus the preview panel inside Resolve.</p>
+<div class="gmp-card pro"><span class="gmp-badge">Most complete</span><h3>Glyph Motions Pro</h3><div class="gmp-price"><s class="gmp-was">&#8377;1,999</s> &#8377;599<small>one-time</small></div><div class="gmp-limited">Limited-time price &middot; goes up to &#8377;1,999 after this offer</div><p class="gmp-tag">The full library, plus the preview panel inside Resolve.</p>
 <ul><li>All 180 titles in 11 folders</li><li>Preview panel inside Resolve: see motion, click to insert</li><li>Glyph Flow animation engine titles</li><li>SaaS scenes, sentences, widgets, captions</li><li>Updates and new titles for 1 year</li><li>Install help on WhatsApp</li></ul>
-<a class="btn primary btn-pulse" data-buy="pro" href="#plans">GET PRO &middot; &#8377;599</a><div class="gmp-note">Mac + Windows</div></div>
+<a class="btn primary btn-pulse" data-buy="pro" href="#plans">GET PRO &middot; &#8377;599</a><div class="gmp-note">Limited-time price &middot; Mac + Windows</div></div>
 </div>
 <div class="gmp-compare"><table><thead><tr><th></th><th>Free</th><th>Lite</th><th>Pro</th></tr></thead><tbody>
 <tr><td>Title templates</td><td>8</td><td>45</td><td>180</td></tr>
@@ -570,7 +572,7 @@ linear-gradient(145deg,#101710,#040604)}
 <tr><td>SaaS scenes, sentences, widgets</td><td class="n">&ndash;</td><td class="n">&ndash;</td><td class="y">&#10003;</td></tr>
 <tr><td>Single file install (no extras)</td><td class="n">&ndash;</td><td class="y">&#10003;</td><td class="n">&ndash;</td></tr>
 <tr><td>Updates</td><td class="n">&ndash;</td><td>3 months</td><td>1 year</td></tr>
-<tr><td>Price</td><td>Free</td><td>&#8377;299</td><td>&#8377;599</td></tr>
+<tr><td>Price</td><td>Free</td><td>&#8377;299</td><td>&#8377;599 <s style="color:#657069">&#8377;1,999</s><br><span style="font:700 10px ui-monospace;color:var(--g);letter-spacing:.1em">LIMITED TIME</span></td></tr>
 </tbody></table></div>
 <div class="gmp-inside">
 <details><summary>See what is inside Free (8 titles)</summary><div class="gmp-body"><div class='gmp-grid'><figure><img loading='lazy' src='/glyph-previews/tiers/glyphrealestate-svrealestatetextanim-wordbyword1.gif' alt='wordbyword1'><figcaption>wordbyword1</figcaption></figure><figure><img loading='lazy' src='/glyph-previews/tiers/glyphrealestate-svrealestatetextanim-wordbywordfade.gif' alt='wordbywordfade'><figcaption>wordbywordfade</figcaption></figure><figure><img loading='lazy' src='/glyph-previews/tiers/glyphrealestate-svrealestatetextanim-wordbywordltr.gif' alt='wordbywordLtR'><figcaption>wordbywordLtR</figcaption></figure><figure><img loading='lazy' src='/glyph-previews/tiers/glyph-melt-liquidtext-premium.gif' alt='Melt LiquidText Premium'><figcaption>Melt LiquidText Premium</figcaption></figure><figure><img loading='lazy' src='/glyph-previews/tiers/glyph-flow-focuspull.gif' alt='Flow FocusPull'><figcaption>Flow FocusPull</figcaption></figure><figure><img loading='lazy' src='/glyph-previews/tiers/glyph-flow-wordslideup.gif' alt='Flow WordSlideUp'><figcaption>Flow WordSlideUp</figcaption></figure><figure><img loading='lazy' src='/glyph-previews/tiers/glyph-flow-wordfade.gif' alt='Flow WordFade'><figcaption>Flow WordFade</figcaption></figure><figure><div class='gmp-noimg'></div><figcaption>Free GetPro</figcaption></figure></div></div></details>
@@ -579,8 +581,12 @@ linear-gradient(145deg,#101710,#040604)}
 </div>
 </div></section>
 <script>
-/* PUT YOUR BUY LINKS HERE (Graphy product links). Leave "" to open WhatsApp instead. */
-var GM_LINKS = { free: "", lite: "", pro: "" };
+/* Buy links (Graphy). To change a link, edit it here. Empty "" = opens WhatsApp instead. */
+var GM_LINKS = {
+  free: "https://www.ajaykmeena.com/products/Glyph-Motions-Free---8-Titles-for-DaVinci-Resolve-6adc480ff9e05b0651bcb9f4?dgps_s=pbl&dgps_u=c&dgps_uid=634e3400e4b0fa8faaf414aa&dgps_t=cp_m",
+  lite: "https://www.ajaykmeena.com/products/Glyph-Motions-Lite---45-Titles-for-DaVinci-Resolve-6adc4843cbecb002d279a524?dgps_s=pbl&dgps_u=c&dgps_uid=634e3400e4b0fa8faaf414aa&dgps_t=cp_m",
+  pro: "https://www.ajaykmeena.com/products/Glyph-Motions-Pro---180-Titles-for-DaVinci-Resolve-6a9e3bf13fc068398d06c3ef?dgps_s=pbl&dgps_u=c&dgps_uid=634e3400e4b0fa8faaf414aa&dgps_t=cp_m"
+};
 (function(){var w="https://wa.me/919928075788?text=";var msg={free:"Hi, I want the Glyph Motions Free pack",lite:"Hi, I want Glyph Motions Lite",pro:"Hi, I want Glyph Motions Pro"};
 document.querySelectorAll("[data-buy]").forEach(function(a){var k=a.getAttribute("data-buy");var u=GM_LINKS[k];a.href=u?u:(w+encodeURIComponent(msg[k]));a.target="_blank";a.rel="noopener";});})();
 </script>

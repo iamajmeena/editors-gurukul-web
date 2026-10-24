@@ -546,7 +546,7 @@ a.gmh-btn.ghost:hover{background:#b7ff32;color:#071006 !important}
 .gmh-old{text-decoration:line-through;color:#657069 !important;font-weight:600;margin-right:4px}
 .gmh-lim{display:inline-block;margin-top:4px;font:800 9px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#b7ff32 !important}
 </style><link rel="stylesheet" href="/assets/glyph-currency.css">
-<link rel="stylesheet" href="/assets/glyph-reviews.css?v=20261024-2">
+<link rel="stylesheet" href="/assets/glyph-reviews.css?v=20261024-3">
 </head>
 <body>
 <div class="scroll-bg" id="scrollBg"></div>
@@ -998,7 +998,7 @@ document.querySelectorAll("[data-buy]").forEach(function(a){var k=a.getAttribute
       <form aria-label="Rate Glyph Motions">
         <h3>How was Glyph Motions?</h3>
         <label for="gr-name">Your name</label><input id="gr-name" name="name" autocomplete="name" minlength="2" maxlength="60" placeholder="Your name" required>
-        <label for="gr-profession">Your profession</label><input id="gr-profession" name="profession" autocomplete="organization-title" minlength="2" maxlength="80" placeholder="e.g. Video editor, filmmaker, student" required>
+        <label for="gr-profession">Your profession</label><select id="gr-profession" name="profession" autocomplete="organization-title" required><option value="" disabled selected>Select your profession</option><option>Video Editor</option><option>Filmmaker</option><option>Student</option><option>Influencer</option><option>Agency Owner</option></select>
         <fieldset><legend>Your rating</legend><div class="gr-stars">
 <label class="gr-star"><input type="radio" name="rating" value="1" aria-label="1 out of 5 stars" required><span aria-hidden="true">★</span></label>
 <label class="gr-star"><input type="radio" name="rating" value="2" aria-label="2 out of 5 stars" required><span aria-hidden="true">★</span></label>

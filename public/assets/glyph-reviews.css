@@ -6,9 +6,9 @@
 #reviews .gr-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;align-items:start}
 #reviews form,#reviews .gr-review{background:#0b110d;border:1px solid #ffffff24;border-radius:18px;padding:28px}
 #reviews h3{font-size:22px;margin:0 0 20px}#reviews label,#reviews legend{display:block;color:#f1f5ec;font-size:14px;font-weight:600;margin-bottom:9px}
-#reviews input:not([type=radio]):not([type=checkbox]),#reviews textarea{display:block;width:100%;box-sizing:border-box;border:1px solid #ffffff35;border-radius:9px;background:#050806;color:#fff;padding:12px 14px;font:inherit;font-size:16px;margin-bottom:21px}
+#reviews input:not([type=radio]):not([type=checkbox]),#reviews textarea,#reviews select{display:block;width:100%;box-sizing:border-box;border:1px solid #ffffff35;border-radius:9px;background:#050806;color:#fff;padding:12px 14px;font:inherit;font-size:16px;margin-bottom:21px}
 #reviews textarea{resize:vertical;min-height:110px}#reviews input::placeholder,#reviews textarea::placeholder{color:#8e9c8a}
-#reviews :is(input,textarea,button,a):focus-visible{outline:2px solid #b7ff32;outline-offset:4px}
+#reviews :is(input,select,textarea,button,a):focus-visible{outline:2px solid #b7ff32;outline-offset:4px}
 #reviews fieldset{border:0;padding:0;margin:0 0 22px;min-width:0}#reviews .gr-stars{display:flex;gap:5px}
 #reviews .gr-star{position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;width:48px;height:48px;margin:0;font-size:36px;line-height:1;color:#66715e;border:1px solid transparent;border-radius:8px}
 #reviews .gr-star input{position:absolute;opacity:0;width:1px;height:1px}#reviews .gr-star:has(input:focus-visible){outline:2px solid #b7ff32;outline-offset:2px}

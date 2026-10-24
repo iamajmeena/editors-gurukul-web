@@ -7,6 +7,9 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://editorsgurukul.com',
+  redirects: {
+    '/trending-github-repos': '/',
+  },
   integrations: [sitemap({
     // standalone pages that live in public/ and are not Astro routes,
     // so @astrojs/sitemap cannot discover them on its own

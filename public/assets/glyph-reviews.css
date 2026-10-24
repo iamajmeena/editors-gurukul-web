@@ -25,4 +25,5 @@
 #reviews .gr-comment{white-space:pre-wrap;margin:0;font-size:15px}#reviews .gr-note{font-size:12px;margin:14px 0 20px}
 #reviews .gr-empty{padding:30px;border:1px dashed #ffffff35;border-radius:16px;color:#b8c6b5;line-height:1.6}
 #reviews .gr-more{margin-top:18px;background:#1d2b17;color:#d9f3b7;border:1px solid #b7ff3244}#reviews [hidden]{display:none!important}
+body.gr-reading #stickyBuy,body.gr-reading .wa-float,body:has(#reviews:focus-within) #stickyBuy,body:has(#reviews:focus-within) .wa-float{visibility:hidden;pointer-events:none}
 @media(max-width:720px){#reviews{padding:56px 0}#reviews .gr-heading{display:block}#reviews .gr-summary{margin-top:22px;max-width:none}#reviews .gr-layout{grid-template-columns:minmax(0,1fr);gap:28px}#reviews form{padding:22px}#reviews .gr-star{width:44px;height:48px}}

@@ -63,6 +63,10 @@
     finally { submit.disabled = false; }
   });
   // The section is below the main product content; defer its network request until nearby.
-  if ('IntersectionObserver' in window) { const observer = new IntersectionObserver(entries => { if(entries.some(e=>e.isIntersecting)) { observer.disconnect(); load(); } }, { rootMargin: '400px' }); observer.observe(section); }
+  if ('IntersectionObserver' in window) {
+    const reading = new IntersectionObserver(entries => document.body.classList.toggle('gr-reading', entries[0].isIntersecting), { rootMargin: '-80px 0px -20px 0px' });
+    reading.observe(section);
+    const observer = new IntersectionObserver(entries => { if(entries.some(e=>e.isIntersecting)) { observer.disconnect(); load(); } }, { rootMargin: '400px' }); observer.observe(section);
+  }
   else load();
 })();

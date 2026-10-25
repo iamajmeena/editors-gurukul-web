@@ -469,6 +469,16 @@ linear-gradient(145deg,#101710,#040604)}
 .wc i{font-style:normal;color:#b7ff32}
 .gwall-cta{text-align:center;margin-top:30px}
 @media(prefers-reduced-motion:reduce){.wtrack{animation:none}}
+
+/* Creative possibilities replaces the per-word Inspector demo. */
+.feature-copy h3{font-size:clamp(30px,4.2vw,62px);line-height:.96;letter-spacing:-.055em}
+.possibilities{padding:clamp(24px,4vw,56px);background:rgba(183,255,50,.025);border-left:1px solid rgba(183,255,50,.12);display:flex;flex-direction:column;justify-content:center;gap:22px}
+.possibility-stat{padding-bottom:18px;border-bottom:1px solid rgba(183,255,50,.13)}
+.possibility-stat strong{display:block;font-size:clamp(30px,3.6vw,52px);font-weight:900;line-height:1.05;letter-spacing:-.05em;color:var(--g);font-variant-numeric:tabular-nums}
+.possibility-stat span{display:block;margin-top:7px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#eef3ed}
+.possibility-stat p{font-size:12px;line-height:1.5;color:#91a097;margin-top:7px}
+.possibility-note{font-size:11px;line-height:1.5;color:#91a097;max-width:400px}
+@media(max-width:700px){.feature-cinema .feature-panel{grid-template-columns:1fr;min-height:0}.feature-cinema .feature-copy{padding:24px}.feature-cinema .feature-copy h3{font-size:clamp(28px,7.8vw,46px)}.feature-cinema .feature-copy p{margin-top:14px;font-size:13px}.possibilities{padding:20px 24px 38px;border-left:0;border-top:1px solid rgba(183,255,50,.12);gap:12px}.possibility-stat{padding-bottom:10px}.possibility-stat strong{font-size:30px}.possibility-stat p{margin-top:4px}.feature-index{bottom:12px}}
 </style>
 <style id="gm-plans-css">
 #plans{padding:90px 0 40px;position:relative}
@@ -839,21 +849,19 @@ document.querySelectorAll("[data-buy]").forEach(function(a){var k=a.getAttribute
   </div>
 </section>
 
-<section class="feature-cinema" id="inspector">
+<section class="feature-cinema" id="inspector" aria-label="Creative possibilities">
   <div class="sticky">
     <div class="feature-panel" id="featurePanel">
       <div class="feature-copy">
-        <div class="kicker">Per-word Inspector</div>
-        <h3 class="display" id="featureTitle">CONTROL<br>EVERY<br>WORD.</h3>
-        <p id="featureDesc">Text, Font, Colour, Size, Tracking and Position stay grouped per word as native Resolve Inspector controls.</p>
+        <div class="kicker">180 starting points. Your creative direction.</div>
+        <h3 class="display" id="featureTitle">180 TITLES.<br>THOUSANDS<br>OF POSSIBILITIES.</h3>
+        <p id="featureDesc">Change the type, colour, layout and timing. Reimagine each title, then layer different motions to build a kinetic typography style of your own.</p>
       </div>
-      <div class="inspector" id="inspectorUI">
-        <div class="control"><b>WORD 01 · Text</b><span>MAKE</span></div>
-        <div class="control"><b>Font</b><span>Montserrat Black</span></div>
-        <div class="control"><b>Colour</b><span>#B7FF32</span></div>
-        <div class="control"><b>Size</b><span>128</span></div>
-        <div class="control"><b>Tracking</b><span>−12</span></div>
-        <div class="control"><b>Position</b><span>0 / 42</span></div>
+      <div class="possibilities" id="inspectorUI">
+        <div class="possibility-stat"><strong>900–1,800</strong><span>Creative variations</span><p>Explore 5–10 different treatments for each of 180 starting titles.</p></div>
+        <div class="possibility-stat"><strong>16,110</strong><span>Two-title pairings</span><p>Choose two different titles to explore together.</p></div>
+        <div class="possibility-stat"><strong>955,860</strong><span>Three-title combinations</span><p>Choose three different titles for more layered ideas.</p></div>
+        <p class="possibility-note">Illustrative estimates, not included preset counts. Pairings count selections only; results depend on your edits and which titles work well together.</p>
       </div>
       <div class="feature-index" id="featureIndex">01 / 02</div>
     </div>
@@ -1136,8 +1144,8 @@ document.querySelectorAll("[data-buy]").forEach(function(a){var k=a.getAttribute
     const panel=$('#featurePanel');
     panel.style.transform=`perspective(1300px) rotateY(${(0.5-fp)*18}deg) rotateX(${(0.5-fp)*7}deg) scale(${.88+fp*.12}) translate3d(${(0.5-fp)*90}px,0,0)`;
     const featureStates=[
-      ['CONTROL<br>EVERY<br>WORD.','Text, Font, Colour, Size, Tracking and Position stay grouped per word as native Resolve Inspector controls.'],
-      ['48 WAYS<br>TO STYLE.','One preset index can drive colour, gradient and glow together across the template.']
+      ['180 TITLES.<br>THOUSANDS<br>OF POSSIBILITIES.','Change the type, colour, layout and timing. Reimagine each title, then layer different motions to build a kinetic typography style of your own.'],
+      ['REMIX.<br>LAYER.<br>MAKE IT YOURS.','A new font pairing. A different rhythm. A fresh composition. Start with a title and push it in your own creative direction.']
     ];
     const fi=Math.min(1,Math.floor(fp*2));
     $('#featureTitle').innerHTML=featureStates[fi][0]; $('#featureDesc').textContent=featureStates[fi][1]; $('#featureIndex').textContent=`0${fi+1} / 02`;

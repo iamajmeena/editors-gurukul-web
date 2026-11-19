@@ -187,6 +187,29 @@ export const freeWebsites: FreeWebsite[] = [
       { stepNumber: 4, title: "Refine the Output", instruction: "Iterate with follow-up messages to refine the result." }
     ],
   },
+  {
+    id: "neonclipping",
+    name: "NeonClipping",
+    url: "/neonclipping/",
+    logoEmoji: "✂️",
+    category: "video-editor",
+    categoryLabel: "Free AI Clip Maker (Windows app)",
+    tagline: "Paste a YouTube, Twitch or Kick link and get captioned 9:16 clips in about two minutes.",
+    alternativeTo: "Free Alternative to paid clipping tools like OpusClip",
+    description: "NeonClipping is a free, open-source clipping tool made by Ajay K Meena. It runs on your own PC, finds the loud, high-action and exciting moments of a long video or live stream, and exports vertical clips with Hinglish captions and facecam layouts. Your videos never leave your computer.",
+    summaryHindi: "Lamba video ya live stream ka link daalo — tool khud best moments dhoondh ke captions ke saath 9:16 clips bana deta hai. Windows pe ek click mein setup, sab kuch aapke apne PC pe chalta hai.",
+    features: ["Captioned 9:16 clips from YouTube, Twitch and Kick links or local files", "Picks moments by loudness, shouting, action, spoken reactions and live-chat spikes", "Hinglish and English captions with highlighted words", "Facecam layouts with manual area drawing, plus live-stream clipping"],
+    pros: ["Free and open source, no account and no upload of your footage", "One-click Windows installer (NeonClipping-Setup.bat) that sets up Python and FFmpeg for you", "Learns from your star ratings which clips you like"],
+    cons: ["Runs on a PC; it is not a phone app", "Windows is the tested platform, the Mac/Linux script is new and untested", "The installer is not code-signed, so Windows may show an 'unknown publisher' warning"],
+    freePlanNote: "Completely free (MIT licence). Optional donation if you want to support it.",
+    bestFor: "Gamers, streamers and editors who turn long videos and live streams into Reels, Shorts and TikToks.",
+    howToUseSteps: [
+      { stepNumber: 1, title: "Download the Setup", instruction: "Open the NeonClipping page and press Download for Windows to get NeonClipping-Setup.bat." },
+      { stepNumber: 2, title: "Run the One-Click Setup", instruction: "Double-click the file. It installs what is missing and opens NeonClipping in your browser." },
+      { stepNumber: 3, title: "Paste a Link", instruction: "Paste a YouTube, Twitch or Kick link, pick a caption style and press Make clips." },
+      { stepNumber: 4, title: "Rate and Export", instruction: "Rate the clips with stars, then download the ones you like." }
+    ],
+  },
 ];
 
 export const websiteCategories = [
